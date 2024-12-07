@@ -987,48 +987,74 @@ if (!isset($_SESSION['username'])) {
 
 
                 <div class="container col-md-12">
-
                     <div class="card-body pb-0">
                         <h5 class="card-title">Bar Chart <span>| Reports</span></h5>
+
+                        <div class="select-holder d-flex gap-3">
+                            <select id="yearFilter" onchange="updateChart()" class="card p-2">
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                            </select>
+
+                            <select id="monthFilter" onchange="updateChart()" class="card p-2">
+                                <option value="all">All</option>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
                         <div class="col-lg">
                             <canvas id="myChart" style="width: 800px; height: 240px;"></canvas>
+                            <div class="print-btn py-4 d-flex align-items-center justify-content-center">
+                                <button onclick="printChartData()" class="btn btn-success p-2">Print Reports</button>
+                            </div>
 
                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                             <script>
                                 // Data for the bar chart
                                 const chartData = {
-                                    labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Employability', 'Certificate of Income', 'Certificate of Cohabitation', 'Complaint Certificate', 'Death Certificate', 'First Time Job Seeker', 'Certificate of Indigency', 'Certificate of Indigency (AICS)', 'Lot Ownership', 'Transfer of Residency'],
+                                    labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Income', 'Certificate of Cohabitation', 'Certificate of Employability', 'Certificate of Indigency', 'Certificate of Indidency (AICS)', 'Complaint Certificate', 'Death Certificate', 'First Time Job Seeker', 'Lot Ownership', 'Transfer of Residency'],
                                     datasets: [{
                                         label: 'Number of Issued Certificates',
                                         backgroundColor: [
-                                            'rgba(255, 25, 25, 0.2)', // Barangay Clearance
-                                            'rgba(54, 162, 235, 0.2)', // Business Permit (New)
-                                            'rgba(255, 206, 86, 0.2)', // Business Permit (Renew)
-                                            'rgba(75, 192, 192, 0.2)', // Certificate of Employability
-                                            'rgba(153, 102, 255, 0.2)', // Certificate of Income
-                                            'rgba(255, 165, 0, 0.2)', // Cohabitation
-                                            'rgba(0, 51, 102, 0.2)', // Complaint Certificate
-                                            'rgba(0, 128, 0, 0.2)', // Death Certificate
-                                            'rgba(153, 0, 0, 0.2)', // First Time Job Seeker
-                                            'rgba(77, 0, 77, 0.2)', // Indigency
-                                            'rgba(16, 16, 16, 0.2)', // Indigency (AICS)                                                                         
-                                            'rgba(128, 0, 0, 0.2)', // Lot Ownership
-                                            'rgba(153, 153, 0, 0.2)' // Transfer of Residency
+                                            'rgba(255, 25, 25, 0.2)',
+                                            'rgba(54, 162, 235, 0.2)',
+                                            'rgba(255, 206, 86, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(153, 102, 255, 0.2)',
+                                            'rgba(255, 165, 0, 0.2)',
+                                            'rgba(0, 51, 102, 0.2)',
+                                            'rgba(0, 128, 0, 0.2)',
+                                            'rgba(153, 0, 0, 0.2)',
+                                            'rgba(77, 0, 77, 0.2)',
+                                            'rgba(16, 16, 16, 0.2)',
+                                            'rgba(128, 0, 0, 0.2)',
+                                            'rgba(153, 153, 0, 0.2)'
                                         ],
                                         borderColor: [
-                                            'rgba(255, 0, 0, 1)', // Barangay Clearance
-                                            'rgba(54, 162, 235, 1)', // Business Permit (New)
-                                            'rgba(255, 206, 86, 1)', // Business Permit (Renew)                                                
-                                            'rgba(75, 192, 192, 1)', // Certificate of Employability
-                                            'rgba(153, 102, 255, 1)', // Certificate of Income
-                                            'rgba(255, 165, 0, 1)', // Cohabitation                         
-                                            'rgba(0, 51, 102, 1)', // Complaint Certificate
-                                            'rgba(0, 128, 0, 1)', // Death Certificate
-                                            'rgba(153, 0, 0, 1)', // First Time Job Seeker
-                                            'rgba(77, 0, 77, 1)', // Indigency
-                                            'rgba(16, 16, 16, 1)', // Indigency (AICS)                                               
-                                            'rgba(128, 0, 0, 1)', // Lot Ownership
-                                            'rgba(153, 153, 0, 1)' // Transfer of Residency
+                                            'rgba(255, 0, 0, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 165, 0, 1)',
+                                            'rgba(0, 51, 102, 1)',
+                                            'rgba(0, 128, 0, 1)',
+                                            'rgba(153, 0, 0, 1)',
+                                            'rgba(77, 0, 77, 1)',
+                                            'rgba(16, 16, 16, 1)',
+                                            'rgba(128, 0, 0, 1)',
+                                            'rgba(153, 153, 0, 1)'
                                         ],
                                         borderWidth: 1,
                                         data: [
@@ -1048,7 +1074,6 @@ if (!isset($_SESSION['username'])) {
                                     }]
                                 };
 
-                                // Configuration options
                                 const chartConfig = {
                                     type: 'bar',
                                     data: chartData,
@@ -1061,36 +1086,85 @@ if (!isset($_SESSION['username'])) {
                                     }
                                 };
 
-                                // Function to update chart dimensions based on window size
-                                function updateChartDimensions(chart) {
-                                    var chartCanvas = chart.canvas;
-                                    var parent = chartCanvas.parentNode;
-                                    var containerWidth = parent.offsetWidth;
-                                    var containerHeight = parent.offsetHeight;
-
-                                    chartCanvas.style.width = containerWidth + 'px';
-                                    chartCanvas.style.height = containerHeight + 'px';
-                                    chart.resize(); // Resize the chart
-                                }
-
-                                // Render the bar chart
                                 const myChart = new Chart(document.getElementById('myChart'), chartConfig);
 
-                                // Update chart dimensions when the window is resized
-                                window.addEventListener('resize', function () {
-                                    updateChartDimensions(myChart);
-                                });
+                                // Print function to open a new window with both table and chart
+                                function printChartData() {
+                                    const chartCanvas = document.getElementById('myChart');
+                                    const chartImageURL = chartCanvas.toDataURL("image/png");
 
-                                // Initial call to update chart dimensions
-                                updateChartDimensions(myChart);
+                                    // Generate the table content with chart data
+                                    const chartLabels = chartData.labels;
+                                    const chartValues = chartData.datasets[0].data;
+                                    let content = '<html><head><title>Print Reports</title></head><body>';
+                                    content += '<h2>Certificate Reports</h2>';
+                                    content += '<h3>Table of Issued Certificates</h3>';
+                                    content += '<table border="1" style="width: 100%; text-align: left;"><thead><tr><th>Certificate Type</th><th>Number Issued</th></tr></thead><tbody>';
+
+                                    // Populate table rows
+                                    chartLabels.forEach((label, index) => {
+                                        content += `<tr><td>${label}</td><td>${chartValues[index]}</td></tr>`;
+                                    });
+                                    content += '</tbody></table>';
+
+                                    // Add the chart image to the print window content
+                                    content += '<h3>Bar Chart</h3>';
+                                    content += `<img src="${chartImageURL}" style="width: 100%; height: auto;">`;
+
+                                    content += '</body></html>';
+
+                                    // Open a new window for printing and render the content
+                                    const printWindow = window.open('', '_blank');
+                                    printWindow.document.write(content);
+                                    printWindow.document.close();
+                                    printWindow.print();
+                                }
+                            </script>
+
+                            <script>
+                                function updateChart() {
+                                    const month = document.getElementById('monthFilter').value;
+                                    const year = document.getElementById('yearFilter').value;
+
+                                    // Construct the URL with both month and year parameters
+                                    let url = `getChartData.php?month=${month}&year=${year}`;
+
+                                    fetch(url)
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            // If 'month' is 'all', reset the chart data to default values
+                                            if (month === 'all') {
+                                                myChart.data.datasets[0].data = [
+                                                    data["Barangay Clearance"],
+                                                    data["Business Permit New"],
+                                                    data["Business Permit Renew"],
+                                                    data["Certificate of Income"],
+                                                    data["Cohabitation"],
+                                                    data["Certificate of Employability"],
+                                                    data["Indigency"],
+                                                    data["Indigency AICS"],
+                                                    data["Complaint Certificate"],
+                                                    data["Death Certificate"],
+                                                    data["First Time Job Seeker"],
+                                                    data["Lot Ownership"],
+                                                    data["Transfer of Residency"]
+                                                ];
+                                            } else {
+                                                // Update chart data with the fetched values from the specific month/year
+                                                myChart.data.datasets[0].data = Object.values(data);
+                                            }
+
+                                            // Update the chart with new data
+                                            myChart.update();
+                                        })
+                                        .catch(error => console.error('Error fetching chart data:', error));
+                                }
+
                             </script>
                         </div>
-
                     </div>
-                </div><!-- End News & Updates -->
 
-            </div><!-- End Right side columns -->
-
+                </div>
             </div>
         </section>
 

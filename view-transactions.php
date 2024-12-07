@@ -29,22 +29,21 @@ if (!isset($_SESSION['username'])) {
             <i class="bx bxs-caret-left-square fs-2 "></i>
             <span class="fs-3 fw-semibold ">Back</span>
         </a>
-        
+
         <section class="section">
-            <div class="row fs-5">
+            <div class="row fs-4">
                 <div class="col-lg-12">
                     <div class="card" id="transactions">
                         <div class="card-body">
                             <h5 class="card-title fs-4">Transaction Table</h5>
-                            <!-- Table with stripped rows -->
-                            <table class="table datatable pt-3">
+                            <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th>Transacted by</th>
-                                        <th>Document Name</th>
-                                        <th>Client Name</th>
-                                        <th>Created At</th>
-                                        <th>Action</th>
+                                        <th class="fs-5">Transacted by</th>
+                                        <th class="fs-5">Document Name</th>
+                                        <th class="fs-5">Client Name</th>
+                                        <th class="fs-5">Created At</th>
+                                        <th class="fs-5">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,30 +51,25 @@ if (!isset($_SESSION['username'])) {
                                     require 'includes/db.php';
                                     $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, 
                                                 CASE 
-                                                WHEN dt.id = 1 THEN bc.fullname
-                                                WHEN dt.id = 2 THEN bp.manager
-                                                WHEN dt.id = 3 THEN bpr.manager
-                                                WHEN dt.id = 4 THEN coe.fullname
+                                                    WHEN dt.id = 1 THEN CONCAT(COALESCE(bc.first_name, ''), ' ', COALESCE(bc.middle_name, ''), ' ', COALESCE(bc.last_name, ''))
                                                 ELSE 'Unknown' 
-                                                END AS fullname, 
-                                                t.client_trans_id, t.created_at
+                                                    END AS full_name, t.client_trans_id, t.created_at
                                                 FROM transactions t
-                                                INNER JOIN admin a ON t.transact_by = a.id
-                                                INNER JOIN doctype dt ON t.doc_id = dt.id
-                                                LEFT JOIN barangay_clearance bc ON t.client_trans_id = bc.id AND dt.id = 1
-                                                LEFT JOIN business_permit_new bp ON t.client_trans_id = bp.id AND dt.id = 2
-                                                LEFT JOIN business_permit_renew bpr ON  t.client_trans_id = bpr.id AND dt.id = 3
-                                                LEFT JOIN certificate_of_employability coe ON t.client_trans_id = coe.id AND dt.id = 4";
+                                                    INNER JOIN admin a ON t.transact_by = a.id
+                                                    INNER JOIN doctype dt ON t.doc_id = dt.id
+                                                    LEFT JOIN barangay_clearance bc ON t.client_trans_id = bc.id AND dt.id = 1";
                                     $result = $conn->query($sql);
 
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
-                                            echo "<tr>";
+                                            echo "<tr class='fs-5'>";
+                                            // echo "<td>" . $row["id"] . "</td>";
                                             echo "<td>" . $row["transact_by"] . "</td>";
                                             echo "<td>" . $row["doc_name"] . "</td>";
-                                            echo "<td>" . $row["fullname"] . "</td>";
+                                            echo "<td>" . $row["full_name"] . "</td>";
+                                            // echo "<td>" . $row["client_trans_id"] . "</td>";
                                             echo "<td>" . $row["created_at"] . "</td>";
-                                            echo "<td><a href='show_client_trans.php?id=" . $row["client_trans_id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_name"]) . "'><button type='button' class='btn btn-primary'>VIEW</button></a></td>";
+                                            echo "<td><a href='show_client_trans.php?id=" . $row["client_trans_id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_name"]) . "'><button type='submit' class='btn btn-primary'>VIEW</button></a></td>";
                                             echo "</tr>";
                                         }
                                     } else {
