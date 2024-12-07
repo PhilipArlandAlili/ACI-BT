@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+aside, .sidebar{
+    background-color: #174793;
+    padding: 0;
+}
+
+
+.barangay-logo {
+    background-color: #729ED9;
+}
+
+.navigation {
+    color: #174793;
+}
+
+.navigation:hover {
+    color: #729ED9;
+}
+
+
+.nav-item .nav-link {
+    background-color: #174793;
+}
+
+.nav-item span {
+    font-size: 1.2rem;
+    margin: 0 1rem;
+    padding: .1rem .4rem;
+}
+
+.navbar-wrapper button {
+    width: 100px;
+    background-color: #729ED9;
+}
+
+.dashboard-card {
+    color: #fff;
+    color: #00000064;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    position: relative;
+    border-radius: 10px;
+    background: #efefef;
+    box-shadow: 5px 5px 4px #c8d0e7, -1px -1px 3px #fff;
+}
+
+.dashboard-card:active {
+    box-shadow: inset 1px 1px 3px #c8d0e7, inset -1px -1px 3px #fff;
+}
+
+.dashboard-card:hover {
+    transform: scale(1.1);
+    background-color: rgb(255, 230, 91);
+}
+
+.card-size {
+    width: 350px;
+}
+
+.about-card {
+    color: #fff;
+    border: none;
+    position: relative;
+    border-radius: 10px;
+    background: #efefef;
+    box-shadow: 5px 5px 4px #c8d0e7, -1px -1px 3px #fff;
+}
+
+.official-card .card-bottom {
+    border-bottom: 10px solid #F1F04B;
+}
+
+.profile-card {
+    border: none;
+    position: relative;
+    border-radius: 10px;
+    background: #efefef;
+    box-shadow: 5px 5px 4px #c8d0e7, -1px -1px 3px #fff;
+}
+
+.card-header {
+    border: none;
+    position: relative;
+    border-radius: 10px;
+    background-image: url("../img/fire.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
