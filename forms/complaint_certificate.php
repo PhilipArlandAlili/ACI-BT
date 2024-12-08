@@ -1,13 +1,13 @@
 <form action="#" method="post" id="form">
     <!--With honorifics-->
     <label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
+    <input type="text" class="form-control" name="first_name_respondent" placeholder="Ex. Juan"><br>
 
     <label for="">Middle Initial:</label>
-    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
+    <input type="text" class="form-control" name="middle_name_respondent" placeholder="Ex. J"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
+    <input type="text" class="form-control" name="last_name_respondent" placeholder="Ex. Dela Cruz"><br>
 
     <label for="">Suffix:</label>
     <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
@@ -41,13 +41,13 @@
 
     <!--Respondent Full Name-->
     <label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_namec" placeholder="Ex. Juan"><br>
+    <input type="text" class="form-control" name="first_name_respondent" placeholder="Ex. Juan"><br>
 
     <label for="">Middle Initial:</label>
-    <input type="text" class="form-control" name="middle_initialc" placeholder="Ex. J"><br>
+    <input type="text" class="form-control" name="middle_name_respondent" placeholder="Ex. J"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_namec" placeholder="Ex. Dela Cruz"><br>
+    <input type="text" class="form-control" name="last_name_respondent" placeholder="Ex. Dela Cruz"><br>
 
 
 
