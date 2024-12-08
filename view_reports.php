@@ -427,7 +427,7 @@ if (!isset($_SESSION['username'])) {
                                                     </div>
                                                     <div class="ps-3">
                                                         <h6>
-                                                            <?php echo $count_cohabitation; ?>
+                                                            <?php echo $count_certificate_of_cohabitation; ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
                                                             id="cohabitation_percent">%</span> <span
@@ -565,7 +565,7 @@ if (!isset($_SESSION['username'])) {
                                                     </div>
                                                     <div class="ps-3">
                                                         <h6>
-                                                            <?php echo $count_indigency; ?>
+                                                            <?php echo $count_certificate_of_indigency; ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
                                                             id="indigency_percent">%</span> <span
@@ -624,7 +624,7 @@ if (!isset($_SESSION['username'])) {
                                                     </div>
                                                     <div class="ps-3">
                                                         <h6>
-                                                            <?php echo $count_indigency_aics; ?>
+                                                            <?php echo $count_certificate_of_indigency_aics; ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
                                                             id="indigency_aics_percent">%</span> <span
@@ -1023,7 +1023,7 @@ if (!isset($_SESSION['username'])) {
                             <script>
                                 // Data for the bar chart
                                 const chartData = {
-                                    labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Income', 'Certificate of Cohabitation', 'Certificate of Employability', 'Certificate of Indigency', 'Certificate of Indidency (AICS)', 'Complaint Certificate', 'Death Certificate', 'First Time Job Seeker', 'Lot Ownership', 'Transfer of Residency'],
+                                    labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Cohabitation', 'Certificate of Employability', 'Certificate of Income', 'Certificate of Indigency', 'Certificate of Indidency (AICS)', 'Complaint Certificate', 'Death Certificate', 'First Time Job Seeker', 'Lot Ownership', 'Transfer of Residency'],
                                     datasets: [{
                                         label: 'Number of Issued Certificates',
                                         backgroundColor: [
@@ -1058,19 +1058,19 @@ if (!isset($_SESSION['username'])) {
                                         ],
                                         borderWidth: 1,
                                         data: [
-                                            Sales_Clearance,
-                                            Sales_Business_Permit_New,
-                                            Sales_Business_Permit_Renew,
-                                            Sales_Certificate_of_Income,
-                                            Sales_Cohabitation,
-                                            Sales_Certificate_of_Employability,
-                                            Sales_Indigency,
-                                            Sales_Indigency_AICS,
-                                            Sales_Complaint_Certificate,
-                                            Sales_Death_Certificate,
-                                            Sales_First_Time_Job_Seeker,
-                                            Sales_Lot_Ownership,
-                                            Sales_Transfer_of_Residency]
+                                            barangay_clearance,
+                                            business_permit_new,
+                                            business_permit_renew,
+                                            certificate_of_cohabitation,
+                                            certificate_of_employability,
+                                            certificate_of_income,
+                                            certificate_of_indigency,
+                                            certificate_of_indigency_aics,
+                                            complaint_certificate,
+                                            death_certificate,
+                                            first_time_job_seeker,
+                                            lot_ownership,
+                                            transfer_of_residency]
                                     }]
                                 };
 
@@ -1138,11 +1138,11 @@ if (!isset($_SESSION['username'])) {
                                                     data["Barangay Clearance"],
                                                     data["Business Permit New"],
                                                     data["Business Permit Renew"],
-                                                    data["Certificate of Income"],
-                                                    data["Cohabitation"],
+                                                    data["Certificate of Cohabitation"],
                                                     data["Certificate of Employability"],
-                                                    data["Indigency"],
-                                                    data["Indigency AICS"],
+                                                    data["Certificate of Income"],
+                                                    data["Certificate of Indigency"],
+                                                    data["Certificate of Indigency AICS"],
                                                     data["Complaint Certificate"],
                                                     data["Death Certificate"],
                                                     data["First Time Job Seeker"],
