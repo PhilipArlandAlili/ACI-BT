@@ -5,29 +5,22 @@
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ex. Juan" required><br>
 
-    <div class="form-row d-flex justify-content-between">
-        <div class="form-group col-sm-2">
-            <label for="middle_name">M.I. :</label>
-            <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Ex. M"
-                maxlength="1" pattern="[A-Za-z]" style="text-transform: uppercase;" required>
-        </div>
-        <div class="form-group col-sm-6">
-            <label for="last_name">Last Name:</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Ex. Dela Cruz"
-                required><br>
-        </div>
-        <div class="form-group col-sm-2">
-            <label for="suffix">Suffix:</label>
-            <select class="text-left form-control" name="suffix" id="suffix">
-                <option value="">N/A</option>
-                <option value="Jr">Jr</option>
-                <option value="Sr">Sr</option>
-                <option value="I">I</option>
-                <option value="II">II</option>
-                <option value="III">III</option>
-            </select>
-        </div>
-    </div>
+    <label for="middle_name">Middle Name:</label>
+    <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Ex. Mandaragat"
+        required><br>
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Ex. Dela Cruz" required><br>
+
+    <label for="suffix">Suffix:</label>
+    <select class="text-left form-control" name="suffix" id="suffix">
+        <option value="">N/A</option>
+        <option value="Jr">Jr</option>
+        <option value="Sr">Sr</option>
+        <option value="I">I</option>
+        <option value="II">II</option>
+        <option value="III">III</option>
+    </select><br>
 
     <label for="puroks">Purok:</label>
     <select class="text-left form-control" name="purok" id="purok" required>
@@ -52,14 +45,14 @@
 
     <label for="civil_status">Civil Status:</label>
     <select class="form-control" name="civil_status" id="civil_status" required>
+        <option value="Single">Single</option>
         <option value="Married">Married</option>
         <option value="Widow">Widow</option>
-        <option value="Single">Single</option>
     </select><br>
 
     <label for="period_of_residency">Period of Residency:</label>
-    <input type="number" class="form-control" id="period_of_residency" name="period_of_residency" placeholder="Ex. 3 years"
-        required><br>
+    <input type="number" class="form-control" id="period_of_residency" name="period_of_residency"
+        placeholder="Ex. 3 years" required><br>
 
     <label for="purpose">Purpose:</label>
     <input type="text" name="purpose" class="form-control" id="purpose" placeholder="Ex. Undecided" required><br>

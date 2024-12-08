@@ -21,7 +21,7 @@
     <input type="text" class="form-control" name="manager_operator_renew" placeholder="Ex. Juan Dela Cruz" required><br>
 
     <label for="manager_operator_address_renew">Address (Manager / Operator):</label>
-    <input type="text" class="form-control" name="manager_operator_address_renew" placeholder="Ex. 144 PSU Rd" required><br>
+    <input type="text" class="form-control" name="manager_operator_address_renew" placeholder="Ex. PSU Rd" required><br>
 
     <hr>
 

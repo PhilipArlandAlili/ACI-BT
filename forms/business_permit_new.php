@@ -22,7 +22,7 @@
     <input type="text" class="form-control" name="manager" placeholder="Ex. Juan Dela Cruz" required><br>
 
     <label for="manager_operator_address">Address (Manager / Operator):</label>
-    <input type="text" class="form-control" name="address" placeholder="Ex. 144 PSU Rd" required><br>
+    <input type="text" class="form-control" name="address" placeholder="Ex. PSU Rd" required><br>
     <hr>
 
     <div class="BPermitNewprint" style="text-align: right;">
