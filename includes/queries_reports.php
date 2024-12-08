@@ -2,7 +2,7 @@
 // Include your PHP code here
 include 'db.php';
 
-
+//comment
 // SQL query to count the number of records in the 'barangay_clearance' table
 $sql_barangay_clearance = "SELECT COUNT(*) AS count FROM barangay_clearance";
 $result_baranagay_clearance = $conn->query($sql_barangay_clearance);

@@ -1,7 +1,7 @@
 <!-- Troy  -->
 <?php
 session_start();
-
+//comment
 if (!isset($_SESSION['username'])) {
     header("Location: index.php");
     exit();
