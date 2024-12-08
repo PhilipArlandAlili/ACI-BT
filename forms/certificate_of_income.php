@@ -1,5 +1,4 @@
 <form action="#" method="post" id="form">
-
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ex. Juan" required><br>
 
@@ -24,7 +23,7 @@
     <select class="text-left form-control" name="purok" id="purok" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
-        <option value="Hurawan">Huwaran</option>
+        <option value="Hurawan">Hurawan</option>
         <option value="Kaakbayan">Kaakbayan</option>
         <option value="New Princesa">New Princesa</option>
         <option value="San Franciso I">San Franciso I</option>
@@ -34,11 +33,16 @@
         <option value="Uha">UHA</option>
     </select><br>
 
-    <label for="">Amount (In Numeric Form)</label>
-    <input type="number" name="amount" class="form-control" maxlength="10" placeholder="Ex. 123456789" required><br>
+    <label for="amount">Amount (In Numeric Form):</label>
+    <input type="number" id="income_num" name="income_num" class="form-control" maxlength="10"
+        placeholder="Ex. 123456789" required><br>
 
-    <button name="certificate_of_income" onclick="printIframe()" type="submit">Print</button>
-    
+    <label for="income_words">Amount (In Words):</label>
+    <input type="text" id="income_words" name="income_words" class="form-control" placeholder="Amount in words"
+        readonly><br>
+
+    <button name="certificate_of_income" type="submit">Submit</button>
+
     <div class="brgyClearancePrint" style="text-align: right;">
         <button type="button" id="brgyClearancePrintBtn" class="btn btn-primary w-25">Print</button>
 
