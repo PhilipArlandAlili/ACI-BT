@@ -7,33 +7,32 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-if (isset($_POST["barangay_clearance"])) {
-    // Sanitize and assign form data to variables
+$duty_officer_name = $_SESSION['username'];
+$issued_date = date('Y-m-d');
+
+if (isset($_POST["barangay_clearance"])){
     $first_name = $conn->real_escape_string($_POST["first_name"]);
-    $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
     $last_name = $conn->real_escape_string($_POST["last_name"]);
     $suffix = $conn->real_escape_string($_POST["suffix"]);
     $purok = $conn->real_escape_string($_POST["purok"]);
     $birthplace = $conn->real_escape_string($_POST["birthplace"]);
-    $birthdate = $conn->real_escape_string($_POST["birthday"]);
+    $birthdate = $conn->real_escape_string($_POST["birthdate"]);
     $civil_status = $conn->real_escape_string($_POST["civil_status"]);
-    $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
+    $period_of_residency = $conn->real_escape_string($_POST["period_of_residency"]);
     $purpose = $conn->real_escape_string($_POST["purpose"]);
 
-    // Define SQL query using prepared statements
-    $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-    $fullname = ucwords($fullname);
-    $issued_date = date('Y-m-d');
-    $duty_officer_name = $_SESSION['username'];
-    $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
+    $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 
-    // Execute SQL query
+    $stmt = $conn->prepare("INSERT INTO barangay_clearance (first_name, middle_name, last_name, suffix, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('ssssssssisss', $first_name, $middle_name, $last_name, $suffix, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
+    
     if ($stmt->execute()) {
-        // Fetch admin ID
+        //echo "New record inserted successfully";
+
         $sql = "SELECT id FROM admin WHERE username = ?";
         $admin_stmt = $conn->prepare($sql);
-        $admin_stmt->bind_param('s', $_SESSION['username']);
+        $admin_stmt->bind_param('s', $duty_officer_name);
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
@@ -41,38 +40,27 @@ if (isset($_POST["barangay_clearance"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            // Insert into transactions table
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?,(SELECT COUNT(*) FROM barangay_clearance), NOW())");
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?, (SELECT COUNT(*) FROM barangay_clearance), NOW())");
             $trans_stmt->bind_param('is', $admin_id, $fullname);
 
             if ($trans_stmt->execute()) {
-                // Success message
-                $_SESSION['success'] = "Barangay Clearance created successfully and transaction recorded.";
+                //echo "Transaction record inserted successfully";
             } else {
-                // Error message for transaction failure
-                $_SESSION['error'] = "Transaction record failed: " . $trans_stmt->error;
+                //echo "Error: " . $trans_stmt->error;
             }
 
             $trans_stmt->close();
+
         } else {
-            // Error message for admin user not found
-            $_SESSION['error'] = "Error: Admin user not found.";
+            //echo "Error: Admin user not found.";
         }
 
         $admin_stmt->close();
     } else {
-        // Error message for record insertion failure
-        $_SESSION['error'] = "Error: " . $stmt->error;
+        //echo "Error: " . $stmt->error;
     }
 
-    // Close database connection
-    $trans_stmt->close();
     $stmt->close();
-    $conn->close();
-
-    // Redirect back to the page to display the alert
-    header("Location: generate-documents.php");
-    exit();
 }
 
 if (isset($_POST["business_permit_new"])) {

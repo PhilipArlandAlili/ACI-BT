@@ -7,8 +7,8 @@
 
     <div class="form-row d-flex justify-content-between">
         <div class="form-group col-sm-2">
-            <label for="middle_initial">M.I. :</label>
-            <input type="text" class="form-control" id="middle_initial" name="middle_initial" placeholder="Ex. M"
+            <label for="middle_name">M.I. :</label>
+            <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Ex. M"
                 maxlength="1" pattern="[A-Za-z]" style="text-transform: uppercase;" required>
         </div>
         <div class="form-group col-sm-6">
@@ -30,7 +30,7 @@
     </div>
 
     <label for="puroks">Purok:</label>
-    <select class="text-left form-control" name="puroks" id="puroks" required>
+    <select class="text-left form-control" name="purok" id="purok" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -47,8 +47,8 @@
     <input type="text" class="form-control" id="birthplace" name="birthplace" placeholder="Ex. Puerto Princesa City"
         required><br>
 
-    <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" id="birthday" name="birthday" required><br>
+    <label for="birthdate">Birthday:</label>
+    <input type="date" class="form-control" id="birthdate" name="birthdate" required><br>
 
     <label for="civil_status">Civil Status:</label>
     <select class="form-control" name="civil_status" id="civil_status" required>
@@ -57,8 +57,8 @@
         <option value="Single">Single</option>
     </select><br>
 
-    <label for="residency_period">Period of Residency:</label>
-    <input type="number" class="form-control" id="residency_period" name="residency_period" placeholder="Ex. 3 years"
+    <label for="period_of_residency">Period of Residency:</label>
+    <input type="number" class="form-control" id="period_of_residency" name="period_of_residency" placeholder="Ex. 3 years"
         required><br>
 
     <label for="purpose">Purpose:</label>
