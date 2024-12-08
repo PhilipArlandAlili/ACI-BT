@@ -1016,7 +1016,7 @@ if (!isset($_SESSION['username'])) {
                         <div class="col-lg">
                             <canvas id="myChart" style="width: 800px; height: 240px;"></canvas>
                             <div class="print-btn py-4 d-flex align-items-center justify-content-center">
-                                <button onclick="printChartData()" class="btn btn-success p-2">Print Reports</button>
+                                <button onclick="printChartData()" class="btn btn-primary p-2">Print Reports</button>
                             </div>
 
                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

@@ -31,19 +31,19 @@ if (!isset($_SESSION['username'])) {
         </a>
 
         <section class="section">
-            <div class="row fs-4">
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="card" id="transactions">
                         <div class="card-body">
                             <h5 class="card-title fs-4">Transaction Table</h5>
-                            <table class="table datatable">
+                            <table class="table datatable pt-3">
                                 <thead>
                                     <tr>
-                                        <th class="fs-5">Transacted by</th>
-                                        <th class="fs-5">Document Name</th>
-                                        <th class="fs-5">Client Name</th>
-                                        <th class="fs-5">Created At</th>
-                                        <th class="fs-5">Action</th>
+                                        <th>Transacted by</th>
+                                        <th>Document Name</th>
+                                        <th>Client Name</th>
+                                        <th>Created At</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
