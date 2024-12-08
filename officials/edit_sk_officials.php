@@ -103,12 +103,15 @@ $conn->close();
                         <div class="profile-card">
                             <?php foreach ($officials as $official): ?>
                                 <?php if ($official['id'] == $selected_id): // Display the selected official ?>
-                                    <div
-                                        class="card-header card text-light d-flex align-items-center justify-content-center p-5">
-                                        <img src="../assets/img/SK-COUNCIL/<?php echo $official['img']; ?>" alt="Profile"
-                                            class="rounded-circle" height="100" width="100">
-                                        <h2 class="fs-3 fw-bold pt-3 text-light"><?php echo $official['name']; ?></h2>
-                                        <h5 class="mt-n5"><?php echo $official['position']; ?></h5>
+                                    <div class="d-flex align-items-center justify-content-center p-5 gap-5">
+                                        <div class="profile-image">
+                                            <img src="../assets/img/SK-COUNCIL/<?php echo $official['img']; ?>"
+                                                alt="Profile" class="rounded-circle" height="100" width="100">
+                                        </div>
+                                        <div class="profile-name">
+                                            <h2 class="fs-3 fw-bold pt-3"><?php echo $official['name']; ?></h2>
+                                            <h5 class="mt-n5 text-center"><?php echo $official['position']; ?></h5>
+                                        </div>
                                     </div>
                                     <div class="card-body">
                                         <div class="profile-details px-4">

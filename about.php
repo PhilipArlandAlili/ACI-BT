@@ -76,7 +76,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/carl.jpg" alt="Carl Vincent Alabastro"
+                                <img src="assets/img/devs/Alabastro.jpg" alt="Carl Vincent Alabastro"
                                     class="rounded-circle mb-3" width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Carl Vincent <br> Alabastro</h6>
                             </div>
@@ -86,7 +86,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/philip.jpg" alt="Philip Arland Alili"
+                                <img src="assets/img/devs/Alili.jpg" alt="Philip Arland Alili"
                                     class="rounded-circle mb-3" width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Philip Arland <br> Alili</h6>
                             </div>
@@ -96,7 +96,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/zoe.jpg" alt="Zoe Ayessa Buesa" class="rounded-circle mb-3"
+                                <img src="assets/img/devs/Buesa.jpg" alt="Zoe Ayessa Buesa" class="rounded-circle mb-3"
                                     width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Zoe Ayessa <br> Buesa</h6>
                             </div>
@@ -106,7 +106,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/carl.jpg" alt="Michael Joshua Calan"
+                                <img src="assets/img/devs/Calan.jpg" alt="Michael Joshua Calan"
                                     class="rounded-circle mb-3" width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Michael Joshua <br> Calan</h6>
                             </div>
@@ -116,7 +116,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/jes.jpg" alt="Jessica Cabilar" class="rounded-circle mb-3"
+                                <img src="assets/img/devs/Cabilar.jpg" alt="Jessica Cabilar" class="rounded-circle mb-3"
                                     width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Jessica <br> Cabilar</h6>
                             </div>
@@ -126,7 +126,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/charls.jpg" alt="Charls Brent Cayabyab"
+                                <img src="assets/img/devs/Cayabyab.jpg" alt="Charls Brent Cayabyab"
                                     class="rounded-circle mb-3" width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Charls Brent <br> Cayabyab</h6>
                             </div>
@@ -136,7 +136,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/troy.jpg" alt="Obrien Troy Dangan" class="rounded-circle mb-3"
+                                <img src="assets/img/devs/Dangan.jpg" alt="Obrien Troy Dangan" class="rounded-circle mb-3"
                                     width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Obrien Troy <br> Dangan</h6>
                             </div>
@@ -146,7 +146,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/lyrah.jpg" alt="Lyrah Rohi Fernandez"
+                                <img src="assets/img/devs/Fernandez.jpg" alt="Lyrah Rohi Fernandez"
                                     class="rounded-circle mb-3" width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Lyrah Rohi <br> Fernandez</h6>
                             </div>
@@ -156,7 +156,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/carl.jpg" alt="Milky Galicia" class="rounded-circle mb-3"
+                                <img src="assets/img/devs/Galicia.jpg" alt="Milky Galicia" class="rounded-circle mb-3"
                                     width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Milky <br> Galicia</h6>
                             </div>
@@ -166,7 +166,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/marco.jpg" alt="Kristian Marc Anthony Ng"
+                                <img src="assets/img/devs/Ng.jpg" alt="Kristian Marc Anthony Ng"
                                     class="rounded-circle mb-3" width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Kristian Marc <br> Anthony Ng</h6>
                             </div>
@@ -176,7 +176,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/renz.jpg" alt="Renz Carl Ozoa" class="rounded-circle mb-3"
+                                <img src="assets/img/devs/Ozoa.jpg" alt="Renz Carl Ozoa" class="rounded-circle mb-3"
                                     width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Renz Carl <br> Ozoa</h6>
                             </div>
@@ -186,7 +186,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/franz.jpg" alt="Franz Miguel Valonda"
+                                <img src="assets/img/devs/Valonda.jpg" alt="Franz Miguel Valonda"
                                     class="rounded-circle mb-3" width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Franz Miguel <br> Valonda</h6>
                             </div>
