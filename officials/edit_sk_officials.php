@@ -1,5 +1,5 @@
 <?php
-session_start();  // Start the session to store messages
+session_start();
 
 include '../includes/db.php';
 
@@ -7,7 +7,7 @@ $officials = [];
 $selected_id = isset($_GET['id']) ? $_GET['id'] : 1; // Default to 1 if no id is set
 
 // Fetch officials
-$result = $conn->query("SELECT id, name, position, age, birthdate, address, phone, email, img FROM officials_staff");
+$result = $conn->query("SELECT id, name, position, age, birthdate, address, phone, email, img FROM officials_sk");
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -30,32 +30,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Handle image upload
     if (!empty($img)) {
-        $target_dir = "../assets/img/devs/";
+        $target_dir = "../assets/img/SK-COUNCIL/";
         $target_file = $target_dir . basename($img);
         move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
     } else {
         // If no new image uploaded, keep the current one
-        $currentOfficial = $conn->query("SELECT img FROM officials_staff WHERE id = $id")->fetch_assoc();
+        $currentOfficial = $conn->query("SELECT img FROM officials_sk WHERE id = $id")->fetch_assoc();
         $img = $currentOfficial['img'];
     }
 
     // Prepare and bind
-    $stmt = $conn->prepare("UPDATE officials_staff SET name = ?, position = ?, age = ?, birthdate = ?, address = ?, phone = ?, email = ?, img = ? WHERE id = ?");
+    $stmt = $conn->prepare("UPDATE officials_sk SET name = ?, position = ?, age = ?, birthdate = ?, address = ?, phone = ?, email = ?, img = ? WHERE id = ?");
     if ($stmt) {
         $stmt->bind_param("ssisssssi", $name, $position, $age, $birthdate, $address, $phone, $email, $img, $id);
         $stmt->execute();
         $stmt->close();
 
+        // Set a success message in session
         $_SESSION['success'] = "Profile updated successfully!";
     } else {
         // Handle errors in the prepare statement
         echo "Error preparing the query: " . $conn->error;
     }
 
-    header("Location: edit-staff-officials.php?id=$id");  // Redirect to the same page with ID
+    header("Location: edit-sk-officials.php?id=$id");  // Redirect to the same page with ID
     exit();
 }
-
 $conn->close();
 ?>
 
@@ -64,7 +64,7 @@ $conn->close();
 
 <head>
     <?php include 'head2.php' ?>
-    <title>ACI-BT | Edit Barangay Staff Official Profile</title>
+    <title>ACI-BT | Edit Barangay SK Official Profile</title>
 </head>
 
 <body>
@@ -77,14 +77,24 @@ $conn->close();
     </aside>
 
     <main id="main" class="main">
-        <a href="bgy-staff-officials.php" class="navigation d-flex align-items-center mx-2">
+        <a href="bgy_sk_officials.php" class="navigation d-flex align-items-center mx-2">
             <i class="bx bxs-caret-left-square fs-2 "></i>
             <span class="fs-3 fw-semibold ">Back</span>
         </a>
 
         <div class="container-fluid">
-            <div class="pagetitle pt-4">
-                <h1>Barangay Staff Official Profile</h1>
+            <div class="alert-container pt-2">
+                <?php if (isset($_SESSION['success'])): ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo $_SESSION['success']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php unset($_SESSION['success']); // Remove the message after displaying ?>
+                <?php endif; ?>
+            </div>
+
+            <div class="pagetitle">
+                <h1>Barangay SK Official Profile</h1>
             </div>
 
             <section class="section profile">
@@ -95,7 +105,7 @@ $conn->close();
                                 <?php if ($official['id'] == $selected_id): // Display the selected official ?>
                                     <div
                                         class="card-header card text-light d-flex align-items-center justify-content-center p-5">
-                                        <img src="../assets/img/devs/<?php echo $official['img']; ?>" alt="Profile"
+                                        <img src="../assets/img/SK-COUNCIL/<?php echo $official['img']; ?>" alt="Profile"
                                             class="rounded-circle" height="100" width="100">
                                         <h2 class="fs-3 fw-bold pt-3 text-light"><?php echo $official['name']; ?></h2>
                                         <h5 class="mt-n5"><?php echo $official['position']; ?></h5>

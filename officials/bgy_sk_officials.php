@@ -48,7 +48,7 @@ $conn->close();
                                         <div class="col-lg-4 mt-n3 order-lg-2 order-1">
                                             <div class="mt-n4">
                                                 <div class="d-flex justify-content-end">
-                                                    <a href="edit-sk-officials.php?id=<?= $official['id'] ?>">
+                                                    <a href="edit_sk_officials.php?id=<?= $official['id'] ?>">
                                                         <button type="button" class="btn" title="Edit Profile">
                                                             <i class="bi bi-list text-secondary"></i>
                                                         </button>
@@ -85,7 +85,7 @@ $conn->close();
                                 <div class="official-card col-sm-6 col-lg-4">
                                     <div class="card card-bottom">
                                         <div class="d-flex justify-content-end">
-                                            <a href="edit-sk-officials.php?id=<?= $official['id'] ?>">
+                                            <a href="edit_sk_officials.php?id=<?= $official['id'] ?>">
                                                 <button type="button" class="btn" title="Edit Profile">
                                                     <i class="bi bi-list text-secondary"></i>
                                                 </button>

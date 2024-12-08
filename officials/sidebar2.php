@@ -24,19 +24,19 @@
         <!-- Collapsible section -->
         <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
             <li>
-                <a href="bgy-officials.php">
+                <a href="bgy_officials.php">
                     <i class="bi bi-person-check-fill text-light fs-5"></i>
                     <span class="text-light">Barangay Officials</span>
                 </a>
             </li>
             <li>
-                <a href="bgy-sk-officials.php">
+                <a href="bgy_sk_officials.php">
                     <i class="bi bi-person-badge text-light fs-5"></i>
                     <span class="text-light ">SK Officials</span>
                 </a>
             </li>
             <li>
-                <a href="bgy-staff-officials.php">
+                <a href="bgy_staff_officials.php">
                     <i class="bi bi-people-fill text-light fs-5"></i>
                     <span class="text-light ">Barangay Staffs</span>
                 </a>
