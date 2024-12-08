@@ -165,7 +165,7 @@ if (!isset($_SESSION['username'])) {
                                                             <?php echo $count_barangay_clearance; ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
-                                                            id="clearance_percent">%</span> <span
+                                                            id="barangay_clearance_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
 
                                                     </div>
@@ -371,7 +371,7 @@ if (!isset($_SESSION['username'])) {
                                                             <?php echo $count_certificate_of_income ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
-                                                            id="income_percent">%</span> <span
+                                                            id="certificate_of_income_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
 
                                                     </div>
@@ -430,7 +430,7 @@ if (!isset($_SESSION['username'])) {
                                                             <?php echo $count_certificate_of_cohabitation; ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
-                                                            id="cohabitation_percent">%</span> <span
+                                                            id="certificate_of_cohabitation_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
 
                                                     </div>
@@ -494,7 +494,7 @@ if (!isset($_SESSION['username'])) {
                                                             <?php echo $count_certificate_of_employability ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
-                                                            id="coe_percent">%</span> <span
+                                                            id="certificate_of_employability_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
 
                                                     </div>
@@ -568,7 +568,7 @@ if (!isset($_SESSION['username'])) {
                                                             <?php echo $count_certificate_of_indigency; ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
-                                                            id="indigency_percent">%</span> <span
+                                                            id="certificate_of_indigency_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
 
                                                     </div>
@@ -627,7 +627,7 @@ if (!isset($_SESSION['username'])) {
                                                             <?php echo $count_certificate_of_indigency_aics; ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
-                                                            id="indigency_aics_percent">%</span> <span
+                                                            id="certificate_of_indigency_aics_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
 
                                                     </div>
@@ -691,7 +691,7 @@ if (!isset($_SESSION['username'])) {
                                                             <?php echo $count_complaint_certificate; ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
-                                                            id="complaint_percent">%</span> <span
+                                                            id="complaint_certificate_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
 
                                                     </div>
@@ -765,7 +765,7 @@ if (!isset($_SESSION['username'])) {
                                                             <?php echo $count_death_certificate; ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
-                                                            id="death_percent">%</span> <span
+                                                            id="death_certificate_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
 
                                                     </div>
@@ -824,7 +824,7 @@ if (!isset($_SESSION['username'])) {
                                                             <?php echo $count_first_time_job_seeker; ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
-                                                            id="ftjs_percent">%</span> <span
+                                                            id="first_time_job_seeker_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
 
                                                     </div>
@@ -888,7 +888,7 @@ if (!isset($_SESSION['username'])) {
                                                             <?php echo $count_lot_ownership; ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
-                                                            id="lot_percent">%</span> <span
+                                                            id="lot_ownership_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
 
                                                     </div>
@@ -962,7 +962,7 @@ if (!isset($_SESSION['username'])) {
                                                             <?php echo $count_transfer_of_residency; ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
-                                                            id="transfer_percent">%</span> <span
+                                                            id="transfer_of_residency_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
                                                     </div>
                                                 </div>
