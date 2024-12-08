@@ -116,7 +116,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/Cabilar.jpg" alt="Jessica Cabilar" class="rounded-circle mb-3"
+                                <img src="assets/img/devs/jes.jpg" alt="Jessica Cabilar" class="rounded-circle mb-3"
                                     width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Jessica <br> Cabilar</h6>
                             </div>
@@ -136,7 +136,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/Dangan.jpg" alt="Obrien Troy Dangan" class="rounded-circle mb-3"
+                                <img src="assets/img/devs/troy.jpg" alt="Obrien Troy Dangan" class="rounded-circle mb-3"
                                     width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Obrien Troy <br> Dangan</h6>
                             </div>
@@ -146,7 +146,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/Fernandez.jpg" alt="Lyrah Rohi Fernandez"
+                                <img src="assets/img/devs/lyrah.jpg" alt="Lyrah Rohi Fernandez"
                                     class="rounded-circle mb-3" width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Lyrah Rohi <br> Fernandez</h6>
                             </div>
@@ -186,7 +186,7 @@
                     <div class="col-lg-2">
                         <div class="about-card mb-3 hover-img">
                             <div class="about-card-body p-4 text-center">
-                                <img src="assets/img/devs/Valonda.jpg" alt="Franz Miguel Valonda"
+                                <img src="assets/img/devs/franz.jpg" alt="Franz Miguel Valonda"
                                     class="rounded-circle mb-3" width="80" height="80">
                                 <h6 class="text-info-emphasis fw-semibold">Franz Miguel <br> Valonda</h6>
                             </div>
