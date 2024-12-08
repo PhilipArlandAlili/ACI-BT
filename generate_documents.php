@@ -241,6 +241,126 @@ if (isset($_POST["certificate_of_cohabitation"])){
         $stmt->close();
     }
 }
+
+if (isset($_POST["certificate_of_employability"])) {
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $birthdate = $conn->real_escape_string($_POST["birthdate"]);
+
+    $age = date('Y') - date('Y', strtotime($birthdate));
+    $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
+
+    $stmt = $conn->prepare("INSERT INTO certificate_of_employability (first_name, middle_name, last_name, suffix, address, age, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssiss', $first_name, $middle_name, $last_name, $suffix, $purok, $age, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        //echo "New record inserted successfully";
+
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $duty_officer_name);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        if ($stmt->execute()) {
+            //echo "New record inserted successfully";
+    
+            $sql = "SELECT id FROM admin WHERE username = ?";
+            $admin_stmt = $conn->prepare($sql);
+            $admin_stmt->bind_param('s', $duty_officer_name);
+            $admin_stmt->execute();
+            $admin_result = $admin_stmt->get_result();
+    
+            if ($admin_result->num_rows > 0) {
+                $row = mysqli_fetch_assoc($admin_result);
+                $admin_id = $row['id'];
+    
+                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 5, ?, (SELECT COUNT(*) FROM certificate_of_employability), NOW())");
+                $trans_stmt->bind_param('is', $admin_id, $fullname);
+    
+                if ($trans_stmt->execute()) {
+                    //echo "Transaction record inserted successfully";
+                } else {
+                    //echo "Error: " . $trans_stmt->error;
+                }
+    
+                $trans_stmt->close();
+    
+            } else {
+                //echo "Error: Admin user not found.";
+            }
+    
+            $admin_stmt->close();
+        } else {
+            //echo "Error: " . $stmt->error;
+        }
+    
+        $stmt->close();
+    }
+}
+
+if (isset($_POST["certificate_of_income"])) {
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $income_num = $conn->real_escape_string($_POST["income_num"]);
+    $income_words = $conn->real_escape_string($_POST["income_words"]);
+
+    $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
+
+    $stmt = $conn->prepare("INSERT INTO certificate_of_income (first_name, middle_name, last_name, suffix, address, income_num, income_words, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssssss', $first_name, $middle_name, $last_name, $suffix, $purok, $income_num, $income_words, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        //echo "New record inserted successfully";
+
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $duty_officer_name);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        if ($stmt->execute()) {
+            //echo "New record inserted successfully";
+    
+            $sql = "SELECT id FROM admin WHERE username = ?";
+            $admin_stmt = $conn->prepare($sql);
+            $admin_stmt->bind_param('s', $duty_officer_name);
+            $admin_stmt->execute();
+            $admin_result = $admin_stmt->get_result();
+    
+            if ($admin_result->num_rows > 0) {
+                $row = mysqli_fetch_assoc($admin_result);
+                $admin_id = $row['id'];
+    
+                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 6, ?, (SELECT COUNT(*) FROM certificate_of_income), NOW())");
+                $trans_stmt->bind_param('is', $admin_id, $fullname);
+    
+                if ($trans_stmt->execute()) {
+                    //echo "Transaction record inserted successfully";
+                } else {
+                    //echo "Error: " . $trans_stmt->error;
+                }
+    
+                $trans_stmt->close();
+    
+            } else {
+                //echo "Error: Admin user not found.";
+            }
+    
+            $admin_stmt->close();
+        } else {
+            //echo "Error: " . $stmt->error;
+        }
+    
+        $stmt->close();
+    }
+}
 ?>
 
 
@@ -301,18 +421,15 @@ if (isset($_POST["certificate_of_cohabitation"])){
                                 <option value="barangay_clearance">Barangay Clearance</option>
                                 <option value="business_permit_new">Barangay Business Permit New</option>
                                 <option value="business_permit_renew">Barangay Business Permit Renew</option>
+                                <option value="cohabitation">Certificate of Cohabitation</option>
                                 <option value="certificate_of_employability">Certificate Of Employability</option>
                                 <option value="certificate_of_income">Certificate of Income</option>
-                                <option value="cohabitation">Certificate of Cohabitation</option>
+                                <option value="indigency">Indigency</option>
+                                <option value="indigency_aics">Indigency (AICS)</option>
                                 <option value="complaint_certificate">Complaint Certificate</option>
                                 <option value="death_certificate">Death Certificate</option>
-                                <option value="first_time_job_seeker">Barangay Certification (First time Job Seeker)
-                                </option>
-                                <option value="indigency_aics">Indigency (AICS)</option>
-                                <option value="indigency">Indigency</option>
-                                <option value="lot_ownership">Lot Ownership</option>
-                                <option value="Oathtaking">Oathtaking</option>
                                 <option value="transfer_of_residency">Certificate of Transfer</option>
+                                <option value="lot_ownership">Lot Ownership</option>
                             </select>
                         </div>
                         <hr>

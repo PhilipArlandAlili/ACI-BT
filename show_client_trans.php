@@ -180,7 +180,7 @@ if (!isset($_SESSION['username'])) {
                                             // echo "<th>ID</th>";
                                             echo "<th>First Name</th>";
                                             echo "<th>Middle Name</th>";
-                                            echo "<th>Last Namer</th>";
+                                            echo "<th>Last Name</th>";
                                             echo "<th>Suffix</th>";
                                             echo "<th>Age</th>";
                                             echo "<th>Address</th>";
