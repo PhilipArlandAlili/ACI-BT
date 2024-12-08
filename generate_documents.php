@@ -119,7 +119,7 @@ if (isset($_POST["business_permit_new"])){
     
         $stmt->close();
     }
-
+}
 ?>
 
 ?>
