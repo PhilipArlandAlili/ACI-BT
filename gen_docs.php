@@ -9,6 +9,12 @@ if (!isset($_SESSION['username'])) {
 //Include database connection file
 include("db.php");
 
+$duty_officer_name = $_SESSION['username'];
+
+
+
+
+
 // Check if form is submitted
 if (isset($_POST["barangay_clearance"])) {
     // Sanitize and assign form data to variables
