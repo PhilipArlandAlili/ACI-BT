@@ -49,54 +49,63 @@ function convertTime(timeInput) {
   return hours + ':' + minutes.toString().padStart(2, '0') + ' ' + period;
 }
 
+document.getElementById('income_num').addEventListener('input', function () {
+    const numericValue = parseInt(this.value, 10);
+    const wordsField = document.getElementById('income_words');
+    
+    if (!isNaN(numericValue)) {
+        wordsField.value = numberToWords(numericValue);
+    } else {
+        wordsField.value = '';
+    }
+});
+
 function numberToWords(number) {
-  const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
-  const teens = ['', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
-  const tens = ['', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
-  const suffixes = ['', 'Thousand', 'Million', 'Billion', 'Trillion'];
+    const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+    const teens = ['', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+    const tens = ['', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+    const suffixes = ['', 'Thousand', 'Million', 'Billion', 'Trillion'];
 
-  function convertGroup(num) {
-    const [hundreds, tensAndOnes] = [Math.floor(num / 100), num % 100];
-    let result = '';
+    function convertGroup(num) {
+        const [hundreds, tensAndOnes] = [Math.floor(num / 100), num % 100];
+        let result = '';
 
-    if (hundreds > 0) {
-      result += ones[hundreds] + ' Hundred ';
+        if (hundreds > 0) {
+            result += ones[hundreds] + ' Hundred ';
+        }
+
+        if (tensAndOnes > 0) {
+            if (tensAndOnes < 10) {
+                result += ones[tensAndOnes];
+            } else if (tensAndOnes < 20) {
+                result += teens[tensAndOnes - 10];
+            } else {
+                const [tensDigit, onesDigit] = [Math.floor(tensAndOnes / 10), tensAndOnes % 10];
+                result += tens[tensDigit] + ' ' + ones[onesDigit];
+            }
+        }
+
+        return result.trim();
     }
 
-    if (tensAndOnes > 0) {
-      if (tensAndOnes === 10) {
-        result += 'Ten';
-      } else if (tensAndOnes < 10) {
-        result += ones[tensAndOnes];
-      } else if (tensAndOnes < 20) {
-        result += teens[tensAndOnes - 10];
-      } else {
-        const [tensDigit, onesDigit] = [Math.floor(tensAndOnes / 10), tensAndOnes % 10];
-        result += tens[tensDigit] + ' ' + ones[onesDigit];
-      }
+    if (number === 0) {
+        return 'Zero';
     }
 
-    return result.trim();
-  }
+    let words = '';
+    let groupIndex = 0;
 
-  if (number === 0) {
-    return 'Zero';
-  }
-
-  let words = '';
-  let groupIndex = 0;
-
-  while (number > 0) {
-    const group = number % 1000;
-    if (group > 0) {
-      const groupWords = convertGroup(group) + ' ' + suffixes[groupIndex];
-      words = groupWords + ' ' + words;
+    while (number > 0) {
+        const group = number % 1000;
+        if (group > 0) {
+            const groupWords = convertGroup(group) + ' ' + suffixes[groupIndex];
+            words = groupWords + ' ' + words;
+        }
+        number = Math.floor(number / 1000);
+        groupIndex++;
     }
-    number = Math.floor(number / 1000);
-    groupIndex++;
-  }
 
-  return words.trim();
+    return words.trim();
 }
 
 function toggleFields() {

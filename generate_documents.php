@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 $duty_officer_name = $_SESSION['username'];
 $issued_date = date('Y-m-d');
 
-if (isset($_POST["barangay_clearance"])){
+if (isset($_POST["barangay_clearance"])) {
     $first_name = $conn->real_escape_string($_POST["first_name"]);
     $middle_name = $conn->real_escape_string($_POST["middle_name"]);
     $last_name = $conn->real_escape_string($_POST["last_name"]);
@@ -26,7 +26,7 @@ if (isset($_POST["barangay_clearance"])){
 
     $stmt = $conn->prepare("INSERT INTO barangay_clearance (first_name, middle_name, last_name, suffix, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param('ssssssssisss', $first_name, $middle_name, $last_name, $suffix, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
-    
+
     if ($stmt->execute()) {
         //echo "New record inserted successfully";
 
@@ -63,7 +63,7 @@ if (isset($_POST["barangay_clearance"])){
     $stmt->close();
 }
 
-if (isset($_POST["business_permit_new"])){
+if (isset($_POST["business_permit_new"])) {
     $business_name = $conn->real_escape_string($_POST["business_name"]);
     $purok = $conn->real_escape_string($_POST["purok"]);
     $manager = $conn->real_escape_string($_POST["manager"]);
@@ -85,42 +85,42 @@ if (isset($_POST["business_permit_new"])){
 
         if ($stmt->execute()) {
             //echo "New record inserted successfully";
-    
+
             $sql = "SELECT id FROM admin WHERE username = ?";
             $admin_stmt = $conn->prepare($sql);
             $admin_stmt->bind_param('s', $duty_officer_name);
             $admin_stmt->execute();
             $admin_result = $admin_stmt->get_result();
-    
+
             if ($admin_result->num_rows > 0) {
                 $row = mysqli_fetch_assoc($admin_result);
                 $admin_id = $row['id'];
-    
+
                 $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?, (SELECT COUNT(*) FROM business_permit_new), NOW())");
                 $trans_stmt->bind_param('is', $admin_id, $manager);
-    
+
                 if ($trans_stmt->execute()) {
                     //echo "Transaction record inserted successfully";
                 } else {
                     //echo "Error: " . $trans_stmt->error;
                 }
-    
+
                 $trans_stmt->close();
-    
+
             } else {
                 //echo "Error: Admin user not found.";
             }
-    
+
             $admin_stmt->close();
         } else {
             //echo "Error: " . $stmt->error;
         }
-    
+
         $stmt->close();
     }
 }
 
-if (isset($_POST["business_permit_renew"])){
+if (isset($_POST["business_permit_renew"])) {
     $business_name = $conn->real_escape_string($_POST["business_name"]);
     $purok = $conn->real_escape_string($_POST["purok"]);
     $manager = $conn->real_escape_string($_POST["manager"]);
@@ -142,45 +142,75 @@ if (isset($_POST["business_permit_renew"])){
 
         if ($stmt->execute()) {
             //echo "New record inserted successfully";
-    
+
             $sql = "SELECT id FROM admin WHERE username = ?";
             $admin_stmt = $conn->prepare($sql);
             $admin_stmt->bind_param('s', $duty_officer_name);
             $admin_stmt->execute();
             $admin_result = $admin_stmt->get_result();
-    
+
             if ($admin_result->num_rows > 0) {
                 $row = mysqli_fetch_assoc($admin_result);
                 $admin_id = $row['id'];
-    
+
                 $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 3, ?, (SELECT COUNT(*) FROM business_permit_renew), NOW())");
                 $trans_stmt->bind_param('is', $admin_id, $manager);
-    
+
                 if ($trans_stmt->execute()) {
                     //echo "Transaction record inserted successfully";
                 } else {
                     //echo "Error: " . $trans_stmt->error;
                 }
-    
+
                 $trans_stmt->close();
-    
+
             } else {
                 //echo "Error: Admin user not found.";
             }
-    
+
             $admin_stmt->close();
         } else {
             //echo "Error: " . $stmt->error;
         }
-    
+
         $stmt->close();
     }
 }
 
+if (isset($_POST["certificate_of_income"])) {
+    // Sanitize and assign form data to variables
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $income_num = $conn->real_escape_string($_POST["income_num"]); // Numeric amount
+    $income_words = $conn->real_escape_string($_POST["income_words"]); // Add this field to the form
+    $duty_officer_name = $_SESSION['username'];
 
+    // Generate full name and issued date
+    $fullname = ucwords("$first_name $middle_name $last_name $suffix");
+    $issued_date = date('Y-m-d');
+
+    // Insert data into certificate_of_income table
+    $stmt = $conn->prepare("INSERT INTO certificate_of_income 
+        (first_name, middle_name, last_name, suffix, address, income_num, income_words, issued_date, duty_officer_name) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssisss', $first_name, $middle_name, $last_name, $suffix, $purok, $income_num, $income_words, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        echo "Certificate of income record inserted successfully!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    // Close the statement and connection
+    $stmt->close();
+    $conn->close();
+}
 ?>
 
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -302,7 +332,8 @@ if (isset($_POST["business_permit_renew"])){
                                 <?php include 'forms/lot_ownership.php' ?>
                             </div>
 
-                            <div class="cert" id="Oathtaking"> ⁡⁢⁣⁢<!-- ‍wala sa database table -->⁡⁡
+                            <div class="cert" id="Oathtaking"> ⁡⁢⁣⁢
+                                <!-- ‍wala sa database table -->⁡⁡
                                 <?php include 'forms/Oathtaking.php' ?>
                             </div>
 
