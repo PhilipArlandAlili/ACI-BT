@@ -3,7 +3,7 @@
     <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
     <label for="">Middle Initial:</label>
-    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
+    <input type="text" class="form-control" name="middle_name" placeholder="Ex. J"><br>
 
     <label for="">Last Name:</label>
     <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
