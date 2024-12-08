@@ -37,7 +37,28 @@
     <label for="">Amount (In Numeric Form)</label>
     <input type="number" name="amount" class="form-control" maxlength="10" placeholder="Ex. 123456789" required><br>
 
-    <label for="">Duty Officer Full Name:</label>
-    <input type="text" class="form-control">
     <button name="certificate_of_income" onclick="printIframe()" type="submit">Print</button>
+    
+    <div class="brgyClearancePrint" style="text-align: right;">
+        <button type="button" id="brgyClearancePrintBtn" class="btn btn-primary w-25">Print</button>
+
+        <!-- Barangay Clearance Modal -->
+        <div class="modal fade" id="brgyClearanceModal" tabindex="-1" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-center">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bg-light">
+                        <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-around">
+                        <button class="w-25 btn btn-primary" name="barangay_clearance" onclick="printIframe()"
+                            type="submit">Yes</button>
+                        <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>

@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Error preparing the query: " . $conn->error;
     }
 
-    header("Location: edit-sk-officials.php?id=$id");  // Redirect to the same page with ID
+    header("Location: edit_sk_officials.php?id=$id");  // Redirect to the same page with ID
     exit();
 }
 $conn->close();

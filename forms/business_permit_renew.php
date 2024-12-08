@@ -27,8 +27,6 @@
 
     <div class="BPermitRenewPrint" style="text-align: right;">
         <button type="button" class="btn btn-primary w-25" id="BPermitRenewPrintBtn">Print</button>
-
-        <!-- Business Permit Renewal Modal -->
         <div class="modal fade" id="BPermitRenewModal" tabindex="-1" style="display: none;" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content text-center">
