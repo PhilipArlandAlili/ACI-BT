@@ -1,13 +1,13 @@
 <form action="#" method="post" id="form">
     
     <label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
+    <input type="text" class="form-control" name="first_name_male" placeholder="Ex. Juan"><br>
 
     <label for="">Middle Initial:</label>
-    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. M"><br>
+    <input type="text" class="form-control" name="middle_name_male" placeholder="Ex. M"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
+    <input type="text" class="form-control" name="last_name_male" placeholder="Ex. Dela Cruz"><br>
 
 
     <label for="">Suffix:</label>
@@ -22,22 +22,22 @@
     </select><br>
 
     <label for="cohabitant1Birthdate">Birthdate:</label>
-    <input type="date" class="form-control" name="birth_date"><br>
+    <input type="date" class="form-control" name="birthdate"><br>
 
     <hr>
     
     <label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_name1" placeholder="Ex. Barbie"><br>
+    <input type="text" class="form-control" name="first_name_female" placeholder="Ex. Barbie"><br>
 
     <label for="">Middle Initial:</label>
-    <input type="text" class="form-control" name="middle_initial1" placeholder="Ex. B"><br>
+    <input type="text" class="form-control" name="middle_name_female" placeholder="Ex. B"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_name1" placeholder="Ex. Alabastro"><br>
+    <input type="text" class="form-control" name="last_name_female" placeholder="Ex. Alabastro"><br>
 
 
     <label for="cohabitant1Birthdate">Birthdate:</label>
-    <input type="date" class="form-control" name="cohabitant_birth_date"><br>
+    <input type="date" class="form-control" name="birthdate_female"><br>
 
     <label for="">Purok:</label><br>
     <select name="purok" class="form-control" id="purok" onchange="update()">

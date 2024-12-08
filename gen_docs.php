@@ -1258,15 +1258,15 @@ if (isset($_POST["transfer_of_residency"])) {
                                 <div id="cohabitation">
                                     <form action="#" method="post" id="form">
                                         <label for="">First Name:</label>
-                                        <input type="text" class="form-control" name="first_name"
+                                        <input type="text" class="form-control" name="first_name_male"
                                             placeholder="Ex. Juan"><br>
 
                                         <label for="">Middle Initial:</label>
-                                        <input type="text" class="form-control" name="middle_initial"
+                                        <input type="text" class="form-control" name="middle_name_male"
                                             placeholder="Ex. J"><br>
 
                                         <label for="">Last Name:</label>
-                                        <input type="text" class="form-control" name="last_name"
+                                        <input type="text" class="form-control" name="last_name_male"
                                             placeholder="Ex. J"><br>
 
 
@@ -1282,18 +1282,18 @@ if (isset($_POST["transfer_of_residency"])) {
                                         </select><br><br>
 
                                         <label for="cohabitant1Birthdate">Birthdate:</label>
-                                        <input type="date" class="form-control" name="bday" id="bday"><br>
+                                        <input type="date" class="form-control" name="birthdate" id="birthdate"><br>
 
                                         <label for="">First Name:</label>
-                                        <input type="text" class="form-control" name="first_name1"
+                                        <input type="text" class="form-control" name="first_name_female"
                                             placeholder="Ex. Barbie"><br>
 
                                         <label for="">Middle Initial:</label>
-                                        <input type="text" class="form-control" name="middle_initial1"
+                                        <input type="text" class="form-control" name="middle_name_female"
                                             placeholder="Ex. J"><br>
 
                                         <label for="">Last Name:</label>
-                                        <input type="text" class="form-control" name="last_name1"
+                                        <input type="text" class="form-control" name="last_name_female"
                                             placeholder="Ex. J"><br>
 
 

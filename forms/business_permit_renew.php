@@ -1,7 +1,7 @@
 <!-- Business Permit Renewal Form -->
 <form action="#" method="post" id="BPermitRenewForm">
     <label for="businessName">Business name/ Trade Activity:</label>
-    <input type="text" class="form-control" name="business_name_renew" placeholder="Ex. Star Oil" required><br>
+    <input type="text" class="form-control" name="business_name" placeholder="Ex. Star Oil" required><br>
 
     <label for="purok">Purok:</label><br>
     <select name="purok" id="purok" class="form-control" required>
@@ -18,10 +18,10 @@
     <br>
 
     <label for="manager_operator_renew">Manager / Operator:</label>
-    <input type="text" class="form-control" name="manager_operator_renew" placeholder="Ex. Juan Dela Cruz" required><br>
+    <input type="text" class="form-control" name="manager" placeholder="Ex. Juan Dela Cruz" required><br>
 
     <label for="manager_operator_address_renew">Address (Manager / Operator):</label>
-    <input type="text" class="form-control" name="manager_operator_address_renew" placeholder="Ex. PSU Rd" required><br>
+    <input type="text" class="form-control" name="address" placeholder="Ex. PSU Rd" required><br>
 
     <hr>
 
@@ -37,7 +37,7 @@
                         <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
-                        <button class="w-25 btn btn-primary" name="businessPermitRenew" onclick="printIframe()" id="confirmPrint" type="submit">Yes</button>
+                        <button class="w-25 btn btn-primary" name="business_permit_renew" onclick="printIframe()" id="confirmPrint" type="submit">Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
