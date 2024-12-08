@@ -66,7 +66,7 @@ if (!isset($_SESSION['username'])) {
 
                     <!-- Generate Documents -->
                     <div class="col-lg-4 col px-4">
-                        <form action="generate-documents.php">
+                        <form action="generate_documents.php">
                             <button class="dashboard-card w-100" type="submit">
                                 <div class="card-document p-2 text-center">
                                     <h6 class="card-title fw-semibold fs-4">Generate Documents</h6>
@@ -85,7 +85,7 @@ if (!isset($_SESSION['username'])) {
 
                     <!-- View Transactions -->
                     <div class="col-lg-4 col px-4">
-                        <form action="view-transactions.php">
+                        <form action="view_transactions.php">
                             <button class="dashboard-card w-100" type="submit">
                                 <div class="card-document p-2 text-center">
                                     <h6 class="card-title fw-semibold fs-4">View Transactions</h6>
@@ -104,7 +104,7 @@ if (!isset($_SESSION['username'])) {
 
                     <!-- View Reports -->
                     <div class="col-lg-4 col px-4">
-                        <form action="view-reports.php">
+                        <form action="view_reports.php">
                             <button class="dashboard-card w-100" type="submit">
                                 <div class="card-document p-2 text-center">
                                     <h6 class="card-title fw-semibold fs-4">View Reports</h6>
