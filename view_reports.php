@@ -992,6 +992,7 @@ if (!isset($_SESSION['username'])) {
 
                         <div class="select-holder d-flex gap-3">
                             <select id="yearFilter" onchange="updateChart()" class="card p-2">
+                                <option value="2023">2023</option>
                                 <option value="2024">2024</option>
                                 <option value="2025">2025</option>
                                 <option value="2026">2026</option>

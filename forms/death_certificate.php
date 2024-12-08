@@ -45,17 +45,17 @@
     <input type="text" class="form-control" name="cause_of_death"><br>
 
     <label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_named" placeholder="Ex. Juan"><br>
+    <input type="text" class="form-control" name="req_first_name" placeholder="Ex. Juan"><br>
 
     <label for="">Middle Initial:</label>
-    <input type="text" class="form-control" name="middle_initiald" placeholder="Ex. J"><br>
+    <input type="text" class="form-control" name="req_middle_name" placeholder="Ex. J"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_named" placeholder="Ex. Dela Cruz"><br>
+    <input type="text" class="form-control" name="req_last_name" placeholder="Ex. Dela Cruz"><br>
 
     <label for="">Suffix:</label>
     <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
-    <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+    <select class=" text-left" style="width: 8%;" name="req_suffix" id="suffixs">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -65,10 +65,10 @@
     </select><br><br>
 
     <label for="relationshipToDeadPerson">Relationship to the dead person:</label>
-    <input type="text" class="form-control" name="relationship_to_dead_person"><br>
+    <input type="text" class="form-control" name="relationship"><br>
 
-    <label for="dateRequested">Date requested:</label>
-    <input type="date" class="form-control" name="date_requested"><br>
+    <!-- <label for="dateRequested">Date requested:</label>
+    <input type="date" class="form-control" name="date_requested"><br> -->
     <button name="death_certificate" onclick="printIframe()" type="submit">Print</button>
 
 </form>

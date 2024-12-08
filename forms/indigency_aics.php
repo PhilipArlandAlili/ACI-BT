@@ -32,7 +32,7 @@
         <option value="Uha">UHA</option>
     </select>
 
-    <label for="indigencyIssuedDate">Issued Date:</label>
-    <input type="date" class="form-control" name="issued_date"><br>
-    <button name="indigency_aics" onclick="printIframe()" type="submit">Print</button>
+    <!-- <label for="indigencyIssuedDate">Issued Date:</label>
+    <input type="date" class="form-control" name="issued_date"><br> -->
+    <button name="certificate_of_indigency_aics" onclick="printIframe()" type="submit">Print</button>
 </form>

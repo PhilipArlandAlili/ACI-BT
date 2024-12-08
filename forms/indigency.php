@@ -9,7 +9,7 @@
     <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
 
     <label for="">Suffix:</label>
-    <select class="form-control text-left" name="suffix" id="suffixs">
+    <select class="form-control text-left" name="suffix" id="suffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -18,8 +18,10 @@
         <option value="III">III</option>
     </select><br>
 
-    <label for="">Age</label>
-    <input type="number" class="form-control" name="age" placeholder="Ex. 24"><br>
+    <label for="birthday">Birthday:</label>
+    <input type="date" class="form-control" id="birthdate" name="birthdate" required><br>
+    <!-- <label for="">Age</label>
+    <input type="number" class="form-control" name="age" placeholder="Ex. 24"><br> -->
 
     <label for="">Civil Status</label>
     <select name="civil_status" id="civil" onchange="updateText()" class="form-control">
@@ -30,7 +32,7 @@
     </select><br>
 
     <label for="">Purok:</label><br>
-    <select name="puroks" class="form-control" id="puroks" onchange="update()">
+    <select name="puroks" class="form-control" id="purok" onchange="update()">
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -48,6 +50,6 @@
         placeholder="Ex. Medical Assistance"></input>
     <hr>
 
-    <button name="indigency" onclick="printIframe()" type="submit">Print</button>
+    <button name="certificate_of_indigency" onclick="printIframe()" type="submit">Print</button>
 
 </form>
