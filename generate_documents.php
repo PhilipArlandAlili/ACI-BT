@@ -69,11 +69,10 @@ if (isset($_POST["business_permit_new"])){
     $manager = $conn->real_escape_string($_POST["manager"]);
     $address = $conn->real_escape_string($_POST["address"]);
 
-    $fullname = $manager;
     $address = $address . ' ' . $purok;
 
     $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, manager, address, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssss', $business_name, $fullname, $address, $issued_date, $duty_officer_name);
+    $stmt->bind_param('sssss', $business_name, $manager, $address, $issued_date, $duty_officer_name);
 
     if ($stmt->execute()) {
         //echo "New record inserted successfully";
@@ -98,7 +97,7 @@ if (isset($_POST["business_permit_new"])){
                 $admin_id = $row['id'];
     
                 $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?, (SELECT COUNT(*) FROM business_permit_new), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $fullname);
+                $trans_stmt->bind_param('is', $admin_id, $manager);
     
                 if ($trans_stmt->execute()) {
                     //echo "Transaction record inserted successfully";
@@ -120,6 +119,65 @@ if (isset($_POST["business_permit_new"])){
         $stmt->close();
     }
 }
+
+if (isset($_POST["business_permit_renew"])){
+    $business_name = $conn->real_escape_string($_POST["business_name"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $manager = $conn->real_escape_string($_POST["manager"]);
+    $address = $conn->real_escape_string($_POST["address"]);
+
+    $address = $address . ' ' . $purok;
+
+    $stmt = $conn->prepare("INSERT INTO business_permit_renew (business_name, manager, address, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssss', $business_name, $manager, $address, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        //echo "New record inserted successfully";
+
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $duty_officer_name);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        if ($stmt->execute()) {
+            //echo "New record inserted successfully";
+    
+            $sql = "SELECT id FROM admin WHERE username = ?";
+            $admin_stmt = $conn->prepare($sql);
+            $admin_stmt->bind_param('s', $duty_officer_name);
+            $admin_stmt->execute();
+            $admin_result = $admin_stmt->get_result();
+    
+            if ($admin_result->num_rows > 0) {
+                $row = mysqli_fetch_assoc($admin_result);
+                $admin_id = $row['id'];
+    
+                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 3, ?, (SELECT COUNT(*) FROM business_permit_renew), NOW())");
+                $trans_stmt->bind_param('is', $admin_id, $manager);
+    
+                if ($trans_stmt->execute()) {
+                    //echo "Transaction record inserted successfully";
+                } else {
+                    //echo "Error: " . $trans_stmt->error;
+                }
+    
+                $trans_stmt->close();
+    
+            } else {
+                //echo "Error: Admin user not found.";
+            }
+    
+            $admin_stmt->close();
+        } else {
+            //echo "Error: " . $stmt->error;
+        }
+    
+        $stmt->close();
+    }
+}
+
+
 ?>
 
 ?>

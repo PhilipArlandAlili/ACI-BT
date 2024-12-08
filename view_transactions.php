@@ -52,12 +52,18 @@ if (!isset($_SESSION['username'])) {
                                     $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, 
                                                 CASE 
                                                     WHEN dt.id = 1 THEN CONCAT(COALESCE(bc.first_name, ''), ' ', COALESCE(bc.middle_name, ''), ' ', COALESCE(bc.last_name, ''))
+                                                    WHEN dt.id = 2 THEN bpn.manager
+                                                    WHEN dt.id = 3 THEN bpr.manager
                                                 ELSE 'Unknown' 
-                                                    END AS full_name, t.client_trans_id, t.created_at
+                                                    END AS fullname, t.client_trans_id, t.created_at
                                                 FROM transactions t
                                                     INNER JOIN admin a ON t.transact_by = a.id
                                                     INNER JOIN doctype dt ON t.doc_id = dt.id
-                                                    LEFT JOIN barangay_clearance bc ON t.client_trans_id = bc.id AND dt.id = 1";
+                                                    LEFT JOIN barangay_clearance bc ON t.client_trans_id = bc.id AND dt.id = 1
+                                                    LEFT JOIN business_permit_new bpn ON t.client_trans_id = bpn.id AND dt.id = 2
+                                                    LEFT JOIN business_permit_renew bpr ON t.client_trans_id = bpr.id AND dt.id = 3";
+
+
                                     $result = $conn->query($sql);
 
                                     if ($result->num_rows > 0) {
@@ -66,7 +72,7 @@ if (!isset($_SESSION['username'])) {
                                             // echo "<td>" . $row["id"] . "</td>";
                                             echo "<td>" . $row["transact_by"] . "</td>";
                                             echo "<td>" . $row["doc_name"] . "</td>";
-                                            echo "<td>" . $row["full_name"] . "</td>";
+                                            echo "<td>" . $row["fullname"] . "</td>";
                                             // echo "<td>" . $row["client_trans_id"] . "</td>";
                                             echo "<td>" . $row["created_at"] . "</td>";
                                             echo "<td><a href='show_client_trans.php?id=" . $row["client_trans_id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_name"]) . "'><button type='submit' class='btn btn-primary'>VIEW</button></a></td>";
