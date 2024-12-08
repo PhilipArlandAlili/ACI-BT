@@ -177,6 +177,7 @@ if (isset($_POST["business_permit_renew"])) {
     }
 }
 
+<<<<<<< Updated upstream
 if (isset($_POST["certificate_of_income"])) {
     // Sanitize and assign form data to variables
     $first_name = $conn->real_escape_string($_POST["first_name"]);
@@ -207,6 +208,71 @@ if (isset($_POST["certificate_of_income"])) {
     // Close the statement and connection
     $stmt->close();
     $conn->close();
+=======
+if (isset($_POST["certificate_of_cohabitation"])){
+    $first_name_male = $conn->real_escape_string($_POST["first_name_male"]);
+    $middle_name_male = $conn->real_escape_string($_POST["middle_name_male"]);
+    $last_name_male = $conn->real_escape_string($_POST["last_name_male"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $birthdate = $conn->real_escape_string($_POST["birthdate"]);
+    $first_name_female = $conn->real_escape_string($_POST["first_name_female"]);
+    $middle_name_female = $conn->real_escape_string($_POST["middle_name_female"]);
+    $last_name_female = $conn->real_escape_string($_POST["last_name_female"]);
+    $birthdate_female = $conn->real_escape_string($_POST["birthdate_female"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $date_of_marriage = $conn->real_escape_string($_POST["date_of_marriage"]);
+
+    $fullname = $first_name_female . ' ' . $middle_name_female . ' ' . $last_name_female;
+    $years_married = date('Y') - date('Y', strtotime($date_of_marriage));
+
+    $stmt = $conn->prepare("INSERT INTO certificate_of_cohabitation (first_name_male, middle_name_male, last_name_male, suffix_male, birthdate_male, first_name_female, middle_name_female, last_name_female, birthdate_female, address, date_of_marriage, years_married, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssssssssiss', $first_name_male, $middle_name_male, $last_name_male, $suffix, $birthdate_male, $first_name_female, $middle_name_female, $last_name_female, $birthdate_female, $purok, $date_of_marriage, $years_married, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        //echo "New record inserted successfully";
+
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $duty_officer_name);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        if ($stmt->execute()) {
+            //echo "New record inserted successfully";
+    
+            $sql = "SELECT id FROM admin WHERE username = ?";
+            $admin_stmt = $conn->prepare($sql);
+            $admin_stmt->bind_param('s', $duty_officer_name);
+            $admin_stmt->execute();
+            $admin_result = $admin_stmt->get_result();
+    
+            if ($admin_result->num_rows > 0) {
+                $row = mysqli_fetch_assoc($admin_result);
+                $admin_id = $row['id'];
+    
+                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 4, ?, (SELECT COUNT(*) FROM certificate_of_cohabitation), NOW())");
+                $trans_stmt->bind_param('is', $admin_id, $fullname);
+    
+                if ($trans_stmt->execute()) {
+                    //echo "Transaction record inserted successfully";
+                } else {
+                    //echo "Error: " . $trans_stmt->error;
+                }
+    
+                $trans_stmt->close();
+    
+            } else {
+                //echo "Error: Admin user not found.";
+            }
+    
+            $admin_stmt->close();
+        } else {
+            //echo "Error: " . $stmt->error;
+        }
+    
+        $stmt->close();
+    }
+>>>>>>> Stashed changes
 }
 ?>
 
