@@ -24,7 +24,7 @@ if (!isset($_SESSION['username'])) {
     </aside>
 
     <main id="main" class="main">
-        <a href="view-transactions.php" class="navigation d-flex align-items-center py-3 mx-2">
+        <a href="view_transactions.php" class="navigation d-flex align-items-center py-3 mx-2">
             <i class="bx bxs-caret-left-square fs-2 "></i>
             <span class="fs-3 fw-semibold ">Back</span>
         </a>
