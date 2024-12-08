@@ -71,7 +71,7 @@
                         <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
-                        <button class="w-25 btn btn-primary" name="cohabitation" onclick="printIframe()"
+                        <button class="w-25 btn btn-primary" name="certificate_of_cohabitation" onclick="printIframe()"
                             type="submit">Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>

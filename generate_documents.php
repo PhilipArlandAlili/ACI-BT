@@ -194,7 +194,7 @@ if (isset($_POST["certificate_of_cohabitation"])){
     $years_married = date('Y') - date('Y', strtotime($date_of_marriage));
 
     $stmt = $conn->prepare("INSERT INTO certificate_of_cohabitation (first_name_male, middle_name_male, last_name_male, suffix_male, birthdate_male, first_name_female, middle_name_female, last_name_female, birthdate_female, address, date_of_marriage, years_married, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssssssssiss', $first_name_male, $middle_name_male, $last_name_male, $suffix, $birthdate_male, $first_name_female, $middle_name_female, $last_name_female, $birthdate_female, $purok, $date_of_marriage, $years_married, $issued_date, $duty_officer_name);
+    $stmt->bind_param('sssssssssssiss', $first_name_male, $middle_name_male, $last_name_male, $suffix, $birthdate, $first_name_female, $middle_name_female, $last_name_female, $birthdate_female, $purok, $date_of_marriage, $years_married, $issued_date, $duty_officer_name);
 
     if ($stmt->execute()) {
         //echo "New record inserted successfully";
