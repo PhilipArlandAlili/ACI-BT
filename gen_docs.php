@@ -1101,10 +1101,10 @@ if (isset($_POST["transfer_of_residency"])) {
                                         <br>
                                         <br>
                                         <label for="">Manager / Operator</label>
-                                        <input type="text" class="form-control" name="manager_operator">
+                                        <input type="text" class="form-control" name="manager">
                                         <br>
                                         <label for="">Address(Manager / Operator)</label>
-                                        <input type="text" class="form-control" name="manager_operator_address">
+                                        <input type="text" class="form-control" name="address">
                                         <br>
                                         <button name="business_permit_new" onclick="printIframe()"
                                             type="submit">Print</button>

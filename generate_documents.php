@@ -63,59 +63,63 @@ if (isset($_POST["barangay_clearance"])){
     $stmt->close();
 }
 
-if (isset($_POST["business_permit_new"])) {
-    // Sanitize and assign form data to variables
-    $business_name = $conn->real_escape_string($_POST["businessName"]);
+if (isset($_POST["business_permit_new"])){
+    $business_name = $conn->real_escape_string($_POST["business_name"]);
     $purok = $conn->real_escape_string($_POST["purok"]);
-    $manager = $conn->real_escape_string($_POST["manager_operator"]);
-    $address = $conn->real_escape_string($_POST["manager_operator_address"]);
+    $manager = $conn->real_escape_string($_POST["manager"]);
+    $address = $conn->real_escape_string($_POST["address"]);
 
-    // Define SQL query using prepared statements for the business permit
-    $address = $address . ' ' . $purok;
     $fullname = $manager;
-    $issued_date = date('Y-m-d');
-    $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
+    $address = $address . ' ' . $purok;
 
-    // Execute the business permit insertion query
+    $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, manager, address, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssss', $business_name, $fullname, $address, $issued_date, $duty_officer_name);
+
     if ($stmt->execute()) {
-        // Fetch admin ID
+        //echo "New record inserted successfully";
+
         $sql = "SELECT id FROM admin WHERE username = ?";
         $admin_stmt = $conn->prepare($sql);
-        $admin_stmt->bind_param('s', $_SESSION['username']);
+        $admin_stmt->bind_param('s', $duty_officer_name);
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($admin_result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($admin_result);
-            $admin_id = $row['id'];
-
-            // Insert a transaction record into the `transactions` table
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_new), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-            // Execute the transaction query
-            if ($trans_stmt->execute()) {
-                $_SESSION['success'] = "Business Permit New created successfully and transaction recorded.";
+        if ($stmt->execute()) {
+            //echo "New record inserted successfully";
+    
+            $sql = "SELECT id FROM admin WHERE username = ?";
+            $admin_stmt = $conn->prepare($sql);
+            $admin_stmt->bind_param('s', $duty_officer_name);
+            $admin_stmt->execute();
+            $admin_result = $admin_stmt->get_result();
+    
+            if ($admin_result->num_rows > 0) {
+                $row = mysqli_fetch_assoc($admin_result);
+                $admin_id = $row['id'];
+    
+                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?, (SELECT COUNT(*) FROM business_permit_new), NOW())");
+                $trans_stmt->bind_param('is', $admin_id, $fullname);
+    
+                if ($trans_stmt->execute()) {
+                    //echo "Transaction record inserted successfully";
+                } else {
+                    //echo "Error: " . $trans_stmt->error;
+                }
+    
+                $trans_stmt->close();
+    
             } else {
-                $_SESSION['error'] = "Transaction record failed: " . $trans_stmt->error;
+                //echo "Error: Admin user not found.";
             }
+    
+            $admin_stmt->close();
         } else {
-            $_SESSION['error'] = "Error: Admin user not found.";
+            //echo "Error: " . $stmt->error;
         }
-    } else {
-        $_SESSION['error'] = "Error: " . $stmt->error;
+    
+        $stmt->close();
     }
 
-    // Close statements and connection
-    $trans_stmt->close();
-    $stmt->close();
-    $conn->close();
-
-    // Redirect back to the page to display the alert
-    header("Location: generate-documents.php");
-    exit();
-}
 ?>
 
 ?>
