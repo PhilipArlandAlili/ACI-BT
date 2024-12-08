@@ -759,7 +759,37 @@ if (isset($_POST["transfer_of_residency"])) {
 //   $stmt->close();
 //   $conn->close();
 // }
+if (isset($_POST["certificate_of_income"])) {
+    // Sanitize and assign form data to variables
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $income_num = $conn->real_escape_string($_POST["income_num"]); // Numeric amount
+    $income_words = $conn->real_escape_string($_POST["income_words"]); // Add this field to the form
+    $duty_officer_name = $_SESSION['username'];
 
+    // Generate full name and issued date
+    $fullname = ucwords("$first_name $middle_name $last_name $suffix");
+    $issued_date = date('Y-m-d');
+
+    // Insert data into certificate_of_income table
+    $stmt = $conn->prepare("INSERT INTO certificate_of_income 
+        (first_name, middle_name, last_name, suffix, address, income_num, income_words, issued_date, duty_officer_name) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssisss', $first_name, $middle_name, $last_name, $suffix, $purok, $income_num, $income_words, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        echo "Certificate of income record inserted successfully!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    // Close the statement and connection
+    $stmt->close();
+    $conn->close();
+}
 ?>
 
 
