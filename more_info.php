@@ -65,6 +65,7 @@
                                             <th>First Name (Male)</th>
                                             <th>Middle Name (Male)</th>
                                             <th>Last Name (Male)</th>
+                                            <th>Suffix (Male)</th>
                                             <th>Birthdate (Male)</th>
                                             <<th>First Name (Female)</th>
                                             <th>Middle Name (Female)</th>
@@ -266,17 +267,22 @@
                                         }
                                     } elseif ($doc_id == 4) {
                                         // Fetch data from cohabitation table when doc_id is 4
-                                        $sql = "SELECT fullname_male, birthdate_male, fullname_female, birthdate_female, address, date_of_marriage, years_married, issued_date, duty_officer_name 
-                                            FROM cohabitation";
+                                        $sql = "SELECT first_name_male, middle_name_male, last_name_male, suffix_male, birthdate_male, first_name_female, middle_name_female, last_name_female, birthdate_female, address, date_of_marriage, years_married, issued_date, duty_officer_name
+                                        FROM certificate_of_cohabitation";
 
                                         $result = $conn->query($sql);
 
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["fullname_male"] . "</td>";
+                                                echo "<td>" . $row["first_name_male"] . "</td>";
+                                                echo "<td>" . $row["middle_name_male"] . "</td>";
+                                                echo "<td>" . $row["last_name_male"] . "</td>";
+                                                echo "<td>" . $row["suffix_male"] . "</td>";
                                                 echo "<td>" . $row["birthdate_male"] . "</td>";
-                                                echo "<td>" . $row["fullname_female"] . "</td>";
+                                                echo "<td>" . $row["first_name_female"] . "</td>";
+                                                echo "<td>" . $row["middle_name_female"] . "</td>";
+                                                echo "<td>" . $row["last_name_female"] . "</td>";
                                                 echo "<td>" . $row["birthdate_female"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["date_of_marriage"] . "</td>";
