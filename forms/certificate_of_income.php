@@ -1,4 +1,4 @@
-<form action="#" method="post" id="form">
+<form action="#" method="post" id="incomeForm">
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ex. Juan" required><br>
 
@@ -39,15 +39,11 @@
 
     <label for="income_words">Amount (In Words):</label>
     <input type="text" id="income_words" name="income_words" class="form-control" placeholder="Amount in words"
-        readonly><br>
+        readonly><br><hr>
 
-    <button name="certificate_of_income" type="submit">Submit</button>
-
-    <div class="brgyClearancePrint" style="text-align: right;">
-        <button type="button" id="brgyClearancePrintBtn" class="btn btn-primary w-25">Print</button>
-
-        <!-- Barangay Clearance Modal -->
-        <div class="modal fade" id="brgyClearanceModal" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="incomePrint" style="text-align: right;">
+        <button type="button" id="incomePrintBtn" class="btn btn-primary w-25">Print</button>
+        <div class="modal fade" id="incomeModal" tabindex="-1" style="display: none;" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content text-center">
                     <div class="modal-header">
@@ -57,7 +53,7 @@
                         <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
-                        <button class="w-25 btn btn-primary" name="barangay_clearance" onclick="printIframe()"
+                        <button class="w-25 btn btn-primary" name="certificate_of_income" onclick="printIframe()"
                             type="submit">Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
@@ -66,3 +62,20 @@
         </div>
     </div>
 </form>
+
+<script>
+    // Event listener for Business Permit Renewal print button
+    document.getElementById("incomePrintBtn").addEventListener("click", function () {
+        let form = document.getElementById("incomeForm");  // Use the unique form ID
+
+        // Validate the form
+        if (form.checkValidity()) {
+            // If the form is valid, show the Business Permit Renewal modal
+            let incomeModal = new bootstrap.Modal(document.getElementById("incomeModal"));
+            incomeModal.show();
+        } else {
+            // If the form is not valid, show the built-in validation messages
+            form.reportValidity();
+        }
+    });
+</script>

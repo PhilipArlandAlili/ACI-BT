@@ -1,17 +1,17 @@
-<form action="#" method="post" id="form">
+<form action="#" method="post" id="cohabilitationForm">
     
+    <label for="" class="fw-bold">Male</label><br>
     <label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_name_male" placeholder="Ex. Juan"><br>
+    <input type="text" class="form-control" name="first_name_male" placeholder="Ex. Juan" required><br>
 
-    <label for="">Middle Initial:</label>
-    <input type="text" class="form-control" name="middle_name_male" placeholder="Ex. M"><br>
+    <label for="">Middle Name:</label>
+    <input type="text" class="form-control" name="middle_name_male" placeholder="Ex. Mandaragat" required><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_name_male" placeholder="Ex. Dela Cruz"><br>
+    <input type="text" class="form-control" name="last_name_male" placeholder="Ex. Dela Cruz" required><br>
 
 
     <label for="">Suffix:</label>
-    <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
     <select class="form-control text-left" name="suffix" id="suffixs">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
@@ -22,25 +22,26 @@
     </select><br>
 
     <label for="cohabitant1Birthdate">Birthdate:</label>
-    <input type="date" class="form-control" name="birthdate"><br>
+    <input type="date" class="form-control" name="birthdate" required><br>
 
     <hr>
-    
-    <label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_name_female" placeholder="Ex. Barbie"><br>
 
-    <label for="">Middle Initial:</label>
-    <input type="text" class="form-control" name="middle_name_female" placeholder="Ex. B"><br>
+    <label for="" class="fw-bold">Female</label><br>
+    <label for="">First Name:</label>
+    <input type="text" class="form-control" name="first_name_female" placeholder="Ex. Barbie" required><br>
+
+    <label for="">Middle Name:</label>
+    <input type="text" class="form-control" name="middle_name_female" placeholder="Ex. Malabo" required><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_name_female" placeholder="Ex. Alabastro"><br>
+    <input type="text" class="form-control" name="last_name_female" placeholder="Ex. Alabastro" required><br>
 
 
     <label for="cohabitant1Birthdate">Birthdate:</label>
-    <input type="date" class="form-control" name="birthdate_female"><br>
+    <input type="date" class="form-control" name="birthdate_female" required><br>
 
     <label for="">Purok:</label><br>
-    <select name="purok" class="form-control" id="purok" onchange="update()">
+    <select name="purok" class="form-control" id="purok" onchange="update()" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -53,9 +54,10 @@
         <option value="Uha">UHA</option>
     </select>
     <br>
+
     <!--Month and Year daw-->
     <label for="dateOfMarriage">Date of marriage:</label>
-    <input type="date" id="date" class="form-control" name="date_of_marriage">
+    <input type="date" id="date" class="form-control" name="date_of_marriage" required><br>
     <hr>
 
     <div class="print" style="text-align: right;">
