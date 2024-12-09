@@ -2003,7 +2003,7 @@ if (isset($_POST["certificate_of_income"])) {
   }
 }
 
-fucntion validateage(){
+function validateage(){
     const errorMessage = document.getElementById('error-messageage');
 
   if (age < 18) {
