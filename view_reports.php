@@ -1,3 +1,6 @@
+Certificate Reports
+Table of Issued Certificates
+
 <!-- Troy  -->
 <?php
 session_start();
@@ -204,7 +207,7 @@ if (!isset($_SESSION['username'])) {
                                                     </li>
                                                     <li>
                                                         <p class="dropdown-item lead"
-                                                            onclick="moreInfo('Business Permit New', 2)"
+                                                            onclick="moreInfo('business_permit_new')"
                                                             style="cursor: pointer;">
                                                             Show Info
                                                         </p>
