@@ -19,11 +19,9 @@ const certs = ['barangay_clearance',
   'cohabitation',
   'complaint_certificate',
   'death_certificate',
-  'first_time_job_seeker',
   'indigency',
   'indigency_aics',
   'lot_ownership',
-  'Oathtaking',
   'transfer_of_residency'];
 
 
