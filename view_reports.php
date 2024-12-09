@@ -966,6 +966,7 @@ if (!isset($_SESSION['username'])) {
                                     // Generate the table content with chart data
                                     const chartLabels = chartData.labels;
                                     const chartValues = chartData.datasets[0].data;
+                                    // CARL
                                     let content = `
                                         <!DOCTYPE html>
                                         <html lang="en">
