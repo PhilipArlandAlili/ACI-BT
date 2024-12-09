@@ -53,13 +53,13 @@
     </div><br>
 
     <label for="lotNumber">Lot Number:</label>
-    <input type="number" class="form-control" name="lot_number" placeholder="123" required><br>
+    <input type="number" class="form-control" name="lot_number" placeholder="5003" required><br>
 
     <label for="lotAreaNumerical">Area Measurement (Numerical Form):</label>
-    <input type="number" class="form-control" name="lot_area_numerical" required><br>
+    <input type="number" class="form-control" name="lot_area_numerical" placeholder="350 sqm" required><br>
 
     <label for="lotLocationAddress">Location Address:</label>
-    <input type="text" class="form-control" name="lot_location_address" required><br>
+    <input type="text" class="form-control" name="lot_location_address" placeholder="PSU Rd" required><br>
 
     <hr>
 

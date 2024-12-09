@@ -64,7 +64,7 @@
     </select><br>
 
     <label for="">Case Number:</label>
-    <input type="number" class="form-control"><br>
+    <input type="number" class="form-control" placeholder="2024-005"><br>
 
     <label for="">VAWC Official Name</label>
     <input type="text" class="form-control"><br>

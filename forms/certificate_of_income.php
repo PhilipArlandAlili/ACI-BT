@@ -35,10 +35,10 @@
 
     <label for="amount">Amount (In Numeric Form):</label>
     <input type="number" id="income_num" name="income_num" class="form-control" maxlength="10"
-        placeholder="Ex. 123456789" required><br>
+        placeholder="Ex. 20000" required><br>
 
     <label for="income_words">Amount (In Words):</label>
-    <input type="text" id="income_words" name="income_words" class="form-control" placeholder="Amount in words"
+    <input type="text" id="income_words" name="income_words" class="form-control" placeholder="Twenty Thousand"
         readonly><br><hr>
 
     <div class="incomePrint" style="text-align: right;">

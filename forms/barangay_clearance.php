@@ -43,8 +43,9 @@
     <label for="birthdate">Birthday:</label>
     <input type="date" class="form-control" id="birthdate" name="birthdate" required><br>
 
-    <label for="civil_status">Civil Status:</label>
-    <select class="form-control" name="civil_status" id="civil_status" required>
+    <label for="">Civil Status</label>
+    <select name="civil_status" id="civil" onchange="updateText()" class="form-control" required>
+        <option value="">--Select Civil Status--</option>
         <option value="Single">Single</option>
         <option value="Married">Married</option>
         <option value="Widow">Widow</option>
