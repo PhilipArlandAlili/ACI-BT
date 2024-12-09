@@ -1,6 +1,3 @@
-Certificate Reports
-Table of Issued Certificates
-
 <!-- Troy  -->
 <?php
 session_start();
@@ -207,7 +204,7 @@ if (!isset($_SESSION['username'])) {
                                                     </li>
                                                     <li>
                                                         <p class="dropdown-item lead"
-                                                            onclick="moreInfo('business_permit_new')"
+                                                            onclick="moreInfo('Business Permit New', 2)"
                                                             style="cursor: pointer;">
                                                             Show Info
                                                         </p>
@@ -425,128 +422,6 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div><!-- End Customers Card -->
 
-
-                                    <div class="col-md-4 col-md-3">
-                                        <div class="card info-card sales-card">
-                                            <div class="filter" style="z-index: 10;">
-                                                <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                                        class="bi bi-three-dots"></i></a>
-                                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                    <li class="dropdown-header text-start">
-                                                        <h6>Option</h6>
-                                                    </li>
-
-                                                    <li>
-                                                        <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('Certificate of Indigency', 6)"
-                                                            style="cursor: pointer;">Show Info</p>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="card-body">
-
-                                                <h5 class="card-title">
-                                                    CERTIFICATE OF INDIGENCY
-                                                </h5>
-
-                                                <div class="d-flex align-items-center">
-                                                    <div
-                                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"
-                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                            stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" class="feather feather-file-text"
-                                                            style="color:rgba(77, 0, 77, 1);">
-                                                            <path
-                                                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
-                                                            </path>
-                                                            <polyline points="14 2 14 8 20 8"></polyline>
-                                                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                                                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                                                            <polyline points="10 9 9 9 8 9"></polyline>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="ps-3">
-                                                        <h6>
-                                                            <?php echo $count_certificate_of_indigency; ?>
-                                                        </h6>
-                                                        <span class="text-success small pt-1 fw-bold"
-                                                            id="certificate_of_indigency_percent">%</span> <span
-                                                            class="text-muted small pt-2 ps-1">increase</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- End Sales Card -->
-                                </div>
-                            </div><!-- End Left side columns -->
-                        </div>
-
-                        <!-- Third Row -->
-                        <div class="carousel-item">
-
-                            <!-- Left side columns -->
-                            <div class="container-fluid col-lg-12">
-                                <div class="row">
-
-                                    <!-- Sales Card -->
-                                    <div class="col-md col-md-4">
-                                        <div class="card info-card revenue-card">
-
-                                            <div class="filter" style="z-index: 10;">
-                                                <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                                        class="bi bi-three-dots"></i></a>
-                                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                    <li class="dropdown-header text-start">
-                                                        <h6>Option</h6>
-                                                    </li>
-
-                                                    <li>
-                                                        <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('Certificate of Indigency (AICS)', 7)"
-                                                            style="cursor: pointer;">Show Info</p>
-                                                    </li>
-
-                                                </ul>
-                                            </div>
-
-                                            <div class="card-body">
-                                                <h5 class="card-title ">
-                                                    CERTIFICATE OF INDIGENCY (AICS)
-                                                </h5>
-                                                <div class="d-flex align-items-center">
-                                                    <div
-                                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"
-                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                            stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" class="feather feather-file-text"
-                                                            style="color:rgba(16, 16, 16, 1);">
-                                                            <path
-                                                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
-                                                            </path>
-                                                            <polyline points="14 2 14 8 20 8"></polyline>
-                                                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                                                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                                                            <polyline points="10 9 9 9 8 9"></polyline>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="ps-3">
-                                                        <h6>
-                                                            <?php echo $count_certificate_of_indigency_aics; ?>
-                                                        </h6>
-                                                        <span class="text-success small pt-1 fw-bold"
-                                                            id="certificate_of_indigency_aics_percent">%</span> <span
-                                                            class="text-muted small pt-2 ps-1">increase</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- End Revenue Card -->
-
-
-                                    <!-- Revenue Card -->
                                     <div class="col-md-4 col-md-3">
                                         <div class="card info-card sales-card">
 
@@ -604,6 +479,128 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div><!-- End Sales Card -->
 
+
+
+                                </div>
+                            </div><!-- End Left side columns -->
+                        </div>
+
+                        <!-- Third Row -->
+                        <div class="carousel-item">
+
+                            <!-- Left side columns -->
+                            <div class="container-fluid col-lg-12">
+                                <div class="row">
+
+                                    <div class="col-md-4 col-md-3">
+                                        <div class="card info-card sales-card">
+                                            <div class="filter" style="z-index: 10;">
+                                                <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                                                        class="bi bi-three-dots"></i></a>
+                                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                    <li class="dropdown-header text-start">
+                                                        <h6>Option</h6>
+                                                    </li>
+
+                                                    <li>
+                                                        <p class="dropdown-item display-1"
+                                                            onclick="moreInfo('Certificate of Indigency', 6)"
+                                                            style="cursor: pointer;">Show Info</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="card-body">
+
+                                                <h5 class="card-title">
+                                                    CERTIFICATE OF INDIGENCY
+                                                </h5>
+
+                                                <div class="d-flex align-items-center">
+                                                    <div
+                                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"
+                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" class="feather feather-file-text"
+                                                            style="color:rgba(77, 0, 77, 1);">
+                                                            <path
+                                                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+                                                            </path>
+                                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                                                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                                                            <polyline points="10 9 9 9 8 9"></polyline>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="ps-3">
+                                                        <h6>
+                                                            <?php echo $count_certificate_of_indigency; ?>
+                                                        </h6>
+                                                        <span class="text-success small pt-1 fw-bold"
+                                                            id="certificate_of_indigency_percent">%</span> <span
+                                                            class="text-muted small pt-2 ps-1">increase</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- End Sales Card -->
+
+                                    <!-- Sales Card -->
+                                    <div class="col-md col-md-4">
+                                        <div class="card info-card revenue-card">
+
+                                            <div class="filter" style="z-index: 10;">
+                                                <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                                                        class="bi bi-three-dots"></i></a>
+                                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                    <li class="dropdown-header text-start">
+                                                        <h6>Option</h6>
+                                                    </li>
+
+                                                    <li>
+                                                        <p class="dropdown-item display-1"
+                                                            onclick="moreInfo('Certificate of Indigency (AICS)', 7)"
+                                                            style="cursor: pointer;">Show Info</p>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+
+                                            <div class="card-body">
+                                                <h5 class="card-title ">
+                                                    CERTIFICATE OF INDIGENCY (AICS)
+                                                </h5>
+                                                <div class="d-flex align-items-center">
+                                                    <div
+                                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"
+                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" class="feather feather-file-text"
+                                                            style="color:rgba(16, 16, 16, 1);">
+                                                            <path
+                                                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+                                                            </path>
+                                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                                                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                                                            <polyline points="10 9 9 9 8 9"></polyline>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="ps-3">
+                                                        <h6>
+                                                            <?php echo $count_certificate_of_indigency_aics; ?>
+                                                        </h6>
+                                                        <span class="text-success small pt-1 fw-bold"
+                                                            id="certificate_of_indigency_aics_percent">%</span> <span
+                                                            class="text-muted small pt-2 ps-1">increase</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- End Revenue Card -->
+                                    <!-- Revenue Card -->
 
                                     <!-- Customers Card -->
                                     <div class="col-xxl-4 col-md-4">
@@ -987,10 +984,19 @@ if (!isset($_SESSION['username'])) {
                                                 }
 
                                                 .chart-container {
-                                                    margin-top: 20px;
-                                                    border-radius: 4px;
-                                                    background-color: white;
-                                                }
+    margin-top: 20px;
+    border-radius: 4px;
+    background-color: white;
+    width: 100%; /* Makes the container responsive */
+    max-width: 600px; /* Optional: max width */
+    height: auto; /* Allows height to adjust automatically */
+}
+
+.chart-container img {
+    width: 100%; /* Makes the image fill the width of its parent */
+    height: auto; /* Adjusts the height automatically based on the width */
+}
+
 
                                                 .num_issued {
                                                     text-align: center;
@@ -999,7 +1005,6 @@ if (!isset($_SESSION['username'])) {
                                                 .table {
                                                     width: 100%;
                                                     border-collapse: collapse;
-                                                    margin-top: 20px;
                                                 }
 
                                                 .table th {
@@ -1030,7 +1035,6 @@ if (!isset($_SESSION['username'])) {
                                                 <img class="watermark" src="certificates/logo/water.png" alt="">
 
                                                 <main id="content" class="content">
-                                                    <h1 style="text-align: center;">CERTIFICATE REPORTS</h1>
                                                     <table class="table">
                                                         <thead>
                                                             <tr>
@@ -1053,7 +1057,7 @@ if (!isset($_SESSION['username'])) {
                                                 </tbody>
                                             </table>
                                             <div class="chart-container">
-                                                <img src="${chartImageURL}" alt="Chart Image" class="img-fluid" style="width: 100%; height: auto;">
+                                                <img src="${chartImageURL}" alt="Chart Image" class="img-fluid">
                                             </div>
                                         </main>
 
