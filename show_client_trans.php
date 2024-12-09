@@ -59,6 +59,7 @@ if (!isset($_SESSION['username'])) {
                                             echo "<th>First Name</th>";
                                             echo "<th>Middle Name</th>";
                                             echo "<th>Last Name</th>";
+                                            echo "<th>Suffix</th>";
                                             echo "<th>Address</th>";
                                             echo "<th>Birthplace</th>";
                                             echo "<th>Birthdate</th>";
@@ -74,6 +75,7 @@ if (!isset($_SESSION['username'])) {
                                             echo "<td>" . $row["first_name"] . "</td>";
                                             echo "<td>" . $row["middle_name"] . "</td>";
                                             echo "<td>" . $row["last_name"] . "</td>";
+                                            echo "<td>" . $row["suffix"] . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
                                             echo "<td>" . $row["birthplace"] . "</td>";
                                             echo "<td>" . $row["birthdate"] . "</td>";
