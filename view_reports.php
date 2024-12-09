@@ -1023,29 +1023,112 @@ if (!isset($_SESSION['username'])) {
                                     // Generate the table content with chart data
                                     const chartLabels = chartData.labels;
                                     const chartValues = chartData.datasets[0].data;
-                                    let content = '<html><head><title>Print Reports</title></head><body>';
-                                    content += '<h2>Certificate Reports</h2>';
-                                    content += '<h3>Table of Issued Certificates</h3>';
-                                    content += '<table border="1" style="width: 100%; text-align: left;"><thead><tr><th>Certificate Type</th><th>Number Issued</th></tr></thead><tbody>';
+                                    let content = `
+                                        <!DOCTYPE html>
+                                        <html lang="en">
+                                        <head>
+                                            <meta charset="UTF-8">
+                                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                            <link rel="stylesheet" href="certificates/logo.css">
+                                            <style>
+                                                .content {
+                                                    font-family: Calibri;
+                                                    font-size: 1.1rem;
+                                                    position: absolute;
+                                                    top: 50%;
+                                                    left: 50%;
+                                                    transform: translate(-50%, -50%);
+                                                }
 
-                                    // Populate table rows
+                                                .chart-container {
+                                                    margin-top: 20px;
+                                                    border-radius: 4px;
+                                                    background-color: white;
+                                                }
+
+                                                .num_issued {
+                                                    text-align: center;
+                                                }
+
+                                                .table {
+                                                    width: 100%;
+                                                    border-collapse: collapse;
+                                                    margin-top: 20px;
+                                                }
+
+                                                .table th {
+                                                    background-color: #00528d;
+                                                    color: white;
+                                                }
+
+                                                .table th,
+                                                .table td {
+                                                    border: 1px solid #ddd;
+                                                }
+                                            </style>
+                                        </head>
+
+                                        <body>
+                                            <div class="container w-100">
+                                                <div class="header">
+                                                    <img src="certificates/logo/logo brgy.jpg" class="brlogo" alt="">
+                                                    <img src="certificates/logo/citylogo.jpg" class="ctlogo" alt="">
+                                                    <div class="family">
+                                                        <b>
+                                                            <p>REPUBLIC OF THE PHILIPPINES</p>
+                                                            <h1 style="margin-top: -20px; color:#00528d;">BARANGAY TINIGUIBAN</h1>
+                                                            <p style="margin-top: -20px;">PUERTO PRINCESA CITY, PALAWAN</p>
+                                                        </b>
+                                                    </div>
+                                                </div>
+                                                <img class="watermark" src="certificates/logo/water.png" alt="">
+
+                                                <main id="content" class="content">
+                                                    <h1 style="text-align: center;">CERTIFICATE REPORTS</h1>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Certificate Type</th>
+                                                                <th>Number Issued</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>`;
+
+                                    // Populate table rows dynamically
                                     chartLabels.forEach((label, index) => {
-                                        content += `<tr><td>${label}</td><td>${chartValues[index]}</td></tr>`;
+                                        content += `
+                                        <tr>
+                                            <td>${label}</td>
+                                            <td class="num_issued">${chartValues[index]}</td>
+                                        </tr>`;
                                     });
-                                    content += '</tbody></table>';
 
-                                    // Add the chart image to the print window content
-                                    content += '<h3>Bar Chart</h3>';
-                                    content += `<img src="${chartImageURL}" style="width: 100%; height: auto;">`;
+                                    content += `
+                                                </tbody>
+                                            </table>
+                                            <div class="chart-container">
+                                                <img src="${chartImageURL}" alt="Chart Image" class="img-fluid" style="width: 100%; height: auto;">
+                                            </div>
+                                        </main>
 
-                                    content += '</body></html>';
+                                        <img src="certificates/logo/border.png" class="border" alt="">
+                                        <img src="certificates/logo/under.png" class="footer-b" alt="">
+                                    </div>
+                                </body>
+                                </html>`;
 
                                     // Open a new window for printing and render the content
                                     const printWindow = window.open('', '_blank');
+                                    if (!printWindow) {
+                                        console.error('Failed to open print window');
+                                        return;
+                                    }
+
                                     printWindow.document.write(content);
                                     printWindow.document.close();
                                     printWindow.print();
                                 }
+
                             </script>
 
                             <script>
