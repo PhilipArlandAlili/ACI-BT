@@ -58,7 +58,7 @@ $conn->close();
                                             </a>
                                         </div>
                                         <div class="card-body text-center border-bottom">
-                                            <img src="../assets/img/devs/<?= $official['img'] ?>"
+                                            <img src="../assets/img/STAFF-COUNCIL/<?= $official['img'] ?>"
                                                 alt="<?= $official['name'] ?>" class="rounded-circle mb-3" width="80"
                                                 height="80">
                                             <h6 class="text-primary fs-5"><?= $official['name'] ?></h6>

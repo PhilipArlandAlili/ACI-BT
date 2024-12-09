@@ -38,7 +38,7 @@
 
 
     <label for="cohabitant1Birthdate">Birthdate:</label>
-    <input type="date" class="form-control" name="birthdate_female" required><br>
+    <input type="date" class="form-control" name="birthdate_female" required><br><hr>
 
     <label for="">Purok:</label><br>
     <select name="purok" class="form-control" id="purok" onchange="update()" required>
