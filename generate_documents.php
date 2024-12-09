@@ -844,7 +844,7 @@ if (isset($_POST["transfer_of_residency"])) {
                             </div>
 
                             <div class="cert" id="certificate_of_cohabitation">
-                                <?php include 'forms/cohabilitation.php' ?>
+                                <?php include 'forms/cohabitation.php' ?>
                             </div>
 
                             <div class="cert" id="complaint_certificate">

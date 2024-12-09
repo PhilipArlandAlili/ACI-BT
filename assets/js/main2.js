@@ -19,8 +19,8 @@ const certs = ['barangay_clearance',
   'certificate_of_cohabitation',
   'complaint_certificate',
   'death_certificate',
-  'indigency',
-  'indigency_aics',
+  'certificate_of_indigency',
+  'certificate_of_indigency_aics',
   'lot_ownership',
   'transfer_of_residency'];
 
@@ -37,15 +37,15 @@ function getOrdinalSuffix(number) {
   }
 }
 
-function convertTime(timeInput) {
-  var timeParts = timeInput.split(':');
-  var hours = parseInt(timeParts[0]);
-  var minutes = parseInt(timeParts[1]);
-  var period = (hours >= 12) ? 'PM' : 'AM';
-  hours = (hours > 12) ? hours - 12 : hours;
-  hours = (hours == 0) ? 12 : hours;
-  return hours + ':' + minutes.toString().padStart(2, '0') + ' ' + period;
-}
+// function convertTime(timeInput) {
+//   var timeParts = timeInput.split(':');
+//   var hours = parseInt(timeParts[0]);
+//   var minutes = parseInt(timeParts[1]);
+//   var period = (hours >= 12) ? 'PM' : 'AM';
+//   hours = (hours > 12) ? hours - 12 : hours;
+//   hours = (hours == 0) ? 12 : hours;
+//   return hours + ':' + minutes.toString().padStart(2, '0') + ' ' + period;
+// }
 
 document.getElementById('income_num').addEventListener('input', function () {
     const numericValue = parseInt(this.value, 10);
