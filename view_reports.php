@@ -379,7 +379,7 @@ if (!isset($_SESSION['username'])) {
 
                                                     <li>
                                                         <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('Certificate of Employability', 5)"
+                                                            onclick="moreInfo('certificate_of_employability', 5)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
 
@@ -435,7 +435,7 @@ if (!isset($_SESSION['username'])) {
 
                                                     <li>
                                                         <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('Certificate of Income', 8)"
+                                                            onclick="moreInfo('certificate_of_income', 6)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
                                                 </ul>
@@ -504,7 +504,7 @@ if (!isset($_SESSION['username'])) {
 
                                                     <li>
                                                         <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('Certificate of Indigency', 6)"
+                                                            onclick="moreInfo('certificate_of_indigency', 7)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
                                                 </ul>
@@ -560,7 +560,7 @@ if (!isset($_SESSION['username'])) {
 
                                                     <li>
                                                         <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('Certificate of Indigency (AICS)', 7)"
+                                                            onclick="moreInfo('certificate_of_indigency_aics', 8)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
 
@@ -617,7 +617,7 @@ if (!isset($_SESSION['username'])) {
 
                                                     <li>
                                                         <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('Complaint Certificate', 9)"
+                                                            onclick="moreInfo('complaint_certificate', 9)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
 
@@ -683,7 +683,7 @@ if (!isset($_SESSION['username'])) {
 
                                                     <li>
                                                         <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('Death Certificate', 10)"
+                                                            onclick="moreInfo('death_certificate', 10)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
                                                 </ul>
@@ -743,7 +743,7 @@ if (!isset($_SESSION['username'])) {
 
                                                     <li>
                                                         <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('Lot Ownership', 12)"
+                                                            onclick="moreInfo('lot_ownership', 11)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
 
@@ -800,7 +800,7 @@ if (!isset($_SESSION['username'])) {
 
                                                     <li>
                                                         <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('Transfer of Residency', 13)"
+                                                            onclick="moreInfo('transfer_of_residency', 12)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
                                                 </ul>
