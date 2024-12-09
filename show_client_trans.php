@@ -36,7 +36,7 @@ if (!isset($_SESSION['username'])) {
                         <div class="card-body">
                             <h5 class="card-title fs-4">Transaction Table</h5>
                             <!-- Table with stripped rows -->
-                            <table class="table datatable">
+                            <table class="table">
                                 <?php
 
                                 require 'includes/db.php';
