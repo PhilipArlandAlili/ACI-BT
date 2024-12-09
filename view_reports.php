@@ -100,8 +100,8 @@ if (!isset($_SESSION['username'])) {
 
 
             // Function to redirect to view_transactions page with document type parameter
-            function moreInfo(docType, docId) {
-                window.location.href = 'more_info.php?docType=' + encodeURIComponent(docType) + '&docId=' + encodeURIComponent(docId);
+            function moreInfo(doc_type) {
+                window.location.href = 'more_info.php?doc_type=' + doc_type;
             }
 
         </script>
@@ -130,7 +130,7 @@ if (!isset($_SESSION['username'])) {
 
                                                     <li>
                                                         <p class="dropdown-item lead"
-                                                            onclick="moreInfo('Barangay Clearance', 1)"
+                                                            onclick="moreInfo('barangay_clearance')"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
 
@@ -1184,7 +1184,7 @@ if (!isset($_SESSION['username'])) {
     <!-- Vendor JS Files -->
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Bootstrap Bundle (includes Popper.js) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
