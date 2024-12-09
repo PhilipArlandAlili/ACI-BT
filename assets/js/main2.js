@@ -16,12 +16,14 @@ const certs = ['barangay_clearance',
   'business_permit_renew',
   'certificate_of_employability',
   'certificate_of_income',
-  'certificate_of_cohabitation',
+  'cohabitation',
   'complaint_certificate',
   'death_certificate',
-  'certificate_of_indigency',
-  'certificate_of_indigency_aics',
+  'first_time_job_seeker',
+  'indigency',
+  'indigency_aics',
   'lot_ownership',
+  'Oathtaking',
   'transfer_of_residency'];
 
 
@@ -37,79 +39,11 @@ function getOrdinalSuffix(number) {
   }
 }
 
-// function convertTime(timeInput) {
-//   var timeParts = timeInput.split(':');
-//   var hours = parseInt(timeParts[0]);
-//   var minutes = parseInt(timeParts[1]);
-//   var period = (hours >= 12) ? 'PM' : 'AM';
-//   hours = (hours > 12) ? hours - 12 : hours;
-//   hours = (hours == 0) ? 12 : hours;
-//   return hours + ':' + minutes.toString().padStart(2, '0') + ' ' + period;
-// }
-
-// document.getElementById('income_num').addEventListener('input', function () {
-//     const numericValue = parseInt(this.value, 10);
-//     const wordsField = document.getElementById('income_words');
-    
-//     if (!isNaN(numericValue)) {
-//         wordsField.value = numberToWords(numericValue);
-//     } else {
-//         wordsField.value = '';
-//     }
-// });
-
-// function numberToWords(number) {
-//     const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
-//     const teens = ['', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
-//     const tens = ['', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
-//     const suffixes = ['', 'Thousand', 'Million', 'Billion', 'Trillion'];
-
-//     function convertGroup(num) {
-//         const [hundreds, tensAndOnes] = [Math.floor(num / 100), num % 100];
-//         let result = '';
-
-//         if (hundreds > 0) {
-//             result += ones[hundreds] + ' Hundred ';
-//         }
-
-//         if (tensAndOnes > 0) {
-//             if (tensAndOnes < 10) {
-//                 result += ones[tensAndOnes];
-//             } else if (tensAndOnes < 20) {
-//                 result += teens[tensAndOnes - 10];
-//             } else {
-//                 const [tensDigit, onesDigit] = [Math.floor(tensAndOnes / 10), tensAndOnes % 10];
-//                 result += tens[tensDigit] + ' ' + ones[onesDigit];
-//             }
-//         }
-
-//         return result.trim();
-//     }
-
-//     if (number === 0) {
-//         return 'Zero';
-//     }
-
-//     let words = '';
-//     let groupIndex = 0;
-
-//     while (number > 0) {
-//         const group = number % 1000;
-//         if (group > 0) {
-//             const groupWords = convertGroup(group) + ' ' + suffixes[groupIndex];
-//             words = groupWords + ' ' + words;
-//         }
-//         number = Math.floor(number / 1000);
-//         groupIndex++;
-//     }
-
-//     return words.trim();
-// }
 
 function toggleFields() {
   const varname = [
     "first_name",
-    "middle_name",
+    "middle_initial",
     "last_name",
     "age",      
   ];
@@ -130,19 +64,19 @@ function toggleFields() {
   });
 
   document.querySelectorAll("#purok").forEach(function (name){
-  name.setAttribute('id','purok');
-  name.setAttribute('name','purok');
+  name.setAttribute('id','puroks');
+  name.setAttribute('name','puroks');
 
   });
   
   document.querySelectorAll("#bday").forEach(function (name){
-    name.setAttribute('id','birthdate');
-    name.setAttribute('name','birthdate');
+    name.setAttribute('id','bdays');
+    name.setAttribute('name','bdays');
   
     });
   document.querySelectorAll("#suffix").forEach(function (name){
-  name.setAttribute('id','suffix');
-  name.setAttribute('name','suffix');
+  name.setAttribute('id','suffixs');
+  name.setAttribute('name','suffixs');
 
   });
   var certificateType = document.getElementById('certificateType').value;
@@ -184,7 +118,7 @@ function toggleFields() {
           }
     }
   var purokSelect = currentForm.querySelector('select[id="puroks"]');
-  var suffixSelect = currentForm.querySelector('select[id="suffix"]');
+  var suffixSelect = currentForm.querySelector('select[id="suffixs"]');
   var bdayinput = currentForm.querySelector('input[id="bdays"]');
 
 
@@ -221,6 +155,8 @@ function select(){
   var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
   var purok = iframeDocument.getElementById('purok');
   var suffix = iframeDocument.getElementById('suffix');
+  var purok1 = iframeDocument.getElementById('purok1');
+  var suffix1 = iframeDocument.getElementById('suffix1');
   var stats = iframeDocument.getElementById('stats');
 
   if (purok)
@@ -230,6 +166,14 @@ function select(){
   if (suffix)
     suffix.innerText = document.getElementById('suffix').value;
     else console.log('suffix not found')
+    if (purok1)
+      purok1.innerText = document.getElementById('purok1').value;
+      else console.log('purok1 not found')
+      
+    if (suffix1)
+      suffix1.innerText = document.getElementById('suffix1').value;
+      else console.log('suffix1 not found')
+  
 
     if (stats)
       stats.innerText = document.getElementById('stats').value;
@@ -272,7 +216,7 @@ function select(){
         
   for (var x = 0; x < number.length; x++) {
     var Number = iframeDocument.getElementById('num'+x);
-    
+    console.log(number[x].value);
     if (certificateType.value == 'lot_ownership' && x == 1) {
         let lotnum = iframeDocument.getElementById('lotnum');
         
@@ -328,7 +272,7 @@ if(certificateType.value == 'lot_ownership') {
 }
 
 
-if(certificateType.value == 'certificate_of_cohabitation') {
+if(certificateType.value == 'cohabitation') {
 var periods = iframeDocument.getElementById('period');
 var inyears = iframeDocument.getElementById('inyears');
 

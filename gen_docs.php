@@ -1,796 +1,4 @@
-<?php
-session_start();
 
-// if (!isset($_SESSION['username'])) {
-//     header("Location: index.php");
-//     exit();
-// }
-
-// //Include database connection file
-// include("db.php");
-
-$duty_officer_name = $_SESSION['username'];
-$issued_date = date('Y-m-d');
-
-if (isset($_POST["barangay_clearance"])){
-    $first_name = $conn->real_escape_string($_POST["first_name"]);
-    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
-    $last_name = $conn->real_escape_string($_POST["last_name"]);
-    $suffix = $conn->real_escape_string($_POST["suffix"]);
-    $purok = $conn->real_escape_string($_POST["purok"]);
-    $birthplace = $conn->real_escape_string($_POST["birthplace"]);
-    $birthdate = $conn->real_escape_string($_POST["birthdate"]);
-    $civil_status = $conn->real_escape_string($_POST["civil_status"]);
-    $period_of_residency = $conn->real_escape_string($_POST["period_of_residency"]);
-    $purpose = $conn->real_escape_string($_POST["purpose"]);
-
-    $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
-
-    $stmt = $conn->prepare("INSERT INTO barangay_clearance (first_name, middle_name, last_name, suffix, address, birthplace, birthdate, civil_status, period_of_residency, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssssisss', $first_name, $middle_name, $last_name, $suffix, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $purpose, $duty_officer_name);
-    
-    if ($stmt->execute()) {
-        //echo "New record inserted successfully";
-
-        $sql = "SELECT id FROM admin WHERE username = ?";
-        $admin_stmt = $conn->prepare($sql);
-        $admin_stmt->bind_param('s', $duty_officer_name);
-        $admin_stmt->execute();
-        $admin_result = $admin_stmt->get_result();
-
-        if ($admin_result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($admin_result);
-            $admin_id = $row['id'];
-
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?, (SELECT COUNT(*) FROM barangay_clearance), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-            if ($trans_stmt->execute()) {
-                //echo "Transaction record inserted successfully";
-            } else {
-                //echo "Error: " . $trans_stmt->error;
-            }
-
-            $trans_stmt->close();
-
-        } else {
-            //echo "Error: Admin user not found.";
-        }
-
-        $admin_stmt->close();
-    } else {
-        //echo "Error: " . $stmt->error;
-    }
-
-    $stmt->close();
-}
-
-
-
-// Check if form is submitted
-// if (isset($_POST["barangay_clearance"])) {
-//     // Sanitize and assign form data to variables
-//     $first_name = $conn->real_escape_string($_POST["first_name"]);
-//     $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-//     $last_name = $conn->real_escape_string($_POST["last_name"]);
-//     $suffix = $conn->real_escape_string($_POST["suffix"]);
-//     $purok = $conn->real_escape_string($_POST["purok"]);
-//     $birthplace = $conn->real_escape_string($_POST["birthplace"]);
-//     $birthdate = $conn->real_escape_string($_POST["birthday"]);
-//     $civil_status = $conn->real_escape_string($_POST["civil_status"]);
-//     $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
-//     //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
-//     $purpose = $conn->real_escape_string($_POST["purpose"]);
-//     //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
-
-//     // Define SQL query using prepared statements
-//     $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-//     $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-//     $fullname = ucwords($fullname);
-//     $issued_date = date('Y-m-d');
-//     $duty_officer_name = $_SESSION['username'];
-//     $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
-
-//     // Execute SQL query
-//     if ($stmt->execute()) {
-//         echo "New record inserted successfully";
-
-//         // Fetch admin ID
-//         $sql = "SELECT id FROM admin WHERE username = ?";
-//         $admin_stmt = $conn->prepare($sql);
-//         $admin_stmt->bind_param('s', $_SESSION['username']);
-//         $admin_stmt->execute();
-//         $admin_result = $admin_stmt->get_result();
-//         // Add missing import statement
-//         if ($admin_result->num_rows > 0) {
-//             $row = mysqli_fetch_assoc($admin_result);
-//             $admin_id = $row['id'];
-
-//             // Modify SQL query to use COUNT function correctly
-//             $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?,(SELECT COUNT(*) FROM barangay_clearance), NOW())");
-//             $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-//             if ($trans_stmt->execute()) {
-//                 echo "Transaction record inserted successfully";
-//             } else {
-//                 echo "Error: " . $trans_stmt->error;
-//             }
-
-//             $trans_stmt->close();
-//         } else {
-//             echo "Error: Admin user not found.";
-//             echo "Error: Admin user not found.";
-//         }
-
-//         $admin_stmt->close();
-//     } else {
-//         echo "Error: " . $stmt->error;
-//     }
-
-//     // Close database connection
-//     $stmt->close();
-//     $conn->close();
-// }
-
-if (isset($_POST["business_permit_new"])) {
-    // Sanitize and assign form data to variables
-    $business_name = $conn->real_escape_string($_POST["businessName"]);
-    $purok = $conn->real_escape_string($_POST["purok"]);
-    $manager = $conn->real_escape_string($_POST["manager_operator"]);
-    $address = $conn->real_escape_string($_POST["manager_operator_address"]);
-
-    // Define SQL query using prepared statements for the business permit
-    $address = $address . ', ' . $purok;
-    $fullname = $manager;
-    $issued_date = date('Y-m-d');
-    $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
-
-    //Execute the business permit insertion query
-    if ($stmt->execute()) {
-        echo "New business permit record inserted successfully";
-
-        //Fetch admin ID
-        $sql = "SELECT id FROM admin WHERE username = ?";
-        $admin_stmt = $conn->prepare($sql);
-        $admin_stmt->bind_param('s', $_SESSION['username']);
-        $admin_stmt->execute();
-        $admin_result = $admin_stmt->get_result();
-
-        // Check if the admin user was found
-        if ($admin_result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($admin_result);
-            $admin_id = $row['id'];
-
-            // Insert a transaction record into the `transactions` table
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_new), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-            // Execute the transaction query
-            if ($trans_stmt->execute()) {
-                echo "Transaction record inserted successfully";
-            } else {
-                echo "Error: " . $trans_stmt->error;
-            }
-
-            $trans_stmt->close();
-        } else {
-            echo "Error: Admin user not found.";
-        }
-
-        $admin_stmt->close();
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-    // Close database connection
-    $stmt->close();
-    $conn->close();
-}
-
-if (isset($_POST["business_permit_renew"])) {
-    // Sanitize and assign form data to variables
-    $business_name = $conn->real_escape_string($_POST["business_name_renew"]);
-    $purok = $conn->real_escape_string($_POST["purok"]);
-    $manager = $conn->real_escape_string($_POST["manager_operator_renew"]);
-    $address = $conn->real_escape_string($_POST["manager_operator_address_renew"]);
-
-    // Define SQL query using prepared statements for the business permit
-    $address = $address . ', ' . $purok;
-    $fullname = $manager;
-    $issued_date = date('Y-m-d');
-    $stmt = $conn->prepare("INSERT INTO business_permit_renew (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
-
-    //Execute the business permit insertion query
-    if ($stmt->execute()) {
-        echo "New business permit record inserted successfully";
-
-        // Fetch admin ID
-        $sql = "SELECT id FROM admin WHERE username = ?";
-        $admin_stmt = $conn->prepare($sql);
-        $admin_stmt->bind_param('s', $_SESSION['username']);
-        $admin_stmt->execute();
-        $admin_result = $admin_stmt->get_result();
-
-        //Check if the admin user was found
-        if ($admin_result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($admin_result);
-            $admin_id = $row['id'];
-
-            // Insert a transaction record into the `transactions` table
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-            // Execute the transaction query
-            if ($trans_stmt->execute()) {
-                echo "Transaction record inserted successfully";
-            } else {
-                echo "Error: " . $trans_stmt->error;
-            }
-
-            $trans_stmt->close();
-        } else {
-            echo "Error: Admin user not found.";
-        }
-
-        $admin_stmt->close();
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-    // Close database connection
-    $stmt->close();
-    $conn->close();
-}
-
-// if (isset($_POST["certificate_of_employability"])) {
-//   // Sanitize and assign form data to variables
-//   $first_name = $conn->real_escape_string($_POST["first_name"]);
-//   $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-//   $last_name = $conn->real_escape_string($_POST["last_name"]);
-//   $suffix = $conn->real_escape_string($_POST["suffix"]);
-//   $age = $conn->real_escape_string($_POST["age"]);
-//   $address = $conn->real_escape_string($_POST["purok"]);
-//   //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
-//   //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_name"]);
-
-//   // Define SQL query using prepared statements for the business permit
-//   $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-//   $fullname = ucwords($fullname);
-//   $duty_officer_name = $_SESSION['username'];
-//   $issued_date = date('Y-m-d');
-//   $stmt = $conn->prepare("INSERT INTO certificate_of_employability (fullname, age, address, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?)");
-//   $stmt->bind_param('sssss', $fullname, $age, $address, $issued_date, $duty_officer_name);
-
-//   // Execute the business permit insertion query
-//   if ($stmt->execute()) {
-//     echo "New certificate of employability record inserted successfully";
-
-//     // Fetch admin ID
-//     $sql = "SELECT id FROM admin WHERE username = ?";
-//     $admin_stmt = $conn->prepare($sql);
-//     $admin_stmt->bind_param('s', $_SESSION['username']);
-//     $admin_stmt->execute();
-//     $admin_result = $admin_stmt->get_result();
-
-//     // Check if the admin user was found
-//     if ($admin_result->num_rows > 0) {
-//       $row = mysqli_fetch_assoc($admin_result);
-//       $admin_id = $row['id'];
-
-//       // Insert a transaction record into the `transactions` table
-//       $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
-//       $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-//       // Execute the transaction query
-//       if ($trans_stmt->execute()) {
-//         echo "Transaction record inserted successfully";
-//       } else {
-//         echo "Error: " . $trans_stmt->error;
-//       }
-
-//       $trans_stmt->close();
-//     } else {
-//       echo "Error: Admin user not found.";
-//     }
-
-//     $admin_stmt->close();
-//   } else {
-//     echo "Error: " . $stmt->error;
-//   }
-
-//   // Close database connection
-//   $stmt->close();
-//   $conn->close();
-// }
-
-// if (isset($_POST["first_time_job_seeker"])) {
-
-//   // Sanitize and assign form data to variables
-//   $first_name = $conn->real_escape_string($_POST["first_name"]);
-//   $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-//   $last_name = $conn->real_escape_string($_POST["last_name"]);
-//   $suffix = $conn->real_escape_string($_POST["suffix"]);
-//   $purok = $conn->real_escape_string($_POST["purok"]);
-//   $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
-//   $signed_date = $conn->real_escape_string($_POST["signed_date"]);
-//   $validation_date = $conn->real_escape_string($_POST["validation_date"]);
-//   $witness = $conn->real_escape_string($_POST["witness"]);
-
-//   // Define SQL query using prepared statements
-//   $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-//   $fullname = ucwords($fullname);
-//   $signed_date = date('Y-m-d');
-//   $witness = $_SESSION['username'];
-//   $stmt = $conn->prepare("INSERT INTO first_time_job_seeker (fullname, address, period_of_residency, signed_date, validation_date, witness) VALUES (?, ?, ?, ?, ?, ?)");
-//   $stmt->bind_param('ssssss', $fullname, $purok, $period_of_residency, $signed_date, $validation_date, $witness);
-
-//   // Execute SQL query
-//   if ($stmt->execute()) {
-//     echo "New record inserted successfully";
-
-//     // Fetch admin ID
-//     $sql = "SELECT id FROM admin WHERE username = ?";
-//     $admin_stmt = $conn->prepare($sql);
-//     $admin_stmt->bind_param('s', $_SESSION['username']);
-//     $admin_stmt->execute();
-//     $admin_result = $admin_stmt->get_result();
-//     // Add missing import statement
-//     if ($admin_result->num_rows > 0) {
-//       $row = mysqli_fetch_assoc($admin_result);
-//       $admin_id = $row['id'];
-
-//       // Modify SQL query to use COUNT function correctly
-//       $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?,(SELECT COUNT(*) FROM barangay_clearance), NOW())");
-//       $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-//       if ($trans_stmt->execute()) {
-//         echo "Transaction record inserted successfully";
-//       } else {
-//         echo "Error: " . $trans_stmt->error;
-//       }
-
-//       $trans_stmt->close();
-//     } else {
-//       echo "Error: Admin user not found.";
-//       echo "Error: Admin user not found.";
-//     }
-
-//     $admin_stmt->close();
-//   } else {
-//     echo "Error: " . $stmt->error;
-//   }
-
-//   // Close database connection
-//   $stmt->close();
-//   $conn->close();
-// }
-
-
-if (isset($_POST["indigency"])) {
-    // Sanitize and assign form data to variables
-    $first_name = $conn->real_escape_string($_POST["first_name"]);
-    $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-    $last_name = $conn->real_escape_string($_POST["last_name"]);
-    $suffix = $conn->real_escape_string($_POST["suffix"]);
-    $age = $conn->real_escape_string($_POST["age"]);
-    $civil_status = $conn->real_escape_string($_POST["civil_status"]);
-    $purok = $conn->real_escape_string($_POST["purok"]);
-    // $purpose = $conn->real_escape_string($_POST["purpose"]);
-
-    // Define SQL query using prepared statements for the indigency
-    $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-    $fullname = ucwords($fullname);
-    $address = $purok;
-    $purpose = "wala lang";
-    $issued_date = date('Y-m-d');
-    $purpose = "Indigency"; // Add a default purpose or get it from the form if needed
-
-    $stmt = $conn->prepare("INSERT INTO indigency (fullname, age, civil_status, address, purpose, issued_date) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('ssssss', $fullname, $age, $civil_status, $address, $purpose, $issued_date);
-
-    // Execute the indigency insertion query
-    if ($stmt->execute()) {
-        echo "New Indigency record inserted successfully";
-
-        // Fetch admin ID
-        $sql = "SELECT id FROM admin WHERE username = ?";
-        $admin_stmt = $conn->prepare($sql);
-        $admin_stmt->bind_param('s', $_SESSION['username']);
-        $admin_stmt->execute();
-        $admin_result = $admin_stmt->get_result();
-
-        // Check if the admin user was found
-        if ($admin_result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($admin_result);
-            $admin_id = $row['id'];
-
-            // Insert a transaction record into the `transactions` table
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?, (SELECT COUNT(*) FROM indigency), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-            // Execute the transaction query
-            if ($trans_stmt->execute()) {
-                echo "Transaction record inserted successfully";
-            } else {
-                echo "Error: " . $trans_stmt->error;
-            }
-
-            $trans_stmt->close();
-        } else {
-            echo "Error: Admin user not found.";
-        }
-
-        $admin_stmt->close();
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-
-    // Close database connection
-    $stmt->close();
-    $conn->close();
-}
-
-if (isset($_POST["cohabitation"])) {
-    // Sanitize and assign form data to variables
-    $first_name = $conn->real_escape_string($_POST["first_name"]);
-    $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-    $last_name = $conn->real_escape_string($_POST["last_name"]);
-    $suffix = $conn->real_escape_string($_POST["suffix"]);
-    $birthdate = $conn->real_escape_string($_POST["birth_date"]);
-    $first_name1 = $conn->real_escape_string($_POST["first_name1"]);
-    $middle_initial1 = $conn->real_escape_string($_POST["middle_initial1"]);
-    $last_name1 = $conn->real_escape_string($_POST["last_name1"]);
-    $cohabitant_birthdate = $conn->real_escape_string($_POST["cohabitant_birth_date"]);
-    $purok = $conn->real_escape_string($_POST["purok"]);
-    $date_of_marriage = $conn->real_escape_string($_POST["date_of_marriage"]);
-
-    // Define SQL query using prepared statements for the business permit
-    $fullname_male = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-    $fullname_male = ucwords($fullname_male);
-    $fullname_female = $first_name1 . ' ' . $middle_initial1 . ' ' . $last_name;
-    $fullname_female = ucwords($fullname_female);
-    $duty_officer_name = $_SESSION['username'];
-    $address = $purok;
-    $fullname = $fullname_male;
-    $years_married = date('Y') - date('Y', strtotime($date_of_marriage));
-    $issued_date = date('Y-m-d');
-    $stmt = $conn->prepare("INSERT INTO cohabitation (fullname_male, birthdate_male, fullname_female, birthdate_female, address, date_of_marriage, years_married, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssssss', $fullname_male, $birthdate, $fullname_female, $cohabitant_birthdate, $address, $date_of_marriage, $years_married, $issued_date, $duty_officer_name);
-
-    // Execute the business permit insertion query
-    if ($stmt->execute()) {
-        echo "New certificate of employability record inserted successfully";
-
-        // Fetch admin ID
-        $sql = "SELECT id FROM admin WHERE username = ?";
-        $admin_stmt = $conn->prepare($sql);
-        $admin_stmt->bind_param('s', $_SESSION['username']);
-        $admin_stmt->execute();
-        $admin_result = $admin_stmt->get_result();
-
-        // Check if the admin user was found
-        if ($admin_result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($admin_result);
-            $admin_id = $row['id'];
-
-            // Insert a transaction record into the `transactions` table
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-            // Execute the transaction query
-            if ($trans_stmt->execute()) {
-                echo "Transaction record inserted successfully";
-            } else {
-                echo "Error: " . $trans_stmt->error;
-            }
-
-            $trans_stmt->close();
-        } else {
-            echo "Error: Admin user not found.";
-        }
-
-        $admin_stmt->close();
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-    // Close database connection
-    $stmt->close();
-    $conn->close();
-}
-
-if (isset($_POST["transfer_of_residency"])) {
-    // Sanitize and assign form data to variables
-    $first_name = $conn->real_escape_string($_POST["first_name"]);
-    $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-    $last_name = $conn->real_escape_string($_POST["last_name"]);
-    $suffix = $conn->real_escape_string($_POST["suffix"]);
-    $purok = $conn->real_escape_string($_POST["purok"]);
-    $current_address = $conn->real_escape_string($_POST["current_address"]);
-    $previous_address = $conn->real_escape_string($_POST["previous_address"]);
-    $nationality = $conn->real_escape_string($_POST["nationality"]);
-    $civil_status = $conn->real_escape_string($_POST["civil_status"]);
-    $purpose = $conn->real_escape_string($_POST["purpose"]);
-
-    // Define SQL query using prepared statements for the certificate of transfer
-    $address = $current_address . ', ' . $purok;
-    $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-    $fullname = ucwords($fullname);
-    $issued_date = date('Y-m-d');
-
-    $stmt = $conn->prepare("INSERT INTO transfer_of_residency (fullname, address, nationality, civil_status, previous_address, purpose, issued_date) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssss', $fullname, $address, $nationality, $civil_status, $previous_address, $purpose, $issued_date);
-
-
-    // Execute the certificate of transfer insertion query
-    if ($stmt->execute()) {
-        echo "New certificate of transfer record inserted successfully";
-
-        // Fetch admin ID
-        $sql = "SELECT id FROM admin WHERE username = ?";
-        $admin_stmt = $conn->prepare($sql);
-        $admin_stmt->bind_param('s', $_SESSION['username']);
-        $admin_stmt->execute();
-        $admin_result = $admin_stmt->get_result();
-
-        // Check if the admin user was found
-        if ($admin_result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($admin_result);
-            $admin_id = $row['id'];
-
-            // Insert a transaction record into the `transactions` table
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-            // Execute the transaction query
-            if ($trans_stmt->execute()) {
-                echo "Transaction record inserted successfully";
-            } else {
-                echo "Error: " . $trans_stmt->error;
-            }
-
-            $trans_stmt->close();
-        } else {
-            echo "Error: Admin user not found.";
-        }
-
-        $admin_stmt->close();
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-    // Close database connection
-    $stmt->close();
-    $conn->close();
-}
-
-// if (isset($_POST["certificate_of_income"])) {
-//   // Sanitize and assign form data to variables
-//   $first_name = $conn->real_escape_string($_POST["first_name"]);
-//   $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-//   $last_name = $conn->real_escape_string($_POST["last_name"]);
-//   $suffix = $conn->real_escape_string($_POST["suffix"]);
-//   $purok = $conn->real_escape_string($_POST["purok"]);
-//   $amount = $conn->real_escape_string($_POST["amount"]);
-//   //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
-//   //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_name"]);
-
-//   // Define SQL query using prepared statements for the business permit
-//   $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-//   $fullname = ucwords($fullname);
-//   $address = $purok;
-//   $issued_date = date('Y-m-d');
-//   $stmt = $conn->prepare("INSERT INTO certificate_of_income (fullname, address, issued_date) VALUES (?, ?, ?)");
-//   $stmt->bind_param('sss', $fullname, $address, $issued_date);
-
-//   // Execute the business permit insertion query
-//   if ($stmt->execute()) {
-//     echo "New certificate of employability record inserted successfully";
-
-//     // Fetch admin ID
-//     $sql = "SELECT id FROM admin WHERE username = ?";
-//     $admin_stmt = $conn->prepare($sql);
-//     $admin_stmt->bind_param('s', $_SESSION['username']);
-//     $admin_stmt->execute();
-//     $admin_result = $admin_stmt->get_result();
-
-//     // Check if the admin user was found
-//     if ($admin_result->num_rows > 0) {
-//       $row = mysqli_fetch_assoc($admin_result);
-//       $admin_id = $row['id'];
-
-//       // Insert a transaction record into the `transactions` table
-//       $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
-//       $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-//       // Execute the transaction query
-//       if ($trans_stmt->execute()) {
-//         echo "Transaction record inserted successfully";
-//       } else {
-//         echo "Error: " . $trans_stmt->error;
-//       }
-
-//       $trans_stmt->close();
-//     } else {
-//       echo "Error: Admin user not found.";
-//     }
-
-//     $admin_stmt->close();
-//   } else {
-//     echo "Error: " . $stmt->error;
-//   }
-
-// Close database connection
-//   $stmt->close();
-//   $conn->close();
-// }
-
-
-// if (isset($_POST["death_certificate"])) {
-//   // Sanitize and assign form data to variables
-//   $first_name = $conn->real_escape_string($_POST["first_name"]);
-//   $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-//   $last_name = $conn->real_escape_string($_POST["last_name"]);
-//   $suffix = $conn->real_escape_string($_POST["suffix"]);
-//   $purok = $conn->real_escape_string($_POST["purok"]);
-//   $date_of_death = $conn->real_escape_string($_POST["date_of_death"]);
-//   $time_of_death = $conn->real_escape_string($_POST["time_of_death"]);
-//   $cause_of_death = $conn->real_escape_string($_POST["cause_of_death"]);
-//   $first_named = $conn->real_escape_string($_POST["first_named"]);
-//   $middle_initiald = $conn->real_escape_string($_POST["middle_initiald"]);
-//   $last_named = $conn->real_escape_string($_POST["last_named"]);
-//   $suffixd = $conn->real_escape_string($_POST["suffixd"]);
-//   $relationship_to_dead_person = $conn->real_escape_string($_POST["relationship_to_dead_person"]);
-//   $date_requested = $conn->real_escape_string($_POST["date_requested"]);
-//   //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
-//   //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_name"]);
-
-//   // Define SQL query using prepared statements for the business permit
-//   $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-//   $fullname = ucwords($fullname);
-//   $address = $purok;
-//   $req_fullname = $first_named . ' ' . $middle_initiald . ' ' . $last_named . ' ' . $suffixd;
-//   $relationship = $relationship_to_dead_person;
-//   $stmt = $conn->prepare("INSERT INTO death_certificate (fullname, address, date_of_death, time_of_death, req_fullname, relationship, date_requested) VALUES (?, ?, ?, ?, ?, ?, ?)");
-//   $stmt->bind_param('sssssss', $fullname, $address, $date_of_death, $time_of_death, $req_fullname, $relationship, $date_requested);
-
-//   // Execute the business permit insertion query
-//   if ($stmt->execute()) {
-//     echo "New certificate of employability record inserted successfully";
-
-//     // Fetch admin ID
-//     $sql = "SELECT id FROM admin WHERE username = ?";
-//     $admin_stmt = $conn->prepare($sql);
-//     $admin_stmt->bind_param('s', $_SESSION['username']);
-//     $admin_stmt->execute();
-//     $admin_result = $admin_stmt->get_result();
-
-//     // Check if the admin user was found
-//     if ($admin_result->num_rows > 0) {
-//       $row = mysqli_fetch_assoc($admin_result);
-//       $admin_id = $row['id'];
-
-//       // Insert a transaction record into the `transactions` table
-//       $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
-//       $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-//       // Execute the transaction query
-//       if ($trans_stmt->execute()) {
-//         echo "Transaction record inserted successfully";
-//       } else {
-//         echo "Error: " . $trans_stmt->error;
-//       }
-
-//       $trans_stmt->close();
-//     } else {
-//       echo "Error: Admin user not found.";
-//     }
-
-//     $admin_stmt->close();
-//   } else {
-//     echo "Error: " . $stmt->error;
-//   }
-
-//   // Close database connection
-//   $stmt->close();
-//   $conn->close();
-// }
-
-// if (isset($_POST["complaint_certificate"])) {
-//   // Sanitize and assign form data to variables
-//   $first_name = $conn->real_escape_string($_POST["first_name"]);
-//   $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-//   $last_name = $conn->real_escape_string($_POST["last_name"]);
-//   $suffix = $conn->real_escape_string($_POST["suffix"]);
-//   $age = $conn->real_escape_string($_POST["age"]);
-//   $purok = $conn->real_escape_string($_POST["purok"]);
-//   $first_namec = $conn->real_escape_string($_POST["first_namec"]);
-//   $middle_initialc = $conn->real_escape_string($_POST["middle_initialc"]);
-//   $last_namec = $conn->real_escape_string($_POST["last_namec"]);
-
-//   // Define SQL query using prepared statements for the business permit
-//   $fullname_of_complainant = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-//   $address = $purok;
-//   $fullname_of_respondent = $first_namec . ' ' . $middle_initialc . ' ' . $last_namec;
-//   $stmt = $conn->prepare("INSERT INTO complaint_certificate (fullname_of_complainant, address, date_of_complain, fullname_of_respondent) VALUES (?, ?, ?, ?)");
-//   $stmt->bind_param('ssss', $fullname_of_complainant, $address, $date_of_complain, $fullname_of_respondent);
-
-//   //Execute the business permit insertion query
-//   if ($stmt->execute()) {
-//     echo "New business permit record inserted successfully";
-
-//     //Fetch admin ID
-//     $sql = "SELECT id FROM admin WHERE username = ?";
-//     $admin_stmt = $conn->prepare($sql);
-//     $admin_stmt->bind_param('s', $_SESSION['username']);
-//     $admin_stmt->execute();
-//     $admin_result = $admin_stmt->get_result();
-
-//     // Check if the admin user was found
-//     if ($admin_result->num_rows > 0) {
-//       $row = mysqli_fetch_assoc($admin_result);
-//       $admin_id = $row['id'];
-
-//       // Insert a transaction record into the `transactions` table
-//       $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_new), NOW())");
-//       $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-//       // Execute the transaction query
-//       if ($trans_stmt->execute()) {
-//         echo "Transaction record inserted successfully";
-//       } else {
-//         echo "Error: " . $trans_stmt->error;
-//       }
-
-//       $trans_stmt->close();
-//     } else {
-//       echo "Error: Admin user not found.";
-//     }
-
-//     $admin_stmt->close();
-//   } else {
-//     echo "Error: " . $stmt->error;
-//   }
-
-//   // Close database connection
-//   $stmt->close();
-//   $conn->close();
-// }
-if (isset($_POST["certificate_of_income"])) {
-    // Sanitize and assign form data to variables
-    $first_name = $conn->real_escape_string($_POST["first_name"]);
-    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
-    $last_name = $conn->real_escape_string($_POST["last_name"]);
-    $suffix = $conn->real_escape_string($_POST["suffix"]);
-    $purok = $conn->real_escape_string($_POST["purok"]);
-    $income_num = $conn->real_escape_string($_POST["income_num"]); // Numeric amount
-    $income_words = $conn->real_escape_string($_POST["income_words"]); // Add this field to the form
-    $duty_officer_name = $_SESSION['username'];
-
-    // Generate full name and issued date
-    $fullname = ucwords("$first_name $middle_name $last_name $suffix");
-    $issued_date = date('Y-m-d');
-
-    // Insert data into certificate_of_income table
-    $stmt = $conn->prepare("INSERT INTO certificate_of_income 
-        (first_name, middle_name, last_name, suffix, address, income_num, income_words, issued_date, duty_officer_name) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssisss', $first_name, $middle_name, $last_name, $suffix, $purok, $income_num, $income_words, $issued_date, $duty_officer_name);
-
-    if ($stmt->execute()) {
-        echo "Certificate of income record inserted successfully!";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-    // Close the statement and connection
-    $stmt->close();
-    $conn->close();
-}
-?>
 
 
 <!DOCTYPE html>
@@ -943,7 +151,14 @@ if (isset($_POST["certificate_of_income"])) {
                                     }
                                 }
 
-
+                                .warning-message {
+            display: none;
+            color: black;
+            background-color: yellow;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid orange;
+        }
                                 iFrame {
                                     top: 50%;
                                     /* position: fixed !important; */
@@ -1021,12 +236,12 @@ if (isset($_POST["certificate_of_income"])) {
                                     <option value="cohabitation">Certificate of Cohabitation</option>
                                     <option value="complaint_certificate">Complaint Certificate</option>
                                     <option value="death_certificate">Death Certificate</option>
-                                    <option value="first_time_job_seeker">Barangay Certification (First time Job Seeker)
+                                    <!-- <option value="first_time_job_seeker">Barangay Certification (First time Job Seeker) -->
                                     </option>
                                     <option value="indigency">Indigency</option>
                                     <option value="indigency_aics">Indigency (AICS)</option>
                                     <option value="lot_ownership">Lot Ownership</option>
-                                    <option value="Oathtaking">Oathtaking</option>
+                                    <!-- <option value="Oathtaking">Oathtaking</option> -->
                                     <option value="transfer_of_residency">Certificate of Transfer</option>
 
                                 </select>
@@ -1076,11 +291,11 @@ if (isset($_POST["certificate_of_income"])) {
                                         <br>
 
                                         <label for="">Birthplace:</label>
-                                        <input type="text" class="form-control" name="birthplace"
+                                        <input type="text" class="form-control"oninput="updateText();" name="birthplace"
                                             placeholder="Ex. Puerto Princesa City"><br>
 
                                         <label for="">Birthday:</label>
-                                        <input type="date" class="form-control" onchange="validatebday();updateText();" name="bday" id="bday">
+                                        <input type="date" class="form-control" onchange="validatebday(this);updateText();" name="bday" id="bday">
                                        <p id="error-message" style="color: red; display: none;">You must be 18 years old or older.</p>
 
                                         <br>
@@ -1191,8 +406,6 @@ if (isset($_POST["certificate_of_income"])) {
                                     <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
                 
                                   
-
-
                                         <label for="">Suffix:</label>
                                         <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
                                         <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
@@ -1204,7 +417,7 @@ if (isset($_POST["certificate_of_income"])) {
                                             <option value="III">III</option>
                                         </select><br><br>
                                         <label for="">Age</label>
-                                        <input type="number" name="age" oninput="validateage();updateText();" class="form-control" placeholder="Ex. 20">
+                                        <input type="number" name="age" oninput="updateText()" class="form-control" placeholder="Ex. 20">
                                         <p id="error-messageage" style="color: red; display: none;">You must be 18 years old or older.</p>
 
                                         <label for="">Purok:</label><br>
@@ -1220,6 +433,7 @@ if (isset($_POST["certificate_of_income"])) {
                                             <option value="Uha">UHA</option>
                                         </select>
                                         <br>
+                                        <br>
                                         <!-- <label for="">Issued Date:</label>
                   <input type="date" class="form-control"> -->
 
@@ -1233,17 +447,15 @@ if (isset($_POST["certificate_of_income"])) {
 
                                 <div id="certificate_of_income">
                                     <form action="#" method="post" id="form">
-                                        <label for="">First Name:</label>
-                                        <input type="text" class="form-control" name="first_name"
-                                            placeholder="Ex. Juan"><br>
-
-                                        <label for="">Middle Initial:</label>
-                                        <input type="text" class="form-control" name="middle_initial"
-                                            placeholder="Ex. J"><br>
-
-                                        <label for="">Last Name:</label>
-                                        <input type="text" class="form-control" name="last_name"
-                                            placeholder="Ex. J"><br>
+                                    <label for="">First Name:</label>
+                                    <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z.]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+                
+                                    <label for="">Middle Name:</label>
+                                    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
+                
+                                    <label for="">Last Name:</label>
+                                    <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+                
 
 
                                         <label for="">Suffix:</label>
@@ -1258,7 +470,7 @@ if (isset($_POST["certificate_of_income"])) {
                                         </select><br><br>
 
                                         <label for="">Purok:</label><br>
-                                        <select name="puroks" id="puroks" onchange="update()">
+                                        <select name="puroks" id="puroks">
                                             <option value="Centro">Centro</option>
                                             <option value="Hurawan">Huwaran</option>
                                             <option value="Kaakbayan">Kaakbayan</option>
@@ -1271,15 +483,16 @@ if (isset($_POST["certificate_of_income"])) {
                                         </select>
                                         <br>
                                         <label for="">Amount (In Numeric Form)</label>
-                                        <input type="number" name="amount" class="form-control" maxlength="10"><br>
+                                        <input type="number" name="amount" oninput="updateText()"class="form-control" maxlength="10"><br>
                                         <span name="amountinwords" id="amountinwords" style="display:none;"></span>
 
 
                                         <!-- <label for="">Issued Date:</label>
-                  <input type="date" class="form-control"> -->
+                                        <input type="date" class="form-control"> -->
 
                                         <label for="">Duty Officer Full Name:</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" oninput="updateText();" class="form-control">
+
                                         <button name="certificate_of_income" onclick="printIframe()"
                                             type="submit">Print</button>
                                     </form>
@@ -1287,18 +500,16 @@ if (isset($_POST["certificate_of_income"])) {
 
                                 <div id="cohabitation">
                                     <form action="#" method="post" id="form">
-                                        <label for="">First Name:</label>
-                                        <input type="text" class="form-control" name="first_name_male"
-                                            placeholder="Ex. Juan"><br>
-
-                                        <label for="">Middle Initial:</label>
-                                        <input type="text" class="form-control" name="middle_name_male"
-                                            placeholder="Ex. J"><br>
-
-                                        <label for="">Last Name:</label>
-                                        <input type="text" class="form-control" name="last_name_male"
-                                            placeholder="Ex. J"><br>
-
+                                    <label for="">First Name:</label>
+                                    <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z.]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+                
+                                    <label for="">Middle Name:</label>
+                                    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
+                
+                                    <label for="">Last Name:</label>
+                                    <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+                
+                                  
 
                                         <label for="">Suffix:</label>
                                         <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
@@ -1312,23 +523,26 @@ if (isset($_POST["certificate_of_income"])) {
                                         </select><br><br>
 
                                         <label for="cohabitant1Birthdate">Birthdate:</label>
-                                        <input type="date" class="form-control" name="birthdate" id="birthdate"><br>
+                                        <input type="date" class="form-control" onchange="validatebday(this);updateText();" name="birthdate" id="birthdate"><br>
+                                       <p id="error-message" style="color: red; display: none;">You must be 18 years old or older.</p>
+                                        
 
                                         <label for="">First Name:</label>
-                                        <input type="text" class="form-control" name="first_name_female"
+                                        <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z.]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  name="first_name_female"
                                             placeholder="Ex. Barbie"><br>
 
                                         <label for="">Middle Initial:</label>
-                                        <input type="text" class="form-control" name="middle_name_female"
+                                        <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z.]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  name="middle_name_female"
                                             placeholder="Ex. J"><br>
 
                                         <label for="">Last Name:</label>
-                                        <input type="text" class="form-control" name="last_name_female"
+                                        <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z.]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  name="last_name_female"
                                             placeholder="Ex. J"><br>
 
-
                                         <label for="cohabitant1Birthdate">Birthdate:</label>
-                                        <input type="date" class="form-control" name="bday2" id="bday2"><br>
+                                        <input type="date" class="form-control" onchange="validatebday(this);updateText();"name="bday2" id="bday2"><br>
+                                       <p id="error-message" style="color: red; display: none;">You must be 18 years old or older.</p>
+
 
                                         <label for="">Purok:</label><br>
                                         <select name="puroks" id="puroks" onchange="update()">
@@ -1346,7 +560,7 @@ if (isset($_POST["certificate_of_income"])) {
                                         <br>
                                         <!--Month and Year daw-->
                                         <label for="dateOfMarriage">Date of marriage:</label>
-                                        <input type="date" id="date" class="form-control" name="date_of_marriage"><br>
+                                        <input type="date" id="date" onchange="validateformarriagedate(this);updateText();" class="form-control" name="date_of_marriage"><br>
                                         <button name="cohabitation" onclick="printIframe()" type="submit">Print</button>
                                     </form>
 
@@ -1356,17 +570,14 @@ if (isset($_POST["certificate_of_income"])) {
                                 <div id="complaint_certificate">
                                     <form action="#" method="post" id="form">
                                         <!--With honorifics-->
-                                        <label for="">First Name:</label>
-                                        <input type="text" class="form-control" name="first_name"
-                                            placeholder="Ex. Juan"><br>
-
-                                        <label for="">Middle Initial:</label>
-                                        <input type="text" class="form-control" name="middle_initial"
-                                            placeholder="Ex. J"><br>
+                                        <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z.]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+                
+                                        <label for="">Middle Name:</label>
+                                        <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
 
                                         <label for="">Last Name:</label>
-                                        <input type="text" class="form-control" name="last_name"
-                                            placeholder="Ex. Dela Cruz"><br>
+                                        <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+
 
                                         <label for="">Suffix:</label>
                                         <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
@@ -1380,7 +591,7 @@ if (isset($_POST["certificate_of_income"])) {
                                         </select><br><br>
 
                                         <label for="">Age</label>
-                                        <input type="number" name="age" class="form-control">
+                                        <input type="number"  oninput="updateText()"name="age" class="form-control">
 
                                         <label for="">Purok:</label><br>
                                         <select name="puroks" id="puroks" onchange="update()">
@@ -1398,31 +609,36 @@ if (isset($_POST["certificate_of_income"])) {
                                         <br>
 
                                         <label for="">Date Filed:</label>
-                                        <input type="date" class="form-control">
+                                        <input type="date" onchange="validateformarriagedate(this);updateText();" class="form-control">
 
                                         <!--Respondent Full Name-->
-                                        <label for="">First Name:</label>
-                                        <input type="text" class="form-control" name="first_namec"
-                                            placeholder="Ex. Juan"><br>
-
-                                        <label for="">Middle Initial:</label>
-                                        <input type="text" class="form-control" name="middle_initialc"
-                                            placeholder="Ex. J"><br>
+                                        <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z.]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+                
+                                        <label for="">Middle Name:</label>
+                                        <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
 
                                         <label for="">Last Name:</label>
-                                        <input type="text" class="form-control" name="last_namec"
-                                            placeholder="Ex. Dela Cruz"><br>
-
+                                        <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
 
 
                                         <label for="">Suffix:</label>
-                                        <input type="text" class="form-control"><br>
+                                        <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                                        <select class=" text-left" style="width: 8%;" name="suffix1" id="suffix1">
+                                            <option value="">N/A</option>
+                                            <option value="Jr">Jr</option>
+                                            <option value="Sr">Sr</option>
+                                            <option value="I">I</option>
+                                            <option value="II">II</option>
+                                            <option value="III">III</option>
+                                        </select><br>
 
                                         <label for="">Case Number:</label>
                                         <input type="number" class="form-control">
 
                                         <label for="">VAWC Official Name</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text"  oninput="updateText();"class="form-control">
+                                        
+                                        <br>
                                         <button name="complaint_certificate" onclick="printIframe()"
                                             type="submit">Print</button>
                                     </form>
@@ -1433,17 +649,13 @@ if (isset($_POST["certificate_of_income"])) {
 
                                 <div id="death_certificate">
                                     <form action="#" method="post" id="form">
-                                        <label for="">First Name:</label>
-                                        <input type="text" class="form-control" name="first_name"
-                                            placeholder="Ex. Juan"><br>
+                                    <label for="">First Name:</label>
+                                    <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z.]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+                                    <label for="">Middle Name:</label>
+                                    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
+                                    <label for="">Last Name:</label>
+                                    <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
 
-                                        <label for="">Middle Initial:</label>
-                                        <input type="text" class="form-control" name="middle_initial"
-                                            placeholder="Ex. J"><br>
-
-                                        <label for="">Last Name:</label>
-                                        <input type="text" class="form-control" name="last_name"
-                                            placeholder="Ex. Dela Cruz"><br>
 
 
                                         <label for="">Suffix:</label>
@@ -1509,8 +721,8 @@ if (isset($_POST["certificate_of_income"])) {
                                         <label for="relationshipToDeadPerson">Relationship to the dead person:</label>
                                         <input type="text" class="form-control" name="relationship_to_dead_person"><br>
 
-                                        <label for="dateRequested">Date requested:</label>
-                                        <input type="date" class="form-control" name="date_requested"><br>
+                                        <!-- <label for="dateRequested">Date requested:</label>
+                                        <input type="date" class="form-control" name="date_requested"><br> -->
                                         <button name="death_certificate" onclick="printIframe()"
                                             type="submit">Print</button>
 
@@ -1578,17 +790,15 @@ if (isset($_POST["certificate_of_income"])) {
 
                                 <div id="indigency_aics">
                                     <form action="#" method="post" id="form">
-                                        <label for="">First Name:</label>
-                                        <input type="text" class="form-control" name="first_name"
-                                            placeholder="Ex. Juan"><br>
-
-                                        <label for="">Middle Initial:</label>
-                                        <input type="text" class="form-control" name="middle_initial"
-                                            placeholder="Ex. J"><br>
-
-                                        <label for="">Last Name:</label>
-                                        <input type="text" class="form-control" name="last_name"
-                                            placeholder="Ex. Dela Cruz"><br>
+                                    <label for="">First Name:</label>
+                                    <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z.]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+                
+                                    <label for="">Middle Name:</label>
+                                    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
+                
+                                    <label for="">Last Name:</label>
+                                    <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+                
 
                                         <label for="">Suffix:</label>
                                         <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
@@ -1612,11 +822,12 @@ if (isset($_POST["certificate_of_income"])) {
                                             <option value="Sandiwa">Sandiwa</option>
                                             <option value="Trece">Trece</option>
                                             <option value="Uha">UHA</option>
-                                        </select>
+                                        </select><br>
 
-                                        <label for="indigencyIssuedDate">Issued Date:</label>
-                                        <input type="date" class="form-control" name="issued_date"><br>
+                                        <!-- <label for="indigencyIssuedDate">Issued Date:</label>
+                                        <input type="date" class="form-control" name="issued_date"><br> -->
                                         <button name="indigency_aics" onclick="printIframe()"
+                                    
                                             type="submit">Print</button>
 
                                     </form>
@@ -1624,17 +835,15 @@ if (isset($_POST["certificate_of_income"])) {
 
                                 <div id="indigency">
                                     <form action="#" method="post" id="form">
-                                        <label for="">First Name:</label>
-                                        <input type="text" class="form-control" name="first_name"
-                                            placeholder="Ex. Juan"><br>
-
-                                        <label for="">Middle Initial:</label>
-                                        <input type="text" class="form-control" name="middle_initial"
-                                            placeholder="Ex. J"><br>
-
-                                        <label for="">Last Name:</label>
-                                        <input type="text" class="form-control" name="last_name"
-                                            placeholder="Ex. Dela Cruz"><br>
+                                    <label for="">First Name:</label>
+                                    <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z.]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+                
+                                    <label for="">Middle Name:</label>
+                                    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
+                
+                                    <label for="">Last Name:</label>
+                                    <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+                
 
                                         <label for="">Suffix:</label>
                                         <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
@@ -1808,10 +1017,10 @@ if (isset($_POST["certificate_of_income"])) {
                                         <input type="number" class="form-control" name="guardian_age"><br>
 
                                         <!-- <label for="guardianOption">Option (Parent/ Guardian):</label>
-                  <input type="text" class="form-control" ><br> -->
+                                        <input type="text" class="form-control" ><br> -->
 
-                                        <!-- <label for="applicantName">Name of Applicant:</label>
-                  <input type="text" class="form-control" ><br> -->
+                                         <!-- <label for="applicantName">Name of Applicant:</label>
+                                        <input type="text" class="form-control" ><br> -->
 
                                         <label for="">Purok:</label><br>
                                         <select name="puroks" id="puroks" onchange="update()">
@@ -1838,17 +1047,15 @@ if (isset($_POST["certificate_of_income"])) {
 
                                 <div id="transfer_of_residency">
                                     <form action="#" method="post" id="form">
-                                        <label for="">First Name:</label>
-                                        <input type="text" class="form-control" name="first_name"
-                                            placeholder="Ex. Juan"><br>
-
-                                        <label for="">Middle Initial:</label>
-                                        <input type="text" class="form-control" name="middle_initial"
-                                            placeholder="Ex. J"><br>
-
-                                        <label for="">Last Name:</label>
-                                        <input type="text" class="form-control" name="last_name"
-                                            placeholder="Ex. Dela Cruz"><br>
+                                       <label for="">First Name:</label>
+                                    <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z.]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+                
+                                    <label for="">Middle Name:</label>
+                                    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
+                
+                                    <label for="">Last Name:</label>
+                                    <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+                
 
 
                                         <label for="">Suffix:</label>
@@ -1876,15 +1083,15 @@ if (isset($_POST["certificate_of_income"])) {
                                         </select><br>
 
                                         <label for="">Current Address:</label>
-                                        <input type="text" class="form-control" name="current_address"
+                                        <input type="text" class="form-control" oninput="update()" name="current_address"
                                             placeholder="Ex. Previous Address"><br>
 
                                         <label for="">Previous Address:</label>
-                                        <input type="text" class="form-control" name="previous_address"
+                                        <input type="text" class="form-control" oninput="update()" name="previous_address"
                                             placeholder="Ex. Previous Address"><br>
 
                                         <label for="">Nationality</label>
-                                        <input type="text" class="form-control" name="nationality"
+                                        <input type="text" class="form-control"oninput="update()" name="nationality"
                                             placeholder="Filipino"><br>
 
                                         <label for="">Civil Status:</label>
@@ -1895,7 +1102,7 @@ if (isset($_POST["certificate_of_income"])) {
                                         </select><br>
 
                                         <label for="">Purpose:</label>
-                                        <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
+                                        <input type="text" name="purpose"oninput="update()" class="form-control" id="" cols="30" rows="10"
                                             placeholder="Ex. Moving to another country"></input>
 
                                         <input type="date" name="issueddate" style="display:none; position:absolute;">
@@ -1973,52 +1180,59 @@ if (isset($_POST["certificate_of_income"])) {
     <script src="assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script>
-
-    </script>
+    
     <script src="assets/js/main.js"></script>
     <script src="assets/js/main2.js"></script>
     <script>
+
+   function validatebday(input) {
+            const birthDate = new Date(input.value); // Get the selected date
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            const dayDiff = today.getDate() - birthDate.getDate();
+
+            // Adjust age if the current date is before the birthdate in the current year
+            if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                age--;
+            }
+
+            if (age < 18) {
+                alert("You must be at least 18 years old.");
+                input.value = ''; // Clear the input field
+            }
+        }
+        function validateformarriagedate(input) {
+            const birthDate = new Date(input.value); // Get the selected date
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Remove time from today's date for comparison
+
+            if (birthDate > today) {
+                alert("Future dates are not allowed. Please enter a valid date.");
+                input.value = ''; // Clear the input field
+                return;
+            }
+
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            const dayDiff = today.getDate() - birthDate.getDate();
+
+            // Adjust age if the current date is before the birthdate in the current year
+            if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                age--;
+            }
+
         
-    function validatebday() {
-  const bdayInput = document.getElementById('bday');
-  const birthDate = new Date(bdayInput.value); // Get the selected date
-  const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  const dayDiff = today.getDate() - birthDate.getDate();
+        }
 
-  // Adjust age if the current date is before the birthdate in the current year
-  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-      age--;
-  }
-
-  const errorMessage = document.getElementById('error-message');
-
-  if (age < 18) {
-      errorMessage.style.display = 'block'; // Show error message
-      bdayInput.value = ''; // Clear the invalid date
-  } else {
-      errorMessage.style.display = 'none'; // Hide error message
-  }
-}
-
-fucntion validateage(){
-    const errorMessage = document.getElementById('error-messageage');
-
-  if (age < 18) {
-      errorMessage.style.display = 'block'; // Show error message
-      bdayInput.value = ''; // Clear the invalid date
-  } else {
-      errorMessage.style.display = 'none'; // Hide error message
-  }
-}
         // Select all input elements of type "text"
         const today = new Date();
         const formattedDate = today.toISOString().split('T')[0];
 
         document.getElementById('issueddate').value = formattedDate;
 
+
+        
     </script>
 </body>
 
