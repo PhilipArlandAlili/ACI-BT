@@ -38,7 +38,7 @@
     </select><br>
 
     <label for="">Date Filed:</label>
-    <input type="date" name="date_of_complain" class="form-control"><br>
+    <input type="date" name="date_of_complain" class="form-control" required><br>
     <hr>
 
     <!--Respondent Full Name-->
@@ -54,7 +54,7 @@
     <input type="text" class="form-control" id="last_name" name="last_name_respondent" placeholder="Ex. Dela Cruz" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix_respondent" id="suffix_respondent" required>
+    <select class="text-left form-control" name="suffix_respondent" id="suffix_respondent">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -64,10 +64,10 @@
     </select><br>
 
     <label for="">Case Number:</label>
-    <input type="number" name="case_no" class="form-control" placeholder="2024-005"><br>
+    <input type="number" name="case_no" class="form-control" placeholder="2024-005" required><br>
 
     <label for="">VAWC Official Name</label>
-    <input type="text" name="vawc_official_name" class="form-control"><br>
+    <input type="text" name="vawc_official_name" class="form-control" required><br>
     <hr>
 
     <div class="complaintPrint" style="text-align: right;">

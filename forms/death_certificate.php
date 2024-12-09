@@ -38,13 +38,13 @@
     </select><br>
 
     <label for="dateOfDeath">Date of death:</label>
-    <input type="date" class="form-control" name="date_of_death"><br>
+    <input type="date" class="form-control" name="date_of_death" required><br>
 
     <label for="timeOfDeath">Time of death:</label>
-    <input type="time" class="form-control" name="time_of_death"><br>
+    <input type="time" class="form-control" name="time_of_death" required><br>
 
     <label for="causeOfDeath">Cause of death:</label>
-    <input type="text" class="form-control" name="cause_of_death" placeholder="Too old"><br>
+    <input type="text" class="form-control" name="cause_of_death" placeholder="Too old" required><br>
     <hr>
 
 
@@ -70,7 +70,7 @@
     </select><br>
 
     <label for="relationshipToDeadPerson">Relationship to the dead person:</label>
-    <input type="text" class="form-control" name="relationship" placeholder="Son"><br>
+    <input type="text" class="form-control" name="relationship" placeholder="Son" required><br>
     <hr>
 
     <div class="deathPrint" style="text-align: right;">
