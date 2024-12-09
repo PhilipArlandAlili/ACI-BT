@@ -175,11 +175,11 @@ if (!isset($_SESSION['username'])) {
                                                 // Wait for the page to load before running the script
                                                 document.addEventListener('DOMContentLoaded', function () {
                                                     // Use PHP variables in JavaScript
-                                                    const Sales_Clearance = <?php echo $count_barangay_clearance; ?>;
+                                                    const barangay_clearance = <?php echo $count_barangay_clearance; ?>;
                                                     const sum = <?php echo $sum; ?>;
 
                                                     // Calculate the clearance percentage
-                                                    const Sales_Clearance_Percent = (barangay_clearance / sum) * 100;
+                                                    const barangay_clearance_percent = (barangay_clearance / sum) * 100;
 
                                                     // Set the clearance percentage value into the span
                                                     document.getElementById('barangay_clearance_percent').innerHTML = barangay_clearance.toFixed(2) + '%';
@@ -992,6 +992,7 @@ if (!isset($_SESSION['username'])) {
 
                         <div class="select-holder d-flex gap-3">
                             <select id="yearFilter" onchange="updateChart()" class="card p-2">
+                                <option value="2023">2023</option>
                                 <option value="2024">2024</option>
                                 <option value="2025">2025</option>
                                 <option value="2026">2026</option>

@@ -180,7 +180,7 @@ if (!isset($_SESSION['username'])) {
                                             // echo "<th>ID</th>";
                                             echo "<th>First Name</th>";
                                             echo "<th>Middle Name</th>";
-                                            echo "<th>Last Namer</th>";
+                                            echo "<th>Last Name</th>";
                                             echo "<th>Suffix</th>";
                                             echo "<th>Age</th>";
                                             echo "<th>Address</th>";
@@ -238,7 +238,7 @@ if (!isset($_SESSION['username'])) {
                                             // echo "<th>ID</th>";
                                             echo "<th>First Name</th>";
                                             echo "<th>Middle Name</th>";
-                                            echo "<th>Last Namer</th>";
+                                            echo "<th>Last Name</th>";
                                             echo "<th>Suffix</th>";
                                             echo "<th>Age</th>";
                                             echo "<th>Civil Status</th>";
@@ -260,7 +260,6 @@ if (!isset($_SESSION['username'])) {
                                             echo "<td>" . $row["address"] . "</td>";
                                             echo "<td>" . $row["purpose"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
-                                            echo "<td>" . $row["issued_date"] . "</td>";
                                             echo "<td>" . $row["duty_officer_name"] . "</td>";
                                             echo "</tr>";
                                             echo "</tbody>";
@@ -271,12 +270,9 @@ if (!isset($_SESSION['username'])) {
                                             // echo "<th>ID</th>";
                                             echo "<th>First Name</th>";
                                             echo "<th>Middle Name</th>";
-                                            echo "<th>Last Namer</th>";
+                                            echo "<th>Last Name</th>";
                                             echo "<th>Suffix</th>";
-
-
                                             echo "<th>Address</th>";
-
                                             echo "<th>Issued Date</th>";
                                             echo "<th>Duty Officer Name</th>";
                                             echo "</tr>";
@@ -288,11 +284,7 @@ if (!isset($_SESSION['username'])) {
                                             echo "<td>" . $row["middle_name"] . "</td>";
                                             echo "<td>" . $row["last_name"] . "</td>";
                                             echo "<td>" . $row["suffix"] . "</td>";
-
-
                                             echo "<td>" . $row["address"] . "</td>";
-
-                                            echo "<td>" . $row["issued_date"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
                                             echo "<td>" . $row["duty_officer_name"] . "</td>";
                                             echo "</tr>";
@@ -370,32 +362,79 @@ if (!isset($_SESSION['username'])) {
                                             echo "<td>" . $row["age"] . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
                                             echo "<td>" . $row["date_of_death"] . "</td>";
+                                            echo "<td>" . $row["time_of_death"] . "</td>";
                                             echo "<td>" . $row["req_first_name"] . "</td>";
                                             echo "<td>" . $row["req_middle_name"] . "</td>";
                                             echo "<td>" . $row["req_last_name"] . "</td>";
                                             echo "<td>" . $row["req_suffix"] . "</td>";
                                             echo "<td>" . $row["relationship"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
+                                            echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                            echo "</tr>";
+                                            echo "</tbody>";
+                                        }
+                                        if ($table == "lot_ownership") {
+                                            echo "<thead>";
+                                            echo "<tr>";
+                                            // echo "<th>ID</th>";
+                                            echo "<th>First Name</th>";
+                                            echo "<th>Middle Name</th>";
+                                            echo "<th>Last Name</th>";
+                                            echo "<th>Suffix</th>";
+                                            echo "<th>Address</th>";
+                                            echo "<th>Lot No.</th>";
+                                            echo "<th>Issued Date</th>";
+                                            echo "<th>Duty Officer Name</th>";
+                                            echo "</tr>";
+                                            echo "</thead>";
+                                            echo "<tbody>";
+                                            echo "<tr>";
+                                            // echo "<td>" . $row["id"] . "</td>";
+                                            echo "<td>" . $row["first_name"] . "</td>";
+                                            echo "<td>" . $row["middle_name"] . "</td>";
+                                            echo "<td>" . $row["last_name"] . "</td>";
+                                            echo "<td>" . $row["suffix"] . "</td>";
+                                            echo "<td>" . $row["address"] . "</td>";
+                                            echo "<td>" . $row["lot_no"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
                                             echo "<td>" . $row["duty_officer_name"] . "</td>";
                                             echo "</tr>";
                                             echo "</tbody>";
                                         }
-
-                                        // test
-                                        // For Cohabitation
-                                        // echo "<tr>";
-                                        // echo "<td>" . $row["id"] . "</td>";
-                                        // echo "<td>" . $row["fullname_male"] . "</td>";
-                                        // echo "<td>" . $row["birthdate_male"] . "</td>";
-                                        // echo "<td>" . $row["fullname_female"] . "</td>";
-                                        // echo "<td>" . $row["birthdate_female"] . "</td>";
-                                        // echo "<td>" . $row["address"] . "</td>";
-                                        // echo "<td>" . $row["date_of_marriage"] . "</td>";
-                                        // echo "<td>" . $row["years_married"] . "</td>";
-                                        // echo "<td>" . $row["issued_date"] . "</td>";
-                                        // echo "<td>" . $row["duty_officer_name"] . "</td>";
-                                        // echo "</tr>";
+                                        if ($table == "transfer_of_residency") {
+                                            echo "<thead>";
+                                            echo "<tr>";
+                                            // echo "<th>ID</th>";
+                                            echo "<th>First Name</th>";
+                                            echo "<th>Middle Name</th>";
+                                            echo "<th>Last Name</th>";
+                                            echo "<th>Suffix</th>";
+                                            echo "<th>Address</th>";
+                                            echo "<th>Nationality</th>";
+                                            echo "<th>Civil Status</th>";
+                                            echo "<th>Previus Address</th>";
+                                            echo "<th>Purpose</th>";
+                                            echo "<th>Issued Date</th>";
+                                            echo "<th>Duty Officer Name</th>";
+                                            echo "</tr>";
+                                            echo "</thead>";
+                                            echo "<tbody>";
+                                            echo "<tr>";
+                                            // echo "<td>" . $row["id"] . "</td>";
+                                            echo "<td>" . $row["first_name"] . "</td>";
+                                            echo "<td>" . $row["middle_name"] . "</td>";
+                                            echo "<td>" . $row["last_name"] . "</td>";
+                                            echo "<td>" . $row["suffix"] . "</td>";
+                                            echo "<td>" . $row["address"] . "</td>";
+                                            echo "<td>" . $row["nationality"] . "</td>";
+                                            echo "<td>" . $row["civil_status"] . "</td>";
+                                            echo "<td>" . $row["previous_address"] . "</td>";
+                                            echo "<td>" . $row["purpose"] . "</td>";
+                                            echo "<td>" . $row["issued_date"] . "</td>";
+                                            echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                            echo "</tr>";
+                                            echo "</tbody>";
+                                        }
                                     }
                                 } else {
                                     echo "<tr><td colspan='5'><center>No transactions found</center></td></tr>";

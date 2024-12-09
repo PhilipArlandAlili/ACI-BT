@@ -51,11 +51,27 @@
     </select><br>
 
     <label for="period_of_residency">Period of Residency:</label>
+    <div class="radios d-flex gap-3">
+        <div class="form-check">
+            <input class="form-check-input" name="period_of_residency" type="radio" value="months" id="radioMonths">
+            <label class="form-check-label" for="radioMonths">
+                Months
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" name="period_of_residency" type="radio" value="years" id="radioYears">
+            <label class="form-check-label" for="radioYears">
+                Years
+            </label>
+        </div>
+    </div>
+
+
     <input type="number" class="form-control" id="period_of_residency" name="period_of_residency"
-        placeholder="Ex. 3 years" required><br>
+        placeholder="Ex. 3 years/months" required><br>
 
     <label for="purpose">Purpose:</label>
-    <input type="text" name="purpose" class="form-control" id="purpose" placeholder="Ex. Undecided" required><br>
+    <input type="text" name="purpose" class="form-control" id="purpose" placeholder="Ex. Residency Verification" required><br>
 
     <input type="date" name="issueddate" style="display:none; position:absolute;">
     <hr>

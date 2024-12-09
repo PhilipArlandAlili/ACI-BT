@@ -54,12 +54,9 @@ if (isset($_POST["barangay_clearance"])) {
         } else {
             //echo "Error: Admin user not found.";
         }
-
+    
         $admin_stmt->close();
-    } else {
-        //echo "Error: " . $stmt->error;
     }
-
     $stmt->close();
 }
 
@@ -83,41 +80,28 @@ if (isset($_POST["business_permit_new"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
 
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?, (SELECT COUNT(*) FROM business_permit_new), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $manager);
 
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?, (SELECT COUNT(*) FROM business_permit_new), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $manager);
-
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-
-                $trans_stmt->close();
-
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
 
-            $admin_stmt->close();
-        } else {
-            //echo "Error: " . $stmt->error;
-        }
+            $trans_stmt->close();
 
-        $stmt->close();
+        } else {
+            //echo "Error: Admin user not found.";
+        }
+    
+        $admin_stmt->close();
     }
+    $stmt->close();
 }
 
 if (isset($_POST["business_permit_renew"])) {
@@ -140,41 +124,28 @@ if (isset($_POST["business_permit_renew"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
 
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 3, ?, (SELECT COUNT(*) FROM business_permit_renew), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $manager);
 
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 3, ?, (SELECT COUNT(*) FROM business_permit_renew), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $manager);
-
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-
-                $trans_stmt->close();
-
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
 
-            $admin_stmt->close();
-        } else {
-            //echo "Error: " . $stmt->error;
-        }
+            $trans_stmt->close();
 
-        $stmt->close();
+        } else {
+            //echo "Error: Admin user not found.";
+        }
+    
+        $admin_stmt->close();
     }
+    $stmt->close();
 }
 
 if (isset($_POST["certificate_of_cohabitation"])){
@@ -194,7 +165,7 @@ if (isset($_POST["certificate_of_cohabitation"])){
     $years_married = date('Y') - date('Y', strtotime($date_of_marriage));
 
     $stmt = $conn->prepare("INSERT INTO certificate_of_cohabitation (first_name_male, middle_name_male, last_name_male, suffix_male, birthdate_male, first_name_female, middle_name_female, last_name_female, birthdate_female, address, date_of_marriage, years_married, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssssssssiss', $first_name_male, $middle_name_male, $last_name_male, $suffix, $birthdate_male, $first_name_female, $middle_name_female, $last_name_female, $birthdate_female, $purok, $date_of_marriage, $years_married, $issued_date, $duty_officer_name);
+    $stmt->bind_param('sssssssssssiss', $first_name_male, $middle_name_male, $last_name_male, $suffix, $birthdate, $first_name_female, $middle_name_female, $last_name_female, $birthdate_female, $purok, $date_of_marriage, $years_married, $issued_date, $duty_officer_name);
 
     if ($stmt->execute()) {
         //echo "New record inserted successfully";
@@ -205,44 +176,422 @@ if (isset($_POST["certificate_of_cohabitation"])){
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
-    
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
-    
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-    
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 4, ?, (SELECT COUNT(*) FROM certificate_of_cohabitation), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $fullname);
-    
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-    
-                $trans_stmt->close();
-    
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 4, ?, (SELECT COUNT(*) FROM certificate_of_cohabitation), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
-    
-            $admin_stmt->close();
+
+            $trans_stmt->close();
+
         } else {
-            //echo "Error: " . $stmt->error;
+            //echo "Error: Admin user not found.";
         }
     
-        $stmt->close();
+        $admin_stmt->close();
     }
+    $stmt->close();
+}
+
+if (isset($_POST["certificate_of_employability"])) {
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $birthdate = $conn->real_escape_string($_POST["birthdate"]);
+
+    $age = date('Y') - date('Y', strtotime($birthdate));
+    $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
+
+    $stmt = $conn->prepare("INSERT INTO certificate_of_employability (first_name, middle_name, last_name, suffix, address, age, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssiss', $first_name, $middle_name, $last_name, $suffix, $purok, $age, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        //echo "New record inserted successfully";
+
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $duty_officer_name);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 5, ?, (SELECT COUNT(*) FROM certificate_of_employability), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
+            } else {
+                //echo "Error: " . $trans_stmt->error;
+            }
+
+            $trans_stmt->close();
+
+        } else {
+            //echo "Error: Admin user not found.";
+        }
+    
+        $admin_stmt->close();
+    }
+    $stmt->close();
+}
+
+if (isset($_POST["certificate_of_income"])) {
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $income_num = $conn->real_escape_string($_POST["income_num"]);
+    $income_words = $conn->real_escape_string($_POST["income_words"]);
+
+    $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
+
+    $stmt = $conn->prepare("INSERT INTO certificate_of_income (first_name, middle_name, last_name, suffix, address, income_num, income_words, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssssss', $first_name, $middle_name, $last_name, $suffix, $purok, $income_num, $income_words, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        //echo "New record inserted successfully";
+
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $duty_officer_name);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 6, ?, (SELECT COUNT(*) FROM certificate_of_income), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
+            } else {
+                //echo "Error: " . $trans_stmt->error;
+            }
+
+            $trans_stmt->close();
+
+        } else {
+            //echo "Error: Admin user not found.";
+        }
+    
+        $admin_stmt->close();
+    }
+    $stmt->close();
+}
+
+if (isset($_POST["certificate_of_indigency"])) {
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $birthdate = $conn->real_escape_string($_POST["birthdate"]);
+    $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $purpose = $conn->real_escape_string($_POST["purpose"]);
+
+    $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
+    $age = date('Y') - date('Y', strtotime($birthdate));
+
+    $stmt = $conn->prepare("INSERT INTO certificate_of_indigency (first_name, middle_name, last_name, suffix, age, civil_status, address, purpose, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssissssss', $first_name, $middle_name, $last_name, $suffix, $age, $civil_status, $purok, $purpose, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        //echo "New record inserted successfully";
+
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $duty_officer_name);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 7, ?, (SELECT COUNT(*) FROM certificate_of_indigency), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
+            } else {
+                //echo "Error: " . $trans_stmt->error;
+            }
+
+            $trans_stmt->close();
+
+        } else {
+            //echo "Error: Admin user not found.";
+        }
+    
+        $admin_stmt->close();
+    }
+    $stmt->close();
+}
+
+if (isset($_POST["certificate_of_indigency_aics"])) {
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+
+    $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
+
+    $stmt = $conn->prepare("INSERT INTO certificate_of_indigency_aics (first_name, middle_name, last_name, suffix, address, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssss', $first_name, $middle_name, $last_name, $suffix, $purok, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        //echo "New record inserted successfully";
+
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $duty_officer_name);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 8, ?, (SELECT COUNT(*) FROM certificate_of_indigency_aics), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
+            } else {
+                //echo "Error: " . $trans_stmt->error;
+            }
+
+            $trans_stmt->close();
+
+        } else {
+            //echo "Error: Admin user not found.";
+        }
+    
+        $admin_stmt->close();
+    }
+    $stmt->close();
+}
+// not done yet
+if (isset($_POST["complaint_certificate"])) {
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $complaint = $conn->real_escape_string($_POST["complaint"]);
+
+    $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
+
+    $stmt = $conn->prepare("INSERT INTO complaint_certificate (first_name, middle_name, last_name, suffix, address, complaint, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('ssssssss', $first_name, $middle_name, $last_name, $suffix, $purok, $complaint, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        //echo "New record inserted successfully";
+
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $duty_officer_name);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 9, ?, (SELECT COUNT(*) FROM complaint_certificate), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
+            } else {
+                //echo "Error: " . $trans_stmt->error;
+            }
+
+            $trans_stmt->close();
+
+        } else {
+            //echo "Error: Admin user not found.";
+        }
+    
+        $admin_stmt->close();
+    }
+    $stmt->close();
+}
+
+if (isset($_POST["death_certificate"])) {
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    // $birthdate = $conn->real_escape_string($_POST["birthdate"]);
+    $date_of_death = $conn->real_escape_string($_POST["date_of_death"]);
+    $time_of_death = $conn->real_escape_string($_POST["time_of_death"]);
+    $cause_of_death = $conn->real_escape_string($_POST["cause_of_death"]);
+    $req_first_name = $conn->real_escape_string($_POST["req_first_name"]);
+    $req_middle_name = $conn->real_escape_string($_POST["req_middle_name"]);
+    $req_last_name = $conn->real_escape_string($_POST["req_last_name"]);
+    $req_suffix = $conn->real_escape_string($_POST["req_suffix"]);
+    $relationship = $conn->real_escape_string($_POST["relationship"]);
+
+    $fullname = $req_first_name . ' ' . $req_middle_name . ' ' . $req_last_name . ' ' . $req_suffix;
+    // $age = date('Y') - date('Y', strtotime($birthdate));
+    $age = 0;
+
+    $stmt = $conn->prepare("INSERT INTO death_certificate (first_name, middle_name, last_name, suffix, age, address, date_of_death, time_of_death, req_first_name, req_middle_name, req_last_name, req_suffix, relationship, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssssssssssss', $first_name, $middle_name, $last_name, $suffix, $age, $purok, $date_of_death, $time_of_death, $req_first_name, $req_middle_name, $req_last_name, $req_suffix, $relationship, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        //echo "New record inserted successfully";
+
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $duty_officer_name);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 10, ?, (SELECT COUNT(*) FROM death_certificate), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
+            } else {
+                //echo "Error: " . $trans_stmt->error;
+            }
+
+            $trans_stmt->close();
+
+        } else {
+            //echo "Error: Admin user not found.";
+        }
+    
+        $admin_stmt->close();
+    }
+    $stmt->close();
+}
+
+if (isset($_POST["lot_ownership"])) {
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $claimant = $conn->real_escape_string($_POST["claimant"]);
+    $beneficiary = $conn->real_escape_string($_POST["beneficiary"]);
+    $actual_occupant = $conn->real_escape_string($_POST["actual_occupant"]);
+    $lot_number = $conn->real_escape_string($_POST["lot_number"]);
+    $lot_area_numerical = $conn->real_escape_string($_POST["lot_area_numerical"]);
+    $lot_location_address = $conn->real_escape_string($_POST["lot_location_address"]);
+
+    $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
+    $lot_area_words = "????? pesos";
+
+    $stmt = $conn->prepare("INSERT INTO lot_ownership (first_name, middle_name, last_name, suffix, address, claimant, beneficiary, actual_occupant, lot_no, area_measurement_num, area_measurement_words, loc_address, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('ssssssssssssss', $first_name, $middle_name, $last_name, $suffix, $purok, $claimant, $beneficiary, $actual_occupant, $lot_number, $lot_area_numerical, $lot_area_words, $lot_location_address, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        //echo "New record inserted successfully";
+
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $duty_officer_name);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 11, ?, (SELECT COUNT(*) FROM lot_ownership), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
+            } else {
+                //echo "Error: " . $trans_stmt->error;
+            }
+
+            $trans_stmt->close();
+
+        } else {
+            //echo "Error: Admin user not found.";
+        }
+    
+        $admin_stmt->close();
+    }
+    $stmt->close();
+}
+
+if (isset($_POST["transfer_of_residency"])) {
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $current_address = $conn->real_escape_string($_POST["current_address"]);
+    $previous_address = $conn->real_escape_string($_POST["previous_address"]);
+    $nationality = $conn->real_escape_string($_POST["nationality"]);
+    $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+    $purpose = $conn->real_escape_string($_POST["purpose"]);
+
+    $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
+
+    $stmt = $conn->prepare("INSERT INTO transfer_of_residency (first_name, middle_name, last_name, suffix, address, nationality, civil_status, previous_address, purpose, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssssssss', $first_name, $middle_name, $last_name, $suffix, $purok, $nationality, $civil_status, $previous_address, $purpose, $issued_date, $duty_officer_name);
+
+    if ($stmt->execute()) {
+        //echo "New record inserted successfully";
+
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $duty_officer_name);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 12, ?, (SELECT COUNT(*) FROM transfer_of_residency), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
+            } else {
+                //echo "Error: " . $trans_stmt->error;
+            }
+
+            $trans_stmt->close();
+
+        } else {
+            //echo "Error: Admin user not found.";
+        }
+    
+        $admin_stmt->close();
+    }
+    $stmt->close();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -301,17 +650,14 @@ if (isset($_POST["certificate_of_cohabitation"])){
                                 <option value="barangay_clearance">Barangay Clearance</option>
                                 <option value="business_permit_new">Barangay Business Permit New</option>
                                 <option value="business_permit_renew">Barangay Business Permit Renew</option>
-                                <option value="certificate_of_employability">Certificate Of Employability</option>
+                                <option value="certificate_of_cohabitation">Certificate of Cohabitation</option>
+                                <option value="certificate_of_employability">Certificate of Employability</option>
                                 <option value="certificate_of_income">Certificate of Income</option>
-                                <option value="cohabitation">Certificate of Cohabitation</option>
+                                <option value="certificate_of_indigency">Certificate of Indigency</option>
+                                <option value="certificate_of_indigency_aics">Certificate of Indigency (AICS)</option>
                                 <option value="complaint_certificate">Complaint Certificate</option>
                                 <option value="death_certificate">Death Certificate</option>
-                                <option value="first_time_job_seeker">Barangay Certification (First time Job Seeker)
-                                </option>
-                                <option value="indigency_aics">Indigency (AICS)</option>
-                                <option value="indigency">Indigency</option>
                                 <option value="lot_ownership">Lot Ownership</option>
-                                <option value="Oathtaking">Oathtaking</option>
                                 <option value="transfer_of_residency">Certificate of Transfer</option>
                             </select>
                         </div>
@@ -337,8 +683,8 @@ if (isset($_POST["certificate_of_cohabitation"])){
                                 <?php include 'forms/certificate_of_income.php' ?>
                             </div>
 
-                            <div class="cert" id="cohabitation">
-                                <?php include 'forms/cohabilitation.php' ?>
+                            <div class="cert" id="certificate_of_cohabitation">
+                                <?php include 'forms/cohabitation.php' ?>
                             </div>
 
                             <div class="cert" id="complaint_certificate">
@@ -348,26 +694,17 @@ if (isset($_POST["certificate_of_cohabitation"])){
                             <div class="cert" id="death_certificate">
                                 <?php include 'forms/death_certificate.php' ?>
                             </div>
-
-                            <div class="cert" id="first_time_job_seeker">
-                                <?php include 'forms/first_time_job_seeker.php' ?>
-                            </div>
-
-                            <div class="cert" id="indigency_aics">
-                                <?php include 'forms/indigency_aics.php' ?>
-                            </div>
-
-                            <div class="cert" id="indigency">
+                            
+                            <div class="cert" id="certificate_of_indigency">
                                 <?php include 'forms/indigency.php' ?>
+                            </div>
+
+                            <div class="cert" id="certificate_of_indigency_aics">
+                                <?php include 'forms/indigency_aics.php' ?>
                             </div>
 
                             <div class="cert" id="lot_ownership">
                                 <?php include 'forms/lot_ownership.php' ?>
-                            </div>
-
-                            <div class="cert" id="Oathtaking"> ⁡⁢⁣⁢
-                                <!-- ‍wala sa database table -->⁡⁡
-                                <?php include 'forms/Oathtaking.php' ?>
                             </div>
 
                             <div class="cert" id="transfer_of_residency">

@@ -10,7 +10,7 @@
     <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Ex. Dela Cruz" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="suffix" required>
+    <select class="text-left form-control" name="suffix" id="suffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -19,7 +19,7 @@
         <option value="III">III</option>
     </select><br>
 
-    <label for="puroks">Purok:</label>
+    <label for="purok">Purok:</label>
     <select class="text-left form-control" name="purok" id="purok" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
@@ -35,13 +35,13 @@
 
     <!-- Birthday input -->
     <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" id="birthday" name="birthday" required><br>
+    <input type="date" class="form-control" id="birthdate" name="birthdate" required><br>
 
     <!-- Age input (readonly) -->
-    <label for="age">Age:</label>
-    <input type="text" class="form-control" id="age" name="age" readonly><br>
+    <!-- <label for="age">Age:</label>
+    <input type="text" class="form-control" id="age" name="age" readonly><br> -->
 
-    <label for="purok">Purok:</label>
+    <!-- <label for="purok">Purok:</label>
     <select class="text-left form-control" name="purok" id="purok" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
@@ -53,7 +53,7 @@
         <option value="Sandiwa">Sandiwa</option>
         <option value="Trece">Trece</option>
         <option value="Uha">UHA</option>
-    </select><br>
+    </select><br> -->
     <hr>
 
     <div class="employabilityPrint" style="text-align: right;">

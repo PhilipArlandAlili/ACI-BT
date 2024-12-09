@@ -1,20 +1,16 @@
 function toggleFields() {
-    const certs = [
-        'barangay_clearance',
+    const certs = ['barangay_clearance',
         'business_permit_new',
         'business_permit_renew',
         'certificate_of_employability',
         'certificate_of_income',
-        'cohabitation',
+        'certificate_of_cohabitation',
         'complaint_certificate',
         'death_certificate',
-        'first_time_job_seeker',
-        'indigency',
-        'indigency_aics',
+        'certificate_of_indigency',
+        'certificate_of_indigency_aics',
         'lot_ownership',
-        'Oathtaking',
-        'transfer_of_residency'
-    ];
+        'transfer_of_residency'];
 
     certs.forEach(function(cert) {
         const formElement = document.getElementById(cert);
