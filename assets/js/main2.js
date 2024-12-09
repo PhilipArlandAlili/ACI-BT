@@ -16,7 +16,7 @@ const certs = ['barangay_clearance',
   'business_permit_renew',
   'certificate_of_employability',
   'certificate_of_income',
-  'cohabitation',
+  'certificate_of_cohabitation',
   'complaint_certificate',
   'death_certificate',
   'indigency',
@@ -109,7 +109,7 @@ function numberToWords(number) {
 function toggleFields() {
   const varname = [
     "first_name",
-    "middle_initial",
+    "middle_name",
     "last_name",
     "age",      
   ];
@@ -130,19 +130,19 @@ function toggleFields() {
   });
 
   document.querySelectorAll("#purok").forEach(function (name){
-  name.setAttribute('id','puroks');
-  name.setAttribute('name','puroks');
+  name.setAttribute('id','purok');
+  name.setAttribute('name','purok');
 
   });
   
   document.querySelectorAll("#bday").forEach(function (name){
-    name.setAttribute('id','bdays');
-    name.setAttribute('name','bdays');
+    name.setAttribute('id','birthdate');
+    name.setAttribute('name','birthdate');
   
     });
   document.querySelectorAll("#suffix").forEach(function (name){
-  name.setAttribute('id','suffixs');
-  name.setAttribute('name','suffixs');
+  name.setAttribute('id','suffix');
+  name.setAttribute('name','suffix');
 
   });
   var certificateType = document.getElementById('certificateType').value;
@@ -184,7 +184,7 @@ function toggleFields() {
           }
     }
   var purokSelect = currentForm.querySelector('select[id="puroks"]');
-  var suffixSelect = currentForm.querySelector('select[id="suffixs"]');
+  var suffixSelect = currentForm.querySelector('select[id="suffix"]');
   var bdayinput = currentForm.querySelector('input[id="bdays"]');
 
 
@@ -323,7 +323,7 @@ if(certificateType.value == 'lot_ownership') {
 }
 
 
-if(certificateType.value == 'cohabitation') {
+if(certificateType.value == 'certificate_of_cohabitation') {
 var periods = iframeDocument.getElementById('period');
 var inyears = iframeDocument.getElementById('inyears');
 

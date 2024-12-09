@@ -810,11 +810,11 @@ if (isset($_POST["transfer_of_residency"])) {
                                 <option value="barangay_clearance">Barangay Clearance</option>
                                 <option value="business_permit_new">Barangay Business Permit New</option>
                                 <option value="business_permit_renew">Barangay Business Permit Renew</option>
-                                <option value="cohabitation">Certificate of Cohabitation</option>
-                                <option value="certificate_of_employability">Certificate Of Employability</option>
+                                <option value="certificate_of_cohabitation">Certificate of Cohabitation</option>
+                                <option value="certificate_of_employability">Certificate of Employability</option>
                                 <option value="certificate_of_income">Certificate of Income</option>
-                                <option value="indigency">Indigency</option>
-                                <option value="indigency_aics">Indigency (AICS)</option>
+                                <option value="certificate_of_indigency">Certificate of Indigency</option>
+                                <option value="certificate_of_indigency_aics">Certificate of Indigency (AICS)</option>
                                 <option value="complaint_certificate">Complaint Certificate</option>
                                 <option value="death_certificate">Death Certificate</option>
                                 <option value="lot_ownership">Lot Ownership</option>
@@ -843,7 +843,7 @@ if (isset($_POST["transfer_of_residency"])) {
                                 <?php include 'forms/certificate_of_income.php' ?>
                             </div>
 
-                            <div class="cert" id="cohabitation">
+                            <div class="cert" id="certificate_of_cohabitation">
                                 <?php include 'forms/cohabilitation.php' ?>
                             </div>
 
@@ -854,26 +854,17 @@ if (isset($_POST["transfer_of_residency"])) {
                             <div class="cert" id="death_certificate">
                                 <?php include 'forms/death_certificate.php' ?>
                             </div>
-
-                            <div class="cert" id="first_time_job_seeker">
-                                <?php include 'forms/first_time_job_seeker.php' ?>
-                            </div>
-
-                            <div class="cert" id="indigency_aics">
-                                <?php include 'forms/indigency_aics.php' ?>
-                            </div>
-
-                            <div class="cert" id="indigency">
+                            
+                            <div class="cert" id="certificate_of_indigency">
                                 <?php include 'forms/indigency.php' ?>
+                            </div>
+
+                            <div class="cert" id="certificate_of_indigency_aics">
+                                <?php include 'forms/indigency_aics.php' ?>
                             </div>
 
                             <div class="cert" id="lot_ownership">
                                 <?php include 'forms/lot_ownership.php' ?>
-                            </div>
-
-                            <div class="cert" id="Oathtaking"> ⁡⁢⁣⁢
-                                <!-- ‍wala sa database table -->⁡⁡
-                                <?php include 'forms/Oathtaking.php' ?>
                             </div>
 
                             <div class="cert" id="transfer_of_residency">
