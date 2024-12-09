@@ -35,7 +35,7 @@
     </select><br>
 
     <label for="">Current Address:</label>
-    <input type="text" class="form-control" name="current_address" placeholder="Ex. Previous Address" required><br>
+    <input type="text" class="form-control" name="current_address" placeholder="Ex. Current Address" required><br>
 
     <label for="">Previous Address:</label>
     <input type="text" class="form-control" name="previous_address" placeholder="Ex. Previous Address" required><br>
