@@ -36,41 +36,28 @@ if (isset($_POST["barangay_clearance"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
-    
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
-    
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-    
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?, (SELECT COUNT(*) FROM barangay_clearance), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $fullname);
-    
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-    
-                $trans_stmt->close();
-    
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?, (SELECT COUNT(*) FROM barangay_clearance), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
-    
-            $admin_stmt->close();
+
+            $trans_stmt->close();
+
         } else {
-            //echo "Error: " . $stmt->error;
+            //echo "Error: Admin user not found.";
         }
     
-        $stmt->close();
+        $admin_stmt->close();
     }
+    $stmt->close();
 }
 
 if (isset($_POST["business_permit_new"])) {
@@ -93,41 +80,28 @@ if (isset($_POST["business_permit_new"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
 
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?, (SELECT COUNT(*) FROM business_permit_new), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $manager);
 
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?, (SELECT COUNT(*) FROM business_permit_new), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $manager);
-
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-
-                $trans_stmt->close();
-
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
 
-            $admin_stmt->close();
-        } else {
-            //echo "Error: " . $stmt->error;
-        }
+            $trans_stmt->close();
 
-        $stmt->close();
+        } else {
+            //echo "Error: Admin user not found.";
+        }
+    
+        $admin_stmt->close();
     }
+    $stmt->close();
 }
 
 if (isset($_POST["business_permit_renew"])) {
@@ -150,41 +124,28 @@ if (isset($_POST["business_permit_renew"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
 
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 3, ?, (SELECT COUNT(*) FROM business_permit_renew), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $manager);
 
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 3, ?, (SELECT COUNT(*) FROM business_permit_renew), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $manager);
-
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-
-                $trans_stmt->close();
-
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
 
-            $admin_stmt->close();
-        } else {
-            //echo "Error: " . $stmt->error;
-        }
+            $trans_stmt->close();
 
-        $stmt->close();
+        } else {
+            //echo "Error: Admin user not found.";
+        }
+    
+        $admin_stmt->close();
     }
+    $stmt->close();
 }
 
 if (isset($_POST["certificate_of_cohabitation"])){
@@ -215,41 +176,28 @@ if (isset($_POST["certificate_of_cohabitation"])){
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
-    
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
-    
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-    
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 4, ?, (SELECT COUNT(*) FROM certificate_of_cohabitation), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $fullname);
-    
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-    
-                $trans_stmt->close();
-    
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 4, ?, (SELECT COUNT(*) FROM certificate_of_cohabitation), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
-    
-            $admin_stmt->close();
+
+            $trans_stmt->close();
+
         } else {
-            //echo "Error: " . $stmt->error;
+            //echo "Error: Admin user not found.";
         }
     
-        $stmt->close();
+        $admin_stmt->close();
     }
+    $stmt->close();
 }
 
 if (isset($_POST["certificate_of_employability"])) {
@@ -275,41 +223,28 @@ if (isset($_POST["certificate_of_employability"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
-    
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
-    
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-    
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 5, ?, (SELECT COUNT(*) FROM certificate_of_employability), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $fullname);
-    
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-    
-                $trans_stmt->close();
-    
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 5, ?, (SELECT COUNT(*) FROM certificate_of_employability), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
-    
-            $admin_stmt->close();
+
+            $trans_stmt->close();
+
         } else {
-            //echo "Error: " . $stmt->error;
+            //echo "Error: Admin user not found.";
         }
     
-        $stmt->close();
+        $admin_stmt->close();
     }
+    $stmt->close();
 }
 
 if (isset($_POST["certificate_of_income"])) {
@@ -335,41 +270,28 @@ if (isset($_POST["certificate_of_income"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
-    
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
-    
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-    
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 6, ?, (SELECT COUNT(*) FROM certificate_of_income), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $fullname);
-    
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-    
-                $trans_stmt->close();
-    
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 6, ?, (SELECT COUNT(*) FROM certificate_of_income), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
-    
-            $admin_stmt->close();
+
+            $trans_stmt->close();
+
         } else {
-            //echo "Error: " . $stmt->error;
+            //echo "Error: Admin user not found.";
         }
     
-        $stmt->close();
+        $admin_stmt->close();
     }
+    $stmt->close();
 }
 
 if (isset($_POST["certificate_of_indigency"])) {
@@ -397,41 +319,28 @@ if (isset($_POST["certificate_of_indigency"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
-    
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
-    
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-    
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 7, ?, (SELECT COUNT(*) FROM certificate_of_indigency), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $fullname);
-    
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-    
-                $trans_stmt->close();
-    
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 7, ?, (SELECT COUNT(*) FROM certificate_of_indigency), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
-    
-            $admin_stmt->close();
+
+            $trans_stmt->close();
+
         } else {
-            //echo "Error: " . $stmt->error;
+            //echo "Error: Admin user not found.";
         }
     
-        $stmt->close();
+        $admin_stmt->close();
     }
+    $stmt->close();
 }
 
 if (isset($_POST["certificate_of_indigency_aics"])) {
@@ -455,41 +364,28 @@ if (isset($_POST["certificate_of_indigency_aics"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
-    
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
-    
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-    
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 8, ?, (SELECT COUNT(*) FROM certificate_of_indigency_aics), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $fullname);
-    
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-    
-                $trans_stmt->close();
-    
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 8, ?, (SELECT COUNT(*) FROM certificate_of_indigency_aics), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
-    
-            $admin_stmt->close();
+
+            $trans_stmt->close();
+
         } else {
-            //echo "Error: " . $stmt->error;
+            //echo "Error: Admin user not found.";
         }
     
-        $stmt->close();
+        $admin_stmt->close();
     }
+    $stmt->close();
 }
 // not done yet
 if (isset($_POST["complaint_certificate"])) {
@@ -514,41 +410,28 @@ if (isset($_POST["complaint_certificate"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
-    
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
-    
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-    
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 9, ?, (SELECT COUNT(*) FROM complaint_certificate), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $fullname);
-    
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-    
-                $trans_stmt->close();
-    
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 9, ?, (SELECT COUNT(*) FROM complaint_certificate), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
-    
-            $admin_stmt->close();
+
+            $trans_stmt->close();
+
         } else {
-            //echo "Error: " . $stmt->error;
+            //echo "Error: Admin user not found.";
         }
     
-        $stmt->close();
+        $admin_stmt->close();
     }
+    $stmt->close();
 }
 
 if (isset($_POST["death_certificate"])) {
@@ -583,41 +466,28 @@ if (isset($_POST["death_certificate"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
-    
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
-    
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-    
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 10, ?, (SELECT COUNT(*) FROM death_certificate), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $fullname);
-    
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-    
-                $trans_stmt->close();
-    
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 10, ?, (SELECT COUNT(*) FROM death_certificate), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
-    
-            $admin_stmt->close();
+
+            $trans_stmt->close();
+
         } else {
-            //echo "Error: " . $stmt->error;
+            //echo "Error: Admin user not found.";
         }
     
-        $stmt->close();
+        $admin_stmt->close();
     }
+    $stmt->close();
 }
 
 if (isset($_POST["lot_ownership"])) {
@@ -648,41 +518,28 @@ if (isset($_POST["lot_ownership"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
-    
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
-    
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-    
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 11, ?, (SELECT COUNT(*) FROM lot_ownership), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $fullname);
-    
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-    
-                $trans_stmt->close();
-    
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 11, ?, (SELECT COUNT(*) FROM lot_ownership), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
-    
-            $admin_stmt->close();
+
+            $trans_stmt->close();
+
         } else {
-            //echo "Error: " . $stmt->error;
+            //echo "Error: Admin user not found.";
         }
     
-        $stmt->close();
+        $admin_stmt->close();
     }
+    $stmt->close();
 }
 
 if (isset($_POST["transfer_of_residency"])) {
@@ -711,47 +568,30 @@ if (isset($_POST["transfer_of_residency"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
-        if ($stmt->execute()) {
-            //echo "New record inserted successfully";
-    
-            $sql = "SELECT id FROM admin WHERE username = ?";
-            $admin_stmt = $conn->prepare($sql);
-            $admin_stmt->bind_param('s', $duty_officer_name);
-            $admin_stmt->execute();
-            $admin_result = $admin_stmt->get_result();
-    
-            if ($admin_result->num_rows > 0) {
-                $row = mysqli_fetch_assoc($admin_result);
-                $admin_id = $row['id'];
-    
-                $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 12, ?, (SELECT COUNT(*) FROM transfer_of_residency), NOW())");
-                $trans_stmt->bind_param('is', $admin_id, $fullname);
-    
-                if ($trans_stmt->execute()) {
-                    //echo "Transaction record inserted successfully";
-                } else {
-                    //echo "Error: " . $trans_stmt->error;
-                }
-    
-                $trans_stmt->close();
-    
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 12, ?, (SELECT COUNT(*) FROM transfer_of_residency), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            if ($trans_stmt->execute()) {
+                //echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: Admin user not found.";
+                //echo "Error: " . $trans_stmt->error;
             }
-    
-            $admin_stmt->close();
+
+            $trans_stmt->close();
+
         } else {
-            //echo "Error: " . $stmt->error;
+            //echo "Error: Admin user not found.";
         }
     
-        $stmt->close();
+        $admin_stmt->close();
     }
-
-    
+    $stmt->close();
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
