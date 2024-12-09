@@ -206,8 +206,8 @@ if (!isset($_SESSION['username'])) {
                                             // echo "<th>ID</th>";
                                             echo "<th>Full Name</th>";
                                             echo "<th>Address</th>";
-                                            echo "<th>Income(Number)</th>";
-                                            echo "<th>Income(Words)</th>";
+                                            echo "<th>Income (Number)</th>";
+                                            echo "<th>Income (Words)</th>";
                                             echo "<th>Issued Date</th>";
                                             echo "<th>Duty Officer Name</th>";
                                             echo "</tr>";
@@ -286,14 +286,11 @@ if (!isset($_SESSION['username'])) {
                                             echo "<thead>";
                                             echo "<tr>";
                                             // echo "<th>ID</th>";
-                                            echo "<th>Full Name(Complainant)</th>";
+                                            echo "<th>Full Name (Complainant)</th>";
                                             echo "<th>Age</th>";
                                             echo "<th>Address</th>";
                                             echo "<th>Date of Complain</th>";
-                                            echo "<th>First Name(Respondent)</th>";
-                                            echo "<th>Middle Name(Respondent)</th>";
-                                            echo "<th>Last Name(Respondent)</th>";
-                                            echo "<th>Suffix(Respondent)</th>";
+                                            echo "<th>Full Name (Respondent)</th>";
                                             echo "<th>Case No.</th>";
                                             echo "<th>Issued Date</th>";
                                             echo "<th>Duty Officer Name</th>";
@@ -317,7 +314,6 @@ if (!isset($_SESSION['username'])) {
                                                 . (!empty($row["suffix_respondent"]) ? ", " . $row["suffix_respondent"] : "");
                                             echo "<td>" . $fullNameRespondent . "</td>";
                                             echo "<td>" . $row["case_no"] . "</td>";
-                                            echo "<td>" . $row["issued_date"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
                                             echo "<td>" . $row["duty_officer_name"] . "</td>";
                                             echo "</tr>";
