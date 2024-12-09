@@ -43,20 +43,35 @@
     <label for="birthdate">Birthday:</label>
     <input type="date" class="form-control" id="birthdate" name="birthdate" required><br>
 
-    <label for="">Civil Status</label>
-    <select name="civil_status" id="civil" onchange="updateText()" class="form-control" required>
-        <option value="">--Select Civil Status--</option>
+    <label for="civil_status">Civil Status:</label>
+    <select class="form-control" name="civil_status" id="civil_status" required>
         <option value="Single">Single</option>
         <option value="Married">Married</option>
         <option value="Widow">Widow</option>
     </select><br>
 
     <label for="period_of_residency">Period of Residency:</label>
+    <div class="radios d-flex gap-3">
+        <div class="form-check">
+            <input class="form-check-input" name="period_of_residency" type="radio" value="months" id="radioMonths">
+            <label class="form-check-label" for="radioMonths">
+                Months
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" name="period_of_residency" type="radio" value="years" id="radioYears">
+            <label class="form-check-label" for="radioYears">
+                Years
+            </label>
+        </div>
+    </div>
+
+
     <input type="number" class="form-control" id="period_of_residency" name="period_of_residency"
-        placeholder="Ex. 3 years" required><br>
+        placeholder="Ex. 3 years/months" required><br>
 
     <label for="purpose">Purpose:</label>
-    <input type="text" name="purpose" class="form-control" id="purpose" placeholder="Ex. Undecided" required><br>
+    <input type="text" name="purpose" class="form-control" id="purpose" placeholder="Ex. Residency Verification" required><br>
 
     <input type="date" name="issueddate" style="display:none; position:absolute;">
     <hr>
