@@ -58,7 +58,7 @@ if (!isset($_SESSION['username'])) {
             const certificate_of_indigency_aics = <?php echo $count_certificate_of_indigency_aics; ?>;
             const complaint_certificate = <?php echo $count_complaint_certificate; ?>;
             const death_certificate = <?php echo $count_death_certificate; ?>;
-            const first_time_job_seeker = <?php echo $count_first_time_job_seeker; ?>;
+            // const first_time_job_seeker = <?php echo $count_first_time_job_seeker; ?>;
             const lot_ownership = <?php echo $count_lot_ownership; ?>;
             const transfer_of_residency = <?php echo $count_transfer_of_residency; ?>;
 
@@ -76,7 +76,7 @@ if (!isset($_SESSION['username'])) {
                 const certificate_of_indigency_aics_percent = (certificate_of_indigency_aics / sum) * 100;
                 const complaint_certificate_percent = (complaint_certificate / sum) * 100;
                 const death_certificate_percent = (death_certificate / sum) * 100;
-                const first_time_job_seeker_percent = (first_time_job_seeker / sum) * 100;
+                // const first_time_job_seeker_percent = (first_time_job_seeker / sum) * 100;
                 const lot_ownership_percent = (lot_ownership / sum) * 100;
                 const transfer_of_residency_percent = (transfer_of_residency / sum) * 100;
 
@@ -91,7 +91,7 @@ if (!isset($_SESSION['username'])) {
                 document.getElementById('certificate_of_indigency_aics_percent').innerHTML = certificate_of_indigency_aics_percent.toFixed(2) + '%';
                 document.getElementById('complaint_certificate_percent').innerHTML = complaint_certificate_percent.toFixed(2) + '%';
                 document.getElementById('death_certificate_percent').innerHTML = death_certificate_percent.toFixed(2) + '%';
-                document.getElementById('first_time_job_seeker_percent').innerHTML = first_time_job_seeker_percent.toFixed(2) + '%';
+                // document.getElementById('first_time_job_seeker_percent').innerHTML = first_time_job_seeker_percent.toFixed(2) + '%';
                 document.getElementById('lot_ownership_percent').innerHTML = lot_ownership_percent.toFixed(2) + '%';
                 document.getElementById('transfer_of_residency_percent').innerHTML = transfer_of_residency_percent.toFixed(2) + '%';
             })
@@ -778,68 +778,6 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div><!-- End Sales Card -->
 
-                                    <!-- Revenue Card -->
-                                    <div class="col-md col-md-4">
-                                        <div class="card info-card revenue-card">
-
-                                            <div class="filter" style="z-index: 10;">
-                                                <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                                        class="bi bi-three-dots"></i></a>
-                                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                    <li class="dropdown-header text-start">
-                                                        <h6>Option</h6>
-                                                    </li>
-
-                                                    <li>
-                                                        <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('First Time Job Seeker', 11)"
-                                                            style="cursor: pointer;">Show Info</p>
-                                                    </li>
-
-                                                </ul>
-                                            </div>
-
-                                            <div class="card-body">
-
-                                                <h5 class="card-title ">
-                                                    FIRST TIME JOB SEEKER
-                                                </h5>
-
-                                                <div class="d-flex align-items-center">
-                                                    <div
-                                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"
-                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                            stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" class="feather feather-file-text"
-                                                            style="color:rgba(153, 0, 0, 1);">
-                                                            <path
-                                                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
-                                                            </path>
-                                                            <polyline points="14 2 14 8 20 8"></polyline>
-                                                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                                                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                                                            <polyline points="10 9 9 9 8 9"></polyline>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="ps-3">
-                                                        <h6>
-                                                            <?php echo $count_first_time_job_seeker; ?>
-                                                        </h6>
-                                                        <span class="text-success small pt-1 fw-bold"
-                                                            id="first_time_job_seeker_percent">%</span> <span
-                                                            class="text-muted small pt-2 ps-1">increase</span>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-                                        </div>
-                                    </div><!-- End Revenue Card -->
-
-
 
                                     <!-- Customers Card -->
                                     <div class="col-xxl-4 col-md-4">
@@ -902,24 +840,9 @@ if (!isset($_SESSION['username'])) {
 
                                     </div><!-- End Customers Card -->
 
-
-
-                                </div>
-                            </div><!-- End Left side columns -->
-                        </div>
-
-                        <!-- FIFTH ROW -->
-                        <div class="carousel-item">
-
-                            <!-- Left side columns -->
-                            <div class="container-fluid col-lg-12">
-                                <div class="row">
-
-
-
-                                    <!-- Sales Card -->
-                                    <div class="col-md-4 col-md-3">
-                                        <div class="card info-card sales-card">
+                                    <!-- Revenue Card -->
+                                    <div class="col-md col-md-4">
+                                        <div class="card info-card revenue-card">
 
                                             <div class="filter" style="z-index: 10;">
                                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i
@@ -971,7 +894,10 @@ if (!isset($_SESSION['username'])) {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div><!-- End Sales Card -->
+                                    </div>
+                                    <!-- End Revenue Card -->
+
+
                                 </div>
                             </div><!-- End Left side columns -->
                         </div>
@@ -1027,7 +953,7 @@ if (!isset($_SESSION['username'])) {
                             <script>
                                 // Data for the bar chart
                                 const chartData = {
-                                    labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Cohabitation', 'Certificate of Employability', 'Certificate of Income', 'Certificate of Indigency', 'Certificate of Indidency (AICS)', 'Complaint Certificate', 'Death Certificate', 'First Time Job Seeker', 'Lot Ownership', 'Transfer of Residency'],
+                                    labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Cohabitation', 'Certificate of Employability', 'Certificate of Income', 'Certificate of Indigency', 'Certificate of Indidency (AICS)', 'Complaint Certificate', 'Death Certificate', 'Lot Ownership', 'Transfer of Residency'],
                                     datasets: [{
                                         label: 'Number of Issued Certificates',
                                         backgroundColor: [
@@ -1041,7 +967,6 @@ if (!isset($_SESSION['username'])) {
                                             'rgba(0, 128, 0, 0.2)',
                                             'rgba(153, 0, 0, 0.2)',
                                             'rgba(77, 0, 77, 0.2)',
-                                            'rgba(16, 16, 16, 0.2)',
                                             'rgba(128, 0, 0, 0.2)',
                                             'rgba(153, 153, 0, 0.2)'
                                         ],
@@ -1056,7 +981,6 @@ if (!isset($_SESSION['username'])) {
                                             'rgba(0, 128, 0, 1)',
                                             'rgba(153, 0, 0, 1)',
                                             'rgba(77, 0, 77, 1)',
-                                            'rgba(16, 16, 16, 1)',
                                             'rgba(128, 0, 0, 1)',
                                             'rgba(153, 153, 0, 1)'
                                         ],
@@ -1072,7 +996,6 @@ if (!isset($_SESSION['username'])) {
                                             certificate_of_indigency_aics,
                                             complaint_certificate,
                                             death_certificate,
-                                            first_time_job_seeker,
                                             lot_ownership,
                                             transfer_of_residency]
                                     }]
@@ -1149,7 +1072,6 @@ if (!isset($_SESSION['username'])) {
                                                     data["Certificate of Indigency AICS"],
                                                     data["Complaint Certificate"],
                                                     data["Death Certificate"],
-                                                    data["First Time Job Seeker"],
                                                     data["Lot Ownership"],
                                                     data["Transfer of Residency"]
                                                 ];
