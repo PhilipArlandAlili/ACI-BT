@@ -4,6 +4,9 @@ header('Content-Type: application/json');
 
 include 'includes/db.php';
 
+$month = isset($_GET['month']) ? $_GET['month'] : null;
+$year = isset($_GET['year']) ? $_GET['year'] : null;
+
 $certificates = [
     "Barangay Clearance",
     "Business Permit New",
