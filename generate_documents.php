@@ -387,19 +387,27 @@ if (isset($_POST["certificate_of_indigency_aics"])) {
     }
     $stmt->close();
 }
-// not done yet
+
 if (isset($_POST["complaint_certificate"])) {
     $first_name = $conn->real_escape_string($_POST["first_name"]);
     $middle_name = $conn->real_escape_string($_POST["middle_name"]);
     $last_name = $conn->real_escape_string($_POST["last_name"]);
     $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $birthdate = $conn->real_escape_string($_POST["birthdate"]);
     $purok = $conn->real_escape_string($_POST["purok"]);
-    $complaint = $conn->real_escape_string($_POST["complaint"]);
+    $date_of_complain = $conn->real_escape_string($_POST["date_of_complain"]);
+    $first_name_respondent = $conn->real_escape_string($_POST["first_name_respondent"]);
+    $middle_name_respondent = $conn->real_escape_string($_POST["middle_name_respondent"]);
+    $last_name_respondent = $conn->real_escape_string($_POST["last_name_respondent"]);
+    $suffix_respondent = $conn->real_escape_string($_POST["suffix_respondent"]);
+    $case_no = $conn->real_escape_string($_POST["case_no"]);
+    $vawc_official_name = $conn->real_escape_string($_POST["vawc_official_name"]);
 
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
+    $age = date('Y') - date('Y', strtotime($birthdate));
 
-    $stmt = $conn->prepare("INSERT INTO complaint_certificate (first_name, middle_name, last_name, suffix, address, complaint, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('ssssssss', $first_name, $middle_name, $last_name, $suffix, $purok, $complaint, $issued_date, $duty_officer_name);
+    $stmt = $conn->prepare("INSERT INTO complaint_certificate (first_name_complainant, middle_name_complainant, last_name_complainant, suffix_complainant, age, address, date_of_complain, first_name_respondent, middle_name_respondent, last_name_respondent, suffix_respondent, case_no, vawc_official_name, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
+    $stmt->bind_param('sssssssssssssss', $first_name, $middle_name, $last_name, $suffix, $age, $purok, $date_of_complain, $first_name_respondent, $middle_name_respondent, $last_name_respondent, $suffix_respondent, $case_no, $vawc_offical_name, $issued_date, $duty_officer_name);
 
     if ($stmt->execute()) {
         //echo "New record inserted successfully";

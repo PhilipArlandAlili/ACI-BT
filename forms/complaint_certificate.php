@@ -38,23 +38,23 @@
     </select><br>
 
     <label for="">Date Filed:</label>
-    <input type="date" class="form-control"><br>
+    <input type="date" name="date_of_complain" class="form-control"><br>
     <hr>
 
     <!--Respondent Full Name-->
     <label for="" class="fw-bold">Respondent</label><br>
     <label for="first_name">First Name:</label>
-    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ex. Juan" required><br>
+    <input type="text" class="form-control" id="first_name" name="first_name_respondent" placeholder="Ex. Juan" required><br>
 
     <label for="middle_name">Middle Name:</label>
-    <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Ex. Mandaragat"
+    <input type="text" class="form-control" id="middle_name" name="middle_name_respondent" placeholder="Ex. Mandaragat"
         required><br>
 
     <label for="last_name">Last Name:</label>
-    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Ex. Dela Cruz" required><br>
+    <input type="text" class="form-control" id="last_name" name="last_name_respondent" placeholder="Ex. Dela Cruz" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="suffix" required>
+    <select class="text-left form-control" name="suffix_respondent" id="suffix_respondent" required>
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -64,10 +64,10 @@
     </select><br>
 
     <label for="">Case Number:</label>
-    <input type="number" class="form-control" placeholder="2024-005"><br>
+    <input type="number" name="case_no" class="form-control" placeholder="2024-005"><br>
 
     <label for="">VAWC Official Name</label>
-    <input type="text" class="form-control"><br>
+    <input type="text" name="vawc_official_name" class="form-control"><br>
     <hr>
 
     <div class="complaintPrint" style="text-align: right;">

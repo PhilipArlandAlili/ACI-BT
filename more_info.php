@@ -137,6 +137,7 @@
                                             <th>Last Name (Respondent)</th>
                                             <th>Suffix (Respondent)</th>
                                             <th>Case No.</th>
+                                            <th>VAWC Official Name</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
@@ -296,15 +297,18 @@
                                         }
                                     } elseif ($doc_id == 5) {
                                         // Fetch data from certificate_of_employability table when doc_id is 5
-                                        $sql = "SELECT fullname, age, address, issued_date, duty_officer_name 
-                                            FROM certificate_of_employability";
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, age, issued_date, duty_officer_name
+                                        FROM certificate_of_employability";
 
                                         $result = $conn->query($sql);
 
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["fullname"] . "</td>";
+                                                echo "<td>" . $row["first_name"] . "</td>";
+                                                echo "<td>" . $row["middle_name"] . "</td>";
+                                                echo "<td>" . $row["last_name"] . "</td>";
+                                                echo "<td>" . $row["suffix"] . "</td>";
                                                 echo "<td>" . $row["age"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
@@ -315,84 +319,101 @@
                                             echo "<tr><td colspan='5'><center>No employability certificates found</center></td></tr>";
                                         }
                                     } elseif ($doc_id == 6) {
-                                        // Fetch data from indigency table when doc_id is 6
-                                        $sql = "SELECT fullname, age, civil_status, address, purpose, issued_date 
-                                            FROM indigency";
-
-                                        $result = $conn->query($sql);
-
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                echo "<tr>";
-                                                echo "<td>" . $row["fullname"] . "</td>";
-                                                echo "<td>" . $row["age"] . "</td>";
-                                                echo "<td>" . $row["civil_status"] . "</td>";
-                                                echo "<td>" . $row["address"] . "</td>";
-                                                echo "<td>" . $row["purpose"] . "</td>";
-                                                echo "<td>" . $row["issued_date"] . "</td>";
-                                                echo "</tr>";
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='6'><center>No indigency certificates found</center></td></tr>";
-                                        }
-                                    } elseif ($doc_id == 7) {
-                                        // Fetch data from indigency_aics table when doc_id is 7
-                                        $sql = "SELECT fullname, address, issued_date, transaction_id 
-                                            FROM indigency_aics";
-
-                                        $result = $conn->query($sql);
-
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                echo "<tr>";
-                                                echo "<td>" . $row["fullname"] . "</td>";
-                                                echo "<td>" . $row["address"] . "</td>";
-                                                echo "<td>" . $row["issued_date"] . "</td>";
-                                                echo "<td>" . $row["transaction_id"] . "</td>";
-                                                echo "</tr>";
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='4'><center>No indigency (AICS) certificates found</center></td></tr>";
-                                        }
-                                    } elseif ($doc_id == 8) {
                                         // Fetch data from certificate_of_income table when doc_id is 8
-                                        $sql = "SELECT fullname, address, income_num, income_words, issued_date, transaction_id 
-                                            FROM certificate_of_income";
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, income_num, income_words, issued_date, duty_officer_name
+                                        FROM certificate_of_income";
 
                                         $result = $conn->query($sql);
 
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["fullname"] . "</td>";
+                                                echo "<td>" . $row["first_name"] . "</td>";
+                                                echo "<td>" . $row["middle_name"] . "</td>";
+                                                echo "<td>" . $row["last_name"] . "</td>";
+                                                echo "<td>" . $row["suffix"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["income_num"] . "</td>";
                                                 echo "<td>" . $row["income_words"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
-                                                echo "<td>" . $row["transaction_id"] . "</td>";
+                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                 echo "</tr>";
                                             }
                                         } else {
                                             echo "<tr><td colspan='6'><center>No certificates of income found</center></td></tr>";
                                         }
-                                    } elseif ($doc_id == 9) {
-                                        // Fetch data from complaint_certificate table when doc_id is 9
-                                        $sql = "SELECT fullname_of_complainant, age, address, date_of_complain, fullname_of_respondent, case_no, officer_in_charge, issued_date 
-                                            FROM complaint_certificate";
+                                    } elseif ($doc_id == 7) {
+                                        // Fetch data from indigency table when doc_id is 6
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, age, civil_status, address, purpose, issued_date, duty_officer_name
+                                        FROM certificate_of_indigency";
 
                                         $result = $conn->query($sql);
 
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["fullname_of_complainant"] . "</td>";
+                                                echo "<td>" . $row["first_name"] . "</td>";
+                                                echo "<td>" . $row["middle_name"] . "</td>";
+                                                echo "<td>" . $row["last_name"] . "</td>";
+                                                echo "<td>" . $row["suffix"] . "</td>";
+                                                echo "<td>" . $row["age"] . "</td>";
+                                                echo "<td>" . $row["civil_status"] . "</td>";
+                                                echo "<td>" . $row["address"] . "</td>";
+                                                echo "<td>" . $row["purpose"] . "</td>";
+                                                echo "<td>" . $row["issued_date"] . "</td>";
+                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='6'><center>No indigency certificates found</center></td></tr>";
+                                        }
+                                    } elseif ($doc_id == 8) {
+                                        // Fetch data from indigency_aics table when doc_id is 7
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, issued_date, duty_officer_name
+                                        FROM certificate_of_indigency_aics";
+
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<tr>";
+                                                echo "<td>" . $row["first_name"] . "</td>";
+                                                echo "<td>" . $row["middle_name"] . "</td>";
+                                                echo "<td>" . $row["last_name"] . "</td>";
+                                                echo "<td>" . $row["suffix"] . "</td>";
+                                                echo "<td>" . $row["address"] . "</td>";
+                                                echo "<td>" . $row["issued_date"] . "</td>";
+                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='4'><center>No indigency (AICS) certificates found</center></td></tr>";
+                                        }
+                                    } elseif ($doc_id == 9) {
+                                        // Fetch data from complaint_certificate table when doc_id is 9
+                                        $sql = "SELECT first_name_complainant, middle_name_complainant, last_name_complainant, suffix_complainant, age, address, date_of_complain, first_name_respondent, middle_name_respondent, last_name_respondent, suffix_respondent, case_no, vawc_official_name, issued_date, duty_officer_name
+                                        FROM complaint_certificate";
+
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<tr>";
+                                                echo "<td>" . $row["first_name_complainant"] . "</td>";
+                                                echo "<td>" . $row["middle_name_complainant"] . "</td>";
+                                                echo "<td>" . $row["last_name_complainant"] . "</td>";
+                                                echo "<td>" . $row["suffix_complainant"] . "</td>";
                                                 echo "<td>" . $row["age"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["date_of_complain"] . "</td>";
-                                                echo "<td>" . $row["fullname_of_respondent"] . "</td>";
+                                                echo "<td>" . $row["first_name_respondent"] . "</td>";
+                                                echo "<td>" . $row["middle_name_respondent"] . "</td>";
+                                                echo "<td>" . $row["last_name_respondent"] . "</td>";
+                                                echo "<td>" . $row["suffix_respondent"] . "</td>";
                                                 echo "<td>" . $row["case_no"] . "</td>";
-                                                echo "<td>" . $row["officer_in_charge"] . "</td>";
+                                                echo "<td>" . $row["vawc_official_name"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
+                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                 echo "</tr>";
                                             }
                                         } else {
