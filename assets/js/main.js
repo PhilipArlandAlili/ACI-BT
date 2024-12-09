@@ -316,4 +316,9 @@
     }, 200);
   }
 
+function moreInfo(docName, docId) {
+    window.location.href = `more_info.php?docId=${docId}`;
+}
+
+  
 })();

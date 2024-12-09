@@ -194,17 +194,20 @@ if (!isset($_SESSION['username'])) {
                                         <div class="card info-card revenue-card">
 
                                             <div class="filter" style="z-index: 10;">
-                                                <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                                        class="bi bi-three-dots"></i></a>
+                                                <a class="icon" href="#" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    <i class="bi bi-three-dots"></i>
+                                                </a>
                                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                                     <li class="dropdown-header text-start">
                                                         <h6>Option</h6>
                                                     </li>
-
                                                     <li>
-                                                        <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('Business Permit (New)', 2)"
-                                                            style="cursor: pointer;">Show Info</p>
+                                                        <p class="dropdown-item lead"
+                                                            onclick="moreInfo('Business Permit New', 2)"
+                                                            style="cursor: pointer;">
+                                                            Show Info
+                                                        </p>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -1179,6 +1182,14 @@ if (!isset($_SESSION['username'])) {
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Bundle (includes Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+
     <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/chart.js/chart.umd.js"></script>
