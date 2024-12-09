@@ -16,7 +16,7 @@
     </aside>
 
     <main id="main" class="main">
-        <a href="view-reports.php" class="navigation d-flex align-items-center mx-2">
+        <a href="view_reports.php" class="navigation d-flex align-items-center mx-2">
             <i class="bx bxs-caret-left-square fs-2 "></i>
             <span class="fs-3 fw-semibold ">Back</span>
         </a>
@@ -35,31 +35,40 @@
                                         require 'includes/db.php';
 
                                         // Get doc_id from the URL
-                                        $doc_id = isset($_GET['docId']) ? intval($_GET['docId']) : 0;
+                                        $doc_id = isset($_GET['doc_id']) ? intval($_GET['doc_id']) : 0;
 
                                         if ($doc_id == 1) {
                                             echo "
-                                            <th>Full name</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Suffix</th>
                                             <th>Address</th>
                                             <th>Birth Place</th>
                                             <th>Birth Date</th>
                                             <th>Civil Status</th>
                                             <th>Period of Residency</th>
-                                            <th>Issued Date</th>
                                             <th>Purpose</th>
+                                            <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 2 || $doc_id == 3) {
                                             echo "
                                             <th>Business Name</th>
                                             <th>Address</th>
+                                            <th>Owner</th>
                                             <th>Issued Date</th>
+                                            <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 4) {
                                             echo "
-                                            <th>Fullname (Male)</th>
+                                            <th>First Name (Male)</th>
+                                            <th>Middle Name (Male)</th>
+                                            <th>Last Name (Male)</th>
                                             <th>Birthdate (Male)</th>
-                                            <th>Fullname (Female)</th>
+                                            <<th>First Name (Female)</th>
+                                            <th>Middle Name (Female)</th>
+                                            <th>Last Name (Female)</th>
                                             <th>Birthdate (Female)</th>
                                             <th>Address</th>
                                             <th>Date of Marriage</th>
@@ -69,7 +78,10 @@
                                         ";
                                         } elseif ($doc_id == 5) {
                                             echo "
-                                            <th>Fullname</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Suffix</th>
                                             <th>Age</th>
                                             <th>Address</th>
                                             <th>Issued Date</th>
@@ -77,91 +89,101 @@
                                         ";
                                         } elseif ($doc_id == 6) {
                                             echo "
-                                            <th>Fullname</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Suffix</th>
+                                            <th>Address</th>
+                                            <th>Income (Number)</th>
+                                            <th>Income (Words)</th>
+                                            <th>Issued Date</th>
+                                            <th>Duty Officer Name</th>
+                                        ";
+                                        } elseif ($doc_id == 7) {
+                                            echo "
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Suffix</th>
                                             <th>Age</th>
                                             <th>Civil Status</th>
                                             <th>Address</th>
                                             <th>Purpose</th>
                                             <th>Issued Date</th>
-                                        ";
-                                        } elseif ($doc_id == 7) {
-                                            echo "
-                                            <th>Fullname</th>
-                                            <th>Address</th>
-                                            <th>Issued Date</th>
-                                            <th>Transaction ID</th>
+                                            <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 8) {
                                             echo "
-                                            <th>Fullname</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Suffix</th>
                                             <th>Address</th>
-                                            <th>Income (Numeric)</th>
-                                            <th>Income (Words)</th>
                                             <th>Issued Date</th>
-                                            <th>Transaction ID</th>
+                                            <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 9) {
                                             echo "
-                                            <th>Fullname of Complainant</th>
+                                            <th>First Name (Complainant)</th>
+                                            <th>Middle Name  (Complainant)</th>
+                                            <th>Last Name  (Complainant)</th>
+                                            <th>Suffix  (Complainant)</th>
                                             <th>Age</th>
                                             <th>Address</th>
                                             <th>Date of Complain</th>
-                                            <th>Fullname of Respondent</th>
-                                            <th>Case No</th>
-                                            <th>Officer in Charge</th>
+                                            <th>First Name (Respondent)</th>
+                                            <th>Middle Name (Respondent)</th>
+                                            <th>Last Name (Respondent)</th>
+                                            <th>Suffix (Respondent)</th>
+                                            <th>Case No.</th>
                                             <th>Issued Date</th>
+                                            <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 10) {
                                             echo "
-                                            <th>Fullname</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Suffix</th>
                                             <th>Age</th>
                                             <th>Address</th>
                                             <th>Date of Death</th>
                                             <th>Time of Death</th>
-                                            <th>Requester Fullname</th>
+                                            <th>First Name (Requester)</th>
+                                            <th>Middle Name (Requester)</th>
+                                            <th>Last Name (Requester)</th>
+                                            <th>Suffix (Requester)</th>
                                             <th>Relationship</th>
-                                            <th>Date Requested</th>
+                                            <th>Issued Date</th>
+                                            <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 11) {
                                             echo "
-                                            <th>Fullname</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Suffix</th>
                                             <th>Address</th>
-                                            <th>Period of Residency</th>
-                                            <th>Signed Date</th>
-                                            <th>Validation Date</th>
-                                            <th>Witness</th>
-                                            <th>Age</th>
-                                            <th>Consent Fullname</th>
-                                            <th>Relationship</th>
-                                            <th>Consent Age</th>
-                                            <th>Consent Address</th>
-                                            <th>Consent Period of Residency</th>
-                                            <th>Duty Officer</th>
+                                            <th>Lot No.</th>
+                                            <th>Issued Date</th>
+                                            <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 12) {
                                             echo "
-                                            <th>Fullname</th>
-                                            <th>Address</th>
-                                            <th>Claimant</th>
-                                            <th>Beneficiary</th>
-                                            <th>Actual Occupant</th>
-                                            <th>Lot No</th>
-                                            <th>Area Measurement (Num)</th>
-                                            <th>Area Measurement (Words)</th>
-                                            <th>Location Address</th>
-                                            <th>Issued Date</th>
-                                        ";
-                                        } elseif ($doc_id == 13) {
-                                            echo "
-                                            <th>Fullname</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Suffix</th>
                                             <th>Address</th>
                                             <th>Nationality</th>
                                             <th>Civil Status</th>
                                             <th>Previous Address</th>
                                             <th>Purpose</th>
                                             <th>Issued Date</th>
+                                            <th>Duty Officer Name</th>
                                         ";
-                                        } else {
+                                        } 
+                                        else {
                                             echo "
                                             <th>ID</th>
                                             <th>Transacted By</th>
@@ -177,7 +199,7 @@
                                     <?php
                                     if ($doc_id == 1) {
                                         // Fetch data from barangay_clearance table when doc_id is 1
-                                        $sql = "SELECT fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name 
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name
                                         FROM barangay_clearance";
 
                                         $result = $conn->query($sql);
@@ -185,14 +207,17 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["fullname"] . "</td>";
+                                                echo "<td>" . $row["first_name"] . "</td>";
+                                                echo "<td>" . $row["middle_name"] . "</td>";
+                                                echo "<td>" . $row["last_name"] . "</td>";
+                                                echo "<td>" . $row["suffix"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["birthplace"] . "</td>";
                                                 echo "<td>" . $row["birthdate"] . "</td>";
                                                 echo "<td>" . $row["civil_status"] . "</td>";
                                                 echo "<td>" . $row["period_of_residency"] . "</td>";
-                                                echo "<td>" . $row["issued_date"] . "</td>";
                                                 echo "<td>" . $row["purpose"] . "</td>";
+                                                echo "<td>" . $row["issued_date"] . "</td>";
                                                 echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                 echo "</tr>";
                                             }
@@ -201,7 +226,8 @@
                                         }
                                     } elseif ($doc_id == 2) {
                                         // Fetch data from business_permit_new table when doc_id is 2
-                                        $sql = "SELECT business_name, address, issued_date FROM business_permit_new";
+                                        $sql = "SELECT business_name, manager, address, issued_date, duty_officer_name
+                                        FROM business_permit_new";
 
                                         $result = $conn->query($sql);
 
@@ -210,7 +236,9 @@
                                                 echo "<tr>";
                                                 echo "<td>" . $row["business_name"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
+                                                echo "<td>" . $row["manager"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
+                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                 echo "</tr>";
                                             }
                                         } else {
@@ -218,7 +246,8 @@
                                         }
                                     } elseif ($doc_id == 3) {
                                         // Fetch data from business_permit_renew table when doc_id is 3
-                                        $sql = "SELECT business_name, address, issued_date FROM business_permit_renew";
+                                        $sql = "SELECT business_name, manager, address, issued_date, duty_officer_name
+                                        FROM business_permit_renew";
 
                                         $result = $conn->query($sql);
 
@@ -227,7 +256,9 @@
                                                 echo "<tr>";
                                                 echo "<td>" . $row["business_name"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
+                                                echo "<td>" . $row["manager"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
+                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                 echo "</tr>";
                                             }
                                         } else {
@@ -461,24 +492,7 @@
                                         }
                                     } else {
                                         // Default case to handle all other doc_id values
-                                        $sql = "SELECT id, transacted_by, document_name, client_transaction_id, created_at 
-                                            FROM transactions WHERE doc_id = $doc_id";
-
-                                        $result = $conn->query($sql);
-
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                echo "<tr>";
-                                                echo "<td>" . $row["id"] . "</td>";
-                                                echo "<td>" . $row["transacted_by"] . "</td>";
-                                                echo "<td>" . $row["document_name"] . "</td>";
-                                                echo "<td>" . $row["client_transaction_id"] . "</td>";
-                                                echo "<td>" . $row["created_at"] . "</td>";
-                                                echo "</tr>";
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='5'><center>No transactions found</center></td></tr>";
-                                        }
+                                        echo "<tr><td colspan='5'><center>No transactions found</center></td></tr>";
                                     }
 
                                     $conn->close();

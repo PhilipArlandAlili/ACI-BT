@@ -100,8 +100,8 @@ if (!isset($_SESSION['username'])) {
 
 
             // Function to redirect to view_transactions page with document type parameter
-            function moreInfo(doc_type) {
-                window.location.href = 'more_info.php?doc_type=' + doc_type;
+            function moreInfo(doc_type, doc_id) {
+                window.location.href = 'more_info.php?doc_type=' + doc_type + '&doc_id=' + doc_id;
             }
 
         </script>
@@ -130,7 +130,7 @@ if (!isset($_SESSION['username'])) {
 
                                                     <li>
                                                         <p class="dropdown-item lead"
-                                                            onclick="moreInfo('barangay_clearance')"
+                                                            onclick="moreInfo('barangay_clearance', 1)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
 
@@ -204,7 +204,7 @@ if (!isset($_SESSION['username'])) {
                                                     </li>
                                                     <li>
                                                         <p class="dropdown-item lead"
-                                                            onclick="moreInfo('business_permit_new')"
+                                                            onclick="moreInfo('business_permit_new', 2)"
                                                             style="cursor: pointer;">
                                                             Show Info
                                                         </p>
@@ -262,7 +262,7 @@ if (!isset($_SESSION['username'])) {
 
                                                     <li>
                                                         <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('Business Permit (Renew)', 3)"
+                                                            onclick="moreInfo('business_permit_renew', 3)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
 
@@ -323,7 +323,7 @@ if (!isset($_SESSION['username'])) {
 
                                                     <li>
                                                         <p class="dropdown-item display-1"
-                                                            onclick="moreInfo('Certificate of Cohabitaion', 4)"
+                                                            onclick="moreInfo('certificate_of_cohabitaion', 4)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
 
