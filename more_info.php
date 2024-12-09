@@ -421,97 +421,78 @@
                                         }
                                     } elseif ($doc_id == 10) {
                                         // Fetch data from death_certificate table when doc_id is 10
-                                        $sql = "SELECT fullname, age, address, date_of_death, time_of_date, req_fullname, relationship, date_requested 
-                                            FROM death_certificate";
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, age, address, date_of_death, time_of_death, req_first_name, req_middle_name, req_last_name, req_suffix, relationship, issued_date, duty_officer_name
+                                        FROM death_certificate";
 
                                         $result = $conn->query($sql);
 
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["fullname"] . "</td>";
+                                                echo "<td>" . $row["first_name"] . "</td>";
+                                                echo "<td>" . $row["middle_name"] . "</td>";
+                                                echo "<td>" . $row["last_name"] . "</td>";
+                                                echo "<td>" . $row["suffix"] . "</td>";
                                                 echo "<td>" . $row["age"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["date_of_death"] . "</td>";
-                                                echo "<td>" . $row["time_of_date"] . "</td>";
-                                                echo "<td>" . $row["req_fullname"] . "</td>";
+                                                echo "<td>" . $row["time_of_death"] . "</td>";
+                                                echo "<td>" . $row["req_first_name"] . "</td>";
+                                                echo "<td>" . $row["req_middle_name"] . "</td>";
+                                                echo "<td>" . $row["req_last_name"] . "</td>";
+                                                echo "<td>" . $row["req_suffix"] . "</td>";
                                                 echo "<td>" . $row["relationship"] . "</td>";
-                                                echo "<td>" . $row["date_requested"] . "</td>";
+                                                echo "<td>" . $row["issued_date"] . "</td>";
+                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                 echo "</tr>";
                                             }
                                         } else {
                                             echo "<tr><td colspan='8'><center>No death certificates found</center></td></tr>";
                                         }
                                     } elseif ($doc_id == 11) {
-                                        // Fetch data from first_time_job_seeker table when doc_id is 11
-                                        $sql = "SELECT fullname, address, period_of_residency, signed_date, validation_date, witness, age, consent_fullname, relationship, consent_age, consent_address, consent_period_of_recidency, duty_officer 
-                                            FROM first_time_job_seeker";
-
-                                        $result = $conn->query($sql);
-
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                echo "<tr>";
-                                                echo "<td>" . $row["fullname"] . "</td>";
-                                                echo "<td>" . $row["address"] . "</td>";
-                                                echo "<td>" . $row["period_of_residency"] . "</td>";
-                                                echo "<td>" . $row["signed_date"] . "</td>";
-                                                echo "<td>" . $row["validation_date"] . "</td>";
-                                                echo "<td>" . $row["witness"] . "</td>";
-                                                echo "<td>" . $row["age"] . "</td>";
-                                                echo "<td>" . $row["consent_fullname"] . "</td>";
-                                                echo "<td>" . $row["relationship"] . "</td>";
-                                                echo "<td>" . $row["consent_age"] . "</td>";
-                                                echo "<td>" . $row["consent_address"] . "</td>";
-                                                echo "<td>" . $row["consent_period_of_recidency"] . "</td>";
-                                                echo "<td>" . $row["duty_officer"] . "</td>";
-                                                echo "</tr>";
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='13'><center>No first time job seeker certificates found</center></td></tr>";
-                                        }
-                                    } elseif ($doc_id == 12) {
                                         // Fetch data from lot_ownership table when doc_id is 12
-                                        $sql = "SELECT fullname, address, claimant, beneficiary, actual_occupant, lot_no, area_measurement_num, area_measurement_words, loc_address, issued_date 
-                                            FROM lot_ownership";
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, claimant, beneficiary, actual_occupant, lot_no, area_measurement_num, area_measurement_words, loc_address, issued_date, duty_officer_name
+                                        FROM lot_ownership";
 
                                         $result = $conn->query($sql);
 
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["fullname"] . "</td>";
+                                                echo "<td>" . $row["first_name"] . "</td>";
+                                                echo "<td>" . $row["middle_name"] . "</td>";
+                                                echo "<td>" . $row["last_name"] . "</td>";
+                                                echo "<td>" . $row["suffix"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
-                                                echo "<td>" . $row["claimant"] . "</td>";
-                                                echo "<td>" . $row["beneficiary"] . "</td>";
-                                                echo "<td>" . $row["actual_occupant"] . "</td>";
                                                 echo "<td>" . $row["lot_no"] . "</td>";
-                                                echo "<td>" . $row["area_measurement_num"] . "</td>";
-                                                echo "<td>" . $row["area_measurement_words"] . "</td>";
-                                                echo "<td>" . $row["loc_address"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
+                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                 echo "</tr>";
                                             }
                                         } else {
                                             echo "<tr><td colspan='10'><center>No lot ownership certificates found</center></td></tr>";
                                         }
-                                    } elseif ($doc_id == 13) {
+                                    } elseif ($doc_id == 12) {
                                         // Fetch data from transfer_of_residency table when doc_id is 13
-                                        $sql = "SELECT fullname, address, nationality, civil_status, previous_address, purpose, issued_date 
-                                            FROM transfer_of_residency";
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, nationality, civil_status, previous_address, purpose, issued_date, duty_officer_name
+                                        FROM transfer_of_residency";
 
                                         $result = $conn->query($sql);
 
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["fullname"] . "</td>";
+                                                echo "<td>" . $row["first_name"] . "</td>";
+                                                echo "<td>" . $row["middle_name"] . "</td>";
+                                                echo "<td>" . $row["last_name"] . "</td>";
+                                                echo "<td>" . $row["suffix"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["nationality"] . "</td>";
                                                 echo "<td>" . $row["civil_status"] . "</td>";
                                                 echo "<td>" . $row["previous_address"] . "</td>";
                                                 echo "<td>" . $row["purpose"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
+                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                 echo "</tr>";
                                             }
                                         } else {
