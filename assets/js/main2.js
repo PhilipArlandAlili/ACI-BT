@@ -1,15 +1,15 @@
-const monthNames = ['January', 
-  'February', 
-  'March', 
-  'April', 
-  'May', 
-  'June', 
-  'July', 
-  'August', 
-  'September', 
-  'October', 
-  'November', 
-  'December'];
+// const monthNames = ['January', 
+//   'February', 
+//   'March', 
+//   'April', 
+//   'May', 
+//   'June', 
+//   'July', 
+//   'August', 
+//   'September', 
+//   'October', 
+//   'November', 
+//   'December'];
   
 const certs = ['barangay_clearance',
   'business_permit_new',
@@ -39,74 +39,74 @@ function getOrdinalSuffix(number) {
   }
 }
 
-function convertTime(timeInput) {
-  var timeParts = timeInput.split(':');
-  var hours = parseInt(timeParts[0]);
-  var minutes = parseInt(timeParts[1]);
-  var period = (hours >= 12) ? 'PM' : 'AM';
-  hours = (hours > 12) ? hours - 12 : hours;
-  hours = (hours == 0) ? 12 : hours;
-  return hours + ':' + minutes.toString().padStart(2, '0') + ' ' + period;
-}
+// function convertTime(timeInput) {
+//   var timeParts = timeInput.split(':');
+//   var hours = parseInt(timeParts[0]);
+//   var minutes = parseInt(timeParts[1]);
+//   var period = (hours >= 12) ? 'PM' : 'AM';
+//   hours = (hours > 12) ? hours - 12 : hours;
+//   hours = (hours == 0) ? 12 : hours;
+//   return hours + ':' + minutes.toString().padStart(2, '0') + ' ' + period;
+// }
 
-document.getElementById('income_num').addEventListener('input', function () {
-    const numericValue = parseInt(this.value, 10);
-    const wordsField = document.getElementById('income_words');
+// document.getElementById('income_num').addEventListener('input', function () {
+//     const numericValue = parseInt(this.value, 10);
+//     const wordsField = document.getElementById('income_words');
     
-    if (!isNaN(numericValue)) {
-        wordsField.value = numberToWords(numericValue);
-    } else {
-        wordsField.value = '';
-    }
-});
+//     if (!isNaN(numericValue)) {
+//         wordsField.value = numberToWords(numericValue);
+//     } else {
+//         wordsField.value = '';
+//     }
+// });
 
-function numberToWords(number) {
-    const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
-    const teens = ['', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
-    const tens = ['', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
-    const suffixes = ['', 'Thousand', 'Million', 'Billion', 'Trillion'];
+// function numberToWords(number) {
+//     const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+//     const teens = ['', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+//     const tens = ['', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+//     const suffixes = ['', 'Thousand', 'Million', 'Billion', 'Trillion'];
 
-    function convertGroup(num) {
-        const [hundreds, tensAndOnes] = [Math.floor(num / 100), num % 100];
-        let result = '';
+//     function convertGroup(num) {
+//         const [hundreds, tensAndOnes] = [Math.floor(num / 100), num % 100];
+//         let result = '';
 
-        if (hundreds > 0) {
-            result += ones[hundreds] + ' Hundred ';
-        }
+//         if (hundreds > 0) {
+//             result += ones[hundreds] + ' Hundred ';
+//         }
 
-        if (tensAndOnes > 0) {
-            if (tensAndOnes < 10) {
-                result += ones[tensAndOnes];
-            } else if (tensAndOnes < 20) {
-                result += teens[tensAndOnes - 10];
-            } else {
-                const [tensDigit, onesDigit] = [Math.floor(tensAndOnes / 10), tensAndOnes % 10];
-                result += tens[tensDigit] + ' ' + ones[onesDigit];
-            }
-        }
+//         if (tensAndOnes > 0) {
+//             if (tensAndOnes < 10) {
+//                 result += ones[tensAndOnes];
+//             } else if (tensAndOnes < 20) {
+//                 result += teens[tensAndOnes - 10];
+//             } else {
+//                 const [tensDigit, onesDigit] = [Math.floor(tensAndOnes / 10), tensAndOnes % 10];
+//                 result += tens[tensDigit] + ' ' + ones[onesDigit];
+//             }
+//         }
 
-        return result.trim();
-    }
+//         return result.trim();
+//     }
 
-    if (number === 0) {
-        return 'Zero';
-    }
+//     if (number === 0) {
+//         return 'Zero';
+//     }
 
-    let words = '';
-    let groupIndex = 0;
+//     let words = '';
+//     let groupIndex = 0;
 
-    while (number > 0) {
-        const group = number % 1000;
-        if (group > 0) {
-            const groupWords = convertGroup(group) + ' ' + suffixes[groupIndex];
-            words = groupWords + ' ' + words;
-        }
-        number = Math.floor(number / 1000);
-        groupIndex++;
-    }
+//     while (number > 0) {
+//         const group = number % 1000;
+//         if (group > 0) {
+//             const groupWords = convertGroup(group) + ' ' + suffixes[groupIndex];
+//             words = groupWords + ' ' + words;
+//         }
+//         number = Math.floor(number / 1000);
+//         groupIndex++;
+//     }
 
-    return words.trim();
-}
+//     return words.trim();
+// }
 
 function toggleFields() {
   const varname = [
@@ -164,10 +164,10 @@ function toggleFields() {
   var currentForm = document.getElementById(certificateType);
   if (currentForm) {
       currentForm.querySelectorAll('input[type=text], input[type=number]').forEach(function(input) {
-          input.setAttribute('oninput', 'updateText()');
+          // input.setAttribute('oninput', 'updateText()');
       });
       currentForm.querySelectorAll('input[type=date], input[type=time]').forEach(function(input) {
-          input.setAttribute('onchange', 'updateText()');
+          // input.setAttribute('onchange', 'updateText()');
           input.setAttribute('class','form-control p-2 w-45');
       });
       currentForm.querySelectorAll('input[type=checkbox]').forEach(function(input) {
@@ -241,12 +241,17 @@ function select(){
 
 
   
-  function printIframe() {
-    var iframe = document.getElementById('myIframe');
-var iframeWindow = iframe.contentWindow;
-iframeWindow.print();
  
-  }
+  
+  function printIframe() {
+    if (validateForm()) {
+        var iframe = document.getElementById('myIframe');
+        var iframeWindow = iframe.contentWindow;
+        iframeWindow.print();
+    } else {
+        alert('Please fill in all required fields before printing.');
+    }
+}
 
   function updateText() { 
 
@@ -398,54 +403,9 @@ if (bdayCoha) {
 console.log("bdayCoha" );
 }
 
-// // Function to validate birthday and update DOM
-// function validateBirthday(bdayInputValue, bdayId, bmonthId, byearId) {
-//   const bday = new Date(bdayInputValue);
-//   const today = new Date();
-
-//   var bbday = iframeDocument.getElementById(bdayId);
-//   var bmonth = iframeDocument.getElementById(bmonthId);
-//   var byear = iframeDocument.getElementById(byearId);
-
-//   // Calculate age
-//   let age = today.getFullYear() - bday.getFullYear();
-//   const monthDiff = today.getMonth() - bday.getMonth();
-
-//   // Adjust age if the birthday hasn't occurred yet this year
-//   if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < bday.getDate())) {
-//     age--;
-//   }
-
-//   if (bbday || bmonth || byear) {
-//     if (age >= 18) {
-//       bbday.innerText = bday.getDate();
-//       bmonth.innerText = monthNames[bday.getMonth()];
-//       byear.innerText = bday.getFullYear();
-//     } else {
-//       // Clear the birthdate input if the age is less than 18
-//       document.getElementById(bdayId).value = '';
-//       alert("Warning: Must be 18 or older to proceed.");
-//     }
-//   }
-//   else{
-//     console.log('bbday, bmonth, byear not found');
-//   }
-// }
-
-
 
 }///end updateText
 
-const inputs = document.querySelectorAll('input[type="text"]');
-
-    inputs.forEach(input => {
-      input.addEventListener('input', function () {
-        let value = input.value;
-        value = value.replace(/[^a-zA-Z\s]/g, '');
-        value = value.substring(0, 25);
-        input.value = value;
-      });
-    });
     
 var days = document.getElementById('days');
 var months = document.getElementById('months');
@@ -458,44 +418,11 @@ const day = currentDate.getDate();
 const month = currentDate.getMonth() ; 
 const year = currentDate.getFullYear();
 
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const monthName = monthNames[month];
-// console.log(days,months,sups,years);
+console.log(days,months,sups,years);
 if (days) days.innerText = day;
 if (months) months.innerText = monthName;
 if (sups) sups.innerText = getOrdinalSuffix(day);
-if (years) years.innerText =year;
-
-
-
-window.onload = function() {
-  document.getElementById("fillup").scrollIntoView({ behavior: 'smooth' });
-};
-
-
-
-
-
-function validateAge(dateOfBirth) {
-  const today = new Date();
-  const birthDate = new Date(dateOfBirth);
-
-  // Calculate the age
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-
-  // Adjust age if the birthday hasn't occurred yet this year
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-  }
-
-  return age >= 18; // Return true if age is 18 or older, false otherwise
-}
-
-// Example usage
-const dateOfBirthInput = '2005-10-09'; // Replace with the actual date of birth in YYYY-MM-DD format
-
-if (validateAge(dateOfBirthInput)) {
-  console.log("Age is valid.");
-} else {
-  console.log("You must be 18 years old or older.");
-}
+if (years) years.innerText =year; 
+else console.log("not ok");

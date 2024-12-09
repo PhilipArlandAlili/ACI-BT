@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['username'])) {
-    header("Location: index.php");
-    exit();
-}
+// if (!isset($_SESSION['username'])) {
+//     header("Location: index.php");
+//     exit();
+// }
 
-//Include database connection file
-include("db.php");
+// //Include database connection file
+// include("db.php");
 
 $duty_officer_name = $_SESSION['username'];
 $issued_date = date('Y-m-d');
@@ -1037,17 +1037,16 @@ if (isset($_POST["certificate_of_income"])) {
                                 <div id="barangay_clearance">
                                     <form action="#" method="post" id="form">
 
-                                        <label for="">First Name:</label>
-                                        <input type="text" class="form-control" name="first_name"
-                                            placeholder="Ex. Juan"><br>
-
-                                        <label for="">Middle Name:</label>
-                                        <input type="text" class="form-control" name="middle_name"
-                                            placeholder="Ex. J"><br>
-
-                                        <label for="">Last Name:</label>
-                                        <input type="text" class="form-control" name="last_name"
-                                            placeholder="Ex. Dela Cruz"><br>
+                                    <label for="">First Name:</label>
+                                    <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z.]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+                
+                                    <label for="">Middle Name:</label>
+                                    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
+                
+                                    <label for="">Last Name:</label>
+                                    <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+                
+                                  
 
 
                                         <label for="">Suffix:</label>
@@ -1081,23 +1080,26 @@ if (isset($_POST["certificate_of_income"])) {
                                             placeholder="Ex. Puerto Princesa City"><br>
 
                                         <label for="">Birthday:</label>
-                                        <input type="date" class="form-control" name="bday" id="bday">
+                                        <input type="date" class="form-control" onchange="validatebday();updateText();" name="bday" id="bday">
+                                       <p id="error-message" style="color: red; display: none;">You must be 18 years old or older.</p>
+
                                         <br>
                                         <label for="">Civil Status:</label>
-                                        <select class="form-control" onchange="update()" name="civil_status" id="stats">
-                                            <option value="Married">Married</option>
+                                        <select class="form-control" oninput="updateText();" name="civil_status" id="stats">
+                                        <option value="Single">Single</option>
+                                        <option value="Married">Married</option>
                                             <option value="Widow">Widow</option>
-                                            <option value="Single">Single</option>
                                         </select>
                                         <br>
                                         <label for="">Period of Residency:</label>
-                                        <input type="number" min="0" class="form-control" name="period_of_residency"
+                                        <input type="number" min="0" class="form-control"  oninput="updateText();" name="period_of_residency"
                                             placeholder="Ex. 3 years"><br>
 
                                         <label for="">Purpose:</label>
                                         <!-- <input type="text" class="form-control" name="purpose"> -->
-                                        <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
+                                        <input type="text" name="purpose" class="form-control" id="" oninput="updateText();" cols="30" rows="10"
                                             placeholder="Ex. Employment"></input><br>
+                                            <input type="date" class="form-control"  style="display:none;"name="issueddate" id="issueddate">
 
                                         <button name="barangay_clearance" id="coco" onclick="printIframe()"
                                             type="submit">Print</button>
@@ -1107,10 +1109,10 @@ if (isset($_POST["certificate_of_income"])) {
                                 <div id="business_permit_new">
                                     <form action="#" method="post" id="form">
                                         <label for="businessName">Business name/ Trade Activity:</label>
-                                        <input type="text" name="businessName" class="form-control"
+                                        <input type="text" oninput="updateText();"name="businessName" class="form-control"
                                             name="business_name"><br>
 
-                                        <label for="">Purok:</label><br>
+                                        <!-- <label for="">Purok:</label><br>
                                         <select name="purok" id="purok" onchange="update()">
                                             <option value="Centro, Barangay Tiniguiban Puerto Princesa City">Centro
                                             </option>
@@ -1127,30 +1129,29 @@ if (isset($_POST["certificate_of_income"])) {
                                             <option value="Trece, Barangay Tiniguiban Puerto Princesa City">Trece
                                             </option>
                                             <option value="Uha, Barangay Tiniguiban Puerto Princesa City">UHA</option>
-                                        </select>
+                                        </select> -->
                                         <br>
-                                        <br>
+                                        
                                         <label for="">Manager / Operator</label>
-                                        <input type="text" class="form-control" name="manager">
+                                        <input type="text"  oninput="updateText();"class="form-control" name="manager">
                                         <br>
                                         <label for="">Address(Manager / Operator)</label>
-                                        <input type="text" class="form-control" name="address">
+                                        <input type="text"  oninput="updateText();"class="form-control" name="address">
                                         <br>
+                                        <!-- <input type="date" oninput="updateText();class="form-control"  style="display:none;"name="issueddate" id="issueddate"> -->
+
                                         <button name="business_permit_new" onclick="printIframe()"
                                             type="submit">Print</button>
 
                                     </form>
                                 </div>
 
-
-
-
-
                                 <div id="business_permit_renew">
                                     <form action="#" method="post" id="form">
                                         <label for="businessName">Business name/ Trade Activity:</label>
-                                        <input type="text" class="form-control" name="business_name_renew"><br>
-                                        <label for="">Purok:</label><br>
+                                        <input type="text" class="form-control" oninput="updateText();" name="business_name_renew"><br>
+                                        
+                                        <!-- <label for="">Purok:</label><br>
                                         <select name="purok" id="purok" onchange="update()">
                                             <option value="Centro">Centro</option>
                                             <option value="Kaakbayan">Kaakbayan</option>
@@ -1160,38 +1161,36 @@ if (isset($_POST["certificate_of_income"])) {
                                             <option value="Sandiwa">Sandiwa</option>
                                             <option value="Trece">Trece</option>
                                             <option value="Uha">UHA</option>
-                                        </select>
+                                        </select> -->
                                         <br>
-                                        <br>
+                                        
                                         <label for="">Manager / Operator</label>
-                                        <input type="text" class="form-control" name="manager_operator_renew">
+                                        <input type="text" class="form-control" oninput="updateText();" name="manager_operator_renew">
                                         <br>
                                         <label for="">Address(Manager / Operator)</label>
-                                        <input type="text" class="form-control" name="manager_operator_address_renew">
-                                        <!-- <label for="businessIssuedDate">Issued Date:</label>
-                     <input type="date" class="form-control" name="business_issued_date"><br> -->
+                                        <input type="text" class="form-control" oninput="updateText();" name="manager_operator_address_renew">
+                                        <!-- <label for="businessIssuedDate">Issued Date:</label> -->
+                                       <!-- <input type="date" class="form-control" name="business_issued_date"><br> -->
                                         <br>
                                         <button name="business_permit_renew" onclick="printIframe()"
                                             type="submit">Print</button>
+                                        
                                     </form>
                                 </div>
-
-
 
                                 <div id="certificate_of_employability">
                                     <form action="#" method="post" id="form">
 
-                                        <label for="">First Name:</label>
-                                        <input type="text" class="form-control" name="first_name"
-                                            placeholder="Ex. Juan"><br>
-
-                                        <label for="">Middle Initial:</label>
-                                        <input type="text" class="form-control" name="middle_initial"
-                                            placeholder="Ex. J"><br>
-
-                                        <label for="">Last Name:</label>
-                                        <input type="text" class="form-control" name="last_name"
-                                            placeholder="Ex. J"><br>
+                                    <label for="">First Name:</label>
+                                    <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z.]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+                
+                                    <label for="">Middle Name:</label>
+                                    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
+                
+                                    <label for="">Last Name:</label>
+                                    <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+                
+                                  
 
 
                                         <label for="">Suffix:</label>
@@ -1205,7 +1204,8 @@ if (isset($_POST["certificate_of_income"])) {
                                             <option value="III">III</option>
                                         </select><br><br>
                                         <label for="">Age</label>
-                                        <input type="number" name="age" class="form-control" placeholder="Ex. 20">
+                                        <input type="number" name="age" oninput="validateage();updateText();" class="form-control" placeholder="Ex. 20">
+                                        <p id="error-messageage" style="color: red; display: none;">You must be 18 years old or older.</p>
 
                                         <label for="">Purok:</label><br>
                                         <select name="puroks" id="puroks" onchange="update()">
@@ -1979,6 +1979,40 @@ if (isset($_POST["certificate_of_income"])) {
     <script src="assets/js/main.js"></script>
     <script src="assets/js/main2.js"></script>
     <script>
+        
+    function validatebday() {
+  const bdayInput = document.getElementById('bday');
+  const birthDate = new Date(bdayInput.value); // Get the selected date
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  const dayDiff = today.getDate() - birthDate.getDate();
+
+  // Adjust age if the current date is before the birthdate in the current year
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+      age--;
+  }
+
+  const errorMessage = document.getElementById('error-message');
+
+  if (age < 18) {
+      errorMessage.style.display = 'block'; // Show error message
+      bdayInput.value = ''; // Clear the invalid date
+  } else {
+      errorMessage.style.display = 'none'; // Hide error message
+  }
+}
+
+fucntion validateage(){
+    const errorMessage = document.getElementById('error-messageage');
+
+  if (age < 18) {
+      errorMessage.style.display = 'block'; // Show error message
+      bdayInput.value = ''; // Clear the invalid date
+  } else {
+      errorMessage.style.display = 'none'; // Hide error message
+  }
+}
         // Select all input elements of type "text"
         const today = new Date();
         const formattedDate = today.toISOString().split('T')[0];
