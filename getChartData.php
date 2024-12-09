@@ -2,21 +2,7 @@
 
 header('Content-Type: application/json');
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-// $password = "Alabastro_8";
-$dbname = "aci_bt";
-
-// Check if the month and year parameters are provided
-$month = isset($_GET['month']) ? $_GET['month'] : null;
-$year = isset($_GET['year']) ? $_GET['year'] : null;
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'includes/db.php';
 
 $certificates = [
     "Barangay Clearance",
