@@ -26,17 +26,25 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title fs-4">More Info</h5>
+                            <?php
+                            require 'includes/db.php';
+
+                            // Get doc_id from the URL
+                            $doc_id = isset($_GET['doc_id']) ? intval($_GET['doc_id']) : 0;
+                            $doc_name = isset($_GET['doc_type']) ? $_GET['doc_type'] : "More Info";
+                            $doc_name = str_replace("_", " ", $doc_name);
+                            $doc_name = strtoupper($doc_name);
+                            if ($doc_name != "More Info") {
+                                echo "<h5 class='card-title fs-4'>$doc_name</h5>";
+                            } else {
+                                echo "<h5 class='card-title fs-4'>More Info</h5>";
+                            }
+                            ?>
                             <!-- Table with stripped rows -->
                             <table class="table datatable pt-3">
                                 <thead>
                                     <tr>
                                         <?php
-                                        require 'includes/db.php';
-
-                                        // Get doc_id from the URL
-                                        $doc_id = isset($_GET['doc_id']) ? intval($_GET['doc_id']) : 0;
-
                                         if ($doc_id == 1) {
                                             echo "
                                             <th>Full Name</th>

@@ -588,7 +588,7 @@ if (isset($_POST["transfer_of_residency"])) {
 
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 
-    $stmt = $conn->prepare("INSERT INTO transfer_of_residency (first_name, middle_name, last_name, suffix, address, nationality, civil_status, previous_address, current_address, purpose, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO transfer_of_residency (first_name, middle_name, last_name, suffix, address, nationality, civil_status, previous_address, current_address, purpose, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param('ssssssssssss', $first_name, $middle_name, $last_name, $suffix, $purok, $nationality, $civil_status, $previous_address, $current_address, $purpose, $issued_date, $duty_officer_name);
 
     if ($stmt->execute()) {
