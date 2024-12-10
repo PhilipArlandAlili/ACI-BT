@@ -59,15 +59,10 @@
                                         ";
                                         } elseif ($doc_id == 4) {
                                             echo "
-                                            <th>First Name (Male)</th>
-                                            <th>Middle Name (Male)</th>
-                                            <th>Last Name (Male)</th>
-                                            <th>Suffix (Male)</th>
-                                            <th>Birthdate (Male)</th>
-                                            <<th>First Name (Female)</th>
-                                            <th>Middle Name (Female)</th>
-                                            <th>Last Name (Female)</th>
-                                            <th>Birthdate (Female)</th>
+                                            <th>Full Name (Male)</th>
+                                            <th>Birthdate</th>
+                                            <th>Full Name (Female)</th>
+                                            <th>Birthdate</th>
                                             <th>Address</th>
                                             <th>Date of Marriage</th>
                                             <th>Years Married</th>
