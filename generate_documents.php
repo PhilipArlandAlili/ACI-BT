@@ -1,11 +1,11 @@
 <?php
-session_start();
-include 'includes/db.php';
+// session_start();
+// include 'includes/db.php';
 
-if (!isset($_SESSION['username'])) {
-    header("Location: index.php");
-    exit();
-}
+// if (!isset($_SESSION['username'])) {
+//     header("Location: index.php");
+//     exit();
+// }
 
 $duty_officer_name = $_SESSION['username'];
 $issued_date = date('Y-m-d');
@@ -756,6 +756,23 @@ if (isset($_POST["transfer_of_residency"])) {
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/main2.js"></script>
+    <script >function validatebday(input) {
+            const birthDate = new Date(input.value); // Get the selected date
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            const dayDiff = today.getDate() - birthDate.getDate();
+
+            // Adjust age if the current date is before the birthdate in the current year
+            if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                age--;
+            }
+
+            if (age < 18) {
+                alert("You must be at least 18 years old.");
+                input.value = ''; // Clear the input field
+            }
+        }</script>
 
 </body>
 

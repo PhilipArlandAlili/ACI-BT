@@ -330,22 +330,44 @@ if (certificateType.value == 'indigency') {
 }
 
 
-const bdayInput = document.getElementById('bday').value;
-const bdayCoha = document.getElementById('bday2').value;
+// const bdayInput = document.getElementById('bday').value;
+// const bdayCoha = document.getElementById('bday2').value;
 
-if (bdayInput) {
-  console.log(validateAge(bdayInput));
-  console.log("bdayCinpu");
+// if (bdayInput) {
+//   console.log(validateAge(bdayInput));
+//   console.log("bdayCinpu");
+// }
+
+// if (bdayCoha) {
+//   console.log(validateAge(bdayCoha));
+
+// console.log("bdayCoha" );
+// }
+
+if (certificateType.value === 'barangay_clearance') {
+  console.log("mama mo")
+  const years = document.getElementById('radioYears');
+  const months = document.getElementById('radioMonths');
+  var ym = iframeDocument.getElementById('ym');
+
+  
+  if (months.checked) {
+      ym.innerHTML = "<b><u>Months</u></b> / Years";
+  } else if (years.checked) {
+      ym.innerHTML = "Months / <b><u>Years</u></b>";
+
+  } else {
+     ym.innerHTML = "Months / Years";
+  }
+} else {
+  console.log("Certificate type is not 'barnagay_clearance'.");
 }
 
-if (bdayCoha) {
-  console.log(validateAge(bdayCoha));
 
-console.log("bdayCoha" );
+
 }
 
-
-}///end updateText
+///end updateText
 
     
 var days = document.getElementById('days');
