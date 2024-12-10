@@ -141,6 +141,7 @@
                                             <th>Nationality</th>
                                             <th>Civil Status</th>
                                             <th>Previus Address</th>
+                                            <th>Current Address</th>
                                             <th>Purpose</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
@@ -469,7 +470,7 @@
                                         }
                                     } elseif ($doc_id == 12) {
                                         // Fetch data from transfer_of_residency table when doc_id is 13
-                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, nationality, civil_status, previous_address, purpose, issued_date, duty_officer_name
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, nationality, civil_status, previous_address, current_address, purpose, issued_date, duty_officer_name
                                         FROM transfer_of_residency";
 
                                         $result = $conn->query($sql);
@@ -487,6 +488,7 @@
                                                 echo "<td>" . $row["nationality"] . "</td>";
                                                 echo "<td>" . $row["civil_status"] . "</td>";
                                                 echo "<td>" . $row["previous_address"] . "</td>";
+                                                echo "<td>" . $row["current_address"] . "</td>";
                                                 echo "<td>" . $row["purpose"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
                                                 echo "<td>" . $row["duty_officer_name"] . "</td>";

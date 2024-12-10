@@ -516,6 +516,24 @@ if (isset($_POST["lot_ownership"])) {
     $lot_area_numerical = $conn->real_escape_string($_POST["lot_area_numerical"]);
     $lot_location_address = $conn->real_escape_string($_POST["lot_location_address"]);
 
+    if ($claimant == '/') {
+        $claimant = "Yes";
+    } else {
+        $claimant = "No";
+    }
+
+    if ($beneficiary == '/') {
+        $beneficiary = "Yes";
+    } else {
+        $beneficiary = "No";
+    }
+
+    if ($actual_occupant == '/') {
+        $actual_occupant = "Yes";
+    } else {
+        $actual_occupant = "No";
+    }
+
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
     $lot_area_words = "????? pesos";
 
@@ -569,8 +587,8 @@ if (isset($_POST["transfer_of_residency"])) {
 
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 
-    $stmt = $conn->prepare("INSERT INTO transfer_of_residency (first_name, middle_name, last_name, suffix, address, nationality, civil_status, previous_address, purpose, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssssssss', $first_name, $middle_name, $last_name, $suffix, $purok, $nationality, $civil_status, $previous_address, $purpose, $issued_date, $duty_officer_name);
+    $stmt = $conn->prepare("INSERT INTO transfer_of_residency (first_name, middle_name, last_name, suffix, address, nationality, civil_status, previous_address, current_address, purpose, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('ssssssssssss', $first_name, $middle_name, $last_name, $suffix, $purok, $nationality, $civil_status, $previous_address, $current_address, $purpose, $issued_date, $duty_officer_name);
 
     if ($stmt->execute()) {
         //echo "New record inserted successfully";
