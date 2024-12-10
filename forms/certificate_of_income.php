@@ -33,7 +33,7 @@
     </select><br>
 
     <label for="amount">Amount (In Numeric Form):</label>
-    <input type="number" id="income_num" name="income_num" oninput="updateText()" class="form-control" maxlength="10"
+    <input type="number" max="999999999" min="1" id="income_num" name="income_num" oninput="updateText()" class="form-control" maxlength="10"
         placeholder="Ex. 20000" required><br>
 
     <label for="income_words">Amount (In Words):</label>

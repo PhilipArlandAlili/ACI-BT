@@ -55,7 +55,9 @@
     <input type="number" class="form-control" oninput="updateText()" name="lot_number" placeholder="Ex. 5003" required><br>
 
     <label for="lotAreaNumerical">Area Measurement (Numerical Form):</label>
-    <input type="number" class="form-control" oninput="updateText()" name="lot_area_numerical" placeholder="Ex. 350 sqm" required><br>
+    <input type="number" class="form-control" oninput="updateText()" name="lot_area_numerical" id="lot_area_numerical" placeholder="Ex. 350 sqm" required><br>
+    <label for="lotAreaNumerical">Area Measurement (Word Form):</label>
+    <input type="text" class="form-control" name="lot_area_word" id="lot_area_words" placeholder="Ex. One Two Three" readonly><br>
 
     <label for="lotLocationAddress">Location Address:</label>
     <input type="text" class="form-control" oninput="updateText()" name="lot_location_address" placeholder="Ex. PSU Rd" required><br>
