@@ -1,11 +1,11 @@
 <?php
-// session_start();
-// include 'includes/db.php';
+session_start();
+include 'includes/db.php';
 
-// if (!isset($_SESSION['username'])) {
-//     header("Location: index.php");
-//     exit();
-// }
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+    exit();
+}
 
 $duty_officer_name = $_SESSION['username'];
 $issued_date = date('Y-m-d');
@@ -154,9 +154,9 @@ if (isset($_POST["business_permit_renew"])) {
 }
 
 if (isset($_POST["certificate_of_cohabitation"])){
-    $first_name_male = $conn->real_escape_string($_POST["first_name_male"]);
-    $middle_name_male = $conn->real_escape_string($_POST["middle_name_male"]);
-    $last_name_male = $conn->real_escape_string($_POST["last_name_male"]);
+    $first_name_male = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name_male = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name_male = $conn->real_escape_string($_POST["last_name"]);
     $suffix = $conn->real_escape_string($_POST["suffix"]);
     $birthdate = $conn->real_escape_string($_POST["birthdate"]);
     $first_name_female = $conn->real_escape_string($_POST["first_name_female"]);
