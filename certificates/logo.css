@@ -18,6 +18,7 @@ html, body {
     page-break-after: always;
     position: absolute;
    /* border: 1px solid black; */
+
 }
 .content{
     width: 65% !important;
@@ -26,7 +27,7 @@ b h2 {
     margin-top: 5px !important;
 }
 .center {
-    text-align: center;
+    text-align: left;
 }
 .brlogo {
     width: 20%;
@@ -103,3 +104,5 @@ h2 .center  {
 .indent {
         text-indent: 40px;
     }
+
+.cert{margin-left: 10cm;}

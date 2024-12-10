@@ -5,7 +5,7 @@
 
     <label for="middle_name">Middle Name:</label>
     <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="middle_name" name="middle_name" placeholder="Ex. Reyes"
-        required><br>
+        ><br>
 
     <label for="last_name">Last Name:</label>
     <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="last_name" name="last_name" placeholder="Ex. Dela Cruz" required><br>
