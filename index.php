@@ -1,3 +1,44 @@
+<?php
+require 'includes/db.php';
+
+session_start();
+
+$error = '';
+$showModal = false;
+
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $query = "SELECT * FROM `admin` WHERE username=? AND password=?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $count = $result->num_rows;
+
+    if ($count == 1) {
+        $_SESSION['username'] = ucfirst($username);
+
+        $query = "INSERT INTO `user_logs` (admin_name, status, datetime) VALUES (?, 'IN', NOW())";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+
+        header("Location: dashboard.php");
+        exit();
+    } else {
+        // header("Location: index.php");
+        // echo "<script>alert('Invalid username or password!')</script>";
+        $error = 'Invalid username or password!'; // Set error message
+        $showModal = true;
+    }
+
+    $stmt->close();
+}
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +51,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/cap-log.png" rel="icon">
+    <link href="assets/img/brgy_logo.png" rel="icon">
 
 
     <!-- Google Fonts -->
@@ -38,7 +79,6 @@
     }
 </style>
 
-
 <body style="background-color: #F4F3EF;">
     <main>
         <div class="container p-0">
@@ -47,25 +87,22 @@
                     <div class="row d-flex align-items-center justify-content-center">
                         <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
                             <div class="card" style="height: 750px;">
-                                <!-- <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                                        <p class="text-center small">Enter your username & password to login</p> -->
                                 <div class="p-0 m-0">
                                     <div class="image">
-                                        <img src="./assets/img/tiniguiban.jpg" alt="..." class="img-fluid rounded"
+                                        <img src="assets/img/tiniguiban.jpg" alt="..." class="img-fluid rounded"
                                             style="height: 240px; width: 100%;">
                                     </div>
                                     <div class="card-body">
                                         <div class="author logo-overlap d-flex flex-column align-items-center">
                                             <img class="avatar border-gray m-2 rounded-circle"
-                                                src="./assets/img/logo.jpg" alt="..."
+                                                src="assets/img/logo.jpg" alt="..."
                                                 style="height: 190px; margin: 20;">
-                                            <h5 class="title fs-2 fw-bold" style="color: #729ED9;">Welcome to ACI-BT!
-                                            </h5>
+                                            <h5 class="title fs-2 fw-bold" style="color: #729ED9;">Welcome to ACI-BT!</h5>
                                             <label for="" class="fs-4">Login</label>
                                         </div>
                                     </div>
                                 </div>
-                                <form class="row g-3 needs-validation px-5" action="login_process.php" method="post"
+                                <form class="row g-3 needs-validation px-5" action="#" method="post"
                                     novalidate>
                                     <div class="col-12">
                                         <label for="yourUsername" class="form-label fs-5">Username</label>
@@ -88,8 +125,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 fs-4 fw-bold" type="submit"
-                                            style="height: 50px;">Login</button>
+                                        <button class="btn btn-primary w-100 fs-4 fw-bold" type="submit" style="height: 50px;">Login</button>
                                     </div>
                                 </form>
                             </div>
@@ -101,6 +137,24 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
+    <!-- Modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="errorModalLabel">Login Error</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <?= htmlspecialchars($error) ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Vendor JS Files -->
     <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -113,6 +167,15 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            <?php if ($showModal): ?>
+                const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+                errorModal.show();
+            <?php endif; ?>
+        });
+    </script>
 
 </body>
 
