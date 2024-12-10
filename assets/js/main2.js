@@ -217,6 +217,10 @@ function select(){
   for (var x = 0; x < number.length; x++) {
     var Number = iframeDocument.getElementById('num'+x);
     console.log(number[x].value);
+    var text = document.getElementById('lot_area_words');
+    text.value = numberToWords(number[1].value);
+    console.log(number[1].value);
+    
     if (certificateType.value == 'lot_ownership' && x == 1) {
         let lotnum = iframeDocument.getElementById('lotnum');
         
@@ -227,6 +231,8 @@ function select(){
     } else if (Number) {
         Number.innerText = number[x].value;
     }
+
+
 }
 
   for (var x = 0; x < date.length; x++) {
