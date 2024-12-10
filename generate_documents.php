@@ -7,9 +7,9 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
+date_default_timezone_set('Asia/Manila');
 $duty_officer_name = $_SESSION['username'];
 $issued_date = date('Y-m-d');
-date_default_timezone_set('Asia/Manila');
 $timestamp = date('Y-m-d H:i:s');
 
 if (isset($_POST["barangay_clearance"])) {

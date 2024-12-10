@@ -61,7 +61,7 @@ if (!isset($_SESSION['username'])) {
             const transfer_of_residency = <?php echo isset($count_transfer_of_residency) ? (int)$count_transfer_of_residency : 0; ?>;
 
             const sum = <?php echo isset($sum) ? (int)$sum : 0; ?>;
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
 
                 // Calculate the clearance percentage
                 const barangay_clearance_percent = (barangay_clearance / sum) * 100;
@@ -92,14 +92,10 @@ if (!isset($_SESSION['username'])) {
                 document.getElementById('transfer_of_residency_percent').innerHTML = transfer_of_residency_percent.toFixed(2) + '%';
             })
 
-
-
-
             // Function to redirect to view_transactions page with document type parameter
             function moreInfo(doc_type, doc_id) {
                 window.location.href = 'more_info.php?doc_type=' + doc_type + '&doc_id=' + doc_id;
             }
-
         </script>
 
         <section class="section dashboard pt-4">
@@ -110,11 +106,9 @@ if (!isset($_SESSION['username'])) {
                             <!-- Left side columns -->
                             <div class="container-fluid col-lg" style="overflow-x: hidden;">
                                 <div class="row">
-
                                     <!-- Sales Card -->
                                     <div class="col-md-4">
                                         <div class="card info-card sales-card">
-
                                             <div class="filter" style="z-index: 10;">
                                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                                         class="bi bi-three-dots"></i></a>
@@ -122,23 +116,17 @@ if (!isset($_SESSION['username'])) {
                                                     <li class="dropdown-header text-start">
                                                         <h6>Option</h6>
                                                     </li>
-
-
                                                     <li>
                                                         <p class="dropdown-item lead"
                                                             onclick="moreInfo('barangay_clearance', 1)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
-
                                                 </ul>
                                             </div>
-
                                             <div class="card-body">
-
                                                 <h5 class="card-title">
                                                     BARANGAY CLEARANCE
                                                 </h5>
-
                                                 <div class="d-flex align-items-center">
                                                     <div
                                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -165,13 +153,12 @@ if (!isset($_SESSION['username'])) {
                                                         <span class="text-success small pt-1 fw-bold"
                                                             id="barangay_clearance_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
-
                                                     </div>
                                                 </div>
                                             </div>
                                             <script>
                                                 // Wait for the page to load before running the script
-                                                document.addEventListener('DOMContentLoaded', function () {
+                                                document.addEventListener('DOMContentLoaded', function() {
                                                     // Use PHP variables in JavaScript
                                                     const barangay_clearance = <?php echo $count_barangay_clearance; ?>;
                                                     const sum = <?php echo isset($sum) ? (int)$sum : 0; ?>;
@@ -183,14 +170,12 @@ if (!isset($_SESSION['username'])) {
                                                     document.getElementById('barangay_clearance_percent').innerHTML = barangay_clearance.toFixed(2) + '%';
                                                 });
                                             </script>
-
                                         </div>
                                     </div><!-- End Sales Card -->
 
                                     <!-- Revenue Card -->
                                     <div class="col-md col-md-4">
                                         <div class="card info-card revenue-card">
-
                                             <div class="filter" style="z-index: 10;">
                                                 <a class="icon" href="#" data-bs-toggle="dropdown"
                                                     aria-expanded="false">
@@ -209,13 +194,10 @@ if (!isset($_SESSION['username'])) {
                                                     </li>
                                                 </ul>
                                             </div>
-
                                             <div class="card-body">
-
                                                 <h5 class="card-title">
                                                     BUSINESS PERMIT | <span class="text-success">NEW</span>
                                                 </h5>
-
                                                 <div class="d-flex align-items-center">
                                                     <div
                                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -257,16 +239,13 @@ if (!isset($_SESSION['username'])) {
                                                     <li class="dropdown-header text-start">
                                                         <h6>Option</h6>
                                                     </li>
-
                                                     <li>
                                                         <p class="dropdown-item display-1"
                                                             onclick="moreInfo('business_permit_renew', 3)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
-
                                                 </ul>
                                             </div>
-
                                             <div class="card-body">
                                                 <h5 class="card-title ">
                                                     BUSINESS PERMIT | <span class="text-success">RENEW</span>
@@ -304,13 +283,11 @@ if (!isset($_SESSION['username'])) {
                             </div><!-- End Left side columns -->
                         </div>
                         <div class="carousel-item">
-
                             <!-- Left side columns -->
                             <div class="container-fluid col-lg-12">
                                 <div class="row">
                                     <div class="col-md col-md-4">
                                         <div class="card info-card revenue-card">
-
                                             <div class="filter" style="z-index: 10;">
                                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                                         class="bi bi-three-dots"></i></a>
@@ -318,22 +295,17 @@ if (!isset($_SESSION['username'])) {
                                                     <li class="dropdown-header text-start">
                                                         <h6>Option</h6>
                                                     </li>
-
                                                     <li>
                                                         <p class="dropdown-item display-1"
                                                             onclick="moreInfo('certificate_of_cohabitaion', 4)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
-
                                                 </ul>
                                             </div>
-
                                             <div class="card-body">
-
                                                 <h5 class="card-title ">
                                                     CERTIFICATE OF COHABITATION
                                                 </h5>
-
                                                 <div class="d-flex align-items-center">
                                                     <div
                                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -364,7 +336,6 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div><!-- End Revenue Card -->
 
-
                                     <div class="col-xxl-4 col-md-4">
                                         <div class="card info-card customers-card">
                                             <div class="filter" style="z-index: 10;">
@@ -374,22 +345,17 @@ if (!isset($_SESSION['username'])) {
                                                     <li class="dropdown-header text-start">
                                                         <h6>Option</h6>
                                                     </li>
-
                                                     <li>
                                                         <p class="dropdown-item display-1"
                                                             onclick="moreInfo('certificate_of_employability', 5)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
-
                                                 </ul>
                                             </div>
-
                                             <div class="card-body">
-
                                                 <h5 class="card-title ">
                                                     CERTIFICATE OF EMPLOYABILITY
                                                 </h5>
-
                                                 <div class="d-flex align-items-center">
                                                     <div
                                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -422,7 +388,6 @@ if (!isset($_SESSION['username'])) {
 
                                     <div class="col-md-4 col-md-3">
                                         <div class="card info-card sales-card">
-
                                             <div class="filter" style="z-index: 10;">
                                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                                         class="bi bi-three-dots"></i></a>
@@ -430,7 +395,6 @@ if (!isset($_SESSION['username'])) {
                                                     <li class="dropdown-header text-start">
                                                         <h6>Option</h6>
                                                     </li>
-
                                                     <li>
                                                         <p class="dropdown-item display-1"
                                                             onclick="moreInfo('certificate_of_income', 6)"
@@ -438,13 +402,10 @@ if (!isset($_SESSION['username'])) {
                                                     </li>
                                                 </ul>
                                             </div>
-
                                             <div class="card-body">
-
                                                 <h5 class="card-title">
                                                     CERTFICATE OF INCOME
                                                 </h5>
-
                                                 <div class="d-flex align-items-center">
                                                     <div
                                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -469,27 +430,19 @@ if (!isset($_SESSION['username'])) {
                                                         <span class="text-success small pt-1 fw-bold"
                                                             id="certificate_of_income_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
-
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div><!-- End Sales Card -->
-
-
-
                                 </div>
                             </div><!-- End Left side columns -->
                         </div>
-
                         <!-- Third Row -->
                         <div class="carousel-item">
-
                             <!-- Left side columns -->
                             <div class="container-fluid col-lg-12">
                                 <div class="row">
-
                                     <div class="col-md-4 col-md-3">
                                         <div class="card info-card sales-card">
                                             <div class="filter" style="z-index: 10;">
@@ -499,7 +452,6 @@ if (!isset($_SESSION['username'])) {
                                                     <li class="dropdown-header text-start">
                                                         <h6>Option</h6>
                                                     </li>
-
                                                     <li>
                                                         <p class="dropdown-item display-1"
                                                             onclick="moreInfo('certificate_of_indigency', 7)"
@@ -507,13 +459,10 @@ if (!isset($_SESSION['username'])) {
                                                     </li>
                                                 </ul>
                                             </div>
-
                                             <div class="card-body">
-
                                                 <h5 class="card-title">
                                                     CERTIFICATE OF INDIGENCY
                                                 </h5>
-
                                                 <div class="d-flex align-items-center">
                                                     <div
                                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -547,7 +496,6 @@ if (!isset($_SESSION['username'])) {
                                     <!-- Sales Card -->
                                     <div class="col-md col-md-4">
                                         <div class="card info-card revenue-card">
-
                                             <div class="filter" style="z-index: 10;">
                                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                                         class="bi bi-three-dots"></i></a>
@@ -555,16 +503,13 @@ if (!isset($_SESSION['username'])) {
                                                     <li class="dropdown-header text-start">
                                                         <h6>Option</h6>
                                                     </li>
-
                                                     <li>
                                                         <p class="dropdown-item display-1"
                                                             onclick="moreInfo('certificate_of_indigency_aics', 8)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
-
                                                 </ul>
                                             </div>
-
                                             <div class="card-body">
                                                 <h5 class="card-title ">
                                                     CERTIFICATE OF INDIGENCY (AICS)
@@ -602,9 +547,7 @@ if (!isset($_SESSION['username'])) {
 
                                     <!-- Customers Card -->
                                     <div class="col-xxl-4 col-md-4">
-
                                         <div class="card info-card customers-card">
-
                                             <div class="filter" style="z-index: 10;">
                                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                                         class="bi bi-three-dots"></i></a>
@@ -612,22 +555,17 @@ if (!isset($_SESSION['username'])) {
                                                     <li class="dropdown-header text-start">
                                                         <h6>Option</h6>
                                                     </li>
-
                                                     <li>
                                                         <p class="dropdown-item display-1"
                                                             onclick="moreInfo('complaint_certificate', 9)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
-
                                                 </ul>
                                             </div>
-
                                             <div class="card-body">
-
                                                 <h5 class="card-title">
                                                     COMPLAINT CERTIFICATE
                                                 </h5>
-
                                                 <div class="d-flex align-items-center">
                                                     <div
                                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -660,17 +598,14 @@ if (!isset($_SESSION['username'])) {
                                 </div>
                             </div><!-- End Left side columns -->
                         </div>
-
                         <!-- FOURTH ROW -->
                         <div class="carousel-item">
-
                             <!-- Left side columns -->
                             <div class="container-fluid col-lg-12">
                                 <div class="row">
                                     <!-- Sales Card -->
                                     <div class="col-md-4 col-md-3">
                                         <div class="card info-card sales-card">
-
                                             <div class="filter" style="z-index: 10;">
                                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                                         class="bi bi-three-dots"></i></a>
@@ -678,7 +613,6 @@ if (!isset($_SESSION['username'])) {
                                                     <li class="dropdown-header text-start">
                                                         <h6>Option</h6>
                                                     </li>
-
                                                     <li>
                                                         <p class="dropdown-item display-1"
                                                             onclick="moreInfo('death_certificate', 10)"
@@ -686,13 +620,10 @@ if (!isset($_SESSION['username'])) {
                                                     </li>
                                                 </ul>
                                             </div>
-
                                             <div class="card-body">
-
                                                 <h5 class="card-title">
                                                     DEATH CERTIFICATE
                                                 </h5>
-
                                                 <div class="d-flex align-items-center">
                                                     <div
                                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -717,20 +648,14 @@ if (!isset($_SESSION['username'])) {
                                                         <span class="text-success small pt-1 fw-bold"
                                                             id="death_certificate_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
-
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div><!-- End Sales Card -->
-
-
                                     <!-- Customers Card -->
                                     <div class="col-xxl-4 col-md-4">
-
                                         <div class="card info-card customers-card">
-
                                             <div class="filter" style="z-index: 10;">
                                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                                         class="bi bi-three-dots"></i></a>
@@ -738,22 +663,17 @@ if (!isset($_SESSION['username'])) {
                                                     <li class="dropdown-header text-start">
                                                         <h6>Option</h6>
                                                     </li>
-
                                                     <li>
                                                         <p class="dropdown-item display-1"
                                                             onclick="moreInfo('lot_ownership', 11)"
                                                             style="cursor: pointer;">Show Info</p>
                                                     </li>
-
                                                 </ul>
                                             </div>
-
                                             <div class="card-body">
-
                                                 <h5 class="card-title">
                                                     LOT OWNERSHIP
                                                 </h5>
-
                                                 <div class="d-flex align-items-center">
                                                     <div
                                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -783,11 +703,9 @@ if (!isset($_SESSION['username'])) {
                                             </div>
                                         </div>
                                     </div><!-- End Customers Card -->
-
                                     <!-- Revenue Card -->
                                     <div class="col-md col-md-4">
                                         <div class="card info-card revenue-card">
-
                                             <div class="filter" style="z-index: 10;">
                                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                                         class="bi bi-three-dots"></i></a>
@@ -795,7 +713,6 @@ if (!isset($_SESSION['username'])) {
                                                     <li class="dropdown-header text-start">
                                                         <h6>Option</h6>
                                                     </li>
-
                                                     <li>
                                                         <p class="dropdown-item display-1"
                                                             onclick="moreInfo('transfer_of_residency', 12)"
@@ -803,13 +720,10 @@ if (!isset($_SESSION['username'])) {
                                                     </li>
                                                 </ul>
                                             </div>
-
                                             <div class="card-body">
-
                                                 <h5 class="card-title">
                                                     TRANSFER OF RESIDENCY
                                                 </h5>
-
                                                 <div class="d-flex align-items-center">
                                                     <div
                                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -854,15 +768,13 @@ if (!isset($_SESSION['username'])) {
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-
-
                 <div class="container col-md-12">
                     <div class="card-body pb-0">
                         <h5 class="card-title">Bar Chart <span>| Reports</span></h5>
 
                         <div class="select-holder d-flex gap-3">
                             <select id="yearFilter" onchange="updateChart()" class="card p-2">
-                                
+                                <option value="all">All</option>
                                 <option value="2024">2024</option>
                                 <option value="2025">2025</option>
                                 <option value="2026">2026</option>
@@ -882,6 +794,41 @@ if (!isset($_SESSION['username'])) {
                                 <option value="10">October</option>
                                 <option value="11">November</option>
                                 <option value="12">December</option>
+                            </select>
+
+                            <select id="dayFilter" onchange="updateChart()" class="card p-2">
+                                <option value="all">All</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
                             </select>
                         </div>
                         <div class="col-lg">
@@ -938,7 +885,8 @@ if (!isset($_SESSION['username'])) {
                                             complaint_certificate,
                                             death_certificate,
                                             lot_ownership,
-                                            transfer_of_residency]
+                                            transfer_of_residency
+                                        ]
                                     }]
                                 };
 
@@ -1077,22 +1025,24 @@ if (!isset($_SESSION['username'])) {
                                     printWindow.document.close();
                                     printWindow.print();
                                 }
-
                             </script>
 
                             <script>
                                 function updateChart() {
                                     const month = document.getElementById('monthFilter').value;
                                     const year = document.getElementById('yearFilter').value;
+                                    const day = document.getElementById('dayFilter').value;//mrcxng
 
                                     // Construct the URL with both month and year parameters
-                                    let url = `getChartData.php?month=${month}&year=${year}`;
+                                    // let url = `getChartData.php?month=${month}&year=${year}`;
+                                    let url = `getChartData.php?month=${month}&year=${year}&day=${day}`;//mrcxng
 
                                     fetch(url)
                                         .then(response => response.json())
                                         .then(data => {
                                             // If 'month' is 'all', reset the chart data to default values
-                                            if (month === 'all') {
+                                            // if (month === 'all') {
+                                            if (month === 'all' && day === 'all') {//mrcxng
                                                 myChart.data.datasets[0].data = [
                                                     data["Barangay Clearance"],
                                                     data["Business Permit New"],
@@ -1117,7 +1067,6 @@ if (!isset($_SESSION['username'])) {
                                         })
                                         .catch(error => console.error('Error fetching chart data:', error));
                                 }
-
                             </script>
                         </div>
                     </div>
