@@ -9,6 +9,8 @@ if (!isset($_SESSION['username'])) {
 
 $duty_officer_name = $_SESSION['username'];
 $issued_date = date('Y-m-d');
+date_default_timezone_set('Asia/Manila');
+$timestamp = date('Y-m-d H:i:s');
 
 if (isset($_POST["barangay_clearance"])) {
     $first_name = $conn->real_escape_string($_POST["first_name"]);
@@ -45,8 +47,8 @@ if (isset($_POST["barangay_clearance"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?, (SELECT COUNT(*) FROM barangay_clearance), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?, (SELECT COUNT(*) FROM barangay_clearance), ?)");
+            $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
                 //echo "Transaction record inserted successfully";
@@ -89,8 +91,8 @@ if (isset($_POST["business_permit_new"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?, (SELECT COUNT(*) FROM business_permit_new), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $manager);
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?, (SELECT COUNT(*) FROM business_permit_new), ?)");
+            $trans_stmt->bind_param('iss', $admin_id, $manager, $timestamp);
 
             if ($trans_stmt->execute()) {
                 //echo "Transaction record inserted successfully";
@@ -133,8 +135,8 @@ if (isset($_POST["business_permit_renew"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 3, ?, (SELECT COUNT(*) FROM business_permit_renew), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $manager);
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 3, ?, (SELECT COUNT(*) FROM business_permit_renew), ?)");
+            $trans_stmt->bind_param('iss', $admin_id, $manager, $timestamp);
 
             if ($trans_stmt->execute()) {
                 //echo "Transaction record inserted successfully";
@@ -185,8 +187,8 @@ if (isset($_POST["certificate_of_cohabitation"])){
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 4, ?, (SELECT COUNT(*) FROM certificate_of_cohabitation), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 4, ?, (SELECT COUNT(*) FROM certificate_of_cohabitation), ?)");
+            $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
                 //echo "Transaction record inserted successfully";
@@ -232,8 +234,8 @@ if (isset($_POST["certificate_of_employability"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 5, ?, (SELECT COUNT(*) FROM certificate_of_employability), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 5, ?, (SELECT COUNT(*) FROM certificate_of_employability), ?)");
+            $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
                 //echo "Transaction record inserted successfully";
@@ -279,8 +281,8 @@ if (isset($_POST["certificate_of_income"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 6, ?, (SELECT COUNT(*) FROM certificate_of_income), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 6, ?, (SELECT COUNT(*) FROM certificate_of_income), ?)");
+            $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
                 //echo "Transaction record inserted successfully";
@@ -328,8 +330,8 @@ if (isset($_POST["certificate_of_indigency"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 7, ?, (SELECT COUNT(*) FROM certificate_of_indigency), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 7, ?, (SELECT COUNT(*) FROM certificate_of_indigency), ?)");
+            $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
                 //echo "Transaction record inserted successfully";
@@ -373,8 +375,8 @@ if (isset($_POST["certificate_of_indigency_aics"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 8, ?, (SELECT COUNT(*) FROM certificate_of_indigency_aics), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 8, ?, (SELECT COUNT(*) FROM certificate_of_indigency_aics), ?)");
+            $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
                 //echo "Transaction record inserted successfully";
@@ -427,8 +429,8 @@ if (isset($_POST["complaint_certificate"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 9, ?, (SELECT COUNT(*) FROM complaint_certificate), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 9, ?, (SELECT COUNT(*) FROM complaint_certificate), ?)");
+            $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
                 //echo "Transaction record inserted successfully";
@@ -482,8 +484,8 @@ if (isset($_POST["death_certificate"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 10, ?, (SELECT COUNT(*) FROM death_certificate), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 10, ?, (SELECT COUNT(*) FROM death_certificate), ?)");
+            $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
                 //echo "Transaction record inserted successfully";
@@ -513,6 +515,7 @@ if (isset($_POST["lot_ownership"])) {
     $actual_occupant = $conn->real_escape_string($_POST["actual_occupant"]);
     $lot_number = $conn->real_escape_string($_POST["lot_number"]);
     $lot_area_numerical = $conn->real_escape_string($_POST["lot_area_numerical"]);
+    $lot_area_words = $conn->real_escape_string($_POST["lot_area_word"]);
     $lot_location_address = $conn->real_escape_string($_POST["lot_location_address"]);
 
     if ($claimant == '/') {
@@ -534,7 +537,6 @@ if (isset($_POST["lot_ownership"])) {
     }
 
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
-    $lot_area_words = "????? pesos";
 
     $stmt = $conn->prepare("INSERT INTO lot_ownership (first_name, middle_name, last_name, suffix, address, claimant, beneficiary, actual_occupant, lot_no, area_measurement_num, area_measurement_words, loc_address, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param('ssssssssssssss', $first_name, $middle_name, $last_name, $suffix, $purok, $claimant, $beneficiary, $actual_occupant, $lot_number, $lot_area_numerical, $lot_area_words, $lot_location_address, $issued_date, $duty_officer_name);
@@ -552,8 +554,8 @@ if (isset($_POST["lot_ownership"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 11, ?, (SELECT COUNT(*) FROM lot_ownership), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 11, ?, (SELECT COUNT(*) FROM lot_ownership), ?)");
+            $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
                 //echo "Transaction record inserted successfully";
@@ -602,8 +604,8 @@ if (isset($_POST["transfer_of_residency"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 12, ?, (SELECT COUNT(*) FROM transfer_of_residency), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 12, ?, (SELECT COUNT(*) FROM transfer_of_residency), ?)");
+            $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
                 //echo "Transaction record inserted successfully";
