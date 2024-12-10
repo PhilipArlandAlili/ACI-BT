@@ -182,15 +182,19 @@
                                                 echo "<td>" . $row["birthdate"] . "</td>";
                                                 echo "<td>" . $row["civil_status"] . "</td>";
                                                 $por = $row["period_of_residency"];
-                                                $years = floor($por / 12);
+                                                $years = floor($por / 12); // Calculate full years
+                                                $remaining_months = $por % 12; // Calculate remaining months
+                                                
                                                 if ($por == 1) {
                                                     echo "<td>" . $por . " month</td>";
                                                 } elseif ($por < 12) {
                                                     echo "<td>" . $por . " months</td>";
-                                                } elseif ($por/12 == 1) {
+                                                } elseif ($por == 12) {
                                                     echo "<td>" . $years . " year</td>";
-                                                } elseif ($por > 12) {
+                                                } elseif ($remaining_months == 0) { // Exact multiple of 12 months
                                                     echo "<td>" . $years . " years</td>";
+                                                } else { // Combined years and months
+                                                    echo "<td>" . $years . " year" . ($years > 1 ? "s" : "") . " and " . $remaining_months . " month" . ($remaining_months > 1 ? "s" : "") . "</td>";
                                                 }
                                                 echo "<td>" . $row["purpose"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
