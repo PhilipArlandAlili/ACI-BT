@@ -313,7 +313,7 @@ if (isset($_POST["certificate_of_indigency"])) {
     $age = date('Y') - date('Y', strtotime($birthdate));
 
     $stmt = $conn->prepare("INSERT INTO certificate_of_indigency (first_name, middle_name, last_name, suffix, age, civil_status, address, purpose, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssissssss', $first_name, $middle_name, $last_name, $suffix, $age, $civil_status, $purok, $purpose, $issued_date, $duty_officer_name);
+    $stmt->bind_param('ssssssssss', $first_name, $middle_name, $last_name, $suffix, $age, $civil_status, $purok, $purpose, $issued_date, $duty_officer_name);
 
     if ($stmt->execute()) {
         //echo "New record inserted successfully";
