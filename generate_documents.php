@@ -453,7 +453,7 @@ if (isset($_POST["death_certificate"])) {
     $last_name = $conn->real_escape_string($_POST["last_name"]);
     $suffix = $conn->real_escape_string($_POST["suffix"]);
     $purok = $conn->real_escape_string($_POST["purok"]);
-    // $birthdate = $conn->real_escape_string($_POST["birthdate"]);
+    $birthdate = $conn->real_escape_string($_POST["birthdate"]);
     $date_of_death = $conn->real_escape_string($_POST["date_of_death"]);
     $time_of_death = $conn->real_escape_string($_POST["time_of_death"]);
     $cause_of_death = $conn->real_escape_string($_POST["cause_of_death"]);
@@ -464,8 +464,7 @@ if (isset($_POST["death_certificate"])) {
     $relationship = $conn->real_escape_string($_POST["relationship"]);
 
     $fullname = $req_first_name . ' ' . $req_middle_name . ' ' . $req_last_name . ' ' . $req_suffix;
-    // $age = date('Y') - date('Y', strtotime($birthdate));
-    $age = 0;
+    $age = date('Y') - date('Y', strtotime($birthdate));
 
     $stmt = $conn->prepare("INSERT INTO death_certificate (first_name, middle_name, last_name, suffix, age, address, date_of_death, time_of_death, req_first_name, req_middle_name, req_last_name, req_suffix, relationship, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param('sssssssssssssss', $first_name, $middle_name, $last_name, $suffix, $age, $purok, $date_of_death, $time_of_death, $req_first_name, $req_middle_name, $req_last_name, $req_suffix, $relationship, $issued_date, $duty_officer_name);

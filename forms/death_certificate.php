@@ -60,7 +60,7 @@
     <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="last_name" name="req_last_name" placeholder="Ex. Bautista" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="suffix1">
+    <select class="text-left form-control" name="req_suffix" id="suffix1">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -98,7 +98,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("deathPrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("deathForm");  // Use the unique form ID
+        let form = document.getElementById("death_certificateForm");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {
