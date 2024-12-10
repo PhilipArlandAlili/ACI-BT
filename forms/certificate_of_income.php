@@ -65,7 +65,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("incomePrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("incomeForm");  // Use the unique form ID
+        let form = document.getElementById("certificate_of_incomeForm");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {

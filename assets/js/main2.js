@@ -400,17 +400,17 @@ function numberToWords(num) {
   if (num > 1_000_000_000) return "Number exceeds 1 billion";
 
   const ones = [
-      "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"
+      "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"
   ];
   const teens = [
-      "eleven", "twelve", "thirteen", "fourteen", "fifteen",
-      "sixteen", "seventeen", "eighteen", "nineteen"
+      "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen",
+      "Sixteen", "Seventeen", "Eighteen", "Nineteen"
   ];
   const tens = [
-      "", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
+      "", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
   ];
   const thousands = [
-      "", "thousand", "million", "billion"
+      "", "Thousand", "Million", "Billion"
   ];
 
   function convertChunk(num) {
