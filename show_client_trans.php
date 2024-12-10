@@ -388,7 +388,13 @@ if (!isset($_SESSION['username'])) {
                                             // echo "<th>ID</th>";
                                             echo "<th>Full Name</th>";
                                             echo "<th>Address</th>";
+                                            echo "<th>Claimant</th>";
+                                            echo "<th>Beneficiary</th>";
+                                            echo "<th>Actual Occupant</th>";
                                             echo "<th>Lot No.</th>";
+                                            echo "<th>Area Measurement (Number)</th>";
+                                            echo "<th>Area Measurement (Words)</th>";
+                                            echo "<th>Location Address</th>";
                                             echo "<th>Issued Date</th>";
                                             echo "<th>Duty Officer Name</th>";
                                             echo "</tr>";
@@ -402,7 +408,13 @@ if (!isset($_SESSION['username'])) {
                                                 . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
+                                            echo "<td>" . $row["claimant"] . "</td>";
+                                            echo "<td>" . $row["beneficiary"] . "</td>";
+                                            echo "<td>" . $row["actual_occupant"] . "</td>";
                                             echo "<td>" . $row["lot_no"] . "</td>";
+                                            echo "<td>" . $row["area_measurement_num"] . "</td>";
+                                            echo "<td>" . $row["area_measurement_words"] . "</td>";
+                                            echo "<td>" . $row["loc_address"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
                                             echo "<td>" . $row["duty_officer_name"] . "</td>";
                                             echo "</tr>";

@@ -130,7 +130,13 @@
                                             echo "
                                             <th>Full Name</th>
                                             <th>Address</th>
+                                            <th>Claimant</th>
+                                            <th>Beneficiary</th>
+                                            <th>Actual Occupant</th>
                                             <th>Lot No.</th>
+                                            <th>Area Measurement (Number)</th>
+                                            <th>Area Measurement (Words)</th>
+                                            <th>Location Address</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
@@ -464,7 +470,13 @@
                                                     . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
                                                     echo "<td>" . $fullName . "</td>";
                                                     echo "<td>" . $row["address"] . "</td>";
+                                                    echo "<td>" . $row["claimant"] . "</td>";
+                                                    echo "<td>" . $row["beneficiary"] . "</td>";
+                                                    echo "<td>" . $row["actual_occupant"] . "</td>";
                                                     echo "<td>" . $row["lot_no"] . "</td>";
+                                                    echo "<td>" . $row["area_measurement_num"] . "</td>";
+                                                    echo "<td>" . $row["area_measurement_words"] . "</td>";
+                                                    echo "<td>" . $row["loc_address"] . "</td>";
                                                     echo "<td>" . $row["issued_date"] . "</td>";
                                                     echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                     echo "</tr>";
