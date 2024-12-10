@@ -1,13 +1,12 @@
 <form action="#" method="post" id="lotOwnershipForm">
-    <label for="first_name">First Name:</label>
-    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ex. Juan" required><br>
+<label for="">First Name:</label>
+    <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
 
-    <label for="middle_name">Middle Name:</label>
-    <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Ex. Mandaragat"
-        required><br>
+    <label for="">Middle Name:</label>
+    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
 
-    <label for="last_name">Last Name:</label>
-    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Ex. Dela Cruz" required><br>
+    <label for="">Last Name:</label>
+    <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
     <select class="text-left form-control" name="suffix" id="suffix">
@@ -53,13 +52,13 @@
     </div><br>
 
     <label for="lotNumber">Lot Number:</label>
-    <input type="number" class="form-control" name="lot_number" placeholder="5003" required><br>
+    <input type="number" class="form-control" oninput="updateText()" name="lot_number" placeholder="5003" required><br>
 
     <label for="lotAreaNumerical">Area Measurement (Numerical Form):</label>
-    <input type="number" class="form-control" name="lot_area_numerical" placeholder="350 sqm" required><br>
+    <input type="number" class="form-control" oninput="updateText()" name="lot_area_numerical" placeholder="350 sqm" required><br>
 
     <label for="lotLocationAddress">Location Address:</label>
-    <input type="text" class="form-control" name="lot_location_address" placeholder="PSU Rd" required><br>
+    <input type="text" class="form-control" oninput="updateText()" name="lot_location_address" placeholder="PSU Rd" required><br>
 
     <hr>
 
