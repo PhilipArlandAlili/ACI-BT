@@ -39,13 +39,10 @@
 
                                         if ($doc_id == 1) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
+                                            <th>Full Name</th>
                                             <th>Address</th>
-                                            <th>Birth Place</th>
-                                            <th>Birth Date</th>
+                                            <th>Birthplace</th>
+                                            <th>Birthdate</th>
                                             <th>Civil Status</th>
                                             <th>Period of Residency</th>
                                             <th>Purpose</th>
@@ -209,15 +206,29 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["first_name"] . "</td>";
-                                                echo "<td>" . $row["middle_name"] . "</td>";
-                                                echo "<td>" . $row["last_name"] . "</td>";
-                                                echo "<td>" . $row["suffix"] . "</td>";
+                                                $fullName = $row["first_name"]
+                                                . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
+                                                . " " . $row["last_name"]
+                                                . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                echo "<td>" . $fullName . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["birthplace"] . "</td>";
                                                 echo "<td>" . $row["birthdate"] . "</td>";
                                                 echo "<td>" . $row["civil_status"] . "</td>";
-                                                echo "<td>" . $row["period_of_residency"] . "</td>";
+                                                $por = $row["period_of_residency"] / 12;
+                                                if ($por >= 12) {
+                                                    if ($por == 1) {
+                                                        echo "<td>" . $por . " year</td>";
+                                                    } else {
+                                                        echo "<td>" . $por . " years</td>";
+                                                    }
+                                                } else {
+                                                    if ($row["period_of_residency"] == 1) {
+                                                        echo "<td>" . $row["period_of_residency"] . " month</td>";
+                                                    } else {
+                                                        echo "<td>" . $row["period_of_residency"] . " months</td>";
+                                                    }
+                                                }
                                                 echo "<td>" . $row["purpose"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
                                                 echo "<td>" . $row["duty_officer_name"] . "</td>";

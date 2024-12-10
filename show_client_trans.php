@@ -79,7 +79,17 @@ if (!isset($_SESSION['username'])) {
                                             echo "<td>" . $row["birthplace"] . "</td>";
                                             echo "<td>" . $row["birthdate"] . "</td>";
                                             echo "<td>" . $row["civil_status"] . "</td>";
-                                            echo "<td>" . $row["period_of_residency"] . "</td>";
+                                            $por = $row["period_of_residency"];
+                                            $years = floor($por / 12);
+                                            if ($por == 1) {
+                                                echo "<td>" . $por . " month</td>";
+                                            } elseif ($por < 12) {
+                                                echo "<td>" . $por . " months</td>";
+                                            } elseif ($por/12 == 1) {
+                                                echo "<td>" . $years . " year</td>";
+                                            } elseif ($por > 12) {
+                                                echo "<td>" . $years . " years</td>";
+                                            }
                                             echo "<td>" . $row["purpose"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
                                             echo "<td>" . $row["duty_officer_name"] . "</td>";

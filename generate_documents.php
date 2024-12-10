@@ -1,11 +1,11 @@
 <?php
-// session_start();
-// include 'includes/db.php';
+session_start();
+include 'includes/db.php';
 
-// if (!isset($_SESSION['username'])) {
-//     header("Location: index.php");
-//     exit();
-// }
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+    exit();
+}
 
 $duty_officer_name = $_SESSION['username'];
 $issued_date = date('Y-m-d');
@@ -19,10 +19,15 @@ if (isset($_POST["barangay_clearance"])) {
     $birthplace = $conn->real_escape_string($_POST["birthplace"]);
     $birthdate = $conn->real_escape_string($_POST["birthdate"]);
     $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+    $period_of_residency_ym = $conn->real_escape_string($_POST["period_of_residency_ym"]);
     $period_of_residency = $conn->real_escape_string($_POST["period_of_residency"]);
     $purpose = $conn->real_escape_string($_POST["purpose"]);
 
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
+
+    if ($period_of_residency_ym == 'years') {
+        $period_of_residency = $period_of_residency*12;
+    }
 
     $stmt = $conn->prepare("INSERT INTO barangay_clearance (first_name, middle_name, last_name, suffix, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param('ssssssssisss', $first_name, $middle_name, $last_name, $suffix, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
