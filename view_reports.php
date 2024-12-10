@@ -1023,7 +1023,9 @@ if (!isset($_SESSION['username'])) {
 
                                     printWindow.document.write(content);
                                     printWindow.document.close();
-                                    printWindow.print();
+                                    setTimeout(() => {
+                                        printWindow.print();
+                                    }, 5);
                                 }
                             </script>
 
