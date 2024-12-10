@@ -298,7 +298,9 @@ else console.log('period not found');
 
 if (certificateType.value == 'certificate_of_income') {
 var num = iframeDocument.getElementById('intext');
-var numtotext = document.getElementById('amountinwords');
+var numtotext = document.getElementById('income_num');
+var income_words = document.getElementById('income_words');
+income_words.value =numberToWords(number[0].value);
 
 if ( numtotext){ numtotext.innerText = numberToWords(number[0].value);}
 if (num ) { 
@@ -389,3 +391,56 @@ if (months) months.innerText = monthName;
 if (sups) sups.innerText = getOrdinalSuffix(day);
 if (years) years.innerText =year; 
 else console.log("not ok");
+
+function numberToWords(num) {
+  if (num === 0) return "zero";
+  if (num > 1_000_000_000) return "Number exceeds 1 billion";
+
+  const ones = [
+      "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"
+  ];
+  const teens = [
+      "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+      "sixteen", "seventeen", "eighteen", "nineteen"
+  ];
+  const tens = [
+      "", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
+  ];
+  const thousands = [
+      "", "thousand", "million", "billion"
+  ];
+
+  function convertChunk(num) {
+      let words = "";
+
+      if (num >= 100) {
+          words += ones[Math.floor(num / 100)] + " hundred ";
+          num %= 100;
+      }
+      if (num >= 11 && num <= 19) {
+          words += teens[num - 11] + " ";
+      } else if (num === 10 || num >= 20) {
+          words += tens[Math.floor(num / 10)] + " ";
+          num %= 10;
+      }
+      if (num > 0 && num <= 9) {
+          words += ones[num] + " ";
+      }
+
+      return words.trim();
+  }
+
+  let result = "";
+  let chunkCount = 0;
+
+  while (num > 0) {
+      const chunk = num % 1000;
+      if (chunk > 0) {
+          result = convertChunk(chunk) + " " + thousands[chunkCount] + " " + result;
+      }
+      num = Math.floor(num / 1000);
+      chunkCount++;
+  }
+
+  return result.trim();
+}
