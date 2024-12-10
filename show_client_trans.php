@@ -413,6 +413,7 @@ if (!isset($_SESSION['username'])) {
                                             echo "<th>Nationality</th>";
                                             echo "<th>Civil Status</th>";
                                             echo "<th>Previus Address</th>";
+                                            echo "<th>Current Address</th>";
                                             echo "<th>Purpose</th>";
                                             echo "<th>Issued Date</th>";
                                             echo "<th>Duty Officer Name</th>";
@@ -430,6 +431,7 @@ if (!isset($_SESSION['username'])) {
                                             echo "<td>" . $row["nationality"] . "</td>";
                                             echo "<td>" . $row["civil_status"] . "</td>";
                                             echo "<td>" . $row["previous_address"] . "</td>";
+                                            echo "<td>" . $row["current_address"] . "</td>";
                                             echo "<td>" . $row["purpose"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
                                             echo "<td>" . $row["duty_officer_name"] . "</td>";
