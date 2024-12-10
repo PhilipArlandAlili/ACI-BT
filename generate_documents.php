@@ -1,11 +1,11 @@
 <?php
-// session_start();
-// include 'includes/db.php';
+session_start();
+include 'includes/db.php';
 
-// if (!isset($_SESSION['username'])) {
-//     header("Location: index.php");
-//     exit();
-// }
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+    exit();
+}
 
 $duty_officer_name = $_SESSION['username'];
 $issued_date = date('Y-m-d');
