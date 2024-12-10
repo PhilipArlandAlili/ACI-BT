@@ -266,7 +266,7 @@ if (!isset($_SESSION['username'])) {
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
-                                                . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
                                             echo "<td>" . $row["age"] . "</td>";
                                             echo "<td>" . $row["civil_status"] . "</td>";
@@ -293,7 +293,7 @@ if (!isset($_SESSION['username'])) {
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
-                                                . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
