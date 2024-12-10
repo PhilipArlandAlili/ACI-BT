@@ -1,10 +1,11 @@
 <form action="#" method="post" id="complaintForm">
 
-<label for="">First Name:</label>
+    <label for="" class="fw-bold">Complainant</label><br>
+    <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
-    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
+    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
     <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
@@ -44,14 +45,14 @@
     <!--Respondent Full Name-->
     <label for="" class="fw-bold">Respondent</label><br>
     <label for="first_name">First Name:</label>
-    <input type="text" class="form-control" id="first_name"maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" name="first_name_respondent" placeholder="Ex. Juan" required><br>
+    <input type="text" class="form-control" id="first_name"maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" name="first_name_respondent" placeholder="Ex. Pedro" required><br>
 
     <label for="middle_name">Middle Name:</label>
-    <input type="text" class="form-control" id="middle_name"maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" name="middle_name_respondent" placeholder="Ex. Mandaragat"
+    <input type="text" class="form-control" id="middle_name"maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" name="middle_name_respondent" placeholder="Ex. Torres"
         required><br>
 
     <label for="last_name">Last Name:</label>
-    <input type="text" class="form-control" id="last_name"maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" name="last_name_respondent" placeholder="Ex. Dela Cruz" required><br>
+    <input type="text" class="form-control" id="last_name"maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" name="last_name_respondent" placeholder="Ex. Bautista" required><br>
 
     <label for="suffix">Suffix:</label>
     <select class="text-left form-control" name="suffix_respondent" id="suffix">
@@ -64,7 +65,7 @@
     </select><br>
 
     <label for="">Case Number:</label>
-    <input type="number" name="case_no" class="form-control" placeholder="2024-005" required><br>
+    <input type="number" name="case_no" class="form-control" placeholder="2024005" required><br>
 
     <label for="">VAWC Official Name</label>
     <input type="text" name="vawc_official_name" class="form-control" required><br>

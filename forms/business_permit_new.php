@@ -1,7 +1,7 @@
 <!-- Business Permit Form -->
 <form action="#" method="post" id="BPermitNewForm">
     <label for="businessName">Business name/ Trade Activity:</label>
-    <input type="text" name="business_name" class="form-control" oninput="updateText()"s placeholder="Ex: Star Oil" required><br>
+    <input type="text" name="business_name" class="form-control" oninput="updateText()"s placeholder="Ex: Carl Store" required><br>
 
     <label for="purok">Purok:</label><br>
     <select name="purok" id="purok" class="form-control" required>
