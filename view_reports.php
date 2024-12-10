@@ -1,4 +1,3 @@
-<!-- Troy  -->
 <?php
 session_start();
 
@@ -48,21 +47,20 @@ if (!isset($_SESSION['username'])) {
         <?php include 'includes/queries_reports.php'; ?>
         <script>
             // Use PHP variables in JavaScript
-            const barangay_clearance = <?php echo $count_barangay_clearance; ?>;
-            const business_permit_new = <?php echo $count_business_permit_new ?>;
-            const business_permit_renew = <?php echo $count_business_permit_renew ?>;
-            const certificate_of_cohabitation = <?php echo $count_certificate_of_cohabitation; ?>;
-            const certificate_of_employability = <?php echo $count_certificate_of_employability ?>;
-            const certificate_of_income = <?php echo $count_certificate_of_income ?>;
-            const certificate_of_indigency = <?php echo $count_certificate_of_indigency; ?>;
-            const certificate_of_indigency_aics = <?php echo $count_certificate_of_indigency_aics; ?>;
-            const complaint_certificate = <?php echo $count_complaint_certificate; ?>;
-            const death_certificate = <?php echo $count_death_certificate; ?>;
-            // const first_time_job_seeker = <?php echo $count_first_time_job_seeker; ?>;
-            const lot_ownership = <?php echo $count_lot_ownership; ?>;
-            const transfer_of_residency = <?php echo $count_transfer_of_residency; ?>;
+            const barangay_clearance = <?php echo isset($count_barangay_clearance) ? (int)$count_barangay_clearance : 0; ?>;
+            const business_permit_new = <?php echo isset($count_business_permit_new) ? (int)$count_business_permit_new : 0; ?>;
+            const business_permit_renew = <?php echo isset($count_business_permit_renew) ? (int)$count_business_permit_renew : 0; ?>;
+            const certificate_of_cohabitation = <?php echo isset($count_certificate_of_cohabitation) ? (int)$count_certificate_of_cohabitation : 0; ?>;
+            const certificate_of_employability = <?php echo isset($count_certificate_of_employability) ? (int)$count_certificate_of_employability : 0; ?>;
+            const certificate_of_income = <?php echo isset($count_certificate_of_income) ? (int)$count_certificate_of_income : 0; ?>;
+            const certificate_of_indigency = <?php echo isset($count_certificate_of_indigency) ? (int)$count_certificate_of_indigency : 0; ?>;
+            const certificate_of_indigency_aics = <?php echo isset($count_certificate_of_indigency_aics) ? (int)$count_certificate_of_indigency_aics : 0; ?>;
+            const complaint_certificate = <?php echo isset($count_complaint_certificate) ? (int)$count_complaint_certificate : 0; ?>;
+            const death_certificate = <?php echo isset($count_death_certificate) ? (int)$count_death_certificate : 0; ?>;
+            const lot_ownership = <?php echo isset($count_lot_ownership) ? (int)$count_lot_ownership : 0; ?>;
+            const transfer_of_residency = <?php echo isset($count_transfer_of_residency) ? (int)$count_transfer_of_residency : 0; ?>;
 
-            const sum = <?php echo $sum; ?>;
+            const sum = <?php echo isset($sum) ? (int)$sum : 0; ?>;
             document.addEventListener('DOMContentLoaded', function () {
 
                 // Calculate the clearance percentage
@@ -76,7 +74,6 @@ if (!isset($_SESSION['username'])) {
                 const certificate_of_indigency_aics_percent = (certificate_of_indigency_aics / sum) * 100;
                 const complaint_certificate_percent = (complaint_certificate / sum) * 100;
                 const death_certificate_percent = (death_certificate / sum) * 100;
-                // const first_time_job_seeker_percent = (first_time_job_seeker / sum) * 100;
                 const lot_ownership_percent = (lot_ownership / sum) * 100;
                 const transfer_of_residency_percent = (transfer_of_residency / sum) * 100;
 
@@ -91,7 +88,6 @@ if (!isset($_SESSION['username'])) {
                 document.getElementById('certificate_of_indigency_aics_percent').innerHTML = certificate_of_indigency_aics_percent.toFixed(2) + '%';
                 document.getElementById('complaint_certificate_percent').innerHTML = complaint_certificate_percent.toFixed(2) + '%';
                 document.getElementById('death_certificate_percent').innerHTML = death_certificate_percent.toFixed(2) + '%';
-                // document.getElementById('first_time_job_seeker_percent').innerHTML = first_time_job_seeker_percent.toFixed(2) + '%';
                 document.getElementById('lot_ownership_percent').innerHTML = lot_ownership_percent.toFixed(2) + '%';
                 document.getElementById('transfer_of_residency_percent').innerHTML = transfer_of_residency_percent.toFixed(2) + '%';
             })
@@ -162,7 +158,9 @@ if (!isset($_SESSION['username'])) {
                                                     </div>
                                                     <div class="ps-3">
                                                         <h6>
-                                                            <?php echo $count_barangay_clearance; ?>
+                                                            <script>
+                                                                document.write(barangay_clearance);
+                                                            </script>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
                                                             id="barangay_clearance_percent">%</span> <span
@@ -176,7 +174,7 @@ if (!isset($_SESSION['username'])) {
                                                 document.addEventListener('DOMContentLoaded', function () {
                                                     // Use PHP variables in JavaScript
                                                     const barangay_clearance = <?php echo $count_barangay_clearance; ?>;
-                                                    const sum = <?php echo $sum; ?>;
+                                                    const sum = <?php echo isset($sum) ? (int)$sum : 0; ?>;
 
                                                     // Calculate the clearance percentage
                                                     const barangay_clearance_percent = (barangay_clearance / sum) * 100;

@@ -6,7 +6,7 @@
     <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
-    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
+    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
     <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
@@ -52,16 +52,16 @@
         <option value="Widow">Widow</option>
     </select><br>
 
-    <label for="period_of_residency_ym">Period of Residency:</label>
+    <label for="period_of_residency">Period of Residency:</label>
     <div class="radios d-flex gap-3">
         <div class="form-check">
-            <input class="form-check-input" name="period_of_residency_ym"  onclick="updateText()" type="radio" value="months" id="radioMonths" required>
+            <input class="form-check-input" name="period_of_residency"  onclick="updateText()" type="radio" value="months" id="radioMonths" required>
             <label class="form-check-label" for="radioMonths">
                 Months
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" name="period_of_residency_ym"  onclick="updateText()" type="radio" value="years" id="radioYears" required>
+            <input class="form-check-input" name="period_of_residency"  onclick="updateText()" type="radio" value="years" id="radioYears" required>
             <label class="form-check-label" for="radioYears">
                 Years
             </label>

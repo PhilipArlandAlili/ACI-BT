@@ -59,15 +59,10 @@
                                         ";
                                         } elseif ($doc_id == 4) {
                                             echo "
-                                            <th>First Name (Male)</th>
-                                            <th>Middle Name (Male)</th>
-                                            <th>Last Name (Male)</th>
-                                            <th>Suffix (Male)</th>
-                                            <th>Birthdate (Male)</th>
-                                            <<th>First Name (Female)</th>
-                                            <th>Middle Name (Female)</th>
-                                            <th>Last Name (Female)</th>
-                                            <th>Birthdate (Female)</th>
+                                            <th>Full Name (Male)</th>
+                                            <th>Birthdate</th>
+                                            <th>Full Name (Female)</th>
+                                            <th>Birthdate</th>
                                             <th>Address</th>
                                             <th>Date of Marriage</th>
                                             <th>Years Married</th>
@@ -76,21 +71,15 @@
                                         ";
                                         } elseif ($doc_id == 5) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
                                             <th>Age</th>
                                             <th>Address</th>
                                             <th>Issued Date</th>
+                                            <th>Full Name</th>
                                             <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 6) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
+                                            <th>Full Name</th>
                                             <th>Address</th>
                                             <th>Income (Number)</th>
                                             <th>Income (Words)</th>
@@ -99,10 +88,7 @@
                                         ";
                                         } elseif ($doc_id == 7) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
+                                            <th>Full Name</th>
                                             <th>Age</th>
                                             <th>Civil Status</th>
                                             <th>Address</th>
@@ -112,56 +98,37 @@
                                         ";
                                         } elseif ($doc_id == 8) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
+                                            <th>Full Name</th>
                                             <th>Address</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 9) {
                                             echo "
-                                            <th>First Name (Complainant)</th>
-                                            <th>Middle Name  (Complainant)</th>
-                                            <th>Last Name  (Complainant)</th>
-                                            <th>Suffix  (Complainant)</th>
+                                            <th>Full Name (Complainant)</th>
                                             <th>Age</th>
                                             <th>Address</th>
                                             <th>Date of Complain</th>
-                                            <th>First Name (Respondent)</th>
-                                            <th>Middle Name (Respondent)</th>
-                                            <th>Last Name (Respondent)</th>
-                                            <th>Suffix (Respondent)</th>
+                                            <th>Full Name (Respondent)</th>
                                             <th>Case No.</th>
-                                            <th>VAWC Official Name</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 10) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
+                                            <th>Full Name</th>
                                             <th>Age</th>
                                             <th>Address</th>
                                             <th>Date of Death</th>
                                             <th>Time of Death</th>
-                                            <th>First Name (Requester)</th>
-                                            <th>Middle Name (Requester)</th>
-                                            <th>Last Name (Requester)</th>
-                                            <th>Suffix (Requester)</th>
+                                            <th>Full Name (Requester)</th>
                                             <th>Relationship</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 11) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
+                                            <th>Full Name</th>
                                             <th>Address</th>
                                             <th>Lot No.</th>
                                             <th>Issued Date</th>
@@ -169,14 +136,11 @@
                                         ";
                                         } elseif ($doc_id == 12) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
+                                            <th>Full Name</th>
                                             <th>Address</th>
                                             <th>Nationality</th>
                                             <th>Civil Status</th>
-                                            <th>Previous Address</th>
+                                            <th>Previus Address</th>
                                             <th>Purpose</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
@@ -206,28 +170,26 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
+                                                // Combine first_name, middle_name, last_name, and suffix into Full Name
                                                 $fullName = $row["first_name"]
-                                                . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
-                                                . " " . $row["last_name"]
-                                                . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                    . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
+                                                    . " " . $row["last_name"]
+                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
                                                 echo "<td>" . $fullName . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["birthplace"] . "</td>";
                                                 echo "<td>" . $row["birthdate"] . "</td>";
                                                 echo "<td>" . $row["civil_status"] . "</td>";
-                                                $por = $row["period_of_residency"] / 12;
-                                                if ($por >= 12) {
-                                                    if ($por == 1) {
-                                                        echo "<td>" . $por . " year</td>";
-                                                    } else {
-                                                        echo "<td>" . $por . " years</td>";
-                                                    }
-                                                } else {
-                                                    if ($row["period_of_residency"] == 1) {
-                                                        echo "<td>" . $row["period_of_residency"] . " month</td>";
-                                                    } else {
-                                                        echo "<td>" . $row["period_of_residency"] . " months</td>";
-                                                    }
+                                                $por = $row["period_of_residency"];
+                                                $years = floor($por / 12);
+                                                if ($por == 1) {
+                                                    echo "<td>" . $por . " month</td>";
+                                                } elseif ($por < 12) {
+                                                    echo "<td>" . $por . " months</td>";
+                                                } elseif ($por/12 == 1) {
+                                                    echo "<td>" . $years . " year</td>";
+                                                } elseif ($por > 12) {
+                                                    echo "<td>" . $years . " years</td>";
                                                 }
                                                 echo "<td>" . $row["purpose"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
@@ -270,6 +232,7 @@
                                                 echo "<td>" . $row["business_name"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["manager"] . "</td>";
+    
                                                 echo "<td>" . $row["issued_date"] . "</td>";
                                                 echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                 echo "</tr>";
@@ -287,14 +250,17 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["first_name_male"] . "</td>";
-                                                echo "<td>" . $row["middle_name_male"] . "</td>";
-                                                echo "<td>" . $row["last_name_male"] . "</td>";
-                                                echo "<td>" . $row["suffix_male"] . "</td>";
+                                                $fullNameMale = $row["first_name_male"]
+                                                    . (!empty($row["middle_name_male"]) ? " " . $row["middle_name_male"] : "")
+                                                    . " " . $row["last_name_male"]
+                                                    . (!empty($row["suffix_male"]) ? ", " . $row["suffix_male"] : "");
+                                                echo "<td>" . $fullNameMale . "</td>";
                                                 echo "<td>" . $row["birthdate_male"] . "</td>";
-                                                echo "<td>" . $row["first_name_female"] . "</td>";
-                                                echo "<td>" . $row["middle_name_female"] . "</td>";
-                                                echo "<td>" . $row["last_name_female"] . "</td>";
+
+                                                $fullNameFemale = $row["first_name_female"]
+                                                    . (!empty($row["middle_name_female"]) ? " " . $row["middle_name_female"] : "")
+                                                    . " " . $row["last_name_female"];
+                                                echo "<td>" . $fullNameFemale . "</td>";
                                                 echo "<td>" . $row["birthdate_female"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["date_of_marriage"] . "</td>";
@@ -316,10 +282,12 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["first_name"] . "</td>";
-                                                echo "<td>" . $row["middle_name"] . "</td>";
-                                                echo "<td>" . $row["last_name"] . "</td>";
-                                                echo "<td>" . $row["suffix"] . "</td>";
+                                            // echo "<td>" . $row["id"] . "</td>";
+                                                $fullName = $row["first_name"]
+                                                    . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
+                                                    . " " . $row["last_name"]
+                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                echo "<td>" . $fullName . "</td>";
                                                 echo "<td>" . $row["age"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
@@ -339,10 +307,12 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["first_name"] . "</td>";
-                                                echo "<td>" . $row["middle_name"] . "</td>";
-                                                echo "<td>" . $row["last_name"] . "</td>";
-                                                echo "<td>" . $row["suffix"] . "</td>";
+                                            // echo "<td>" . $row["id"] . "</td>";
+                                                $fullName = $row["first_name"]
+                                                    . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
+                                                    . " " . $row["last_name"]
+                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                echo "<td>" . $fullName . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["income_num"] . "</td>";
                                                 echo "<td>" . $row["income_words"] . "</td>";
@@ -363,10 +333,12 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["first_name"] . "</td>";
-                                                echo "<td>" . $row["middle_name"] . "</td>";
-                                                echo "<td>" . $row["last_name"] . "</td>";
-                                                echo "<td>" . $row["suffix"] . "</td>";
+                                            // echo "<td>" . $row["id"] . "</td>";
+                                                $fullName = $row["first_name"]
+                                                    . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
+                                                    . " " . $row["last_name"]
+                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                echo "<td>" . $fullName . "</td>";
                                                 echo "<td>" . $row["age"] . "</td>";
                                                 echo "<td>" . $row["civil_status"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
@@ -388,14 +360,16 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["first_name"] . "</td>";
-                                                echo "<td>" . $row["middle_name"] . "</td>";
-                                                echo "<td>" . $row["last_name"] . "</td>";
-                                                echo "<td>" . $row["suffix"] . "</td>";
-                                                echo "<td>" . $row["address"] . "</td>";
-                                                echo "<td>" . $row["issued_date"] . "</td>";
-                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
-                                                echo "</tr>";
+                                            // echo "<td>" . $row["id"] . "</td>";
+                                            $fullName = $row["first_name"]
+                                                . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
+                                                . " " . $row["last_name"]
+                                                . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                            echo "<td>" . $fullName . "</td>";
+                                            echo "<td>" . $row["address"] . "</td>";
+                                            echo "<td>" . $row["issued_date"] . "</td>";
+                                            echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                            echo "</tr>";
                                             }
                                         } else {
                                             echo "<tr><td colspan='4'><center>No indigency (AICS) certificates found</center></td></tr>";
@@ -410,19 +384,22 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["first_name_complainant"] . "</td>";
-                                                echo "<td>" . $row["middle_name_complainant"] . "</td>";
-                                                echo "<td>" . $row["last_name_complainant"] . "</td>";
-                                                echo "<td>" . $row["suffix_complainant"] . "</td>";
+                                            // echo "<td>" . $row["id"] . "</td>";
+                                            $fullNameComplaint = $row["first_name_complainant"]
+                                                . (!empty($row["middle_name_complainant"]) ? " " . $row["middle_name_complainant"] : "")
+                                                . " " . $row["last_name_complainant"]
+                                                . (!empty($row["suffix_complainant"]) ? ", " . $row["suffix_complainant"] : "");
+                                                echo "<td>" . $fullNameComplaint . "</td>";
                                                 echo "<td>" . $row["age"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["date_of_complain"] . "</td>";
-                                                echo "<td>" . $row["first_name_respondent"] . "</td>";
-                                                echo "<td>" . $row["middle_name_respondent"] . "</td>";
-                                                echo "<td>" . $row["last_name_respondent"] . "</td>";
-                                                echo "<td>" . $row["suffix_respondent"] . "</td>";
+
+                                                $fullNameRespondent = $row["first_name_respondent"]
+                                                    . (!empty($row["middle_name_respondent"]) ? " " . $row["middle_name_respondent"] : "")
+                                                    . " " . $row["last_name_respondent"]
+                                                    . (!empty($row["suffix_respondent"]) ? ", " . $row["suffix_respondent"] : "");
+                                                echo "<td>" . $fullNameRespondent . "</td>";
                                                 echo "<td>" . $row["case_no"] . "</td>";
-                                                echo "<td>" . $row["vawc_official_name"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
                                                 echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                 echo "</tr>";
@@ -440,18 +417,23 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["first_name"] . "</td>";
-                                                echo "<td>" . $row["middle_name"] . "</td>";
-                                                echo "<td>" . $row["last_name"] . "</td>";
-                                                echo "<td>" . $row["suffix"] . "</td>";
+                                                // echo "<td>" . $row["id"] . "</td>";
+                                                $fullName = $row["first_name"]
+                                                    . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
+                                                    . " " . $row["last_name"]
+                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                echo "<td>" . $fullName . "</td>";
+
                                                 echo "<td>" . $row["age"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["date_of_death"] . "</td>";
                                                 echo "<td>" . $row["time_of_death"] . "</td>";
-                                                echo "<td>" . $row["req_first_name"] . "</td>";
-                                                echo "<td>" . $row["req_middle_name"] . "</td>";
-                                                echo "<td>" . $row["req_last_name"] . "</td>";
-                                                echo "<td>" . $row["req_suffix"] . "</td>";
+
+                                                $fullNameReq = $row["req_first_name"]
+                                                    . (!empty($row["req_middle_name"]) ? " " . $row["req_middle_name"] : "")
+                                                    . " " . $row["req_last_name"]
+                                                    . (!empty($row["req_suffix"]) ? ", " . $row["req_suffix"] : "");
+                                                echo "<td>" . $fullNameReq . "</td>";
                                                 echo "<td>" . $row["relationship"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
                                                 echo "<td>" . $row["duty_officer_name"] . "</td>";
@@ -470,15 +452,17 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["first_name"] . "</td>";
-                                                echo "<td>" . $row["middle_name"] . "</td>";
-                                                echo "<td>" . $row["last_name"] . "</td>";
-                                                echo "<td>" . $row["suffix"] . "</td>";
-                                                echo "<td>" . $row["address"] . "</td>";
-                                                echo "<td>" . $row["lot_no"] . "</td>";
-                                                echo "<td>" . $row["issued_date"] . "</td>";
-                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
-                                                echo "</tr>";
+                                                // echo "<td>" . $row["id"] . "</td>";
+                                                $fullName = $row["first_name"]
+                                                    . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
+                                                    . " " . $row["last_name"]
+                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                    echo "<td>" . $fullName . "</td>";
+                                                    echo "<td>" . $row["address"] . "</td>";
+                                                    echo "<td>" . $row["lot_no"] . "</td>";
+                                                    echo "<td>" . $row["issued_date"] . "</td>";
+                                                    echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                                    echo "</tr>";
                                             }
                                         } else {
                                             echo "<tr><td colspan='10'><center>No lot ownership certificates found</center></td></tr>";
@@ -493,10 +477,12 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $row["first_name"] . "</td>";
-                                                echo "<td>" . $row["middle_name"] . "</td>";
-                                                echo "<td>" . $row["last_name"] . "</td>";
-                                                echo "<td>" . $row["suffix"] . "</td>";
+                                                // echo "<td>" . $row["id"] . "</td>";
+                                                $fullName = $row["first_name"]
+                                                    . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
+                                                    . " " . $row["last_name"]
+                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                echo "<td>" . $fullName . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["nationality"] . "</td>";
                                                 echo "<td>" . $row["civil_status"] . "</td>";

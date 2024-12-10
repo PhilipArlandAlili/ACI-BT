@@ -4,7 +4,7 @@
     <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
-    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
+    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
     <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
@@ -35,26 +35,7 @@
 
     <!-- Birthday input -->
     <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" onchange="validatebday(this);updateText();" id="birthdate" name="birthdate" required><br>
-
-    <!-- Age input (readonly) -->
-    <!-- <label for="age">Age:</label>
-    <input type="text" class="form-control" id="age" name="age" readonly><br> -->
-
-    <!-- <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="purok" required>
-        <option value="">--Select Purok--</option>
-        <option value="Centro">Centro</option>
-        <option value="Hurawan">Huwaran</option>
-        <option value="Kaakbayan">Kaakbayan</option>
-        <option value="New Princesa">New Princesa</option>
-        <option value="San Franciso I">San Franciso I</option>
-        <option value="San Franciso II">San Franciso II</option>
-        <option value="Sandiwa">Sandiwa</option>
-        <option value="Trece">Trece</option>
-        <option value="Uha">UHA</option>
-    </select><br> -->
-    <hr>
+    <input type="date" class="form-control" onchange="validatebday(this);updateText();" id="birthdate" name="birthdate" required><br><hr>
 
     <div class="employabilityPrint" style="text-align: right;">
         <button type="button" class="btn btn-primary w-25" id="employabilityPrintBtn">Print</button>

@@ -1,12 +1,13 @@
 <!-- Business Permit Renewal Form -->
 <form action="#" method="post" id="business_permit_renewForm">
     <label for="businessName">Business name/ Trade Activity:</label>
-    <input type="text" class="form-control" name="business_name" oninput="updateText()" placeholder="Ex. Star Oil" required><br>
+    <input type="text" class="form-control" name="business_name" oninput="updateText()" placeholder="Ex. Carl Store" required><br>
 
     <label for="purok">Purok:</label><br>
     <select name="purok" id="purok" class="form-control" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
+        <option value="Hurawan">Huwaran</option>
         <option value="Kaakbayan">Kaakbayan</option>
         <option value="New Princesa"> New Princesa</option>
         <option value="San Franciso I">San Franciso I</option>
