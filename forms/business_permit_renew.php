@@ -1,7 +1,7 @@
 <!-- Business Permit Renewal Form -->
 <form action="#" method="post" id="BPermitRenewForm">
     <label for="businessName">Business name/ Trade Activity:</label>
-    <input type="text" class="form-control" name="business_name" placeholder="Ex. Star Oil" required><br>
+    <input type="text" class="form-control" name="business_name" oninput="updateText()" placeholder="Ex. Star Oil" required><br>
 
     <label for="purok">Purok:</label><br>
     <select name="purok" id="purok" class="form-control" required>
@@ -18,10 +18,10 @@
     <br>
 
     <label for="manager_operator_renew">Manager / Operator:</label>
-    <input type="text" class="form-control" name="manager" placeholder="Ex. Juan Dela Cruz" required><br>
+    <input type="text" class="form-control" name="manager" oninput="updateText()"placeholder="Ex. Juan Dela Cruz" required><br>
 
     <label for="manager_operator_address_renew">Address (Manager / Operator):</label>
-    <input type="text" class="form-control" name="address" placeholder="Ex. PSU Rd" required><br>
+    <input type="text" class="form-control" name="address" oninput="updateText()"placeholder="Ex. PSU Rd" required><br>
 
     <hr>
 
