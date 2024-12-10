@@ -1,10 +1,10 @@
 <!-- Business Permit Form -->
 <form action="#" method="post" id="BPermitNewForm">
     <label for="businessName">Business name/ Trade Activity:</label>
-    <input type="text" name="business_name" class="form-control" placeholder="Ex: Star Oil" required><br>
+    <input type="text" name="business_name" class="form-control" oninput="updateText()"s placeholder="Ex: Star Oil" required><br>
 
     <label for="purok">Purok:</label><br>
-    <select name="purok" id="purok" onchange="update()" class="form-control" required>
+    <select name="purok" id="purok" class="form-control" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -19,10 +19,10 @@
     <br>
 
     <label for="manager_operator">Manager / Operator:</label>
-    <input type="text" class="form-control" name="manager" placeholder="Ex. Juan Dela Cruz" required><br>
+    <input type="text" class="form-control" name="manager"oninput="updateText()" placeholder="Ex. Juan Dela Cruz" required><br>
 
     <label for="manager_operator_address">Address (Manager / Operator):</label>
-    <input type="text" class="form-control" name="address" placeholder="Ex. PSU Rd" required><br>
+    <input type="text" class="form-control" name="address"oninput="updateText()" placeholder="Ex. PSU Rd" required><br>
     <hr>
 
     <div class="BPermitNewprint" style="text-align: right;">
