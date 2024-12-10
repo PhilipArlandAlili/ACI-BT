@@ -1,6 +1,6 @@
 <!-- Barangay Clearance Form -->
 
-    <form action="#" method="post" id="brgyClearanceForm">
+    <form action="#" method="post" id="barangay_clearanceForm">
 
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
                         <button class="w-25 btn btn-primary" name="barangay_clearance" onclick="printIframe()"
-                            type="submit">Yes</button>
+                            >Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
 <script>
     // Event listener for Barangay Clearance button
     document.getElementById("brgyClearancePrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("brgyClearanceForm");  // Correct form ID
+        let form = document.getElementById("barangay_clearanceForm");  // Correct form ID
 
         // Validate the form
         if (form.checkValidity()) {

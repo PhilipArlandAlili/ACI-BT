@@ -1,5 +1,5 @@
 <!-- Business Permit Renewal Form -->
-<form action="#" method="post" id="BPermitRenewForm">
+<form action="#" method="post" id="business_permit_renewForm">
     <label for="businessName">Business name/ Trade Activity:</label>
     <input type="text" class="form-control" name="business_name" oninput="updateText()" placeholder="Ex. Star Oil" required><br>
 
@@ -37,7 +37,7 @@
                         <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
-                        <button class="w-25 btn btn-primary" name="business_permit_renew" onclick="printIframe()" id="confirmPrint" type="submit">Yes</button>
+                        <button class="w-25 btn btn-primary" name="business_permit_renew" onclick="printIframe()" id="confirmPrint" >Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("BPermitRenewPrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("BPermitRenewForm");  // Use the unique form ID
+        let form = document.getElementById("business_permit_renewForm");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {

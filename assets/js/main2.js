@@ -185,13 +185,14 @@ function select(){
  
   
   function printIframe() {
-    if (validateForm()) {
-        var iframe = document.getElementById('myIframe');
-        var iframeWindow = iframe.contentWindow;
-        iframeWindow.print();
-    } else {
-        alert('Please fill in all required fields before printing.');
-    }
+    console.log("print me");
+    var cert = document.getElementById('certificateType').value;
+    var iframe = document.getElementById('myIframe');
+    var form = document.getElementById(cert + "Form");
+    console.log(form);
+    var iframeWindow = iframe.contentWindow;
+    iframeWindow.print();
+    form.submit();
 }
 
   function updateText() { 

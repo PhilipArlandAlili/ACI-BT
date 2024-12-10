@@ -1,5 +1,5 @@
 <!-- Business Permit Form -->
-<form action="#" method="post" id="BPermitNewForm">
+<form action="#" method="post" id="business_permit_newform">
     <label for="businessName">Business name/ Trade Activity:</label>
     <input type="text" name="business_name" class="form-control" oninput="updateText()"s placeholder="Ex: Star Oil" required><br>
 
@@ -39,7 +39,7 @@
                         <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
-                        <button class="w-25 btn btn-primary" name="business_permit_new" onclick="printIframe()" type="submit">Yes</button>
+                        <button class="w-25 btn btn-primary" name="business_permit_new" onclick="printIframe()">Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 <script>
     // Event listener for Business Permit print button
     document.getElementById("BPermitNewprintBtn").addEventListener("click", function () {
-        let form = document.getElementById("BPermitNewForm");  // Correct form ID
+        let form = document.getElementById("business_permit_newform");  // Correct form ID
 
         // Validate the form
         if (form.checkValidity()) {

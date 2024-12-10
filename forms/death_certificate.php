@@ -1,4 +1,4 @@
-<form action="#" method="post" id="deathForm">
+<form action="#" method="post" id="death_certificateForm">
 
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control"  maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="first_name" name="first_name" placeholder="Ex. Juan" required><br>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
                         <button class="w-25 btn btn-primary" name="death_certificate" onclick="printIframe()"
-                            id="confirmPrint" type="submit">Yes</button>
+                            id="confirmPrint" >Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>

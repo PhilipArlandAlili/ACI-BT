@@ -1,4 +1,4 @@
-<form action="#" method="post" id="indigency2Form">
+<form action="#" method="post" id="certificate_of_indigency_aicsForm">
 
 <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
                         <button class="w-25 btn btn-primary" name="certificate_of_indigency_aics"
-                            onclick="printIframe()" id="confirmPrint" type="submit">Yes</button>
+                            onclick="printIframe()" id="confirmPrint" >Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>

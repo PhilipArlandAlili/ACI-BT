@@ -1,4 +1,4 @@
-<form action="#" method="post" id="incomeForm">
+<form action="#" method="post" id="certificate_of_incomeForm">
 <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
 
@@ -53,7 +53,7 @@
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
                         <button class="w-25 btn btn-primary" name="certificate_of_income" onclick="printIframe()"
-                            type="submit">Yes</button>
+                           >Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>

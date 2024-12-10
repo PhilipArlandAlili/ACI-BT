@@ -1,4 +1,4 @@
-<form action="#" method="POST" id="employabilityForm">
+<form action="#" method="POST" id="certificate_of_employabilityForm">
 
 <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
@@ -68,7 +68,7 @@
                         <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
-                        <button class="w-25 btn btn-primary" name="certificate_of_employability" onclick="printIframe()" id="confirmPrint" type="submit">Yes</button>
+                        <button class="w-25 btn btn-primary" name="certificate_of_employability" onclick="printIframe()" id="confirmPrint" >Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>

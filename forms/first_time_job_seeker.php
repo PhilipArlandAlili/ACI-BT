@@ -1,4 +1,4 @@
-<form action="#" method="post" id="form">
+<form action="#" method="post" id="first_time_job_seekerForm">
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
@@ -47,5 +47,5 @@
     <!--(Full name daw)-->
     <label for="">Witness</label>
     <input type="text" class="form-control" name="witness">
-    <button name="first_time_job_seeker" onclick="printIframe()" type="submit">Print</button>
+    <button name="first_time_job_seeker" onclick="printIframe()" >Print</button>
 </form>

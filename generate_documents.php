@@ -639,7 +639,6 @@ if (isset($_POST["transfer_of_residency"])) {
                 </div>
                 <?php unset($_SESSION['success']); // Remove success message after displaying it ?>
             <?php endif; ?>
-
             <?php if (isset($_SESSION['error'])): ?>
                 <!-- Bootstrap Alert for Errors -->
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">

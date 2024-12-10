@@ -1,4 +1,4 @@
-<form action="#" method="post" id="cohabitationForm">
+<form action="#" method="post" id="certificate_of_cohabitationForm">
     
     <label for="" class="fw-bold">Male</label><br>
     <label for="">First Name:</label>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
                         <button class="w-25 btn btn-primary" name="certificate_of_cohabitation" onclick="printIframe()"
-                            type="submit">Yes</button>
+                            >Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
