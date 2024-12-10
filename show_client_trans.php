@@ -34,12 +34,21 @@ if (!isset($_SESSION['username'])) {
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title fs-4">Transaction Table</h5>
+                            <?php
+
+                            require 'includes/db.php';
+
+                            $doc_name = $_GET['doc_name'];
+                            $doc_name = str_replace("_", " ", $doc_name);
+                            if ($doc_name) {
+                                echo "<h5 class='card-title fs-4'>" . $doc_name . "</h5>";
+                            } else {
+                                echo "<h5 class='card-title fs-4'>No transaction selected</h5>";
+                            }
+                            ?>
                             <!-- Table with stripped rows -->
                             <table class="table">
                                 <?php
-
-                                require 'includes/db.php';
 
                                 $id = $_GET['id'];
                                 $table = strtolower($_GET['doc_name']);
