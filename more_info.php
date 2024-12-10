@@ -71,21 +71,15 @@
                                         ";
                                         } elseif ($doc_id == 5) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
                                             <th>Age</th>
                                             <th>Address</th>
                                             <th>Issued Date</th>
+                                            <th>Full Name</th>
                                             <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 6) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
+                                            <th>Full Name</th>
                                             <th>Address</th>
                                             <th>Income (Number)</th>
                                             <th>Income (Words)</th>
@@ -94,10 +88,7 @@
                                         ";
                                         } elseif ($doc_id == 7) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
+                                            <th>Full Name</th>
                                             <th>Age</th>
                                             <th>Civil Status</th>
                                             <th>Address</th>
@@ -107,56 +98,37 @@
                                         ";
                                         } elseif ($doc_id == 8) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
+                                            <th>Full Name</th>
                                             <th>Address</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 9) {
                                             echo "
-                                            <th>First Name (Complainant)</th>
-                                            <th>Middle Name  (Complainant)</th>
-                                            <th>Last Name  (Complainant)</th>
-                                            <th>Suffix  (Complainant)</th>
+                                            <th>Full Name (Complainant)</th>
                                             <th>Age</th>
                                             <th>Address</th>
                                             <th>Date of Complain</th>
-                                            <th>First Name (Respondent)</th>
-                                            <th>Middle Name (Respondent)</th>
-                                            <th>Last Name (Respondent)</th>
-                                            <th>Suffix (Respondent)</th>
+                                            <th>Full Name (Respondent)</th>
                                             <th>Case No.</th>
-                                            <th>VAWC Official Name</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 10) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
+                                            <th>Full Name</th>
                                             <th>Age</th>
                                             <th>Address</th>
                                             <th>Date of Death</th>
                                             <th>Time of Death</th>
-                                            <th>First Name (Requester)</th>
-                                            <th>Middle Name (Requester)</th>
-                                            <th>Last Name (Requester)</th>
-                                            <th>Suffix (Requester)</th>
+                                            <th>Full Name (Requester)</th>
                                             <th>Relationship</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 11) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
+                                            <th>Full Name</th>
                                             <th>Address</th>
                                             <th>Lot No.</th>
                                             <th>Issued Date</th>
@@ -164,14 +136,11 @@
                                         ";
                                         } elseif ($doc_id == 12) {
                                             echo "
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Suffix</th>
+                                            <th>Full Name</th>
                                             <th>Address</th>
                                             <th>Nationality</th>
                                             <th>Civil Status</th>
-                                            <th>Previous Address</th>
+                                            <th>Previus Address</th>
                                             <th>Purpose</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
