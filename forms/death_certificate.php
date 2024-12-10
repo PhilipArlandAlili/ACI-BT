@@ -1,14 +1,14 @@
 <form action="#" method="post" id="deathForm">
 
     <label for="first_name">First Name:</label>
-    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ex. Juan" required><br>
+    <input type="text" class="form-control"  maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="first_name" name="first_name" placeholder="Ex. Juan" required><br>
 
     <label for="middle_name">Middle Name:</label>
-    <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Ex. Mandaragat"
+    <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="middle_name" name="middle_name" placeholder="Ex. Mandaragat"
         required><br>
 
     <label for="last_name">Last Name:</label>
-    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Ex. Dela Cruz" required><br>
+    <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="last_name" name="last_name" placeholder="Ex. Dela Cruz" required><br>
 
     <label for="suffix">Suffix:</label>
     <select class="text-left form-control" name="suffix" id="suffix">
@@ -21,7 +21,7 @@
     </select><br>
 
     <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" id="birthdate" name="birthdate" required><br>
+    <input type="date" class="form-control" onchange="validatebday(this);updateText();"id="birthdate" name="birthdate" required><br>
 
     <label for="purok">Purok:</label>
     <select class="text-left form-control" name="purok" id="purok" required>
@@ -38,29 +38,29 @@
     </select><br>
 
     <label for="dateOfDeath">Date of death:</label>
-    <input type="date" class="form-control" name="date_of_death" required><br>
+    <input type="date" class="form-control"  onchange="validateformarriagedate(this);updateText();" name="date_of_death" required><br>
 
     <label for="timeOfDeath">Time of death:</label>
-    <input type="time" class="form-control" name="time_of_death" required><br>
+    <input type="time" class="form-control"   onchange="updateText();"name="time_of_death" required><br>
 
     <label for="causeOfDeath">Cause of death:</label>
-    <input type="text" class="form-control" name="cause_of_death" placeholder="Too old" required><br>
+    <input type="text" class="form-control" maxlength="100"  oninput="updateText();"name="cause_of_death" placeholder="Too old" required><br>
     <hr>
 
 
     <label for="" class="fw-bold">Requester</label><br>
     <label for="first_name">First Name:</label>
-    <input type="text" class="form-control" id="first_name" name="req_first_name" placeholder="Ex. Juan" required><br>
+    <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="first_name" name="req_first_name" placeholder="Ex. Juan" required><br>
 
     <label for="middle_name">Middle Name:</label>
-    <input type="text" class="form-control" id="middle_name" name="req_middle_name" placeholder="Ex. Mandaragat"
+    <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="middle_name" name="req_middle_name" placeholder="Ex. Mandaragat"
         required><br>
 
     <label for="last_name">Last Name:</label>
-    <input type="text" class="form-control" id="last_name" name="req_last_name" placeholder="Ex. Dela Cruz" required><br>
+    <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="last_name" name="req_last_name" placeholder="Ex. Dela Cruz" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="req_suffix">
+    <select class="text-left form-control" name="suffix" id="suffix1">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -70,7 +70,7 @@
     </select><br>
 
     <label for="relationshipToDeadPerson">Relationship to the dead person:</label>
-    <input type="text" class="form-control" name="relationship" placeholder="Son" required><br>
+    <input type="text" class="form-control" onchange="updateText();"name="relationship" placeholder="Son" required><br>
     <hr>
 
     <div class="deathPrint" style="text-align: right;">

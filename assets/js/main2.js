@@ -255,8 +255,10 @@ function select(){
   for (var x = 0; x < time.length; x++) {
     var Time = iframeDocument.getElementById('time'+x);
     if (Time) {
-      Time.innerText = convertTime(time[x].value);
-  }
+      Time.innerText = convertTo12Hour(time[x].value);
+      console.log(time[x].value);
+      
+    }
 }
 if(certificateType.value == 'lot_ownership') {
   for (let y = 0; y < checkbox.length; y++) {
@@ -443,4 +445,17 @@ function numberToWords(num) {
   }
 
   return result.trim();
+}
+
+function convertTo12Hour(time24) {
+  const [hours, minutes] = time24.split(":").map(Number);
+
+  if (hours > 24 || minutes > 59 || hours < 0 || minutes < 0) {
+      return "Invalid time";
+  }
+
+  const period = hours >= 12 ? "PM" : "AM";
+  const hours12 = hours % 12 || 12; // Convert 0 to 12 for midnight
+
+  return `${hours12}:${minutes.toString().padStart(2, "0")} ${period}`;
 }

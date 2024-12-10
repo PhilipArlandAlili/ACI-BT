@@ -1,14 +1,14 @@
 <form action="#" method="post" id="complaintForm">
 
-    <label for="first_name">First Name:</label>
-    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ex. Juan" required><br>
+<label for="">First Name:</label>
+    <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
 
-    <label for="middle_name">Middle Name:</label>
-    <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Ex. Mandaragat"
-        required><br>
+    <label for="">Middle Name:</label>
+    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. J"><br>
 
-    <label for="last_name">Last Name:</label>
-    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Ex. Dela Cruz" required><br>
+    <label for="">Last Name:</label>
+    <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z']/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+
 
     <label for="suffix">Suffix:</label>
     <select class="text-left form-control" name="suffix" id="suffix">
@@ -21,7 +21,7 @@
     </select><br>
 
     <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" id="birthdate" name="birthdate" required><br>
+    <input type="date" class="form-control" onchange="validatebday(this);updateText();" id="birthdate" name="birthdate" required><br>
 
     <label for="purok">Purok:</label>
     <select class="text-left form-control" name="purok" id="purok" required>
@@ -38,23 +38,23 @@
     </select><br>
 
     <label for="">Date Filed:</label>
-    <input type="date" name="date_of_complain" class="form-control" required><br>
+    <input type="date" name="date_of_complain" onchange="validateformarriagedate(this);updateText();" class="form-control" required><br>
     <hr>
 
     <!--Respondent Full Name-->
     <label for="" class="fw-bold">Respondent</label><br>
     <label for="first_name">First Name:</label>
-    <input type="text" class="form-control" id="first_name" name="first_name_respondent" placeholder="Ex. Juan" required><br>
+    <input type="text" class="form-control" id="first_name"maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" name="first_name_respondent" placeholder="Ex. Juan" required><br>
 
     <label for="middle_name">Middle Name:</label>
-    <input type="text" class="form-control" id="middle_name" name="middle_name_respondent" placeholder="Ex. Mandaragat"
+    <input type="text" class="form-control" id="middle_name"maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" name="middle_name_respondent" placeholder="Ex. Mandaragat"
         required><br>
 
     <label for="last_name">Last Name:</label>
-    <input type="text" class="form-control" id="last_name" name="last_name_respondent" placeholder="Ex. Dela Cruz" required><br>
+    <input type="text" class="form-control" id="last_name"maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" name="last_name_respondent" placeholder="Ex. Dela Cruz" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix_respondent" id="suffix_respondent">
+    <select class="text-left form-control" name="suffix_respondent" id="suffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>

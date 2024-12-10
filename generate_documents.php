@@ -772,6 +772,31 @@ if (isset($_POST["transfer_of_residency"])) {
                 alert("You must be at least 18 years old.");
                 input.value = ''; // Clear the input field
             }
+           
+
+        }
+        
+        function validateformarriagedate(input) {
+            const birthDate = new Date(input.value); // Get the selected date
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Remove time from today's date for comparison
+
+            if (birthDate > today) {
+                alert("Future dates are not allowed. Please enter a valid date.");
+                input.value = ''; // Clear the input field
+                return;
+            }
+
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            const dayDiff = today.getDate() - birthDate.getDate();
+
+            // Adjust age if the current date is before the birthdate in the current year
+            if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                age--;
+            }
+
+        
         }</script>
 
 </body>
