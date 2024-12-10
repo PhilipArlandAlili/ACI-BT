@@ -89,7 +89,7 @@ $conn->close();
                             <div class="card" style="height: 750px;">
                                 <div class="p-0 m-0">
                                     <div class="image">
-                                        <img src="assets/img/tiniguiban.jpg" alt="..." class="img-fluid rounded"
+                                        <img src="assets/img/bangon_daw.jpg" alt="..." class="img-fluid rounded"
                                             style="height: 240px; width: 100%;">
                                     </div>
                                     <div class="card-body">
