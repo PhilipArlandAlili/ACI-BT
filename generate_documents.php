@@ -692,7 +692,7 @@ if (isset($_POST["transfer_of_residency"])) {
                             </div>
 
                             <div class="cert" id="certificate_of_cohabitation">
-                                <?php include 'forms/cohabitation.php' ?>
+                                <?php include 'forms/certificate_of_cohabitation.php' ?>
                             </div>
 
                             <div class="cert" id="complaint_certificate">
@@ -704,11 +704,11 @@ if (isset($_POST["transfer_of_residency"])) {
                             </div>
                             
                             <div class="cert" id="certificate_of_indigency">
-                                <?php include 'forms/indigency.php' ?>
+                                <?php include 'forms/certificate_of_indigency.php' ?>
                             </div>
 
                             <div class="cert" id="certificate_of_indigency_aics">
-                                <?php include 'forms/indigency_aics.php' ?>
+                                <?php include 'forms/certificate_of_indigency_aics.php' ?>
                             </div>
 
                             <div class="cert" id="lot_ownership">
