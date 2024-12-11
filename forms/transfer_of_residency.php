@@ -43,7 +43,7 @@
     <input type="text" oninput="updateText()"class="form-control" name="nationality" placeholder="Ex. Filipino" required><br>
 
     <label for="">Civil Status:</label>
-    <select class="form-control" onchange="update()" name="civil_status" id="stats" required>
+    <select class="form-control" onchange="select()" name="civil_status" id="stats" required>
         <option value="">--Select Civil Status--</option>
         <option value="Single">Single</option>
         <option value="Married">Married</option>
