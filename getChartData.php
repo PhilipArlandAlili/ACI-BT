@@ -119,7 +119,49 @@ if ($year === 'all' && $month === 'all' && $day === 'all') {
         $result = $stmt->get_result()->fetch_assoc();
         $data[$cert] = $result['count'];
     }
-} else {
+} elseif ($year !== 'all' && $month === 'all' && $day !== 'all') {
+    // Filter by year and day (no month filtering)
+    $year = (int) $year;
+    $day = (int) $day;
+
+    foreach ($certificates as $cert) {
+        $table_name = strtolower(str_replace(" ", "_", $cert));
+        $sql = "SELECT COUNT(*) AS count FROM $table_name WHERE DAY(issued_date) = ? AND YEAR(issued_date) = ?";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt === false) {
+            echo json_encode(["error" => "Query preparation failed for table '$table_name': " . $conn->error]);
+            exit();
+        }
+
+        $stmt->bind_param("ii", $day, $year);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        $data[$cert] = $result['count'];
+    }
+} elseif ($year !== 'all' && $month !== 'all' && $day !== 'all') {
+    // Filter by year, month, and day
+    $year = (int) $year;
+    $month = (int) $month;
+    $day = (int) $day;
+
+    foreach ($certificates as $cert) {
+        $table_name = strtolower(str_replace(" ", "_", $cert));
+        $sql = "SELECT COUNT(*) AS count FROM $table_name WHERE DAY(issued_date) = ? AND MONTH(issued_date) = ? AND YEAR(issued_date) = ?";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt === false) {
+            echo json_encode(["error" => "Query preparation failed for table '$table_name': " . $conn->error]);
+            exit();
+        }
+
+        $stmt->bind_param("iii", $day, $month, $year);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        $data[$cert] = $result['count'];
+    }
+}
+else {
     // Default case for all other combinations
     foreach ($certificates as $cert) {
         $table_name = strtolower(str_replace(" ", "_", $cert));
