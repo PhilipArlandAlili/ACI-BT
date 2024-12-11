@@ -28,7 +28,7 @@ if (isset($_POST["barangay_clearance"])) {
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 
     if ($period_of_residency_ym == 'years') {
-        $period_of_residency = $period_of_residency*12;
+        $period_of_residency = $period_of_residency * 12;
     }
 
     $stmt = $conn->prepare("INSERT INTO barangay_clearance (first_name, middle_name, last_name, suffix, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -43,6 +43,7 @@ if (isset($_POST["barangay_clearance"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
+        $_SESSION['success'] = "Added Barangay Clearance successfully!";
         if ($admin_result->num_rows > 0) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
@@ -61,7 +62,7 @@ if (isset($_POST["barangay_clearance"])) {
         } else {
             //echo "Error: Admin user not found.";
         }
-    
+
         $admin_stmt->close();
     }
     $stmt->close();
@@ -87,6 +88,7 @@ if (isset($_POST["business_permit_new"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
+        $_SESSION['success'] = "Added Business Permit New successfully!";
         if ($admin_result->num_rows > 0) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
@@ -105,7 +107,7 @@ if (isset($_POST["business_permit_new"])) {
         } else {
             //echo "Error: Admin user not found.";
         }
-    
+
         $admin_stmt->close();
     }
     $stmt->close();
@@ -131,6 +133,7 @@ if (isset($_POST["business_permit_renew"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
+        $_SESSION['success'] = "Added Business Permit Renew successfully!";
         if ($admin_result->num_rows > 0) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
@@ -149,13 +152,13 @@ if (isset($_POST["business_permit_renew"])) {
         } else {
             //echo "Error: Admin user not found.";
         }
-    
+
         $admin_stmt->close();
     }
     $stmt->close();
 }
 
-if (isset($_POST["certificate_of_cohabitation"])){
+if (isset($_POST["certificate_of_cohabitation"])) {
     $first_name_male = $conn->real_escape_string($_POST["first_name"]);
     $middle_name_male = $conn->real_escape_string($_POST["middle_name"]);
     $last_name_male = $conn->real_escape_string($_POST["last_name"]);
@@ -183,6 +186,7 @@ if (isset($_POST["certificate_of_cohabitation"])){
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
+        $_SESSION['success'] = "Added Certificate of Cohabitation successfully!";
         if ($admin_result->num_rows > 0) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
@@ -201,7 +205,7 @@ if (isset($_POST["certificate_of_cohabitation"])){
         } else {
             //echo "Error: Admin user not found.";
         }
-    
+
         $admin_stmt->close();
     }
     $stmt->close();
@@ -230,6 +234,7 @@ if (isset($_POST["certificate_of_employability"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
+        $_SESSION['success'] = "Added Certificate of Employability successfully!";
         if ($admin_result->num_rows > 0) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
@@ -248,7 +253,7 @@ if (isset($_POST["certificate_of_employability"])) {
         } else {
             //echo "Error: Admin user not found.";
         }
-    
+
         $admin_stmt->close();
     }
     $stmt->close();
@@ -277,6 +282,7 @@ if (isset($_POST["certificate_of_income"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
+        $_SESSION['success'] = "Added Certificate of Income successfully!";
         if ($admin_result->num_rows > 0) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
@@ -295,7 +301,7 @@ if (isset($_POST["certificate_of_income"])) {
         } else {
             //echo "Error: Admin user not found.";
         }
-    
+
         $admin_stmt->close();
     }
     $stmt->close();
@@ -344,7 +350,7 @@ if (isset($_POST["certificate_of_indigency"])) {
         } else {
             //echo "Error: Admin user not found.";
         }
-    
+
         $admin_stmt->close();
     }
     $stmt->close();
@@ -371,6 +377,7 @@ if (isset($_POST["certificate_of_indigency_aics"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
+        $_SESSION['success'] = "Added Certificate of Indigency successfully!";
         if ($admin_result->num_rows > 0) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
@@ -389,7 +396,7 @@ if (isset($_POST["certificate_of_indigency_aics"])) {
         } else {
             //echo "Error: Admin user not found.";
         }
-    
+
         $admin_stmt->close();
     }
     $stmt->close();
@@ -413,7 +420,7 @@ if (isset($_POST["complaint_certificate"])) {
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
     $age = date('Y') - date('Y', strtotime($birthdate));
 
-    $stmt = $conn->prepare("INSERT INTO complaint_certificate (first_name_complainant, middle_name_complainant, last_name_complainant, suffix_complainant, age, address, date_of_complain, first_name_respondent, middle_name_respondent, last_name_respondent, suffix_respondent, case_no, vawc_official_name, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
+    $stmt = $conn->prepare("INSERT INTO complaint_certificate (first_name_complainant, middle_name_complainant, last_name_complainant, suffix_complainant, age, address, date_of_complain, first_name_respondent, middle_name_respondent, last_name_respondent, suffix_respondent, case_no, vawc_official_name, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param('sssssssssssssss', $first_name, $middle_name, $last_name, $suffix, $age, $purok, $date_of_complain, $first_name_respondent, $middle_name_respondent, $last_name_respondent, $suffix_respondent, $case_no, $vawc_offical_name, $issued_date, $duty_officer_name);
 
     if ($stmt->execute()) {
@@ -425,6 +432,7 @@ if (isset($_POST["complaint_certificate"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
+        $_SESSION['success'] = "Added Complaint Certificate successfully!";
         if ($admin_result->num_rows > 0) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
@@ -443,7 +451,7 @@ if (isset($_POST["complaint_certificate"])) {
         } else {
             //echo "Error: Admin user not found.";
         }
-    
+
         $admin_stmt->close();
     }
     $stmt->close();
@@ -480,6 +488,7 @@ if (isset($_POST["death_certificate"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
+        $_SESSION['success'] = "Added Death Certificate successfully!";
         if ($admin_result->num_rows > 0) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
@@ -498,7 +507,7 @@ if (isset($_POST["death_certificate"])) {
         } else {
             //echo "Error: Admin user not found.";
         }
-    
+
         $admin_stmt->close();
     }
     $stmt->close();
@@ -550,6 +559,7 @@ if (isset($_POST["lot_ownership"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
+        $_SESSION['success'] = "Added Lot Ownership successfully!";
         if ($admin_result->num_rows > 0) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
@@ -568,7 +578,7 @@ if (isset($_POST["lot_ownership"])) {
         } else {
             //echo "Error: Admin user not found.";
         }
-    
+
         $admin_stmt->close();
     }
     $stmt->close();
@@ -600,6 +610,7 @@ if (isset($_POST["transfer_of_residency"])) {
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
 
+        $_SESSION['success'] = "Added Transfer of Residency successfully!";
         if ($admin_result->num_rows > 0) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
@@ -618,7 +629,7 @@ if (isset($_POST["transfer_of_residency"])) {
         } else {
             //echo "Error: Admin user not found.";
         }
-    
+
         $admin_stmt->close();
     }
     $stmt->close();
@@ -649,24 +660,27 @@ if (isset($_POST["transfer_of_residency"])) {
             <span class="fs-3 fw-semibold ">Back</span>
         </a>
 
-        <div class="alert-container pt-2">
+        <div class="alert-container pt-3">
             <?php if (isset($_SESSION['success'])): ?>
-                <!-- Bootstrap Alert -->
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-alert">
                     <strong>Success:</strong> <?php echo $_SESSION['success']; ?>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-                <?php unset($_SESSION['success']); // Remove success message after displaying it ?>
-            <?php endif; ?>
-            <?php if (isset($_SESSION['error'])): ?>
-                <!-- Bootstrap Alert for Errors -->
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Error:</strong> <?php echo $_SESSION['error']; ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                <?php unset($_SESSION['error']); // Remove error message after displaying it ?>
+                <?php unset($_SESSION['success']); ?>
             <?php endif; ?>
         </div>
+
+        <script>
+            // Automatically close the alert after 5 seconds
+            setTimeout(() => {
+                const alertElement = document.getElementById('success-alert');
+                if (alertElement) {
+                    alertElement.classList.remove('show');
+                    setTimeout(() => alertElement.remove(), 150); // Time for the fade effect
+                }
+            }, 5000);
+        </script>
+
 
         <div class="row pt-3">
             <div class="col-lg-4" id="fillup">
@@ -725,7 +739,7 @@ if (isset($_POST["transfer_of_residency"])) {
                             <div class="cert" id="death_certificate">
                                 <?php include 'forms/death_certificate.php' ?>
                             </div>
-                            
+
                             <!-- <div class="cert" id="certificate_of_indigency">
                                 <?php include 'forms/certificate_of_indigency.php' ?>
                             </div> -->
@@ -779,7 +793,7 @@ if (isset($_POST["transfer_of_residency"])) {
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/main2.js"></script>
-    <script >function validatebday(input) {
+    <script>function validatebday(input) {
             const birthDate = new Date(input.value); // Get the selected date
             const today = new Date();
             let age = today.getFullYear() - birthDate.getFullYear();
@@ -795,10 +809,10 @@ if (isset($_POST["transfer_of_residency"])) {
                 alert("You must be at least 18 years old.");
                 input.value = ''; // Clear the input field
             }
-           
+
 
         }
-        
+
         function validateformarriagedate(input) {
             const birthDate = new Date(input.value); // Get the selected date
             const today = new Date();
@@ -819,7 +833,7 @@ if (isset($_POST["transfer_of_residency"])) {
                 age--;
             }
 
-        
+
         }</script>
 
 </body>
