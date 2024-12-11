@@ -159,7 +159,7 @@ function select(){
   var stats = iframeDocument.getElementById('stats');
 
   if (purok)
-    purok.innerText = document.getElementById('purok').value.toUpperCase();
+    purok.innerText ="PUROK "+ document.getElementById('purok').value.toUpperCase() + ", BARANGAY TINIGUIBAN, PUERTO PRICESA CITY";
     else console.log('purok not found')
     
   if (suffix)
