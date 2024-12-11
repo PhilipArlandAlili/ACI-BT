@@ -160,8 +160,7 @@ if ($year === 'all' && $month === 'all' && $day === 'all') {
         $result = $stmt->get_result()->fetch_assoc();
         $data[$cert] = $result['count'];
     }
-}
-else {
+} else {
     // Default case for all other combinations
     foreach ($certificates as $cert) {
         $table_name = strtolower(str_replace(" ", "_", $cert));
