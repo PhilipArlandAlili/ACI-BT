@@ -1043,7 +1043,7 @@ if (!isset($_SESSION['username'])) {
                                         .then(data => {
                                             // If 'month' is 'all', reset the chart data to default values
                                             // if (month === 'all') {
-                                            if (month === 'all' && day === 'all') {//mrcxng
+                                            if (year== 'all' &&month === 'all' && day === 'all') {//mrcxng
                                                 myChart.data.datasets[0].data = [
                                                     data["Barangay Clearance"],
                                                     data["Business Permit New"],

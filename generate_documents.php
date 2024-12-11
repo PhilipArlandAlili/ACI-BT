@@ -726,9 +726,9 @@ if (isset($_POST["transfer_of_residency"])) {
                                 <?php include 'forms/death_certificate.php' ?>
                             </div>
                             
-                            <div class="cert" id="certificate_of_indigency">
+                            <!-- <div class="cert" id="certificate_of_indigency">
                                 <?php include 'forms/certificate_of_indigency.php' ?>
-                            </div>
+                            </div> -->
 
                             <div class="cert" id="certificate_of_indigency_aics">
                                 <?php include 'forms/certificate_of_indigency_aics.php' ?>
