@@ -684,8 +684,8 @@ if (isset($_POST["transfer_of_residency"])) {
                                 <option value="certificate_of_cohabitation">Certificate of Cohabitation</option>
                                 <option value="certificate_of_employability">Certificate of Employability</option>
                                 <option value="certificate_of_income">Certificate of Income</option>
-                                <option value="certificate_of_indigency">Certificate of Indigency</option>
-                                <option value="certificate_of_indigency_aics">Certificate of Indigency (AICS)</option>
+                                <!-- <option value="certificate_of_indigency">Certificate of Indigency</option> -->
+                                <option value="certificate_of_indigency_aics">Certificate of Indigency</option>
                                 <option value="complaint_certificate">Complaint Certificate</option>
                                 <option value="death_certificate">Death Certificate</option>
                                 <option value="lot_ownership">Lot Ownership</option>
@@ -726,9 +726,9 @@ if (isset($_POST["transfer_of_residency"])) {
                                 <?php include 'forms/death_certificate.php' ?>
                             </div>
                             
-                            <div class="cert" id="certificate_of_indigency">
+                            <!-- <div class="cert" id="certificate_of_indigency">
                                 <?php include 'forms/certificate_of_indigency.php' ?>
-                            </div>
+                            </div> -->
 
                             <div class="cert" id="certificate_of_indigency_aics">
                                 <?php include 'forms/certificate_of_indigency_aics.php' ?>
