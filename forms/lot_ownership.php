@@ -59,10 +59,20 @@
     <label for="lotAreaNumerical">Area Measurement (Word Form):</label>
     <input type="text" class="form-control" name="lot_area_word" id="lot_area_words" placeholder="Ex. One Two Three" readonly><br>
 
-    <label for="lotLocationAddress">Location Address:</label>
-    <input type="text" class="form-control" oninput="updateText()" name="lot_location_address" placeholder="Ex. PSU Rd" required><br>
-
-    <hr>
+    <label for="purok">Lot Location:</label>
+    <select class="text-left form-control" name="purok1" id="purok1" required>
+        <option value="">--Select Purok--</option>
+        <option value="Centro">Centro</option>
+        <option value="Hurawan">Huwaran</option>
+        <option value="Kaakbayan">Kaakbayan</option>
+        <option value="New Princesa">New Princesa</option>
+        <option value="San Franciso I">San Franciso I</option>
+        <option value="San Franciso II">San Franciso II</option>
+        <option value="Sandiwa">Sandiwa</option>
+        <option value="Trece">Trece</option>
+        <option value="Uha">UHA</option>
+    </select><br>
+    <br>
 
     <div class="lotOwnershipPrint" style="text-align: right;">
         <button type="button" class="btn btn-primary w-25" id="lotOwnershipPrintBtn">Print</button>

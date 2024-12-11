@@ -215,15 +215,15 @@ function select(){
         }
         
   for (var x = 0; x < number.length; x++) {
-    var Number = iframeDocument.getElementById('num'+x);
     console.log(number[x].value);
-    var text = document.getElementById('lot_area_words');
-    text.value = numberToWords(number[1].value);
-    console.log(number[1].value);
+    var Number = iframeDocument.getElementById('num'+x);
+
     
     if (certificateType.value == 'lot_ownership' && x == 1) {
         let lotnum = iframeDocument.getElementById('lotnum');
-        
+        var text = document.getElementById('lot_area_words');
+        text.value = numberToWords(number[1].value);
+    
         if (lotnum) {
             Number.innerText = number[x].value;
             lotnum.innerText = numberToWords(number[x].value);
@@ -243,7 +243,7 @@ function select(){
 
     var dateValue = new Date(date[x].value);
 
-  
+    console.log("helo")
         if (day || month || year) {
             day.innerText = dateValue.toLocaleDateString('en-US',{day: 'numeric'});
           year.innerText = dateValue.toLocaleDateString('en-US',{year: 'numeric'});
