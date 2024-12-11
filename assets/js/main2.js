@@ -159,23 +159,23 @@ function select(){
   var stats = iframeDocument.getElementById('stats');
 
   if (purok)
-    purok.innerText = document.getElementById('purok').value;
+    purok.innerText ="PUROK "+ document.getElementById('purok').value.toUpperCase() + ", BARANGAY TINIGUIBAN, PUERTO PRICESA CITY";
     else console.log('purok not found')
     
   if (suffix)
-    suffix.innerText = document.getElementById('suffix').value;
+    suffix.innerText = document.getElementById('suffix').value.toUpperCase();
     else console.log('suffix not found')
     if (purok1)
-      purok1.innerText = document.getElementById('purok1').value;
+      purok1.innerText = document.getElementById('purok1').value.toUpperCase();
       else console.log('purok1 not found')
       
     if (suffix1)
-      suffix1.innerText = document.getElementById('suffix1').value;
+      suffix1.innerText = document.getElementById('suffix1').value.toUpperCase();
       else console.log('suffix1 not found')
   
 
     if (stats)
-      stats.innerText = document.getElementById('stats').value;
+      stats.innerText = document.getElementById('stats').value.toUpperCase();
       else console.log('stats not found')
   
   }
@@ -209,7 +209,7 @@ function select(){
        
         var Var = iframeDocument.getElementById('var'+x);
         if (Var) {
-          Var.innerText = text[x].value;
+          Var.innerText = text[x].value.toUpperCase();
       }
        
         }

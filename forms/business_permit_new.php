@@ -21,9 +21,20 @@
     <label for="manager_operator">Manager / Operator:</label>
     <input type="text" class="form-control" name="manager"oninput="updateText()" placeholder="Ex. Juan Dela Cruz" required><br>
 
-    <label for="manager_operator_address">Address (Manager / Operator):</label>
-    <input type="text" class="form-control" name="address"oninput="updateText()" placeholder="Ex. PSU Rd" required><br>
-    <hr>
+    <label for="purok">ADDRESS:</label><br>
+    <select name="purok" id="purok1" class="form-control" required>
+        <option value="">--Select Purok--</option>
+        <option value="Centro">Centro</option>
+        <option value="Hurawan">Huwaran</option>
+        <option value="Kaakbayan">Kaakbayan</option>
+        <option value="New Princesa"> New Princesa</option>
+        <option value="San Franciso I">San Franciso I</option>
+        <option value="San Franciso II">San Franciso II</option>
+        <option value="Sandiwa">Sandiwa</option>
+        <option value="Trece">Trece</option>
+        <option value="Uha">UHA</option>
+    </select>
+    <br>
 
     <div class="BPermitNewprint" style="text-align: right;">
         <button type="button" class="btn btn-primary w-25" id="BPermitNewprintBtn">Print</button>
