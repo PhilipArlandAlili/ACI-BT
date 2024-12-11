@@ -78,7 +78,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("transferPrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("transferForm");  // Use the unique form ID
+        let form = document.getElementById("transfer_of_residencyForm");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {

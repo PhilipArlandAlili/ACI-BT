@@ -89,7 +89,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("lotOwnershipPrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("lotOwnershipForm");  // Use the unique form ID
+        let form = document.getElementById("lot_ownershipForm");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {

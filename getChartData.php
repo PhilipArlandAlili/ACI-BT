@@ -6,6 +6,7 @@ include 'includes/db.php';
 
 $month = isset($_GET['month']) ? $_GET['month'] : null;
 $year = isset($_GET['year']) ? $_GET['year'] : null;
+$day = isset($_GET['day']) ? $_GET['day'] : null;
 
 $certificates = [
     "Barangay Clearance",
@@ -18,16 +19,70 @@ $certificates = [
     "Certificate of Indigency AICS",
     "Complaint Certificate",
     "Death Certificate",
-    "First Time Job Seeker",
     "Lot Ownership",
     "Transfer of Residency",
 ];
 
 $data = [];
 
-// Check if both month and year filters are present
-if ($month === 'all' && $year) {
-    // Get data for the whole year without month filtering
+// Check filters and construct queries accordingly
+if ($year === 'all' && $month === 'all' && $day === 'all') {
+    // Aggregate data for all years without specific filters
+    foreach ($certificates as $cert) {
+        $table_name = strtolower(str_replace(" ", "_", $cert));
+        $sql = "SELECT COUNT(*) AS count FROM $table_name";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt === false) {
+            echo json_encode(["error" => "Query preparation failed for table '$table_name': " . $conn->error]);
+            exit();
+        }
+
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        $data[$cert] = $result['count'];
+    }
+} elseif ($year === 'all' && $month !== 'all' && $day === 'all') {
+    // Aggregate data for a specific month across all years
+    $month = (int) $month;
+
+    foreach ($certificates as $cert) {
+        $table_name = strtolower(str_replace(" ", "_", $cert));
+        $sql = "SELECT COUNT(*) AS count FROM $table_name WHERE MONTH(issued_date) = ?";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt === false) {
+            echo json_encode(["error" => "Query preparation failed for table '$table_name': " . $conn->error]);
+            exit();
+        }
+
+        $stmt->bind_param("i", $month);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        $data[$cert] = $result['count'];
+    }
+} elseif ($year === 'all' && $month !== 'all' && $day !== 'all') {
+    // Aggregate data for a specific month and day across all years
+    $month = (int) $month;
+    $day = (int) $day;
+
+    foreach ($certificates as $cert) {
+        $table_name = strtolower(str_replace(" ", "_", $cert));
+        $sql = "SELECT COUNT(*) AS count FROM $table_name WHERE MONTH(issued_date) = ? AND DAY(issued_date) = ?";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt === false) {
+            echo json_encode(["error" => "Query preparation failed for table '$table_name': " . $conn->error]);
+            exit();
+        }
+
+        $stmt->bind_param("ii", $month, $day);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        $data[$cert] = $result['count'];
+    }
+} elseif ($year && $month === 'all' && $day === 'all') {
+    // Filter by year only (no month or day filtering)
     $year = (int) $year;
     foreach ($certificates as $cert) {
         $table_name = strtolower(str_replace(" ", "_", $cert));
@@ -44,8 +99,8 @@ if ($month === 'all' && $year) {
         $result = $stmt->get_result()->fetch_assoc();
         $data[$cert] = $result['count'];
     }
-} elseif ($month !== 'all' && $year) {
-    // Filter by both month and year if both are specified
+} elseif ($year && $month !== 'all' && $day === 'all') {
+    // Filter by year and month (no day filtering)
     $month = (int) $month;
     $year = (int) $year;
 
@@ -65,7 +120,7 @@ if ($month === 'all' && $year) {
         $data[$cert] = $result['count'];
     }
 } else {
-    // If month is "all" and no specific year, get total counts without any date filter
+    // Default case for all other combinations
     foreach ($certificates as $cert) {
         $table_name = strtolower(str_replace(" ", "_", $cert));
         $sql = "SELECT COUNT(*) AS count FROM $table_name";
@@ -82,6 +137,7 @@ if ($month === 'all' && $year) {
     }
 }
 
+// Output the data as JSON
 echo json_encode($data);
 $conn->close();
 ?>

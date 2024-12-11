@@ -26,17 +26,25 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title fs-4">More Info</h5>
+                            <?php
+                            require 'includes/db.php';
+
+                            // Get doc_id from the URL
+                            $doc_id = isset($_GET['doc_id']) ? intval($_GET['doc_id']) : 0;
+                            $doc_name = isset($_GET['doc_type']) ? $_GET['doc_type'] : "More Info";
+                            $doc_name = str_replace("_", " ", $doc_name);
+                            $doc_name = strtoupper($doc_name);
+                            if ($doc_name != "More Info") {
+                                echo "<h5 class='card-title fs-4'>$doc_name</h5>";
+                            } else {
+                                echo "<h5 class='card-title fs-4'>More Info</h5>";
+                            }
+                            ?>
                             <!-- Table with stripped rows -->
                             <table class="table datatable pt-3">
                                 <thead>
                                     <tr>
                                         <?php
-                                        require 'includes/db.php';
-
-                                        // Get doc_id from the URL
-                                        $doc_id = isset($_GET['doc_id']) ? intval($_GET['doc_id']) : 0;
-
                                         if ($doc_id == 1) {
                                             echo "
                                             <th>Full Name</th>
@@ -130,7 +138,13 @@
                                             echo "
                                             <th>Full Name</th>
                                             <th>Address</th>
+                                            <th>Claimant</th>
+                                            <th>Beneficiary</th>
+                                            <th>Actual Occupant</th>
                                             <th>Lot No.</th>
+                                            <th>Area Measurement (Number)</th>
+                                            <th>Area Measurement (Words)</th>
+                                            <th>Location Address</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
@@ -182,15 +196,19 @@
                                                 echo "<td>" . $row["birthdate"] . "</td>";
                                                 echo "<td>" . $row["civil_status"] . "</td>";
                                                 $por = $row["period_of_residency"];
-                                                $years = floor($por / 12);
+                                                $years = floor($por / 12); // Calculate full years
+                                                $remaining_months = $por % 12; // Calculate remaining months
+                                                
                                                 if ($por == 1) {
                                                     echo "<td>" . $por . " month</td>";
                                                 } elseif ($por < 12) {
                                                     echo "<td>" . $por . " months</td>";
-                                                } elseif ($por/12 == 1) {
+                                                } elseif ($por == 12) {
                                                     echo "<td>" . $years . " year</td>";
-                                                } elseif ($por > 12) {
+                                                } elseif ($remaining_months == 0) { // Exact multiple of 12 months
                                                     echo "<td>" . $years . " years</td>";
+                                                } else { // Combined years and months
+                                                    echo "<td>" . $years . " year" . ($years > 1 ? "s" : "") . " and " . $remaining_months . " month" . ($remaining_months > 1 ? "s" : "") . "</td>";
                                                 }
                                                 echo "<td>" . $row["purpose"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
@@ -460,7 +478,13 @@
                                                     . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
                                                     echo "<td>" . $fullName . "</td>";
                                                     echo "<td>" . $row["address"] . "</td>";
+                                                    echo "<td>" . $row["claimant"] . "</td>";
+                                                    echo "<td>" . $row["beneficiary"] . "</td>";
+                                                    echo "<td>" . $row["actual_occupant"] . "</td>";
                                                     echo "<td>" . $row["lot_no"] . "</td>";
+                                                    echo "<td>" . $row["area_measurement_num"] . "</td>";
+                                                    echo "<td>" . $row["area_measurement_words"] . "</td>";
+                                                    echo "<td>" . $row["loc_address"] . "</td>";
                                                     echo "<td>" . $row["issued_date"] . "</td>";
                                                     echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                     echo "</tr>";

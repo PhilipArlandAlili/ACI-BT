@@ -89,15 +89,19 @@ if (!isset($_SESSION['username'])) {
                                             echo "<td>" . $row["birthdate"] . "</td>";
                                             echo "<td>" . $row["civil_status"] . "</td>";
                                             $por = $row["period_of_residency"];
-                                            $years = floor($por / 12);
+                                            $years = floor($por / 12); // Calculate full years
+                                            $remaining_months = $por % 12; // Calculate remaining months
+                                            
                                             if ($por == 1) {
                                                 echo "<td>" . $por . " month</td>";
                                             } elseif ($por < 12) {
                                                 echo "<td>" . $por . " months</td>";
-                                            } elseif ($por/12 == 1) {
+                                            } elseif ($por == 12) {
                                                 echo "<td>" . $years . " year</td>";
-                                            } elseif ($por > 12) {
+                                            } elseif ($remaining_months == 0) { // Exact multiple of 12 months
                                                 echo "<td>" . $years . " years</td>";
+                                            } else { // Combined years and months
+                                                echo "<td>" . $years . " year" . ($years > 1 ? "s" : "") . " and " . $remaining_months . " month" . ($remaining_months > 1 ? "s" : "") . "</td>";
                                             }
                                             echo "<td>" . $row["purpose"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
@@ -384,7 +388,13 @@ if (!isset($_SESSION['username'])) {
                                             // echo "<th>ID</th>";
                                             echo "<th>Full Name</th>";
                                             echo "<th>Address</th>";
+                                            echo "<th>Claimant</th>";
+                                            echo "<th>Beneficiary</th>";
+                                            echo "<th>Actual Occupant</th>";
                                             echo "<th>Lot No.</th>";
+                                            echo "<th>Area Measurement (Number)</th>";
+                                            echo "<th>Area Measurement (Words)</th>";
+                                            echo "<th>Location Address</th>";
                                             echo "<th>Issued Date</th>";
                                             echo "<th>Duty Officer Name</th>";
                                             echo "</tr>";
@@ -398,7 +408,13 @@ if (!isset($_SESSION['username'])) {
                                                 . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
+                                            echo "<td>" . $row["claimant"] . "</td>";
+                                            echo "<td>" . $row["beneficiary"] . "</td>";
+                                            echo "<td>" . $row["actual_occupant"] . "</td>";
                                             echo "<td>" . $row["lot_no"] . "</td>";
+                                            echo "<td>" . $row["area_measurement_num"] . "</td>";
+                                            echo "<td>" . $row["area_measurement_words"] . "</td>";
+                                            echo "<td>" . $row["loc_address"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
                                             echo "<td>" . $row["duty_officer_name"] . "</td>";
                                             echo "</tr>";
