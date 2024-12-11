@@ -1007,7 +1007,6 @@ if (!isset($_SESSION['username'])) {
                                                 <img src="${chartImageURL}" alt="Chart Image" class="img-fluid">
                                             </div>
                                         </main>
-
                                         <img src="certificates/logo/border.png" class="border" alt="">
                                         <img src="certificates/logo/under.png" class="footer-b" alt="">
                                     </div>
