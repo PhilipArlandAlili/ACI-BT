@@ -154,7 +154,7 @@ function select(){
   var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
   var purok = iframeDocument.getElementById('purok');
   var suffix = iframeDocument.getElementById('suffix');
-  var purok1 = iframeDocument.getElementById('purok1');
+  
   var suffix1 = iframeDocument.getElementById('suffix1');
   var stats = iframeDocument.getElementById('stats');
 
@@ -165,9 +165,7 @@ function select(){
   if (suffix)
     suffix.innerText = document.getElementById('suffix').value.toUpperCase();
     else console.log('suffix not found')
-    if (purok1)
-      purok1.innerText ="PUROK "+ document.getElementById('purok1').value.toUpperCase()  + ", BARANGAY TINIGUIBAN, PUERTO PRICESA CITY";
-      else console.log('purok1 not found')
+    
       
     if (suffix1)
       suffix1.innerText = document.getElementById('suffix1').value.toUpperCase();
@@ -196,7 +194,7 @@ function select(){
 }
 
   function updateText() { 
-
+    
     var iframe = document.getElementById('myIframe');          
         var text = document.getElementById(document.getElementById('certificateType').value).querySelectorAll('input[type=text]');
         var number =document.getElementById(document.getElementById('certificateType').value).querySelectorAll('input[type=number]');
@@ -213,7 +211,12 @@ function select(){
       }
        
         }
-        
+        var address = iframeDocument.getElementById('address');
+        if (address)
+          address.innerText = document.getElementById('address').value.toUpperCase()  + ", BARANGAY TINIGUIBAN, PUERTO PRICESA CITY";
+          else console.log('address not found')
+
+
   for (var x = 0; x < number.length; x++) {
     console.log(number[x].value);
     var Number = iframeDocument.getElementById('num'+x);
