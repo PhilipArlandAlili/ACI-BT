@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 include '../includes/db.php';
 
 $officials = [];
@@ -69,11 +70,11 @@ $conn->close();
 
 <body>
     <header id="header" class="header fixed-top d-flex align-items-center">
-        <?php include 'header2.php' ?>
+        <?php include '../includes/header.php' ?>
     </header>
 
     <aside id="sidebar" class="sidebar">
-        <?php include 'sidebar2.php' ?>
+        <?php include '../includes/sidebar.php' ?>
     </aside>
 
     <main id="main" class="main">
