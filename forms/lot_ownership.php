@@ -1,12 +1,18 @@
 <form action="#" method="post" id="lot_ownershipForm">
-<label for="">First Name:</label>
-    <input type="text" class="form-control" id="first_name" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+    <label for="">First Name:</label>
+    <input type="text" class="form-control" id="first_name" name="first_name" maxlength="50"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
-    <input type="text" class="form-control" id="middle_name" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"   placeholder="Ex. Reyes"><br>
+    <input type="text" class="form-control" id="middle_name" name="middle_name" maxlength="50"
+        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" id="last_name" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+    <input type="text" class="form-control" id="last_name" name="last_name" maxlength="50"
+        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
     <select class="text-left form-control" name="suffix" id="suffix">
@@ -33,31 +39,34 @@
     </select><br>
 
     <div class="form-check">
-        <input class="form-check-input" name="claimant" type="checkbox" value="/" id="flexCheckDefault">
+        <input class="form-check-input" name="claimant" type="checkbox" value="/" id="claimant">
         <label class="form-check-label" for="flexCheckDefault">
             Claimant
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" name="beneficiary" type="checkbox" value="/" id="flexCheckChecked">
+        <input class="form-check-input" name="beneficiary" type="checkbox" value="/" id="beneficiary">
         <label class="form-check-label" for="flexCheckDefault">
             Beneficiary
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" name="actual_occupant" type="checkbox" value="/" id="flexCheckChecked">
+        <input class="form-check-input" name="actual_occupant" type="checkbox" value="/" id="actual_occupant">
         <label class="form-check-label" for="flexCheckChecked">
             Actual Occupant
         </label>
     </div><br>
 
     <label for="lotNumber">Lot Number:</label>
-    <input type="number" class="form-control" oninput="updateText()" name="lot_number" placeholder="Ex. 5003" required><br>
+    <input type="number" class="form-control" oninput="updateText()" name="lot_number" id="lot_number"
+        placeholder="Ex. 5003" required><br>
 
     <label for="lotAreaNumerical">Area Measurement (Numerical Form):</label>
-    <input type="number" class="form-control" oninput="updateText()" name="lot_area_numerical" id="lot_area_numerical" placeholder="Ex. 350 sqm" required><br>
+    <input type="number" class="form-control" oninput="updateText()" name="lot_area_numerical" id="lot_area_numerical"
+        placeholder="Ex. 350 sqm" required><br>
     <label for="lotAreaNumerical">Area Measurement (Word Form):</label>
-    <input type="text" class="form-control" name="lot_area_word" id="lot_area_words" placeholder="Ex. One Two Three" readonly><br>
+    <input type="text" class="form-control" name="lot_area_word" id="lot_area_word" placeholder="Ex. One Two Three"
+        readonly><br>
 
     <label for="purok">Lot Location:</label>
     <select class="text-left form-control" name="purok1" id="purok1" required>
@@ -87,7 +96,7 @@
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
                         <button class="w-25 btn btn-primary" name="lot_ownership" onclick="printIframe()"
-                            id="confirmPrint" >Yes</button>
+                            id="confirmPrint">Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>

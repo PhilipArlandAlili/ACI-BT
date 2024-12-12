@@ -14,14 +14,6 @@
             position: absolute;
             top: 25%;
             left: 30%;
-            width: 70%
-        }
-
-
-        .capitan {
-            position: absolute;
-            left: 70%;
-            top: 60%;
         }
     </style>
 </head>
@@ -39,46 +31,62 @@
             </div>
         </div>
         <img class="watermark" src="logo/water.png" alt="">
+
         <div class="content">
             <div class="center">
-                <h1>OFFICE OF THE PUNONG BARANGAY</h1>
+                <h2>OFFICE OF THE PUNONG BARANGAY</h2>
                 <h2>DEATH CERTIFICATION</h2>
             </div>
 
-            <span>TO WHOM IT MAY CONCERN:</span>
-            <br><br>
+            <div id="cert">
+                To whom it may concern:
+                <br><br>
 
-            <p class="paragraph-content">THIS IS TO CERTIFY that,<b> <span id="var0"></span> <span id="var1"></span>
-                    <span id="var2"></span> <span id="suffix"></span></b>, <span id="num0"></span>, is a resident of
-                <span id="purok"></span>, Barangay Tiniguiban, Puerto Princesa City, was died last
-                <span id="month1"></span> <span id="day1"></span>, <span id="year1"></span> at about <span
-                    id="time0"></span>. Cause of Death <strong id="var3"></strong>.
-            </p>
+                <div class="text-justify indent">
+                    <b>THIS IS TO CERTIFY</b> that,
+                    <b><span id="first_name"></span> <span id="middle_name"></span> <span id="last_name"></span> <span
+                            id="suffix"></span></b>,
+                    <span id="birthdate"></span>, is a resident of <b><span id="purok"></span></b>, was died last
+                    <b><span id="month1"></span> <span id="day1"></span>, <span id="year1"></span></b> at about <b><span
+                            id="time0"></span></b>. Cause of Death <strong id="cause_of_death"></strong>.
+                </div>
+                <br>
 
-            <p class="paragraph-content">This certification is being issued upon the request of <strong><span
-                        id="var4"></span> <span id="var5"></span> <span id="var6"></span> <span
-                        id="suffix1 "></span></strong> <span id="var7"></span> for <strong>BURIAL ASSISTANCE</strong>.
-            </p>
+                <div class="text-justify indent">
+                    <b>This certification</b> is being issued upon the request of <strong><span
+                            id="req_first_name"></span> <span id="req_middle_name"></span> <span
+                            id="req_last_name"></span> <span id="suffix1 "></span></strong> <span
+                        id="relationship"></span> for
+                    <strong>BURIAL
+                        ASSISTANCE</strong>.
+                </div>
+                <br>
 
-            <p class="paragraph-content">Given this <span id="days"></span><sup id="sups"></sup> day of <span
-                    id="months"></span> <span id="years"></span>.</p>, at Barangay Tiniguiban, Puerto Princesa City,
-            Palawan.
-            </p>
+                <div class="text-justify indent">
+                    Given this <b id="days">test</b><sup id="sups">test</sup> day of <b id="months"> test</b> <b><span
+                            id="years"></span></b>, at Barangay Tiniguiban, Puerto Princesa City,
+                    Palawan.
+                </div>
+            </div>
 
+            <div class="officer-container">
+                <div class="cap-officers">
+                    <div class="captain center">
+                        <b>
+                            <h4>DAVID V. PACAÑOT</h4>
+                        </b>
+                        <div style="margin-top: -25px;"><i>Punong Barangay</i></div>
+                    </div>
+                    <div class="duty-officer center" style="margin-top: 80px;">
+                        <!-- <b>
+                            <h4>PHILIP ARLAND P. ALILI</h4>
+                        </b>
+                        <div style="margin-top: -25px;"><i>Barangay Kagawad</i></div>
+                        <div><i>Duty Officer</i></div> -->
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="capitan center">
-            <b>
-                <h4>DAVID V. PACAÑOT</h4>
-            </b>
-            <div style="margin-top: -20px;">Punong Barangay</div><br><br><br><br>
-            <!-- <b><span> ELMER D. BONBON</span></b> -->
-            <hr>
-            Barangay Kagawad <br>
-            Duty Officer
-        </div>
-
-
 
         <div class="names" style="margin-top: -2%">
             <div class="">
