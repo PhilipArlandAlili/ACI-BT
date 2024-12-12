@@ -38,6 +38,17 @@
                 </div>
         </div>
 
+        <div class="complaint">
+                <h1>Complaint Certificate</h1>
+                <div class="to-do">
+                        Birthday not working (Age nakalagay sa cert, lumalabas sa date filed)
+                        Date Filed not working
+                        Respondent suffix not working
+                        Case number not working
+                        
+                </div>
+        </div>
+
 
 </body>
 
