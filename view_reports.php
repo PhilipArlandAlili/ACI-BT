@@ -927,126 +927,132 @@ if (!isset($_SESSION['username'])) {
                                     const ap = nhour >= 12 ? "PM" : "AM";
                                     nhour = nhour % 12 || 12; // Convert to 12-hour format
 
-                                    const currentDateTime = `${nhour}:${nmin}:${nsec} ${ap}, ${tmonth[now.getMonth()]} ${ndate}, ${nyear} (${nday})`;
+                                    const currentDateTime = `${nhour}:${nmin}:${nsec} ${ap}, ${tmonth[now.getMonth()]} ${ndate}, ${nyear} ${nday}`;
 
                                     // Echo the username
                                     const username = "<?php echo $_SESSION['username']; ?>";
 
                                     let content = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="certificates/logo.css">
-            <style>
-                .content {
-                    font-family: Calibri;
-                    font-size: 1.1rem;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                }
+                                    <!DOCTYPE html>
+                                    <html lang="en">
 
-                .chart-container {
-                    margin-top: 20px;
-                    border-radius: 4px;
-                    background-color: white;
-                    width: 100%;
-                    max-width: 600px;
-                    height: auto;
-                }
+                                    <head>
+                                        <meta charset="UTF-8">
+                                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                        <link rel="stylesheet" href="certificates/logo.css">
+                                        <style>
+                                            .content {
+                                                font-family: Calibri;
+                                                font-size: 1.1rem;
+                                                position: absolute;
+                                                top: 50%;
+                                                left: 50%;
+                                                transform: translate(-50%, -50%);
+                                            }
 
-                .chart-container img {
-                    width: 100%;
-                    height: auto;
-                }
+                                            .chart-container {
+                                                margin-top: 20px;
+                                                border-radius: 4px;
+                                                background-color: white;
+                                                width: 100%;
+                                                max-width: 600px;
+                                                height: auto;
+                                            }
 
-                .num_issued {
-                    text-align: center;
-                }
+                                            .chart-container img {
+                                                width: 100%;
+                                                height: auto;
+                                            }
 
-                .table {
-                    width: 100%;
-                    border-collapse: collapse;
-                }
+                                            .num_issued {
+                                                text-align: center;
+                                            }
 
-                .table th {
-                    background-color: #00528d;
-                    color: white;
-                }
+                                            .table {
+                                                width: 100%;
+                                                border-collapse: collapse;
+                                            }
 
-                .table th,
-                .table td {
-                    border: 1px solid #ddd;
-                }
+                                            .table th {
+                                                background-color: #00528d;
+                                                color: white;
+                                            }
 
-                .datetime {
-                    margin-bottom: 20px;
-                    text-align: center;
-                    font-weight: bold;
-                }
+                                            .table th,
+                                            .table td {
+                                                border: 1px solid #ddd;
+                                            }
 
-                .username {
-                    position: fixed;
-                    bottom: 10px;
-                    right: 10px;
-                    font-weight: bold;
-                    font-size: 1.2rem;
-                    color: #00528d;
-                }
-            </style>
-        </head>
+                                            .datetime {
+                                                margin-bottom: 20px;
+                                                font-size: 16px;
+                                                text-align: right;
+                                            }
 
-        <body>
-            <div class="container w-100">
-                <div class="header">
-                    <img src="certificates/logo/logo brgy.jpg" class="brlogo" alt="">
-                    <img src="certificates/logo/citylogo.jpg" class="ctlogo" alt="">
-                    <div class="family">
-                        <b>
-                            <p>REPUBLIC OF THE PHILIPPINES</p>
-                            <h1 style="margin-top: -20px; color:#00528d;">BARANGAY TINIGUIBAN</h1>
-                            <p style="margin-top: -20px;">PUERTO PRINCESA CITY, PALAWAN</p>
-                        </b>
-                    </div>
-                </div>
-                <img class="watermark" src="certificates/logo/water.png" alt="">
+                                            .username {
+                                                position: absolute;
+                                                left: 70%;
+                                                top: 78%;
+                                            }
+                                        </style>
+                                    </head>
 
-                <main id="content" class="content">
-                    <div class="datetime">${currentDateTime}</div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Certificate Type</th>
-                                <th>Number Issued</th>
-                            </tr>
-                        </thead>
-                        <tbody>`;
+                                    <body>
+                                        <div class="container w-100">
+                                            <div class="header">
+                                                <img src="certificates/logo/logo brgy.jpg" class="brlogo" alt="">
+                                                <img src="certificates/logo/citylogo.jpg" class="ctlogo" alt="">
+                                                <div class="family">
+                                                    <b>
+                                                        <p>REPUBLIC OF THE PHILIPPINES</p>
+                                                        <h1 style="margin-top: -20px; color:#00528d;">BARANGAY TINIGUIBAN</h1>
+                                                        <p style="margin-top: -20px;">PUERTO PRINCESA CITY, PALAWAN</p>
+                                                    </b>
+                                                </div>
+                                            </div>
+                                            <img class="watermark" src="certificates/logo/water.png" alt="">
 
-                                    // Populate table rows dynamically
-                                    chartLabels.forEach((label, index) => {
-                                        content += `
-        <tr>
-            <td>${label}</td>
-            <td class="num_issued">${chartValues[index]}</td>
-        </tr>`;
-                                    });
+                                            <main id="content" class="content">
+                                                <div class="datetime">${currentDateTime}</div>
+                                                <table class="table" style="border: 1px solid #333">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Certificate Type</th>
+                                                            <th>Number Issued</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>`;
 
-                                    content += `
-                    </tbody>
-                </table>
-                <div class="chart-container">
-                    <img src="${chartImageURL}" alt="Chart Image" class="img-fluid">
-                </div>
-            </main>
-            <div class="username">${username}</div>
-            <img src="certificates/logo/border.png" class="border" alt="">
-            <img src="certificates/logo/under.png" class="footer-b" alt="">
-        </div>
-    </body>
-    </html>`;
+                                                        // Populate table rows dynamically
+                                                        chartLabels.forEach((label, index) => {
+                                                        content += `
+                                                        <tr>
+                                                            <td>${label}</td>
+                                                            <td class="num_issued">${chartValues[index]}</td>
+                                                        </tr>`;
+                                                        });
+
+                                                        content += `
+                                                    </tbody>
+                                                </table>
+                                                <div class="chart-container" style="border: 1px solid;">
+                                                    <img src="${chartImageURL}" alt="Chart Image" class="img-fluid">
+                                                </div>
+                                            </main>
+                                            <div class="username center">
+                                                <b>
+                                                    <h4>${username}</h4>
+                                                </b>
+                                                <div style="margin-top: -20px; border-top: 2px solid;">Punong Barangay</div>
+                                                Duty Officer
+                                            </div>
+                                        </div>
+                                        <img src="certificates/logo/border.png" class="border" alt="">
+                                        <img src="certificates/logo/under.png" class="footer-b" alt="">
+                                        </div>
+                                    </body>
+
+                                    </html>`;
 
                                     // Open a new window for printing and render the content
                                     const printWindow = window.open('', '_blank');
