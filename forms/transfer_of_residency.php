@@ -1,4 +1,4 @@
-<form action="#" method="post" class="form" id="transfer_of_residencyForm">
+<form action="#" method="post" class="form" id="transfer_of_residency_form">
 
     <label for="">First Name:</label>
     <input type="text" class="form-control" id="trfirst_name" name="first_name" maxlength="50"
@@ -51,7 +51,7 @@
         <option value="Uha">UHA</option>
     </select><br>
 
-    <label for="purok">Current Address:</label>
+    <!-- <label for="purok">Current Address:</label>
     <select class="text-left form-control" name="current_address" id="trcurrent_address" required
         onchange="updateText()">
         <option value="">--Select Purok--</option>
@@ -64,7 +64,7 @@
         <option value="Sandiwa">Sandiwa</option>
         <option value="Trece">Trece</option>
         <option value="Uha">UHA</option>
-    </select><br>
+    </select><br> -->
 
 
     <label for="">Previous Address:</label>
@@ -101,7 +101,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("transferPrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("transfer_of_residencyForm");  // Use the unique form ID
+        let form = document.getElementById("transfer_of_residency_form");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {
