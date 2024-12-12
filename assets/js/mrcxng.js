@@ -75,10 +75,14 @@ function updateText() {
 
         if (birthdate.value) {
             if (validateBirthdate(birthdate.value)) {
+                pbirthdate_month.innerText = "";
+                pbirthdate_day.innerText = "";
+                pbirthdate_year.innerText = "";
+            } else {
                 pbirthdate_month.innerText = month;
                 pbirthdate_day.innerText = day + ", ";
                 pbirthdate_year.innerText = year;
-            }
+            } 
         } else {
             pbirthdate_month.innerText = "";
             pbirthdate_day.innerText = "";
@@ -113,19 +117,6 @@ function updateText() {
         pperiod_of_residency.innerText = period_of_residency.value;
         ppurpose.innerText = purpose.value.toUpperCase();
     } else if (certificate_type.value == 'business_permit_new'){
-        // From PHP
-        var first_name = document.getElementById('first_name');
-        var middle_name = document.getElementById('middle_name');
-        var last_name = document.getElementById('last_name');
-        var suffix = document.getElementById('suffix');
-        var purok = document.getElementById('purok');
-        var birthplace = document.getElementById('birthplace');
-        var birthdate = document.getElementById('birthdate');
-        var civil_status = document.getElementById('civil_status');
-        var pormonth = document.getElementById('month');
-        var poryear = document.getElementById('year');
-        var period_of_residency = document.getElementById('period_of_residency');
-        var purpose = document.getElementById('purpose');
     }
 
 }
@@ -133,9 +124,8 @@ function updateText() {
 function validateBirthdate(birthdate_input) {
     var today = new Date();
     var birthdate = new Date(birthdate_input.value);
-    var birth_year = birthdate.getFullYear()
     
-    var age = today.getFullYear()-birth_year;
+    var age = today.getFullYear()-birthdate.getFullYear();
     var month_diff = today.getMonth()-birthdate.getMonth();
 
     if (month_diff < 0 || (month_diff === 0 && today.getDate() < birthdate.getDate())) {
@@ -147,6 +137,9 @@ function validateBirthdate(birthdate_input) {
     if (age < 18) {
         alert("You must be at least 18 years old.");
         birthdate_input.value = '';
+        return true;
+    } else {
+        return false;
     }
     
 }
