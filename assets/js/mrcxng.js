@@ -186,34 +186,65 @@ function updateText() {
         var cocmonth = cocdate.getMonth();
         var cocday = cocdate.getDate();
         var cocyear = cocdate.getFullYear();
-        month = month_names[month];
+        cocmonth = month_names[cocmonth];
 
+        var cocdate_female = new Date(cocbirthdate_female.value);
+        var cocmonth_female = cocdate_female.getMonth();
+        var cocday_female = cocdate_female.getDate();
+        var cocyear_female = cocdate_female.getFullYear();
+        cocmonth_female = month_names[cocmonth_female];
 
-        console.log(day,month,year);
+        var cocdate_of_marriage = new Date(cocdate_of_marriage.value);
+        var cocyear_dom = cocdate_of_marriage.getFullYear();
+
         // From HTML
         var pcocfirst_name = iframeDocument.getElementById('cocfirst_name');
         var pcocmiddle_name = iframeDocument.getElementById('cocmiddle_name');
         var pcoclast_name = iframeDocument.getElementById('coclast_name');
         var pcocsuffix = iframeDocument.getElementById('cocsuffix');
-        var pcocbirthdate = iframeDocument.getElementById('cocbirthdate');
+        var pcocbirthdate_month = iframeDocument.getElementById('cocbirthdate_month');
+        var pcocbirthdate_day = iframeDocument.getElementById('cocbirthdate_day');
+        var pcocbirthdate_year = iframeDocument.getElementById('cocbirthdate_year');
         var pcocfirst_name_female = iframeDocument.getElementById('cocfirst_name_female');
         var pcocmiddle_name_female = iframeDocument.getElementById('cocmiddle_name_female');
         var pcoclast_name_female = iframeDocument.getElementById('coclast_name_female');
-        var pcocbirthdate_female = iframeDocument.getElementById('cocbirthdate_female');
+        var pcocbirthdate_female_month = iframeDocument.getElementById('cocbirthdate_female_month');
+        var pcocbirthdate_female_day = iframeDocument.getElementById('cocbirthdate_female_day');
+        var pcocbirthdate_female_year = iframeDocument.getElementById('cocbirthdate_female_year');
         var pcocpurok = iframeDocument.getElementById('cocpurok');
         var pcocdate_of_marriage = iframeDocument.getElementById('cocdate_of_marriage');
+        var pcocdom_y = iframeDocument.getElementById('cocdom_y');
 
         pcocfirst_name.innerText = cocfirst_name.value;
         pcocmiddle_name.innerText = cocmiddle_name.value;
         pcoclast_name.innerText = coclast_name.value;
         pcocsuffix.innerText = cocsuffix.value;
-        pcocbirthdate.innerText = cocbirthdate.value;
+        pcocbirthdate_month.innerText = cocmonth;
+        pcocbirthdate_day.innerText = cocday + ", ";
+        pcocbirthdate_year.innerText = cocyear;
         pcocfirst_name_female.innerText = cocfirst_name_female.value;
         pcocmiddle_name_female.innerText = cocmiddle_name_female.value;
         pcoclast_name_female.innerText = coclast_name_female.value;
-        pcocbirthdate_female.innerText = cocbirthdate_female.value;
+        pcocbirthdate_female_month.innerText = cocmonth_female;
+        pcocbirthdate_female_day.innerText = cocday_female + ", ";
+        pcocbirthdate_female_year.innerText = cocyear_female;
         pcocpurok.innerText = cocpurok.value;
-        pcocdate_of_marriage.innerText = cocdate_of_marriage.value;
+        
+        var coctoday = new Date();
+        var coctyear = coctoday.getFullYear();
+        console.log(cocyear_dom);
+        console.log(coctyear);
+
+        var years_married = coctyear-cocyear_dom;
+
+        pcocdate_of_marriage.innerText = years_married;
+
+        if (years_married == 1){
+            pcocdom_y.innerText = 'Year';
+        } else {
+            pcocdom_y.innerText = 'Years';
+        }
+
     } else if (certificate_type.value == 'certificate_of_employability') {
 
     } else if (certificate_type.value == 'certificate_of_income') {
@@ -227,7 +258,7 @@ function updateText() {
     } else if (certificate_type.value == 'lot_ownership') {
 
     } else if (certificate_type.value == 'transfer_of)residency') {
-        
+
     }
 
 }

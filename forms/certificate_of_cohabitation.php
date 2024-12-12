@@ -11,7 +11,7 @@
     <input type="text" class="form-control" name="last_name" id="coclast_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
 
     <label for="">Suffix:</label>
-    <select class="form-control text-left" name="suffix" id="cocsuffixs">
+    <select class="form-control text-left" name="suffix" id="cocsuffix" onchange="updateText();">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -40,7 +40,7 @@
     <input type="date" class="form-control" id="cocbirthdate_female" onchange="validatebday(this);updateText();" name="birthdate_female" required><br><hr>
 
     <label for="">Purok:</label><br>
-    <select name="purok" class="form-control" id="cocpurok" onchange="update()" required>
+    <select name="purok" class="form-control" id="cocpurok" onchange="updateText();" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
