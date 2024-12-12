@@ -15,10 +15,8 @@
         oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
         required placeholder="Ex. Dela Cruz"><br>
 
-    <!-- dagdagan ng birthday dito -->
-
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="cidsuffix">
+    <select class="text-left form-control" name="suffix" id="cidsuffix" oninput="updateText()">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -27,8 +25,21 @@
         <option value="III">III</option>
     </select><br>
 
+    <!-- Birthday = Age -->
+    <label for="birthday">Birthday:</label>
+    <input type="date" class="form-control" onchange="validatebday(this);updateText();" id="cidbirthdate"
+        name="birthdate" required><br>
+
+    <label for="civil_status">Civil Status:</label>
+    <select class="form-control" name="civil_status" id="cidcivil_status" oninput="updateText();" required>
+        <option value="">--Select Civil Status--</option>
+        <option value="Single">Single</option>
+        <option value="Married">Married</option>
+        <option value="Widow">Widow</option>
+    </select><br>
+
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="cidpurok" required>
+    <select class="text-left form-control" name="purok" id="cidpurok" oninput="updateText()" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -40,6 +51,10 @@
         <option value="Trece">Trece</option>
         <option value="Uha">UHA</option>
     </select><br>
+
+    <label for="purpose">Purpose:</label>
+    <input type="text" name="purpose" class="form-control" id="cidpurpose" oninput="updateText()"
+        placeholder="Ex. Medical Services" required><br>
     <hr>
 
     <div class="indigency2Print" style="text-align: right;">

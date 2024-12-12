@@ -1,4 +1,4 @@
-<form action="#" method="POST" class="form" id="cecertificate_of_employabilityForm">
+<form action="#" method="POST" class="form" id="cecertificate_of_employability_form">
 
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" id="cefirst_name" maxlength="50"
@@ -16,7 +16,7 @@
         required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="cesuffix">
+    <select class="text-left form-control" name="suffix" id="cesuffix" onchange="updateText()">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -25,12 +25,13 @@
         <option value="III">III</option>
     </select><br>
 
+    <!-- Birthdate = Age -->
     <label for="birthday">Birthday:</label>
     <input type="date" class="form-control" onchange="validatebday(this);updateText();" id="cebirthdate"
         name="birthdate" required><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="cepurok" required>
+    <select class="text-left form-control" name="purok" id="cepurok" onchange="updateText()" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -43,10 +44,9 @@
         <option value="Uha">UHA</option>
     </select><br>
 
-    <!-- Birthday input -->
-    <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" onchange="validatebday(this);updateText();" id="cebirthdate"
-        name="birthdate" required><br>
+    <label for="purpose">Purpose:</label>
+    <input type="text" name="purpose" class="form-control" id="cepurpose" oninput="updateText()"
+        placeholder="Ex. Employment" required><br>
     <hr>
 
     <div class="employabilityPrint" style="text-align: right;">
@@ -74,7 +74,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("employabilityPrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("certificate_of_employabilityForm");  // Use the unique form ID
+        let form = document.getElementById("certificate_of_employability_form");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {
