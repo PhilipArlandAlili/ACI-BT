@@ -1,15 +1,22 @@
 <form action="#" method="post" id="certificate_of_indigency_aicsForm">
 
-<label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+    <label for="">First Name:</label>
+    <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
-    <input type="text" class="form-control" name="middle_name" id="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"   placeholder="Ex. Reyes"><br>
+    <input type="text" class="form-control" name="middle_name" id="middle_name" maxlength="50"
+        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_name" id="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+    <input type="text" class="form-control" name="last_name" id="last_name" maxlength="50"
+        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        required placeholder="Ex. Dela Cruz"><br>
 
-    
+    <!-- dagdagan ng birthday dito -->
+
     <label for="suffix">Suffix:</label>
     <select class="text-left form-control" name="suffix" id="suffix">
         <option value="">N/A</option>
@@ -32,7 +39,8 @@
         <option value="Sandiwa">Sandiwa</option>
         <option value="Trece">Trece</option>
         <option value="Uha">UHA</option>
-    </select><br><hr>
+    </select><br>
+    <hr>
 
     <div class="indigency2Print" style="text-align: right;">
         <button type="button" class="btn btn-primary w-25" id="indigency2PrintBtn">Print</button>
@@ -47,7 +55,7 @@
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
                         <button class="w-25 btn btn-primary" name="certificate_of_indigency_aics"
-                            onclick="printIframe()" id="confirmPrint" >Yes</button>
+                            onclick="printIframe()" id="confirmPrint">Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
