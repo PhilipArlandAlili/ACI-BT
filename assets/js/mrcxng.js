@@ -73,7 +73,7 @@ function updateText() {
         var ppurpose = iframeDocument.getElementById('purpose');
 
         var date = new Date(birthdate.value);
-        var month = date.getMonth(); // getMonth is zero-based
+        var month = date.getMonth();
         var day = date.getDate();
         var year = date.getFullYear();
 
@@ -180,6 +180,16 @@ function updateText() {
         var cocpurok = document.getElementById('cocpurok');
         var cocdate_of_marriage = document.getElementById('cocdate_of_marriage');
 
+        const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+        var cocdate = new Date(cocbirthdate.value);
+        var cocmonth = cocdate.getMonth();
+        var cocday = cocdate.getDate();
+        var cocyear = cocdate.getFullYear();
+        month = month_names[month];
+
+
+        console.log(day,month,year);
         // From HTML
         var pcocfirst_name = iframeDocument.getElementById('cocfirst_name');
         var pcocmiddle_name = iframeDocument.getElementById('cocmiddle_name');
@@ -204,7 +214,20 @@ function updateText() {
         pcocbirthdate_female.innerText = cocbirthdate_female.value;
         pcocpurok.innerText = cocpurok.value;
         pcocdate_of_marriage.innerText = cocdate_of_marriage.value;
+    } else if (certificate_type.value == 'certificate_of_employability') {
 
+    } else if (certificate_type.value == 'certificate_of_income') {
+
+    } else if (certificate_type.value == 'certificate_of_indigency') {
+
+    } else if (certificate_type.value == 'complaint_certificate') {
+
+    } else if (certificate_type.value == 'death_certificate') {
+
+    } else if (certificate_type.value == 'lot_ownership') {
+
+    } else if (certificate_type.value == 'transfer_of)residency') {
+        
     }
 
 }

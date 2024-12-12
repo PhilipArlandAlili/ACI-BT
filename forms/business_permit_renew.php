@@ -1,12 +1,7 @@
 <!-- Business Permit Renewal Form -->
 <form action="#" method="post" class="form" id="business_permit_renewForm">
     <label for="businessName">Business name/ Trade Activity:</label>
-<<<<<<< Updated upstream
-    <input type="text" class="form-control" id="business_name" name="business_name" oninput="updateText()"
-        placeholder="Ex. Carl Store" required><br>
-=======
     <input type="text" class="form-control" id="bprbusiness_name" name="business_name" oninput="updateText()" placeholder="Ex. Carl Store" required><br>
->>>>>>> Stashed changes
 
     <label for="purok">Purok:</label><br>
     <select name="purok" id="bprpurok" class="form-control" oninput="updateText()" required>
@@ -24,19 +19,10 @@
     <br>
 
     <label for="manager_operator_renew">Manager / Operator:</label>
-<<<<<<< Updated upstream
-    <input type="text" class="form-control" id="manager" name="manager" oninput="updateText()"
-        placeholder="Ex. Juan Dela Cruz" required><br>
-
-    <label for="manager_operator_address_renew">Address (Manager / Operator):</label>
-    <input type="text" class="form-control" id="address" name="address" oninput="updateText()" placeholder="Ex. PSU Rd"
-        required><br>
-=======
     <input type="text" class="form-control" id="bprmanager" name="manager" oninput="updateText()"placeholder="Ex. Juan Dela Cruz" required><br>
 
     <label for="manager_operator_address_renew">Address (Manager / Operator):</label>
     <input type="text" class="form-control" id="bpraddress" name="address" oninput="updateText()"placeholder="Ex. PSU Rd" required><br>
->>>>>>> Stashed changes
 
     <hr>
 
