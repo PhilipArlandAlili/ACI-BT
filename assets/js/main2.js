@@ -168,7 +168,7 @@ function select(){
     if (purok1)
     purok1.innerText ="PUROK "+ document.getElementById('purok1').value.toUpperCase() + ", BARANGAY TINIGUIBAN, PUERTO PRICESA CITY";
     else console.log('purok1 not found')
-      
+    
     if (suffix1)
       suffix1.innerText = document.getElementById('suffix1').value.toUpperCase();
       else console.log('suffix1 not found')
