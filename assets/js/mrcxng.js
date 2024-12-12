@@ -197,7 +197,6 @@ function updateText() {
         var cocdate_of_marriage = new Date(cocdate_of_marriage.value);
         var cocyear_dom = cocdate_of_marriage.getFullYear();
 
-        console.log(day, month, year);
         // From HTML
         var pcocfirst_name = iframeDocument.getElementById('cocfirst_name');
         var pcocmiddle_name = iframeDocument.getElementById('cocmiddle_name');
@@ -233,8 +232,6 @@ function updateText() {
         
         var coctoday = new Date();
         var coctyear = coctoday.getFullYear();
-        console.log(cocyear_dom);
-        console.log(coctyear);
 
         var years_married = coctyear-cocyear_dom;
 
