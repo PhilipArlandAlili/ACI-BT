@@ -929,6 +929,9 @@ if (!isset($_SESSION['username'])) {
 
                                     const currentDateTime = `${nhour}:${nmin}:${nsec} ${ap}, ${tmonth[now.getMonth()]} ${ndate}, ${nyear} (${nday})`;
 
+                                    // Echo the username
+                                    const username = "<?php echo $_SESSION['username']; ?>";
+
                                     let content = `
         <!DOCTYPE html>
         <html lang="en">
@@ -984,6 +987,15 @@ if (!isset($_SESSION['username'])) {
                     text-align: center;
                     font-weight: bold;
                 }
+
+                .username {
+                    position: fixed;
+                    bottom: 10px;
+                    right: 10px;
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                    color: #00528d;
+                }
             </style>
         </head>
 
@@ -1029,6 +1041,7 @@ if (!isset($_SESSION['username'])) {
                     <img src="${chartImageURL}" alt="Chart Image" class="img-fluid">
                 </div>
             </main>
+            <div class="username">${username}</div>
             <img src="certificates/logo/border.png" class="border" alt="">
             <img src="certificates/logo/under.png" class="footer-b" alt="">
         </div>
