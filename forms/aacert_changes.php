@@ -70,6 +70,7 @@
                 <div class="to-do">
                         Birthday (Age) muna bago Purok
                         Kulang Purpose
+                        (Philip: May duty officer)
                 </div>
         </div>
 
