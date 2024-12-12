@@ -89,8 +89,7 @@ function toggleFields() {
       }
   }
 
-  var iframe = document.getElementById('myIframe');
-  var doc = "certificates/" + certificateType + ".html";
+  
   
   var currentForm = document.getElementById(certificateType);
   if (currentForm) {

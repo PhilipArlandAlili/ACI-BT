@@ -67,9 +67,9 @@ include 'queries.php';
                     <div class="card-body">
                         <h5 class="card-title">Fillup Certificate</h5>
                         <!-- General Form Elements -->
-                        <label for="certificateType"> Select Certificate</label><br>
+                        <label for="certificate_type"> Select Certificate</label><br>
                         <div class="col-md-12">
-                            <select class="p-2 text-left form-control" id="certificateType" onchange="toggleFields()">
+                            <select class="p-2 text-left form-control" id="certificate_type" onchange="changeCertificate()">
                                 <option value="">--select certificates--</option>
                                 <option value="barangay_clearance">Barangay Clearance</option>
                                 <option value="business_permit_new">Barangay Business Permit New</option>
@@ -171,7 +171,8 @@ include 'queries.php';
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/main2.js"></script>
+    <!-- <script src="assets/js/main2.js"></script> -->
+    <script src="assets/js/mrcxng.js"></script>
     <script>function validatebday(input) {
             const birthDate = new Date(input.value); // Get the selected date
             const today = new Date();
