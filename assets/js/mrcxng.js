@@ -41,7 +41,7 @@ function printIframe() {
 function updateText() {
     var iframe = document.getElementById('myIframe');
     var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-    
+
     if (certificate_type.value == 'barangay_clearance') {
         // From PHP
         var first_name = document.getElementById('first_name');
@@ -60,7 +60,7 @@ function updateText() {
         // From HTML
         var pfirst_name = iframeDocument.getElementById('first_name');
         var pmiddle_name = iframeDocument.getElementById('middle_name');
-        var plast_name = iframeDocument.getElementById('last_name');
+        var cid= iframeDocument.getElementById('last_name');
         var psuffix = iframeDocument.getElementById('suffix');
         var ppurok = iframeDocument.getElementById('purok');
         var pbirthplace = iframeDocument.getElementById('birthplace');
@@ -81,7 +81,7 @@ function updateText() {
 
         const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         month = month_names[month];
-        console.log(day,month,year);
+        console.log(day, month, year);
 
         pfirst_name.innerText = first_name.value;
         pmiddle_name.innerText = middle_name.value;
@@ -99,16 +99,16 @@ function updateText() {
                 pbirthdate_month.innerText = month;
                 pbirthdate_day.innerText = day + ", ";
                 pbirthdate_year.innerText = year;
-            } 
+            }
         } else {
             pbirthdate_month.innerText = "";
             pbirthdate_day.innerText = "";
             pbirthdate_year.innerText = "";
         }
-        
 
-        
-        
+
+
+
         pcivil_status.innerText = civil_status.value;
         console.log(period_of_residency.value);
         if (pormonth.checked) {
@@ -130,10 +130,10 @@ function updateText() {
         } else {
             pyear_month.innerText = "";
         }
-        
+
         pperiod_of_residency.innerText = period_of_residency.value;
         ppurpose.innerText = purpose.value.toUpperCase();
-    } else if (certificate_type.value == 'business_permit_new'){
+    } else if (certificate_type.value == 'business_permit_new') {
         // From PHP
         var bpnbusiness_name = document.getElementById('bpnbusiness_name');
         var bpnpurok = document.getElementById('bpnpurok');
@@ -150,7 +150,7 @@ function updateText() {
         pbpnpurok.innerText = bpnpurok.value;
         pbpnmanager.innerText = bpnmanager.value;
         pbpnaddress.innerText = bpnaddress.value;
-    } else if (certificate_type.value == 'business_permit_renew'){
+    } else if (certificate_type.value == 'business_permit_renew') {
         // From PHP
         var bprbusiness_name = document.getElementById('bprbusiness_name');
         var bprpurok = document.getElementById('bprpurok');
@@ -197,6 +197,7 @@ function updateText() {
         var cocdate_of_marriage = new Date(cocdate_of_marriage.value);
         var cocyear_dom = cocdate_of_marriage.getFullYear();
 
+        console.log(day, month, year);
         // From HTML
         var pcocfirst_name = iframeDocument.getElementById('cocfirst_name');
         var pcocmiddle_name = iframeDocument.getElementById('cocmiddle_name');
@@ -249,7 +250,33 @@ function updateText() {
 
     } else if (certificate_type.value == 'certificate_of_income') {
 
-    } else if (certificate_type.value == 'certificate_of_indigency') {
+    } else if (certificate_type.value == 'certificate_of_indigency_aics') {
+        var cidfirst_name = document.getElementById('cidfirst_name');
+        var cidmiddle_name = document.getElementById('cidmiddle_name');
+        var cidlast_name = document.getElementById('cidlast_name');
+        var cidsuffix = document.getElementById('cidsuffix');
+        var cidbirthdate = document.getElementById('cidbirthdate');
+        var cidcivil_status = document.getElementById('cidcivil_status');
+        var cidpurok = document.getElementById('cidpurok');
+        var cidpurpose = document.getElementById('cidpurpose');
+
+        var pcidfirst_name = iframeDocument.getElementById('cidfirst_name');
+        var pcidmiddle_name = iframeDocument.getElementById('cidmiddle_name');
+        var pcidlast_name = iframeDocument.getElementById('cidlast_name');
+        var pcidsuffix = iframeDocument.getElementById('cidsuffix');
+        var pcidbirthdate = iframeDocument.getElementById('cidbirthdate');
+        var pcidcivil_status = iframeDocument.getElementById('cidcivil_status');
+        var pcidpurok = iframeDocument.getElementById('cidpurok');
+        var pcidpurpose = iframeDocument.getElementById('cidpurpose');
+
+        pcidfirst_name.innerText = cidfirst_name.value;
+        pcidmiddle_name.innerText = cidmiddle_name.value;
+        pcidlast_name.innerText = cidlast_name.value;
+        pcidsuffix.innerText = cidsuffix.value;
+        pcidbirthdate.innerText = cidbirthdate.value;
+        pcidcivil_status.innerText = cidcivil_status.value;
+        pcidpurok.innerText = cidpurok.value;
+        pcidpurpose.innerText = cidpurpose.value;
 
     } else if (certificate_type.value == 'complaint_certificate') {
 
@@ -266,9 +293,9 @@ function updateText() {
 function validateBirthdate(birthdate_input) {
     var today = new Date();
     var birthdate = new Date(birthdate_input.value);
-    
-    var age = today.getFullYear()-birthdate.getFullYear();
-    var month_diff = today.getMonth()-birthdate.getMonth();
+
+    var age = today.getFullYear() - birthdate.getFullYear();
+    var month_diff = today.getMonth() - birthdate.getMonth();
 
     if (month_diff < 0 || (month_diff === 0 && today.getDate() < birthdate.getDate())) {
         age--;
@@ -283,5 +310,5 @@ function validateBirthdate(birthdate_input) {
     } else {
         return false;
     }
-    
+
 }
