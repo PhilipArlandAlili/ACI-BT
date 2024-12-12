@@ -69,7 +69,7 @@
         readonly><br>
 
     <label for="purok">Lot Location:</label>
-    <select class="text-left form-control" name="purok1" id="lopurok1" required>
+    <select class="text-left form-control" name="loloc" id="loloc" oninput="updateText();" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>

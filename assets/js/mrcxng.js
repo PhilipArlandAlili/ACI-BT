@@ -60,7 +60,7 @@ function updateText() {
         // From HTML
         var pfirst_name = iframeDocument.getElementById('first_name');
         var pmiddle_name = iframeDocument.getElementById('middle_name');
-        var cid = iframeDocument.getElementById('last_name');
+        var plast_name = iframeDocument.getElementById('last_name');
         var psuffix = iframeDocument.getElementById('suffix');
         var ppurok = iframeDocument.getElementById('purok');
         var pbirthplace = iframeDocument.getElementById('birthplace');
@@ -297,6 +297,44 @@ function updateText() {
     } else if (certificate_type.value == 'death_certificate') {
 
     } else if (certificate_type.value == 'lot_ownership') {
+        var lofirst_name = document.getElementById('lofirst_name');
+        var lomiddle_name = document.getElementById('lomiddle_name');
+        var lolast_name = document.getElementById('lolast_name');
+        var losuffix = document.getElementById('losuffix');
+        var lopurok = document.getElementById('lopurok');
+        var loclaimant = document.getElementById('loclaimant');
+        var lobeneficiary = document.getElementById('lobeneficiary');
+        var loactual_occupant = document.getElementById('loactual_occupant');
+        var lolot_number = document.getElementById('lolot_number');
+        var lolot_area_numerical = document.getElementById('lolot_area_numerical');
+        var lolot_area_word = document.getElementById('lolot_area_word');
+        var lololoc = document.getElementById('loloc');
+
+        var plofirst_name = iframeDocument.getElementById('lofirst_name');
+        var plomiddle_name = iframeDocument.getElementById('lomiddle_name');
+        var plolast_name = iframeDocument.getElementById('lolast_name');
+        var plosuffix = iframeDocument.getElementById('losuffix');
+        var plopurok = iframeDocument.getElementById('lopurok');
+        var ploclaimant = iframeDocument.getElementById('loclaimant');
+        var plobeneficiary = iframeDocument.getElementById('lobeneficiary');
+        var ploactual_occupant = iframeDocument.getElementById('loactual_occupant');
+        var plolot_number = iframeDocument.getElementById('lolot_number');
+        var plolot_area_numerical = iframeDocument.getElementById('lolot_area_numerical');
+        var plolot_area_word = iframeDocument.getElementById('lolot_area_word');
+        var plolotloc = iframeDocument.getElementById('loloc');
+
+        plofirst_name.innerText = lofirst_name.value;
+        plomiddle_name.innerText = lomiddle_name.value;
+        plolast_name.innerText = lolast_name.value;
+        plosuffix.innerText = losuffix.value;
+        plopurok.innerText = lopurok.value;
+        ploclaimant.innerText = loclaimant.value;
+        plobeneficiary.innerText = lobeneficiary.value;
+        ploactual_occupant.innerText = loactual_occupant.value;
+        plolot_number.innerText = lolot_number.value;
+        plolot_area_numerical.innerText = lolot_area_numerical.value;
+        plolot_area_word.innerText = lolot_area_word.value;
+        plolotloc.innerText = lololoc.value;
 
     } else if (certificate_type.value == 'transfer_of_residency') {
         var trfirst_name = document.getElementById('trfirst_name');
