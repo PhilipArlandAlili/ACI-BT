@@ -1,24 +1,24 @@
 <form action="#" method="post" class="form" id="certificate_of_indigency_aicsForm">
 
     <label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"
+    <input type="text" class="form-control" name="first_name" id="cidfirst_name" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
         required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
-    <input type="text" class="form-control" name="middle_name" id="middle_name" maxlength="50"
+    <input type="text" class="form-control" name="middle_name" id="cidmiddle_name" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
         placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_name" id="last_name" maxlength="50"
+    <input type="text" class="form-control" name="last_name" id="cidlast_name" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
         required placeholder="Ex. Dela Cruz"><br>
 
     <!-- dagdagan ng birthday dito -->
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="suffix">
+    <select class="text-left form-control" name="suffix" id="cidsuffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -28,7 +28,7 @@
     </select><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="purok" required>
+    <select class="text-left form-control" name="purok" id="cidpurok" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
