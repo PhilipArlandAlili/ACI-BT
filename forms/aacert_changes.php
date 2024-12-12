@@ -74,7 +74,12 @@
                 </div>
         </div>
 
-
+        <div class="renew">
+                <h1>Certificate of Renew</h1>
+                <div class="to-do">
+                        Location not Purok (KABIP TODA)
+                </div>
+        </div>
 
 </body>
 
