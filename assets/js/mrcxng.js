@@ -330,6 +330,22 @@ function updateText() {
         var plolot_area_word = iframeDocument.getElementById('lolot_area_word');
         var plolotloc = iframeDocument.getElementById('loloc');
 
+        if (loclaimant.checked) {
+            ploclaimant.innerText = "/"
+        } else {
+            ploclaimant.innerText = " "
+        }
+        if (loactual_occupant.checked) {
+            loactual_occupant.innerText = "/"
+        } else {
+            loactual_occupant.innerText = " "
+        }
+        if (lobeneficiary.checked) {
+            lobeneficiary.innerText = "/"
+        } else {
+            lobeneficiary.innerText = " "
+        }
+
         plofirst_name.innerText = lofirst_name.value;
         plomiddle_name.innerText = lomiddle_name.value;
         plolast_name.innerText = lolast_name.value;
