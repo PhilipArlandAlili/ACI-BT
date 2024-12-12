@@ -16,7 +16,7 @@
         required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="trsuffix">
+    <select class="text-left form-control" onchange="updateText()" name="suffix" id="trsuffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -30,7 +30,7 @@
         placeholder="Ex. Filipino" required><br>
 
     <label for="">Civil Status:</label>
-    <select class="form-control" onchange="select()" name="civil_status" id="trcivil_status" required>
+    <select class="form-control" onchange="updateText()" name="civil_status" id="trcivil_status" required>
         <option value="">--Select Civil Status--</option>
         <option value="Single">Single</option>
         <option value="Married">Married</option>
@@ -38,7 +38,7 @@
     </select><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="trpurok" required>
+    <select class="text-left form-control" name="purok" id="trpurok" required onchange="updateText()">
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Huwaran">Huwaran</option>
@@ -52,7 +52,8 @@
     </select><br>
 
     <label for="purok">Current Address:</label>
-    <select class="text-left form-control" name="current_address" id="trcurrent_address" required>
+    <select class="text-left form-control" name="current_address" id="trcurrent_address" required
+        onchange="updateText()">
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Huwaran">Huwaran</option>
@@ -64,6 +65,7 @@
         <option value="Trece">Trece</option>
         <option value="Uha">UHA</option>
     </select><br>
+
 
     <label for="">Previous Address:</label>
     <input type="text" oninput="updateText()" class="form-control" name="previous_address" id="trprevious_address"
