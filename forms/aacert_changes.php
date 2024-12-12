@@ -45,9 +45,34 @@
                         Date Filed not working
                         Respondent suffix not working
                         Case number not working
-                        
                 </div>
         </div>
+
+        <div class="indigency">
+                <h1>Indigency</h1>
+                <div class="to-do">
+                        Kulang birthday (Age)
+                        Kulang Civil Status
+                        Kulang Purposes
+                </div>
+        </div>
+
+        <div class="income">
+                <h1>Certificate of Income</h1>
+                <div class="to-do">
+                        Lagyan (ata) bago input Work (Businessman)
+                        Lagyan Purpose (Requirement)
+                </div>
+        </div>
+
+        <div class="employability">
+                <h1>Employability</h1>
+                <div class="to-do">
+                        Birthday (Age) muna bago Purok
+                        Kulang Purpose
+                </div>
+        </div>
+
 
 
 </body>
