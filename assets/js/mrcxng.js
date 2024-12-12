@@ -247,6 +247,29 @@ function updateText() {
         }
 
     } else if (certificate_type.value == 'certificate_of_employability') {
+        var cefirst_name = document.getElementById('cefirst_name');
+        var cemiddle_name = document.getElementById('cemiddle_name');
+        var celast_name = document.getElementById('celast_name');
+        var cesuffix = document.getElementById('cesuffix');
+        var cebirthdate = document.getElementById('cebirthdate');
+        var cepurok = document.getElementById('cepurok');
+        var cepurpose = document.getElementById('cepurpose');
+
+        var pcefirst_name = iframeDocument.getElementById('cefirst_name');
+        var pcemiddle_name = iframeDocument.getElementById('cemiddle_name');
+        var pcelast_name = iframeDocument.getElementById('celast_name');
+        var pcesuffix = iframeDocument.getElementById('cesuffix');
+        var pcebirthdate = iframeDocument.getElementById('cebirthdate');
+        var pcepurok = iframeDocument.getElementById('cepurok');
+        var pcepurpose = iframeDocument.getElementById('cepurpose');
+
+        pcefirst_name.innerText = cefirst_name.value;
+        pcemiddle_name.innerText = cemiddle_name.value;
+        pcelast_name.innerText = celast_name.value;
+        pcesuffix.innerText = cesuffix.value;
+        pcebirthdate.innerText = cebirthdate.value;
+        pcepurok.innerText = cepurok.value;
+        pcepurpose.innerText = cepurpose.value;
 
     } else if (certificate_type.value == 'certificate_of_income') {
 
