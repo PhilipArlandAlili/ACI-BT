@@ -134,7 +134,7 @@ function toggleFields() {
   }
 
   // var iframe = document.getElementById('myIframe');
-  // var doc = "certificates/" + certificate_type + ".html";
+  // var doc = "certificates/" + certificateType + ".html";
   iframe.src = doc;
   function setIssuedDate() {
     const today = new Date();
