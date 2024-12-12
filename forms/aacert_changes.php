@@ -11,14 +11,6 @@
                 <div class="to-do">
                         Yung Purok and Current dapat same lang
                         Civil Status and Purpose di nagrereflect
-                        Try kung maayos pagkakasunod sunod sa label-cert_input
-                        Name
-                        Nationality
-                        Civil Status
-                        Purok
-                        Previous
-                        Purpose
-                        Sabi lang kung ilipat lipat label
                 </div>
         </div>
 
@@ -68,8 +60,7 @@
         <div class="employability">
                 <h1>Employability</h1>
                 <div class="to-do">
-                        Birthday (Age) muna bago Purok
-                        Kulang Purpose
+                        Kulang Purpose (kung yung TUPAD ba ay purpose o hindi. pakicheck sa template)
                         (Philip: May duty officer)
                 </div>
         </div>
