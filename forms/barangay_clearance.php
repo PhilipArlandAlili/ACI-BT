@@ -14,7 +14,7 @@
 
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="suffix">
+    <select class="text-left form-control" name="suffix" id="suffix" oninput="updateText();">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -23,8 +23,8 @@
         <option value="III">III</option>
     </select><br>
 
-    <label for="puroks">Purok:</label>
-    <select class="text-left form-control" name="purok" id="purok" required>
+    <label for="purok">Purok:</label>
+    <select class="text-left form-control" name="purok" id="purok" oninput="updateText();" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -42,10 +42,10 @@
         required><br>
 
     <label for="birthdate">Birthday:</label>
-    <input type="date" class="form-control" id="birthdate" onchange="validatebday(this);updateText();" name="birthdate" required><br>
+    <input type="date" class="form-control" id="birthdate" onchange="updateText(); validateBirthdate(this);" name="birthdate" required><br>
 
     <label for="civil_status">Civil Status:</label>    
-    <select class="form-control" name="civil_status" id="stats" required>
+    <select class="form-control" name="civil_status" id="civil_status" oninput="updateText();" required>
         <option value="">--Select Civil Status--</option>
         <option value="Single">Single</option>
         <option value="Married">Married</option>
@@ -55,13 +55,13 @@
     <label for="period_of_residency">Period of Residency:</label>
     <div class="radios d-flex gap-3">
         <div class="form-check">
-            <input class="form-check-input" name="period_of_residency"  onclick="updateText()" type="radio" value="months" id="radioMonths" required>
+            <input class="form-check-input" name="period_of_residency"  onclick="updateText()" type="radio" value="months" id="month" required>
             <label class="form-check-label" for="radioMonths">
                 Months
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" name="period_of_residency"  onclick="updateText()" type="radio" value="years" id="radioYears" required>
+            <input class="form-check-input" name="period_of_residency"  onclick="updateText()" type="radio" value="years" id="year" required>
             <label class="form-check-label" for="radioYears">
                 Years
             </label>
@@ -105,7 +105,7 @@
 <script>
     // Event listener for Barangay Clearance button
     document.getElementById("brgyClearancePrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("barangay_clearanceForm");  // Correct form ID
+        let form = document.getElementById("barangay_clearance_form");  // Correct form ID
 
         // Validate the form
         if (form.checkValidity()) {
