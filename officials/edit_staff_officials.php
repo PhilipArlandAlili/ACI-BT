@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Handle image upload
     if (!empty($img)) {
-        $target_dir = "../assets/img/devs/";
+        $target_dir = "../assets/img/STAFF-COUNCIL/";
         $target_file = $target_dir . basename($img);
         move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
     } else {
@@ -83,6 +83,16 @@ $conn->close();
         </a>
 
         <div class="container-fluid">
+        <div class="alert-container pt-2">
+                <?php if (isset($_SESSION['success'])): ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo $_SESSION['success']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php unset($_SESSION['success']); // Remove the message after displaying ?>
+                <?php endif; ?>
+            </div>
+            
             <div class="pagetitle pt-4">
                 <h1>Barangay Staff Official Profile</h1>
             </div>
@@ -95,7 +105,7 @@ $conn->close();
                                 <?php if ($official['id'] == $selected_id): // Display the selected official ?>
                                     <div class="d-flex align-items-center justify-content-center p-5 gap-5">
                                         <div class="profile-image">
-                                            <img src="../assets/img/devs/<?php echo $official['img']; ?>"
+                                            <img src="../assets/img/STAFF-COUNCIL/<?php echo $official['img']; ?>"
                                                 alt="Profile" class="rounded-circle" height="100" width="100">
                                         </div>
                                         <div class="profile-name">
