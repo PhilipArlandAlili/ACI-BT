@@ -1,4 +1,4 @@
-<form action="#" method="post" id="transfer_of_residencyForm">
+<form action="#" method="post" class="form" id="transfer_of_residencyForm">
 
     <label for="">First Name:</label>
     <input type="text" class="form-control" id="first_name" name="first_name" maxlength="50"
