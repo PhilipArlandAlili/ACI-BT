@@ -47,21 +47,21 @@ if (!isset($_SESSION['username'])) {
         <?php include 'includes/queries_reports.php'; ?>
         <script>
             // Use PHP variables in JavaScript
-            const barangay_clearance = <?php echo isset($count_barangay_clearance) ? (int)$count_barangay_clearance : 0; ?>;
-            const business_permit_new = <?php echo isset($count_business_permit_new) ? (int)$count_business_permit_new : 0; ?>;
-            const business_permit_renew = <?php echo isset($count_business_permit_renew) ? (int)$count_business_permit_renew : 0; ?>;
-            const certificate_of_cohabitation = <?php echo isset($count_certificate_of_cohabitation) ? (int)$count_certificate_of_cohabitation : 0; ?>;
-            const certificate_of_employability = <?php echo isset($count_certificate_of_employability) ? (int)$count_certificate_of_employability : 0; ?>;
-            const certificate_of_income = <?php echo isset($count_certificate_of_income) ? (int)$count_certificate_of_income : 0; ?>;
-            const certificate_of_indigency = <?php echo isset($count_certificate_of_indigency) ? (int)$count_certificate_of_indigency : 0; ?>;
-            const certificate_of_indigency_aics = <?php echo isset($count_certificate_of_indigency_aics) ? (int)$count_certificate_of_indigency_aics : 0; ?>;
-            const complaint_certificate = <?php echo isset($count_complaint_certificate) ? (int)$count_complaint_certificate : 0; ?>;
-            const death_certificate = <?php echo isset($count_death_certificate) ? (int)$count_death_certificate : 0; ?>;
-            const lot_ownership = <?php echo isset($count_lot_ownership) ? (int)$count_lot_ownership : 0; ?>;
-            const transfer_of_residency = <?php echo isset($count_transfer_of_residency) ? (int)$count_transfer_of_residency : 0; ?>;
+            const barangay_clearance = <?php echo isset($count_barangay_clearance) ? (int) $count_barangay_clearance : 0; ?>;
+            const business_permit_new = <?php echo isset($count_business_permit_new) ? (int) $count_business_permit_new : 0; ?>;
+            const business_permit_renew = <?php echo isset($count_business_permit_renew) ? (int) $count_business_permit_renew : 0; ?>;
+            const certificate_of_cohabitation = <?php echo isset($count_certificate_of_cohabitation) ? (int) $count_certificate_of_cohabitation : 0; ?>;
+            const certificate_of_employability = <?php echo isset($count_certificate_of_employability) ? (int) $count_certificate_of_employability : 0; ?>;
+            const certificate_of_income = <?php echo isset($count_certificate_of_income) ? (int) $count_certificate_of_income : 0; ?>;
+            const certificate_of_indigency = <?php echo isset($count_certificate_of_indigency) ? (int) $count_certificate_of_indigency : 0; ?>;
+            const certificate_of_indigency_aics = <?php echo isset($count_certificate_of_indigency_aics) ? (int) $count_certificate_of_indigency_aics : 0; ?>;
+            const complaint_certificate = <?php echo isset($count_complaint_certificate) ? (int) $count_complaint_certificate : 0; ?>;
+            const death_certificate = <?php echo isset($count_death_certificate) ? (int) $count_death_certificate : 0; ?>;
+            const lot_ownership = <?php echo isset($count_lot_ownership) ? (int) $count_lot_ownership : 0; ?>;
+            const transfer_of_residency = <?php echo isset($count_transfer_of_residency) ? (int) $count_transfer_of_residency : 0; ?>;
 
-            const sum = <?php echo isset($sum) ? (int)$sum : 0; ?>;
-            document.addEventListener('DOMContentLoaded', function() {
+            const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
+            document.addEventListener('DOMContentLoaded', function () {
 
                 // Calculate the clearance percentage
                 const barangay_clearance_percent = (barangay_clearance / sum) * 100;
@@ -158,10 +158,10 @@ if (!isset($_SESSION['username'])) {
                                             </div>
                                             <script>
                                                 // Wait for the page to load before running the script
-                                                document.addEventListener('DOMContentLoaded', function() {
+                                                document.addEventListener('DOMContentLoaded', function () {
                                                     // Use PHP variables in JavaScript
                                                     const barangay_clearance = <?php echo $count_barangay_clearance; ?>;
-                                                    const sum = <?php echo isset($sum) ? (int)$sum : 0; ?>;
+                                                    const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
 
                                                     // Calculate the clearance percentage
                                                     const barangay_clearance_percent = (barangay_clearance / sum) * 100;
@@ -912,106 +912,128 @@ if (!isset($_SESSION['username'])) {
                                     // Generate the table content with chart data
                                     const chartLabels = chartData.labels;
                                     const chartValues = chartData.datasets[0].data;
-                                    // CARL
+
+                                    // Get current date and time
+                                    const now = new Date();
+                                    const tday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                                    const tmonth = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                                    const nday = tday[now.getDay()];
+                                    const nmonth = tmonth[now.getMonth()];
+                                    const ndate = now.getDate();
+                                    const nyear = now.getFullYear();
+                                    let nhour = now.getHours();
+                                    const nmin = now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes();
+                                    const nsec = now.getSeconds() < 10 ? "0" + now.getSeconds() : now.getSeconds();
+                                    const ap = nhour >= 12 ? "PM" : "AM";
+                                    nhour = nhour % 12 || 12; // Convert to 12-hour format
+
+                                    const currentDateTime = `${nhour}:${nmin}:${nsec} ${ap}, ${tmonth[now.getMonth()]} ${ndate}, ${nyear} (${nday})`;
+
                                     let content = `
-                                        <!DOCTYPE html>
-                                        <html lang="en">
-                                        <head>
-                                            <meta charset="UTF-8">
-                                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                            <link rel="stylesheet" href="certificates/logo.css">
-                                            <style>
-                                                .content {
-                                                    font-family: Calibri;
-                                                    font-size: 1.1rem;
-                                                    position: absolute;
-                                                    top: 50%;
-                                                    left: 50%;
-                                                    transform: translate(-50%, -50%);
-                                                }
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="certificates/logo.css">
+            <style>
+                .content {
+                    font-family: Calibri;
+                    font-size: 1.1rem;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
 
-                                                .chart-container {
-    margin-top: 20px;
-    border-radius: 4px;
-    background-color: white;
-    width: 100%; /* Makes the container responsive */
-    max-width: 600px; /* Optional: max width */
-    height: auto; /* Allows height to adjust automatically */
-}
+                .chart-container {
+                    margin-top: 20px;
+                    border-radius: 4px;
+                    background-color: white;
+                    width: 100%;
+                    max-width: 600px;
+                    height: auto;
+                }
 
-.chart-container img {
-    width: 100%; /* Makes the image fill the width of its parent */
-    height: auto; /* Adjusts the height automatically based on the width */
-}
+                .chart-container img {
+                    width: 100%;
+                    height: auto;
+                }
 
+                .num_issued {
+                    text-align: center;
+                }
 
-                                                .num_issued {
-                                                    text-align: center;
-                                                }
+                .table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
 
-                                                .table {
-                                                    width: 100%;
-                                                    border-collapse: collapse;
-                                                }
+                .table th {
+                    background-color: #00528d;
+                    color: white;
+                }
 
-                                                .table th {
-                                                    background-color: #00528d;
-                                                    color: white;
-                                                }
+                .table th,
+                .table td {
+                    border: 1px solid #ddd;
+                }
 
-                                                .table th,
-                                                .table td {
-                                                    border: 1px solid #ddd;
-                                                }
-                                            </style>
-                                        </head>
+                .datetime {
+                    margin-bottom: 20px;
+                    text-align: center;
+                    font-weight: bold;
+                }
+            </style>
+        </head>
 
-                                        <body>
-                                            <div class="container w-100">
-                                                <div class="header">
-                                                    <img src="certificates/logo/logo brgy.jpg" class="brlogo" alt="">
-                                                    <img src="certificates/logo/citylogo.jpg" class="ctlogo" alt="">
-                                                    <div class="family">
-                                                        <b>
-                                                            <p>REPUBLIC OF THE PHILIPPINES</p>
-                                                            <h1 style="margin-top: -20px; color:#00528d;">BARANGAY TINIGUIBAN</h1>
-                                                            <p style="margin-top: -20px;">PUERTO PRINCESA CITY, PALAWAN</p>
-                                                        </b>
-                                                    </div>
-                                                </div>
-                                                <img class="watermark" src="certificates/logo/water.png" alt="">
+        <body>
+            <div class="container w-100">
+                <div class="header">
+                    <img src="certificates/logo/logo brgy.jpg" class="brlogo" alt="">
+                    <img src="certificates/logo/citylogo.jpg" class="ctlogo" alt="">
+                    <div class="family">
+                        <b>
+                            <p>REPUBLIC OF THE PHILIPPINES</p>
+                            <h1 style="margin-top: -20px; color:#00528d;">BARANGAY TINIGUIBAN</h1>
+                            <p style="margin-top: -20px;">PUERTO PRINCESA CITY, PALAWAN</p>
+                        </b>
+                    </div>
+                </div>
+                <img class="watermark" src="certificates/logo/water.png" alt="">
 
-                                                <main id="content" class="content">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Certificate Type</th>
-                                                                <th>Number Issued</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>`;
+                <main id="content" class="content">
+                    <div class="datetime">${currentDateTime}</div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Certificate Type</th>
+                                <th>Number Issued</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
 
                                     // Populate table rows dynamically
                                     chartLabels.forEach((label, index) => {
                                         content += `
-                                        <tr>
-                                            <td>${label}</td>
-                                            <td class="num_issued">${chartValues[index]}</td>
-                                        </tr>`;
+        <tr>
+            <td>${label}</td>
+            <td class="num_issued">${chartValues[index]}</td>
+        </tr>`;
                                     });
 
                                     content += `
-                                                </tbody>
-                                            </table>
-                                            <div class="chart-container">
-                                                <img src="${chartImageURL}" alt="Chart Image" class="img-fluid">
-                                            </div>
-                                        </main>
-                                        <img src="certificates/logo/border.png" class="border" alt="">
-                                        <img src="certificates/logo/under.png" class="footer-b" alt="">
-                                    </div>
-                                </body>
-                                </html>`;
+                    </tbody>
+                </table>
+                <div class="chart-container">
+                    <img src="${chartImageURL}" alt="Chart Image" class="img-fluid">
+                </div>
+            </main>
+            <img src="certificates/logo/border.png" class="border" alt="">
+            <img src="certificates/logo/under.png" class="footer-b" alt="">
+        </div>
+    </body>
+    </html>`;
 
                                     // Open a new window for printing and render the content
                                     const printWindow = window.open('', '_blank');
@@ -1028,6 +1050,7 @@ if (!isset($_SESSION['username'])) {
                                 }
                             </script>
 
+
                             <script>
                                 function updateChart() {
                                     const month = document.getElementById('monthFilter').value;
@@ -1043,7 +1066,7 @@ if (!isset($_SESSION['username'])) {
                                         .then(data => {
                                             // If 'month' is 'all', reset the chart data to default values
                                             // if (month === 'all') {
-                                            if (year== 'all' &&month === 'all' && day === 'all') {//mrcxng
+                                            if (year == 'all' && month === 'all' && day === 'all') {//mrcxng
                                                 myChart.data.datasets[0].data = [
                                                     data["Barangay Clearance"],
                                                     data["Business Permit New"],
