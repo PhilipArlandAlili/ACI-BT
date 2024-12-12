@@ -1,13 +1,19 @@
 <form action="#" method="post" id="transfer_of_residencyForm">
 
-<label for="">First Name:</label>
-<input type="text" class="form-control" id="first_name" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+    <label for="">First Name:</label>
+    <input type="text" class="form-control" id="first_name" name="first_name" maxlength="50"
+        oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        required placeholder="Ex. Juan"><br>
 
-<label for="">Middle Name:</label>
-<input type="text" class="form-control" id="middle_name" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"   placeholder="Ex. Reyes"><br>
+    <label for="">Middle Name:</label>
+    <input type="text" class="form-control" id="middle_name" name="middle_name" maxlength="50"
+        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        placeholder="Ex. Reyes"><br>
 
-<label for="">Last Name:</label>
-<input type="text" class="form-control" id="last_name" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+    <label for="">Last Name:</label>
+    <input type="text" class="form-control" id="last_name" name="last_name" maxlength="50"
+        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
     <select class="text-left form-control" name="suffix" id="suffix">
@@ -17,6 +23,18 @@
         <option value="I">I</option>
         <option value="II">II</option>
         <option value="III">III</option>
+    </select><br>
+
+    <label for="">Nationality</label>
+    <input type="text" oninput="updateText()" class="form-control" name="nationality" id="nationality"
+        placeholder="Ex. Filipino" required><br>
+
+    <label for="">Civil Status:</label>
+    <select class="form-control" onchange="select()" name="civil_status" id="civil_status" required>
+        <option value="">--Select Civil Status--</option>
+        <option value="Single">Single</option>
+        <option value="Married">Married</option>
+        <option value="Widow">Widow</option>
     </select><br>
 
     <label for="purok">Purok:</label>
@@ -33,28 +51,30 @@
         <option value="Uha">UHA</option>
     </select><br>
 
-    <label for="">Current Address:</label>
-    <input type="text" oninput="updateText()"class="form-control" name="current_address" id="current_address" placeholder="Ex. Current Address" required><br>
+    <label for="purok">Current Address:</label>
+    <select class="text-left form-control" name="current_address" id="current_address" required>
+        <option value="">--Select Purok--</option>
+        <option value="Centro">Centro</option>
+        <option value="Huwaran">Huwaran</option>
+        <option value="Kaakbayan">Kaakbayan</option>
+        <option value="New Princesa">New Princesa</option>
+        <option value="San Franciso I">San Franciso I</option>
+        <option value="San Franciso II">San Franciso II</option>
+        <option value="Sandiwa">Sandiwa</option>
+        <option value="Trece">Trece</option>
+        <option value="Uha">UHA</option>
+    </select><br>
 
     <label for="">Previous Address:</label>
-    <input type="text" oninput="updateText()"class="form-control" name="previous_address" id="previous_address"  placeholder="Ex. Previous Address" required><br>
-
-    <label for="">Nationality</label>
-    <input type="text" oninput="updateText()"class="form-control" name="nationality" id="nationality" placeholder="Ex. Filipino" required><br>
-
-    <label for="">Civil Status:</label>
-    <select class="form-control" onchange="select()" name="civil_status" id="civil_stats" required>
-        <option value="">--Select Civil Status--</option>
-        <option value="Single">Single</option>
-        <option value="Married">Married</option>
-        <option value="Widow">Widow</option>
-    </select><br>
+    <input type="text" oninput="updateText()" class="form-control" name="previous_address" id="previous_address"
+        placeholder="Ex. Previous Address" required><br>
 
     <label for="">Purpose:</label>
     <input type="text" name="purpose" oninput="updateText()" class="form-control" id="purpose" cols="30" rows="10"
-        placeholder="Ex. Moving to another country" required><br><hr>
+        placeholder="Ex. Moving to another country" required><br>
+    <hr>
 
-        <div class="transferPrint" style="text-align: right;">
+    <div class="transferPrint" style="text-align: right;">
         <button type="button" class="btn btn-primary w-25" id="transferPrintBtn">Print</button>
         <div class="modal fade" id="transferModal" tabindex="-1" style="display: none;" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -66,7 +86,8 @@
                         <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
-                        <button class="w-25 btn btn-primary" name="transfer_of_residency" onclick="printIframe()" id="confirmPrint" >Yes</button>
+                        <button class="w-25 btn btn-primary" name="transfer_of_residency" onclick="printIframe()"
+                            id="confirmPrint">Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
