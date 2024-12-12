@@ -1,12 +1,18 @@
-<form action="#" method="post" id="certificate_of_incomeForm">
-<label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+<form action="#" method="post" class="form" id="certificate_of_incomeForm">
+    <label for="">First Name:</label>
+    <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
-    <input type="text" class="form-control" name="middle_name" id="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"   placeholder="Ex. Reyes"><br>
+    <input type="text" class="form-control" name="middle_name" id="middle_name" maxlength="50"
+        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_name" id="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+    <input type="text" class="form-control" name="last_name" id="last_name" maxlength="50"
+        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
     <select class="text-left form-control" name="suffix" id="suffix">
@@ -33,12 +39,13 @@
     </select><br>
 
     <label for="amount">Amount (In Numeric Form):</label>
-    <input type="number" max="999999999" min="1" id="income_num" name="income_num" oninput="updateText()" class="form-control" maxlength="10"
-        placeholder="Ex. 20000" required><br>
+    <input type="number" max="999999999" min="1" id="income_num" name="income_num" oninput="updateText()"
+        class="form-control" maxlength="10" placeholder="Ex. 20000" required><br>
 
     <label for="income_words">Amount (In Words):</label>
     <input type="text" id="income_words" name="income_words" class="form-control" placeholder="Twenty Thousand"
-        readonly><br><hr>
+        readonly><br>
+    <hr>
 
     <div class="incomePrint" style="text-align: right;">
         <button type="button" id="incomePrintBtn" class="btn btn-primary w-25">Print</button>
@@ -52,8 +59,8 @@
                         <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
-                        <button class="w-25 btn btn-primary" name="certificate_of_income" onclick="printIframe()"
-                           >Yes</button>
+                        <button class="w-25 btn btn-primary" name="certificate_of_income"
+                            onclick="printIframe()">Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>

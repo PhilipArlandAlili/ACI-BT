@@ -1,4 +1,4 @@
-<form action="#" method="post" id="lot_ownershipForm">
+<form action="#" method="post" class="form" id="lot_ownershipForm">
     <label for="">First Name:</label>
     <input type="text" class="form-control" id="first_name" name="first_name" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"

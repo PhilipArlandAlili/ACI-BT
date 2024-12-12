@@ -1,4 +1,4 @@
-<form action="#" method="post" id="certificate_of_indigency_aicsForm">
+<form action="#" method="post" class="form" id="certificate_of_indigency_aicsForm">
 
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"

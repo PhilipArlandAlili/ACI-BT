@@ -1,4 +1,4 @@
-<form action="#" method="POST" id="certificate_of_employabilityForm">
+<form action="#" method="POST" class="form" id="certificate_of_employabilityForm">
 
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"

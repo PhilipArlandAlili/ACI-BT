@@ -1,4 +1,4 @@
-<form action="#" method="post" id="death_certificateForm">
+<form action="#" method="post" class="form" id="death_certificateForm">
 
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control" maxlength="50"

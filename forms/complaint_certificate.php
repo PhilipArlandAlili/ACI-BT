@@ -1,4 +1,4 @@
-<form action="#" method="post" id="complaint_certificateForm">
+<form action="#" method="post" class="form" id="complaint_certificateForm">
 
     <label for="" class="fw-bold">Complainant</label><br>
     <label for="">First Name:</label>

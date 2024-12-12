@@ -1,7 +1,8 @@
 <!-- Business Permit Renewal Form -->
-<form action="#" method="post" id="business_permit_renewForm">
+<form action="#" method="post" class="form" id="business_permit_renewForm">
     <label for="businessName">Business name/ Trade Activity:</label>
-    <input type="text" class="form-control" id="business_name" name="business_name" oninput="updateText()" placeholder="Ex. Carl Store" required><br>
+    <input type="text" class="form-control" id="business_name" name="business_name" oninput="updateText()"
+        placeholder="Ex. Carl Store" required><br>
 
     <label for="purok">Purok:</label><br>
     <select name="purok" id="purok" class="form-control" required>
@@ -19,10 +20,12 @@
     <br>
 
     <label for="manager_operator_renew">Manager / Operator:</label>
-    <input type="text" class="form-control" id="manager" name="manager" oninput="updateText()"placeholder="Ex. Juan Dela Cruz" required><br>
+    <input type="text" class="form-control" id="manager" name="manager" oninput="updateText()"
+        placeholder="Ex. Juan Dela Cruz" required><br>
 
     <label for="manager_operator_address_renew">Address (Manager / Operator):</label>
-    <input type="text" class="form-control" id="address" name="address" oninput="updateText()"placeholder="Ex. PSU Rd" required><br>
+    <input type="text" class="form-control" id="address" name="address" oninput="updateText()" placeholder="Ex. PSU Rd"
+        required><br>
 
     <hr>
 
@@ -38,7 +41,8 @@
                         <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
-                        <button class="w-25 btn btn-primary" name="business_permit_renew" onclick="printIframe()" id="confirmPrint" >Yes</button>
+                        <button class="w-25 btn btn-primary" name="business_permit_renew" onclick="printIframe()"
+                            id="confirmPrint">Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
