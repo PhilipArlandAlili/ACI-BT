@@ -1,14 +1,29 @@
+<?php
+
+
+if (strpos($_SERVER['REQUEST_URI'], 'edit_officials') !== false || strpos($_SERVER['REQUEST_URI'], 'edit_sk_officials') !== false) {
+    $assets = '<img src="../assets/img/cap-log.png" height="250" alt="Barangay Tiniguiban Logo">';
+} else {
+    $assets = '<img src="assets/img/cap-log.png" height="250" alt="Barangay Tiniguiban Logo">';
+}
+
+
+
+
+?>
+
+
 <div class="barangay-logo h-50">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <a href="dashboard.php">
-            <img src="assets/img/cap-log.png" height="250" alt="Barangay Tiniguiban Logo">
+            <?php echo $assets; ?>
         </a>
     </div>
 </div>
 
 <ul class="sidebar-nav pt-3" id="sidebar-nav">
     <li class="nav-item">
-        <a class="nav-link text-light" href="dashboard.php">
+        <a class="nav-link text-light" href="../dashboard.php">
             <i class="bi bi-grid text-light fs-5"></i>
             <span>Dashboard</span>
         </a>
