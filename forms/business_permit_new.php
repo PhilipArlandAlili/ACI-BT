@@ -1,7 +1,7 @@
 <!-- Business Permit Form -->
 <form action="#" method="post" id="business_permit_newform">
     <label for="businessName">Business name/ Trade Activity:</label>
-    <input type="text" name="business_name" class="form-control" oninput="updateText()"s placeholder="Ex: Carl Store" required><br>
+    <input type="text" name="business_name" id="business_name" class="form-control" oninput="updateText()"s placeholder="Ex: Carl Store" required><br>
 
     <label for="purok">Purok:</label><br>
     <select name="purok" id="purok" class="form-control" required>
@@ -19,7 +19,7 @@
     <br>
 
     <label for="manager_operator">Manager / Operator:</label>
-    <input type="text" class="form-control" name="manager"oninput="updateText()" placeholder="Ex. Juan Dela Cruz" required><br>
+    <input type="text" class="form-control" id="manager" name="manager"oninput="updateText()" placeholder="Ex. Juan Dela Cruz" required><br>
 
     <label for="purok">Address:</label><br>
     <input type="text" name="address" id="address" class="form-control" oninput="updateText()" placeholder="Ex. Purok 1, Brgy. San Francisco, General Luna, Quezon" required><br>

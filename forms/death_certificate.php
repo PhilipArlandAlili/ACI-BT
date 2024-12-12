@@ -38,29 +38,29 @@
     </select><br>
 
     <label for="dateOfDeath">Date of death:</label>
-    <input type="date" class="form-control"  onchange="validateformarriagedate(this);updateText();" name="date_of_death" required><br>
+    <input type="date" class="form-control"  onchange="validateformarriagedate(this);updateText();" name="date_of_death" id="date_of_death" required><br>
 
     <label for="timeOfDeath">Time of death:</label>
-    <input type="time" class="form-control"   onchange="updateText();"name="time_of_death" required><br>
+    <input type="time" class="form-control"   onchange="updateText();"name="time_of_death" id="time_of_death" required><br>
 
     <label for="causeOfDeath">Cause of death:</label>
-    <input type="text" class="form-control" maxlength="100"  oninput="updateText();"name="cause_of_death" placeholder="Ex. Sick" required><br>
+    <input type="text" class="form-control" maxlength="100"  oninput="updateText();"name="cause_of_death" id="cause_of_death" placeholder="Ex. Sick" required><br>
     <hr>
 
 
     <label for="" class="fw-bold">Requester</label><br>
     <label for="first_name">First Name:</label>
-    <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="first_name" name="req_first_name" placeholder="Ex. Pedro" required><br>
+    <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="req_first_name" name="req_first_name" placeholder="Ex. Pedro" required><br>
 
     <label for="middle_name">Middle Name:</label>
-    <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="middle_name" name="req_middle_name" placeholder="Ex. Torres"
+    <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="req_middle_name" name="req_middle_name" placeholder="Ex. Torres"
         required><br>
 
     <label for="last_name">Last Name:</label>
-    <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="last_name" name="req_last_name" placeholder="Ex. Bautista" required><br>
+    <input type="text" class="form-control" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"id="req_last_name" name="req_last_name" placeholder="Ex. Bautista" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="req_suffix" id="suffix1">
+    <select class="text-left form-control" name="req_suffix" id="req_suffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -70,7 +70,7 @@
     </select><br>
 
     <label for="relationshipToDeadPerson">Relationship to the dead person:</label>
-    <input type="text" class="form-control" onchange="updateText();"name="relationship" placeholder="Ex. Son" required><br>
+    <input type="text" class="form-control" onchange="updateText();"name="relationship" id="relationship" placeholder="Ex. Son" required><br>
     <hr>
 
     <div class="deathPrint" style="text-align: right;">

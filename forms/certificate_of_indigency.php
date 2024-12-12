@@ -1,13 +1,13 @@
 <form action="#" method="post" id="certificate_of_indigencyForm">
 
 <label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+    <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
-    <input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"   placeholder="Ex. Reyes"><br>
+    <input type="text" class="form-control" name="middle_name" id="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"   placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+    <input type="text" class="form-control" name="last_name" id="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
     <select class="text-left form-control" name="suffix" id="suffix">
@@ -23,7 +23,7 @@
     <input type="date" class="form-control" id="birthdate" onchange="validatebday(this);updateText();" name="birthdate" required><br>
 
     <label for="">Civil Status</label>
-    <select name="civil_status" id="civil" onchange="updateText()" class="form-control" required>
+    <select name="civil_status" id="civil_status" onchange="updateText()" class="form-control" required>
         <option value="">--Select Civil Status--</option>
         <option value="Single">Single</option>
         <option value="Married">Married</option>
@@ -45,7 +45,7 @@
     </select><br>
 
     <label for="">Purpose:</label>
-    <input type="text" name="purpose" oninput="updateText()"class="form-control" id="" cols="30" rows="10"
+    <input type="text" name="purpose" oninput="updateText()"class="form-control" id="purpose" cols="30" rows="10"
         placeholder="Ex. Medical Assistance" required><br>
     <hr>
 

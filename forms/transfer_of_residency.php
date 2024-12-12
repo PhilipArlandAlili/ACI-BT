@@ -1,13 +1,13 @@
 <form action="#" method="post" id="transfer_of_residencyForm">
 
 <label for="">First Name:</label>
-<input type="text" class="form-control" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+<input type="text" class="form-control" id="first_name" name="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
 
 <label for="">Middle Name:</label>
-<input type="text" class="form-control" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"   placeholder="Ex. Reyes"><br>
+<input type="text" class="form-control" id="middle_name" name="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"   placeholder="Ex. Reyes"><br>
 
 <label for="">Last Name:</label>
-<input type="text" class="form-control" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+<input type="text" class="form-control" id="last_name" name="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
     <select class="text-left form-control" name="suffix" id="suffix">
@@ -34,16 +34,16 @@
     </select><br>
 
     <label for="">Current Address:</label>
-    <input type="text" oninput="updateText()"class="form-control" name="current_address" placeholder="Ex. Current Address" required><br>
+    <input type="text" oninput="updateText()"class="form-control" name="current_address" id="current_address" placeholder="Ex. Current Address" required><br>
 
     <label for="">Previous Address:</label>
-    <input type="text" oninput="updateText()"class="form-control" name="previous_address" placeholder="Ex. Previous Address" required><br>
+    <input type="text" oninput="updateText()"class="form-control" name="previous_address" id="previous_address"  placeholder="Ex. Previous Address" required><br>
 
     <label for="">Nationality</label>
-    <input type="text" oninput="updateText()"class="form-control" name="nationality" placeholder="Ex. Filipino" required><br>
+    <input type="text" oninput="updateText()"class="form-control" name="nationality" id="nationality" placeholder="Ex. Filipino" required><br>
 
     <label for="">Civil Status:</label>
-    <select class="form-control" onchange="select()" name="civil_status" id="stats" required>
+    <select class="form-control" onchange="select()" name="civil_status" id="civil_stats" required>
         <option value="">--Select Civil Status--</option>
         <option value="Single">Single</option>
         <option value="Married">Married</option>
@@ -51,7 +51,7 @@
     </select><br>
 
     <label for="">Purpose:</label>
-    <input type="text" name="purpose" oninput="updateText()" class="form-control" id="" cols="30" rows="10"
+    <input type="text" name="purpose" oninput="updateText()" class="form-control" id="purpose" cols="30" rows="10"
         placeholder="Ex. Moving to another country" required><br><hr>
 
         <div class="transferPrint" style="text-align: right;">
