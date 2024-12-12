@@ -1,6 +1,6 @@
 <!-- Barangay Clearance Form -->
 
-    <form action="#" method="post" id="barangay_clearance_form">
+    <form action="#" method="post" class="form" id="barangay_clearance_form">
 
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
@@ -27,7 +27,7 @@
     <select class="text-left form-control" name="purok" id="purok" oninput="updateText();" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
-        <option value="Hurawan">Huwaran</option>
+        <option value="Huwaran">Huwaran</option>
         <option value="Kaakbayan">Kaakbayan</option>
         <option value="New Princesa">New Princesa</option>
         <option value="San Franciso I">San Franciso I</option>
@@ -55,13 +55,13 @@
     <label for="period_of_residency">Period of Residency:</label>
     <div class="radios d-flex gap-3">
         <div class="form-check">
-            <input class="form-check-input" name="period_of_residency"  onclick="updateText()" type="radio" value="months" id="month" required>
+            <input class="form-check-input" name="period_of_residency_ym"  onclick="updateText()" type="radio" value="months" id="month" required>
             <label class="form-check-label" for="radioMonths">
                 Months
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" name="period_of_residency"  onclick="updateText()" type="radio" value="years" id="year" required>
+            <input class="form-check-input" name="period_of_residency_ym"  onclick="updateText()" type="radio" value="years" id="year" required>
             <label class="form-check-label" for="radioYears">
                 Years
             </label>
@@ -101,6 +101,8 @@
         </div>
     </div>
 </form>
+
+<!-- <script src="assets/js/certificate/barangay_clearance.js"></script> -->
 
 <script>
     // Event listener for Barangay Clearance button

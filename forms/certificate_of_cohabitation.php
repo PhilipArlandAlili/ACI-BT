@@ -2,6 +2,7 @@
 
     <label for="" class="fw-bold">Male</label><br>
     <label for="">First Name:</label>
+<<<<<<< Updated upstream
     <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
         required placeholder="Ex. Juan"><br>
@@ -15,9 +16,18 @@
     <input type="text" class="form-control" name="last_name" id="last_name" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
         required placeholder="Ex. Dela Cruz"><br>
+=======
+    <input type="text" class="form-control" name="first_name" id="cocfirst_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+
+    <label for="">Middle Name:</label>
+    <input type="text" class="form-control" name="middle_name" id="cocmiddle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"   placeholder="Ex. Reyes"><br>
+
+    <label for="">Last Name:</label>
+    <input type="text" class="form-control" name="last_name" id="coclast_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+>>>>>>> Stashed changes
 
     <label for="">Suffix:</label>
-    <select class="form-control text-left" name="suffix" id="suffixs">
+    <select class="form-control text-left" name="suffix" id="cocsuffixs">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -27,13 +37,18 @@
     </select><br>
 
     <label for="cohabitant1Birthdate">Birthdate:</label>
+<<<<<<< Updated upstream
     <input type="date" class="form-control" id="birthdate" onchange="validatebday(this);updateText();" name="birthdate"
         required><br>
+=======
+    <input type="date" class="form-control" id="cocbirthdate"  onchange="validatebday(this);updateText();" name="birthdate" required><br>
+>>>>>>> Stashed changes
 
     <hr>
 
     <label for="" class="fw-bold">Female</label><br>
     <label for="">First Name:</label>
+<<<<<<< Updated upstream
     <input type="text" class="form-control" name="first_name_female" id="first_name_female" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
         placeholder="Ex. Maria" required><br>
@@ -53,9 +68,22 @@
     <input type="date" class="form-control" id="birthdate_female" onchange="validatebday(this);updateText();"
         name="birthdate_female" required><br>
     <hr>
+=======
+    <input type="text" class="form-control" name="first_name_female" id="cocfirst_name_female" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" placeholder="Ex. Maria" required><br>
+
+    <label for="">Middle Name:</label>
+    <input type="text" class="form-control" name="middle_name_female" id="cocmiddle_name_female" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" placeholder="Ex. Garcia" ><br>
+
+    <label for="">Last Name:</label>
+    <input type="text" class="form-control" name="last_name_female" id="coclast_name_female" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" placeholder="Ex. Santos" required><br>
+
+
+    <label for="cohabitant1Birthdate">Birthdate:</label>
+    <input type="date" class="form-control" id="cocbirthdate_female" onchange="validatebday(this);updateText();" name="birthdate_female" required><br><hr>
+>>>>>>> Stashed changes
 
     <label for="">Purok:</label><br>
-    <select name="purok" class="form-control" id="purok" onchange="update()" required>
+    <select name="purok" class="form-control" id="cocpurok" onchange="update()" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -71,8 +99,12 @@
 
     <!--Month and Year daw-->
     <label for="dateOfMarriage">Date of marriage:</label>
+<<<<<<< Updated upstream
     <input type="date" id="date_of_marriage" class="form-control" onchange="validateformarriagedate(this);updateText();"
         name="date_of_marriage" required><br>
+=======
+    <input type="date" id="cocdate_of_marriage" class="form-control" onchange="validateformarriagedate(this);updateText();" name="date_of_marriage" required><br>
+>>>>>>> Stashed changes
     <hr>
 
     <div class="print" style="text-align: right;">
