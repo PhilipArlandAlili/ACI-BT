@@ -77,11 +77,8 @@ function updateText() {
         var day = date.getDate();
         var year = date.getFullYear();
 
-        console.log(month);
-
         const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         month = month_names[month];
-        console.log(day, month, year);
 
         pfirst_name.innerText = first_name.value;
         pmiddle_name.innerText = middle_name.value;
@@ -106,11 +103,8 @@ function updateText() {
             pbirthdate_year.innerText = "";
         }
 
-
-
-
         pcivil_status.innerText = civil_status.value;
-        console.log(period_of_residency.value);
+
         if (pormonth.checked) {
             if (period_of_residency.value == 1) {
                 pyear_month.innerText = " Month";
@@ -264,7 +258,7 @@ function updateText() {
         pcemiddle_name.innerText = cemiddle_name.value;
         pcelast_name.innerText = celast_name.value;
         pcesuffix.innerText = cesuffix.value;
-        pcebirthdate.innerText = cebirthdate.value;
+        pcebirthdate.innerText = showAge(cebirthdate);
         pcepurok.innerText = cepurok.value;
         pcepurpose.innerText = cepurpose.value;
 
@@ -331,4 +325,18 @@ function validateBirthdate(birthdate_input) {
         return false;
     }
 
+}
+
+function showAge(birthdate_input) {
+    var today = new Date();
+    var birthdate = new Date(birthdate_input.value);
+
+    var age = today.getFullYear() - birthdate.getFullYear();
+    var month_diff = today.getMonth() - birthdate.getMonth();
+
+    if (month_diff < 0 || (month_diff === 0 && today.getDate() < birthdate.getDate())) {
+        age--;
+    }
+
+    return age;
 }
