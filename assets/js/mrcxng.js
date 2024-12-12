@@ -18,6 +18,12 @@ function changeCertificate() {
         doc = " "
     }
 
+    if (certificate_type == 'barangay_clearance') {
+        var iframe1 = document.getElementById('myIframe1');
+        var doc1 = "certificates/" + "business_permit_new" + ".html";
+        iframe1.src = doc1;
+    }
+
     iframe.src = doc;
 
     document.getElementById("fillup").scrollIntoView({ behavior: 'smooth' });
@@ -36,6 +42,7 @@ function printIframe() {
     var iframeWindow = iframe.contentWindow;
     iframeWindow.print();
     form.submit();
+    
 }
 
 function updateText() {
@@ -60,7 +67,7 @@ function updateText() {
         // From HTML
         var pfirst_name = iframeDocument.getElementById('first_name');
         var pmiddle_name = iframeDocument.getElementById('middle_name');
-        var cid = iframeDocument.getElementById('last_name');
+        var plast_name = iframeDocument.getElementById('last_name');
         var psuffix = iframeDocument.getElementById('suffix');
         var ppurok = iframeDocument.getElementById('purok');
         var pbirthplace = iframeDocument.getElementById('birthplace');
