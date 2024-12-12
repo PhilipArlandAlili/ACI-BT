@@ -1,22 +1,22 @@
 <form action="#" method="post" class="form" id="transfer_of_residencyForm">
 
     <label for="">First Name:</label>
-    <input type="text" class="form-control" id="first_name" name="first_name" maxlength="50"
+    <input type="text" class="form-control" id="trfirst_name" name="first_name" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
         required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
-    <input type="text" class="form-control" id="middle_name" name="middle_name" maxlength="50"
+    <input type="text" class="form-control" id="trmiddle_name" name="middle_name" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
         placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" id="last_name" name="last_name" maxlength="50"
+    <input type="text" class="form-control" id="trlast_name" name="last_name" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
         required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="suffix">
+    <select class="text-left form-control" name="suffix" id="trsuffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -26,11 +26,11 @@
     </select><br>
 
     <label for="">Nationality</label>
-    <input type="text" oninput="updateText()" class="form-control" name="nationality" id="nationality"
+    <input type="text" oninput="updateText()" class="form-control" name="nationality" id="trnationality"
         placeholder="Ex. Filipino" required><br>
 
     <label for="">Civil Status:</label>
-    <select class="form-control" onchange="select()" name="civil_status" id="civil_status" required>
+    <select class="form-control" onchange="select()" name="civil_status" id="trcivil_status" required>
         <option value="">--Select Civil Status--</option>
         <option value="Single">Single</option>
         <option value="Married">Married</option>
@@ -38,7 +38,7 @@
     </select><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="purok" required>
+    <select class="text-left form-control" name="purok" id="trpurok" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Huwaran">Huwaran</option>
@@ -52,7 +52,7 @@
     </select><br>
 
     <label for="purok">Current Address:</label>
-    <select class="text-left form-control" name="current_address" id="current_address" required>
+    <select class="text-left form-control" name="current_address" id="trcurrent_address" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Huwaran">Huwaran</option>
@@ -66,11 +66,11 @@
     </select><br>
 
     <label for="">Previous Address:</label>
-    <input type="text" oninput="updateText()" class="form-control" name="previous_address" id="previous_address"
+    <input type="text" oninput="updateText()" class="form-control" name="previous_address" id="trprevious_address"
         placeholder="Ex. Previous Address" required><br>
 
     <label for="">Purpose:</label>
-    <input type="text" name="purpose" oninput="updateText()" class="form-control" id="purpose" cols="30" rows="10"
+    <input type="text" name="purpose" oninput="updateText()" class="form-control" id="trpurpose" cols="30" rows="10"
         placeholder="Ex. Moving to another country" required><br>
     <hr>
 
