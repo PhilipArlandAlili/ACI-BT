@@ -23,7 +23,7 @@
     <select class="text-left form-control" name="purok" id="purok" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
-        <option value="Hurawan">Huwaran</option>
+        <option value="Huwaran">Huwaran</option>
         <option value="Kaakbayan">Kaakbayan</option>
         <option value="New Princesa">New Princesa</option>
         <option value="San Franciso I">San Franciso I</option>
