@@ -1,4 +1,4 @@
-<form action="#" method="post" class="form" id="lot_ownershipForm">
+<form action="#" method="post" class="form" id="lot_ownership_form">
     <label for="">First Name:</label>
     <input type="text" class="form-control" id="lofirst_name" name="first_name" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
@@ -39,19 +39,19 @@
     </select><br>
 
     <div class="form-check">
-        <input class="form-check-input" name="claimant" type="checkbox" value="/" id="loclaimant">
+        <input class="form-check-input" name="claimant" type="checkbox" value="/" id="loclaimant" onchange="updateText()">
         <label class="form-check-label" for="flexCheckDefault">
             Claimant
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" name="beneficiary" type="checkbox" value="/" id="lobeneficiary">
+        <input class="form-check-input" name="beneficiary" type="checkbox" value="/" id="lobeneficiary" onchange="updateText()">
         <label class="form-check-label" for="flexCheckDefault">
             Beneficiary
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" name="actual_occupant" type="checkbox" value="/" id="loactual_occupant">
+        <input class="form-check-input" name="actual_occupant" type="checkbox" value="/" id="loactual_occupant" onchange="updateText()">
         <label class="form-check-label" for="flexCheckChecked">
             Actual Occupant
         </label>
@@ -108,7 +108,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("lotOwnershipPrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("lot_ownershipForm");  // Use the unique form ID
+        let form = document.getElementById("lot_ownership_form");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {

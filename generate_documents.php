@@ -145,7 +145,7 @@ include 'queries.php';
                         <h5 class="card-title" style="padding: 20px;">View Certificate</h5>
                         <div class="iframe-container">
                             <iframe id="myIframe" width="100%" height="100%"></iframe>
-                            <iframe id="myIframe1" width="100%" height="100%"></iframe>
+                            <!-- <iframe id="myIframe1" width="100%" height="100%"></iframe> -->
                         </div>
                     </div>
                 </div>

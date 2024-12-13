@@ -317,6 +317,8 @@ function updateText() {
         var lolot_area_word = document.getElementById('lolot_area_word');
         var lololoc = document.getElementById('loloc');
 
+        console.log('lofirst_name');
+
         var plofirst_name = iframeDocument.getElementById('lofirst_name');
         var plomiddle_name = iframeDocument.getElementById('lomiddle_name');
         var plolast_name = iframeDocument.getElementById('lolast_name');
@@ -331,19 +333,21 @@ function updateText() {
         var plolotloc = iframeDocument.getElementById('loloc');
 
         if (loclaimant.checked) {
-            ploclaimant.innerText = "/"
+            ploclaimant.innerText = "/";
         } else {
-            ploclaimant.innerText = " "
+            ploclaimant.innerText = " ";
         }
+
         if (loactual_occupant.checked) {
-            loactual_occupant.innerText = "/"
+            ploactual_occupant.innerText = "/";
         } else {
-            loactual_occupant.innerText = " "
+            ploactual_occupant.innerText = " ";
         }
+
         if (lobeneficiary.checked) {
-            lobeneficiary.innerText = "/"
+            plobeneficiary.innerText = "/";
         } else {
-            lobeneficiary.innerText = " "
+            plobeneficiary.innerText = " ";
         }
 
         plofirst_name.innerText = lofirst_name.value;
