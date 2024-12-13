@@ -4,662 +4,469 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="logo.css"> -->
-    <script src="../assets/js/cert.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-        * {
-            font-family: Poppins;
-        }
-
-    @media print {
-        body {
+        @page {
+            size: A4;
             margin: 0;
+        }
+
+        body {
+            width: 21cm;
+            height: 29.7cm;
+            margin: 0 auto;
             padding: 0;
+            background-color: white;
+            font-family: Arial, sans-serif;
         }
-        .main-container {
-            border: none;
-            page-break-after: always;
-        }
-    }
 
-        .main-container {
-            width: 1020px;
-            max-width: 1020px;
-            margin: auto;
+        .container {
+            width: 21cm;
+            height: 29.7cm;
+            margin: 0;
+            padding: 1cm;
+            box-sizing: border-box;
             position: relative;
-            padding: 120px 0;
-            border: 1x solid rgba(0, 0, 0, .2); 
-
         }
 
-        .top-border {
-            width: 100%;
+        .content {
+            font-family: Calibri;
+            font-size: 17px;
             position: absolute;
-            top: 0;
-            right: 0;
+            top: 25%;
+            left: 30%;
+            right: 5%;
         }
 
-        .bottom-border {
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-            left: 0;
+        .brlogo {
+            width: 20%;
+            margin-top: -15px;
+            float: left;
         }
 
-        header {
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-
+        .ctlogo {
+            width: 20%;
+            margin-top: -15px;
+            float: right;
         }
 
-        .left-logo,
-        .right-logo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .header {
+            text-align: center;
+            margin-top: 10%
         }
 
-        .left-logo>img,
-        .right-logo>img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .center-content {
-            font-size: 23px;
+        .family {
+            font-size: larger;
             font-family: impact;
             margin-top: 10px;
+        }
+
+        .center {
             text-align: center;
-            justify-content: s;
-            line-height: 3px;
         }
 
-        .center-content h2 {
-            font-size: 40px;
-            color: #00528d;
-        }
-
-
-        .quote {
-            color: #ffc000;
-            font-size: 13px;
-        }
-
-
-        .side {
-            background: #fff;
-
-            width: 18%;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            padding-top: 70px;
-        }
-
-        .side h4 {
-            font-size: 12px;
-            line-height: 1px;
-        }
-
-        .officials {
-            line-height: 1px;
-            border: 1px solid white;
-        }
-
-        .official-title {
-            font-style: italic;
-            color: #ffc000;
-            font-size: 10px;
-
-        }
-
-        .pb-name,
-        .sk-name {
-            font-weight: 600;
-            font-size: 11px;
-            line-height: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .kagawad-name,
-        .sk-kagawad-name,
-        .staff-name {
-            font-weight: 400;
-            font-size: 10px;
-            line-height: 0.5px;
-        }
-
-        main {
-            display: flex;
-            flex-direction: row;
-            overflow-x: auto
-        }
-
-        .main-content {
-            background: url('logo/water.png');
-            overflow: hidden;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: contain;
-            width: 82%;
-            display: flex;
-            flex-direction: column;
-            padding: 0 20px;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-
-        }
-
-        .main-header {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .main-container .lower-header {
-            line-height: 2px;
-        }
-
-        .main-container .lower-header h3 {
-            font-size: 20px;
-        }
-
-        .text-content {
-            text-indent: 70px;
-            font-size: 13px;
-            margin: 0;
-            margin-top: 15px;
+        .text-justify {
             text-align: justify;
         }
 
+        .indent {
+            text-indent: 40px;
+        }
 
-        .for-signature,
-        .for-witness,
-        .oath-signature {
+        .watermark {
+            margin-left: 5%;
+            margin-top: 20px;
+            width: 90%;
+            opacity: 0.5;
+        }
+
+        .officer-container {
+            margin-top: 50px;
+            margin-right: 40px;
             display: flex;
             flex-direction: column;
             align-items: end;
-            line-height: 1px;
-            margin-top: 15px;
-            text-align: center;
-
         }
 
-        .for-signature div,
-        .for-witness div {
-            text-align: center;
+        .border {
+            width: 21cm;
+            position: absolute;
+            left: 0;
+            top: -1%;
         }
 
-        .for-signature h4 {
-            font-weight: 700;
-            margin-right: 20px;
-
+        .footer-b {
+            width: 21cm;
+            position: absolute;
+            left: 0;
+            bottom: 0;
         }
 
-        .position {
-            font-size: 12px;
-            line-height: 1px;
-            text-align: center;
-
+        .names {
+            font-size: 9px;
+            position: absolute;
+            top: 25%;
+            background-color: rgb(255, 255, 255, 0.6);
         }
 
-        .witness {
-            margin-right: 150px;
-            font-size: 14px;
-            margin-top: 20px;
+        .cp {
+            color: #FFC000;
+            font-size: 15px;
+            position: absolute;
+            left: 24%;
+            top: 18%;
         }
-
-        .final-container {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Oathaking */
-
-        .main-container ol {
-            text-align: justify;
-            padding-right: 30px;
-            font-size: 13px;
-        }
-
-        .oath-wrapper {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            border-bottom: 1px solid rgba(0, 0, 0, .2);
-            margin: 20px 0;
-
-        }
-
-        .oath-for-signature {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            line-height: 1px;
-            padding-left: 70px;
-        }
-
-        
     </style>
 </head>
 
 <body>
+    <div class="container">
+        <div class="header">
+            <img src="logo/logo brgy.jpg" class="brlogo" alt="">
+            <img src="logo/citylogo.jpg" class="ctlogo" alt="">
+            <div class="family"><b>
+                    <p>REPUBLIC OF THE PHILIPPINES</p>
+                    <h1 style="margin-top: -20px; color:#00528d;">BARANGAY TINIGUIBAN</h1>
+                    <p style="margin-top: -20px;">PUERTO PRINCESA CITY, PALAWAN</p>
+                </b>
+            </div>
+        </div>
+        <img class="watermark" src="logo/water.png" alt="">
 
-    <div class="final-container">
-
-        <div class="main-container">
-
-            <img src="logo/border.png" class="top-border" alt="">
-            <img src="logo/under.png" class="bottom-border" alt="">
-
-            <header>
-
-                <div class="left-logo">
-                    <img class="watermark" src="logo/water.png" alt="">
+        <div class="content">
+            <div class="center">
+                <h2>OFFICE OF THE PUNONG BARANGAY</h2>
+                <h2>BARANGAY CERTIFICATION</h2>
+                <p style="margin-top: -5%;">(First Time Job Seekers Assistance Acr RA.11261)</p>
+            </div>
+            <div id="cert">
+                To whom it may concern:
+                <br><br>
+                <div class="text-justify indent">
+                    <b>THIS IS TO CERTIFY</b> that, <span id="var0"></span>
+                    <span id="var1"> </span> <span id="var2"></span> <span id="var3"></span></b>, a
+                    resident of Purok <span id="var4"></span>, Barangay
+                    Tiniguiban, Puerto Princesa City for <span id="var5"></span> years/ months, is a qualified to
+                    availee of <b>RA 11261 </b> or the <b> FIRST TIME JOB SEEKER ACT OF
+                        2019.</b></p>
                 </div>
 
-                <div class="center-content">
-                    <h4>REPUBLIC OF THE PHILIPPINES</h4>
-                    <h2>BARANGAY TINIGUIBAN</h2>
-                    <h4>PUERTO PRINCESA CITY, PALAWAN</h4></b>
-
-                    <p class="quote">“Serbisyong Tapat, tungo sa magandang bukas,<b> BANGON TINIGUIBAN</b>”</p>
-
+                <div class="text-justify indent">
+                    <b>I FURTHER CERTIFY</b> that the holder/bearer was informed of
+                    his/her rights, including the duties and responsibilities accorded by <b> RA 11261
+                    </b> through the <b>OATH OF UNDERTAKING</b> he/she has signed and executed in the
+                    presence of Barangay Offiecial's.</p>
                 </div>
 
-                <div class="right-logo">
-                    <img src="logo/citylogo.jpg" class="ctlogo" alt="">
+                <div class="text-justify indent">
+                    This certification is being issued upon the request of the above named
+                    person for whatever legal purpose it may serve best.
                 </div>
+                <br>
 
-            </header>
+                <div class="text-justify indent">
+                    Signed this <b id="days">test</b><sup id="sups">test</sup> day of <b id="months"> test</b> <b><span
+                            id="years"></span></b>, in the City/Municipality of Puerto Princesa
+                    City, Palawan.
+                </div>
+                <br>
 
-            <main>
+                <div class="text-justify indent">
+                    This certification is valid only until <b><span id="vmonth"></span>
+                        <span id="strong"></span></b>, one(1) year from the issuance.
+                </div>
+            </div>
 
-                <section class="side">
-                    <h4>Barangay Officials</h4>
-
-                    <div class="officials-wrapper">
-
-                        <div class="officials">
-                            <p class="official-title">Punong Barangay</p>
-                            <p class="pb-name">David V. Pacanot</p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">Barangay Kagawad</p>
-                            <p class="kagawad-name">HON. ELMER D. BONBON</p>
-                            <p class="kagawad-name">HON.ROSEMARIE A. OCAMPO</p>
-                            <p class="kagawad-name">HON.CONSTANCIA O. PINEDA</p>
-                            <p class="kagawad-name">HON. CARA MARGARET E. LIGAN</p>
-                            <p class="kagawad-name">HON.BEAULAH G. VALONES</p>
-                            <p class="kagawad-name">HON.SHERLYN F. CAYAO</p>
-                            <p class="kagawad-name">HON.INOCENCIA B. SILVA</p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">Secretary</p>
-                            <p class="kagawad-name">ROSIE BELLA APALIA</p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">Treasurer</p>
-                            <p class="kagawad-name">ROSEVIL G. DANIS</p>
-                        </div>
-
-                        <h4>Barangay SK Officials</h4>
-
-
-                        <div class="officials">
-                            <p class="official-title">SK Chairmain</p>
-                            <p class="sk-name"> ELDRED JEROME M. AYUNTING</p>
-                        </div>
-
-                        <div class="officials">
-
-                            <p class="official-title">SK Kagawad</p>
-
-                            <p class="kagawad-name"> ZYRA ASHLEE DUMARAN</p>
-                            <p class="kagawad-name">MILKY MAE GALICHA</p>
-                            <p class="kagawad-name">JERICHO PEREZ</p>
-                            <p class="kagawad-name">TRISHA MAE QUINTERO</p>
-                            <p class="kagawad-name">PAMELA BASANES</p>
-                            <p class="kagawad-name">SYMON CARLOS</p>
-                            <p class="kagawad-name">TRICIA MAE BAGONA</p>
-                        </div>
-
-
-                        <h4>Staff</h4>
-
-
-                        <div class="officials">
-                            <p class="official-title">Accounting Clerk</p>
-                            <p class="staff-name">EVELYN G. COMAHIG</p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">Clerk</p>
-                            <p class="staff-name">ANGELICA B. NEPOMUCENO</p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">VAWC</p>
-                            <p class="staff-name">MINERVA IGNACIO </p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">BCWPC</p>
-                            <p class="staff-name">APRIL ESVER </p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">Utility</p>
-                            <p class="staff-name">GEMMA ANZA </p>
-                            <p class="staff-name">ESTILITA MAGBANUA</p>
-                        </div>
-
-
-
-                    </div>
-                </section>
-
-                <section class="main-content">
-                    <div class="main-header">
-
-                        <h4>OFFICE OF THE PUNONG BARANGAY</h4>
-                        <div class="lower-header">
-                            <h3>BARANGAY CERTIFICATION </h3>
-                            <p>(First Time Job Seekers Assistance Acr RA.11261)</p>
-                        </div>
-
-
-                    </div>
-
-                    <div class="main-content"></div>
-
-                    <p style="font-size: 12px;">To whom it may concern: </p>
-
-                    <p class="text-content"><strong>THIS IS TO CERTIFY</strong> that <strong> <span id="var0"></span>
-                            <span id="var1"> </span> <span id="var2"></span> <span id="var3"></span></strong>, a
-                        resident of Purok <span id="var4"></span>, Barangay
-                        Tiniguiban, Puerto Princesa City for <span id="var5"></span> years/ months, is a qualified to
-                        availee of <strong>RA 11261 </strong> or the <strong> FIRST TIME JOB SEEKER ACT OF
-                            2019.</strong></p>
-
-                    <p class="text-content"><strong>I FURTHER CERTIFY</strong> that the holder/bearer was informed of
-                        his/her rights, including the duties and responsibilities accorded by <strong> RA 11261
-                        </strong> through the <strong>OATH OF UNDERTAKING</strong> he/she has signed and executed in the
-                        presence of Barangay Offiecial's.</p>
-
-                    <p class="text-content">This certification is being issued upon the request of the above named
-                        person for whatever legal purpose it may serve best.</p>
-
-                    <p class="text-content">Signed this <span id="days"></span><sup id="sups"></sup> day of <strong
-                            id="months"></strong> <span id="years"></span>, in the City/Municipality of Puerto Princesa
-                        City, Palawan.</p>
-
-                    <p class="text-content">This certification is valid only until <strong><span id="vmonth"></span>
-                            <span id="strong"></span></strong>, one(1) year from the issuance.</p>
-
-                    <div class="for-signature">
-                        <div>
+            <div class="officer-container">
+                <div class="cap-officers">
+                    <div class="captain center">
+                        <b>
                             <h4>DAVID V. PACAÑOT</h4>
-                            <p class="position">Punong Barangay</p>
-                        </div>
+                        </b>
+                        <div style="margin-top: -25px;"><i>Punong Barangay</i></div>
                     </div>
-
-                    <div class="for-witness">
-                        <span class="witness">Witnessed by:</span>
-                        <div>
-                            <h4>ROSEMARIE A. OCAMPO</h4>
-                            <p class="position">Barangay Kagawad</p>
-                        </div>
+                    <div class="duty-officer center" style="margin-top: 80px;">
+                        <!-- <b>
+                            <h4>PHILIP ARLAND P. ALILI</h4>
+                        </b> -->
+                        <div style="margin-top: -25px;"><i>Barangay Kagawad</i></div>
+                        <div><i>Duty Officer</i></div>
                     </div>
-
-                    <p class="quote" style="text-align: center; margin-top: 300px;">“Serbisyong Tapat, tungo sa
-                        magandang bukas,<b> BANGON TINIGUIBAN</b>”</p>
-
-
-
-
-                </section>
-            </main>
-
+                </div>
+            </div>
         </div>
 
-        <div class="main-container"> 
+        <!-- brrgy officials -->
+        <div class="names" style="margin-top: -2%">
+            <div class="">
+                <h3>BARANGAY OFFICIALS</h3>
+            </div>
 
-            <img src="logo/border.png" class="top-border" alt="">
-            <img src="logo/under.png" class="bottom-border" alt="">
+            <div class="color "><b>PUNONG BARANGAY</b></div>
+            <b>
+                <h2 class="" style="margin-top: -1%">DAVID V. PACAÑOT </h2>
+            </b>
+            <div class="color "><b>KAGAWAD</b></div>
+            <div class="">
+                HON. ELMER D. BONBON
+                <br>HON. ROSEMARIE A. OCAMPO
+                <br>HON. CONSTANCIA O. PINEDA
+                <br>HON. CARA MARGARET E. LIGAN
+                <br>HON. BEAULAH G. VALONES
+                <br>HON. SHERLYN F. CAYAO
+                <br>HON. INOCENCIA B. SILVA
+                <br>
+            </div>
+            <br>
+            <div class="color "><b>SECRETARY</b></div>
+            <div class="">CLARI JOYCE P. HEREDERO</div>
 
-            <header>
+            <br>
+            <div class="color "><b>TREASURER</b></div>
+            <div class="">ROSEVIL G. DANIS</div>
 
-                <div class="left-logo">
-                    <img class="watermark" src="logo/water.png" alt="">
-                </div>
+            <div class="  ">
+                <h3>SK OFFICIALS</h3>
+            </div>
 
-                <div class="center-content">
-                    <h4>REPUBLIC OF THE PHILIPPINES</h4>
-                    <h2>BARANGAY TINIGUIBAN</h2>
-                    <h4>PUERTO PRINCESA CITY, PALAWAN</h4></b>
+            <div class="color "><b>SK CHAIRMAN</b></div>
+            HON. ELDRED JEROME M. AYUNTING
+            <br><br>
+            <div class="color ">SK KAGAWAD</div>
 
-                    <p class="quote">“Serbisyong Tapat, tungo sa magandang bukas,<b> BANGON TINIGUIBAN</b>”</p>
+            <div class="">
+                HON. PAMELA G. BASANES
+                <br>HON. SYMON D. CARLOS
+                <br>HON. MILKY MAE M. GALICIA
+                <br>HON. TRICIA MAE V. BAGONA
+                <br>HON. JERICHO C. PEREZ
+                <br>HON. ZYRA ASHLEE M. DUMARAN
+                <br>HON. TRICIA MAE R. QUINTERO
+            </div>
 
-                </div>
+            <br>
+            <div class="color "><b>SK SECRETARY</b></div>
+            <div class="">CHARLES ANGEL C. MAMBAJE</div>
+            <br>
+            <div class="color "><b>SK TREASURER</b></div>
+            <div class="">NINA ERIKA T. SETIAS</div>
 
-                <div class="right-logo">
-                    <img src="logo/citylogo.jpg" class="ctlogo" alt="">
-                </div>
+            <div class="  ">
+                <h3>STAFF OFFICIALS</h3>
+            </div>
+            <div class="color "><b>BOOKKEEPER</b></div>
+            <div class="">EVELYN G. COMAHIG</div>
+            <br>
+            <div class="color"><b>ADMIN AIDE II</b></div>
+            <div class="">ANGELICA B. NEPOMUCENO</div>
+            <br>
+            <div class="color "><b>CLERK</b></div>
+            <div class="">LYN ROSE M. GABUA</div>
+            <br>
+            <div class="color "><b>VAWC</b></div>
+            <!-- MINERVA IGNACIO -->
+            <br><br>
+            <div class="color "> <b>BCWPC</b></div>
+            APRIL ESVER
+            <br><br>
+            <div class="color"> <b>UTILITY</b></div>
+            GEMMA ANZA
+            <br> ESTELITA MAGBANUA <br><br>
+            <div class=" color"><b>PUROK</b></div>
 
-            </header>
-
-            <main>
-
-                <section class="side">
-                    <h4>Barangay Officials</h4>
-
-                    <div class="officials-wrapper">
-
-                        <div class="officials">
-                            <p class="official-title">Punong Barangay</p>
-                            <p class="pb-name">David V. Pacanot</p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">Barangay Kagawad</p>
-                            <p class="kagawad-name">HON. ELMER D. BONBON</p>
-                            <p class="kagawad-name">HON.ROSEMARIE A. OCAMPO</p>
-                            <p class="kagawad-name">HON.CONSTANCIA O. PINEDA</p>
-                            <p class="kagawad-name">HON. CARA MARGARET E. LIGAN</p>
-                            <p class="kagawad-name">HON.BEAULAH G. VALONES</p>
-                            <p class="kagawad-name">HON.SHERLYN F. CAYAO</p>
-                            <p class="kagawad-name">HON.INOCENCIA B. SILVA</p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">Secretary</p>
-                            <p class="kagawad-name">ROSIE BELLA APALIA</p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">Treasurer</p>
-                            <p class="kagawad-name">ROSEVIL G. DANIS</p>
-                        </div>
-
-                        <h4>Barangay SK Officials</h4>
-
-
-                        <div class="officials">
-                            <p class="official-title">SK Chairmain</p>
-                            <p class="sk-name"> ELDRED JEROME M. AYUNTING</p>
-                        </div>
-
-                        <div class="officials">
-
-                            <p class="official-title">SK Kagawad</p>
-
-                            <p class="kagawad-name"> ZYRA ASHLEE DUMARAN</p>
-                            <p class="kagawad-name">MILKY MAE GALICHA</p>
-                            <p class="kagawad-name">JERICHO PEREZ</p>
-                            <p class="kagawad-name">TRISHA MAE QUINTERO</p>
-                            <p class="kagawad-name">PAMELA BASANES</p>
-                            <p class="kagawad-name">SYMON CARLOS</p>
-                            <p class="kagawad-name">TRICIA MAE BAGONA</p>
-                        </div>
-
-
-                        <h4>Staff</h4>
-
-
-                        <div class="officials">
-                            <p class="official-title">Accounting Clerk</p>
-                            <p class="staff-name">EVELYN G. COMAHIG</p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">Clerk</p>
-                            <p class="staff-name">ANGELICA B. NEPOMUCENO</p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">VAWC</p>
-                            <p class="staff-name">MINERVA IGNACIO </p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">BCWPC</p>
-                            <p class="staff-name">APRIL ESVER </p>
-                        </div>
-
-                        <div class="officials">
-                            <p class="official-title">Utility</p>
-                            <p class="staff-name">GEMMA ANZA </p>
-                            <p class="staff-name">ESTILITA MAGBANUA</p>
-                        </div>
-
-
-
-                    </div>
-                </section>
-
-                <section class="main-content">
-                    <div class="main-header">
-
-                        <h4>OFFICE OF THE PUNONG BARANGAY</h4>
-                        <div class="lower-header">
-                            <h3>OATH OF UNDERTAKING</h3>
-                            <p>Republic Act 112671 - First Time Jobseekers Assistance Act</p>
-                        </div>
-
-
-                    </div>
-
-                    <div class="main-content"></div>
-
-                    <p class="text-content">I, <strong><span id="var0"></span> <span id="var1"></span> <span
-                                id="var2"></span> <span id="var3"></span> </strong> <strong id="num0">{age}</strong>
-                        years of age, resident of <span id="num1">{period}</span>(years/months), availing the benefit of
-                        Republic Act 11261, otherwise known as the First Time Job-seeker Act of 2019, do hereby declare,
-                        agree and undertake to abide and be found by the following: </p>
-
-                    <ol>
-                        <li>That this is the first time that I will actively look for a job , and therefore requesting
-                            that a Barangay Certification be issued in my favor to avail the benefits of the law;</li>
-                        <li>That I am aware that the benefit and privilege/s under the said law shall be valid only for
-                            one (1) year from the date that the Barangay Certification is issued;
-                        </li>
-                        <li>That I can avail the benefits of the law only once;
-                        </li>
-                        <li>That I understand that my personal information shall be included in the Roster/List of First
-                            Time Job-seekers and will not be used for any unlawful purpose;
-                        </li>
-                        <li>That I will inform and/ or report to the Barangay personally, through text or other means,
-                            or through my family/relatives once I get employed;
-                        </li>
-                        <li>That I am not a beneficiary of the Job Start Program under R.A No. 10869 and other laws that
-                            give similar exemptions for the documents or transactions exempted under R.A No. 11261;
-                        </li>
-                        <li>That if issued the requested Certification, I will not use the same in any fraud, neither
-                            falsify nor help and/ or assist in the fabrication of the said certification;</li>
-                        <li>That this undertaking is made solely for the purpose of obtaining a Barangay Certification
-                            consistent with the objective of R.A No.11261 and not for any other purpose; and
-                        </li>
-                        <li>That I consent to the use of my personal information pursuant to the Data Privacy Act and
-                            other applicable laws, rules and regulations;</li>
-                    </ol>
-
-
-
-                    <p class="text-content">Signed this <span id="day"></span> day of <span id="month"></span> <span
-                            id="year"></span>, in the City/Municipality of Puerto Princesa.
-                    </p>
-
-                    <div class="oath-wrapper">
-
-                        <div class="oath-signature">
-                            <div>
-                                <h4>FULL NAME</h4>
-                                <p class="position">First Time Job Seeker</p>
-                            </div>
-                        </div>
-
-                        <div class="oath-signature">
-                            <div>
-                                <h4>DAVID V. PACAÑOT</h4>
-                                <p class="position">Barangay Kagawad / Duty Officer</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <p class="text-content">
-                        For applicants at least fifteen years old to less than 18 years of age:
-                    </p>
-
-
-                    <p class="text-content"> <u>I <span id="var4"></span> <span id="var5"></span> <span
-                                id="var6"></span> <span id="var7"></span> </u>, <span id="num2"></span> years of age
-                        ,parent /guardian of <u id="gname"> </u>, and a resident of Purok <span id="var8"></span> for
-                        <span id="num3"></span>(year/months), do hereby give my consent for my child/dependent to avail
-                        the benefits of Republic Act 11261 and be bound by the above-mentioned conditions.
-                    </p>
-
-                    <p style="margin-top: 40px; font-size: 13px;">Signed by:</p>
-
-                    <div class="oath-for-signature">
-                        <div>
-                            <h4>DAVID V. PACAÑOT</h4>
-                            <p class="position">Punong Barangay</p>
-                        </div>
-                    </div>
-
-
-
-                    <p class="quote" style="text-align: center; margin-top: 20px;">“Serbisyong Tapat, tungo sa magandang
-                        bukas,<b> BANGON TINIGUIBAN</b>”</p>
-
-
-
-
-                </section>
-            </main>
-
+            <div class=""> CENTRO
+                <br> HUWARAN
+                <br>KAAKBAYAN
+                <br>NEW PRINCESA
+                <br>SAN FRANCISCO I
+                <br>SAN FRANCISCO II
+                <br>SANDIWA
+                <br>TRECE
+                <br>UHA
+            </div>
         </div>
 
-    
+        <div class="cp">
+            <h5>“Serbisyong Tapat, tungo sa magandang bukas,<b> BANGON TINIGUIBAN</b>”</h5>
+        </div>
 
+        <img src="logo/border.png" class="border" alt="">
+        <img src="logo/under.png" class="footer-b" alt="">
     </div>
+</body>
 
+<body>
+    <div class="container" style="margin-top: 5%;">
+        <div class="header">
+            <img src="logo/logo brgy.jpg" class="brlogo" alt="">
+            <img src="logo/citylogo.jpg" class="ctlogo" alt="">
+            <div class="family"><b>
+                    <p>REPUBLIC OF THE PHILIPPINES</p>
+                    <h1 style="margin-top: -20px; color:#00528d;">BARANGAY TINIGUIBAN</h1>
+                    <p style="margin-top: -20px;">PUERTO PRINCESA CITY, PALAWAN</p>
+                </b>
+            </div>
+        </div>
+        <img class="watermark" src="logo/water.png" alt="">
+
+        <div class="content">
+            <div class="center">
+                <h2>OFFICE OF THE PUNONG BARANGAY</h2>
+                <h2>CERTIFICATION<br>
+                    (LOT OWNERSHIP)</h2>
+            </div>
+            <div id="cert">
+                To whom it may concern:
+                <br><br>
+                <div class="text-justify indent">
+                    <b>THIS IS TO CERTIFY</b> that <b><span id="lofirst_name"></span> <span id="lomiddle_name"> </span>
+                        <span id="lolast_name">
+                        </span> <span id="losuffix"></span></b>, of legal age, a resident
+                    of <b><span id="lopurok"></span></b>.
+                </div>
+                <br>
+
+                <div class="text-justify indent">
+                    <b>THIS CERTIFIES FURTHER</b> that the above-named individual is the <br><br>
+                    (<span id="loclaimant"></span>) Claimant <br>
+                    (<span id="lobeneficiary"></span>) Beneficiary<br>
+                    (<span id="loactual_occupant"></span>) Actual Occupant <br>
+                </div>
+                <br>
+
+                <div class="text-justify indent">
+                    of Lot No. <b id="lolot_number"></b> with an area of (<b><span
+                            id="lolot_area_numerical"></span></b>)
+                    <span id="lolot_area_word"></span>,
+                    located at <span id="loloc"></span>.
+                </div>
+                <br>
+
+                <div class="text-justify indent">
+                    Certification is being issued upon the request of the above-named person for whatever legal
+                    purpose it may serve best.
+                </div>
+                <br>
+                Issued this <b id="days">test</b><sup id="sups">test</sup> day of <b id="months"> test</b> <b><span
+                        id="years"></span></b>.
+            </div>
+
+            <div class="officer-container">
+                <div class="cap-officers">
+                    <div class="captain center">
+                        <b>
+                            <h4>DAVID V. PACAÑOT</h4>
+                        </b>
+                        <div style="margin-top: -25px;"><i>Punong Barangay</i></div>
+                    </div>
+                    <div class="duty-officer center" style="margin-top: 80px;">
+                        <!-- <b>
+                            <h4>PHILIP ARLAND P. ALILI</h4>
+                        </b>
+                        <div style="margin-top: -25px;"><i>Barangay Kagawad</i></div>
+                        <div><i>Duty Officer</i></div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- brrgy officials -->
+        <div class="names" style="margin-top: -2%">
+            <div class="">
+                <h3>BARANGAY OFFICIALS</h3>
+            </div>
+
+            <div class="color "><b>PUNONG BARANGAY</b></div>
+            <b>
+                <h2 class="" style="margin-top: -1%">DAVID V. PACAÑOT </h2>
+            </b>
+            <div class="color "><b>KAGAWAD</b></div>
+            <div class="">
+                HON. ELMER D. BONBON
+                <br>HON. ROSEMARIE A. OCAMPO
+                <br>HON. CONSTANCIA O. PINEDA
+                <br>HON. CARA MARGARET E. LIGAN
+                <br>HON. BEAULAH G. VALONES
+                <br>HON. SHERLYN F. CAYAO
+                <br>HON. INOCENCIA B. SILVA
+                <br>
+            </div>
+            <br>
+            <div class="color "><b>SECRETARY</b></div>
+            <div class="">CLARI JOYCE P. HEREDERO</div>
+
+            <br>
+            <div class="color "><b>TREASURER</b></div>
+            <div class="">ROSEVIL G. DANIS</div>
+
+            <div class="  ">
+                <h3>SK OFFICIALS</h3>
+            </div>
+
+            <div class="color "><b>SK CHAIRMAN</b></div>
+            HON. ELDRED JEROME M. AYUNTING
+            <br><br>
+            <div class="color ">SK KAGAWAD</div>
+
+            <div class="">
+                HON. PAMELA G. BASANES
+                <br>HON. SYMON D. CARLOS
+                <br>HON. MILKY MAE M. GALICIA
+                <br>HON. TRICIA MAE V. BAGONA
+                <br>HON. JERICHO C. PEREZ
+                <br>HON. ZYRA ASHLEE M. DUMARAN
+                <br>HON. TRICIA MAE R. QUINTERO
+            </div>
+
+            <br>
+            <div class="color "><b>SK SECRETARY</b></div>
+            <div class="">CHARLES ANGEL C. MAMBAJE</div>
+            <br>
+            <div class="color "><b>SK TREASURER</b></div>
+            <div class="">NINA ERIKA T. SETIAS</div>
+
+            <div class="  ">
+                <h3>STAFF OFFICIALS</h3>
+            </div>
+            <div class="color "><b>BOOKKEEPER</b></div>
+            <div class="">EVELYN G. COMAHIG</div>
+            <br>
+            <div class="color"><b>ADMIN AIDE II</b></div>
+            <div class="">ANGELICA B. NEPOMUCENO</div>
+            <br>
+            <div class="color "><b>CLERK</b></div>
+            <div class="">LYN ROSE M. GABUA</div>
+            <br>
+            <div class="color "><b>VAWC</b></div>
+            <!-- MINERVA IGNACIO -->
+            <br><br>
+            <div class="color "> <b>BCWPC</b></div>
+            APRIL ESVER
+            <br><br>
+            <div class="color"> <b>UTILITY</b></div>
+            GEMMA ANZA
+            <br> ESTELITA MAGBANUA <br><br>
+            <div class=" color"><b>PUROK</b></div>
+
+            <div class=""> CENTRO
+                <br> HUWARAN
+                <br>KAAKBAYAN
+                <br>NEW PRINCESA
+                <br>SAN FRANCISCO I
+                <br>SAN FRANCISCO II
+                <br>SANDIWA
+                <br>TRECE
+                <br>UHA
+            </div>
+        </div>
+
+        <div class="cp">
+            <h5>“Serbisyong Tapat, tungo sa magandang bukas,<b> BANGON TINIGUIBAN</b>”</h5>
+        </div>
+
+        <img src="logo/border.png" class="border" alt="">
+        <img src="logo/under.png" class="footer-b" alt="">
+    </div>
     <script src="../assets/js/main2.js"></script>
 
 </body>
