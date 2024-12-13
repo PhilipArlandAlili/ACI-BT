@@ -23,7 +23,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'edit_officials') !== false || strpos($_SERV
 
 <ul class="sidebar-nav pt-3" id="sidebar-nav">
     <li class="nav-item">
-        <a class="nav-link text-light" href="../dashboard.php">
+        <a class="nav-link text-light" href="dashboard.php">
             <i class="bi bi-grid text-light fs-5"></i>
             <span>Dashboard</span>
         </a>
