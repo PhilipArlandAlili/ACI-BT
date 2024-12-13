@@ -1,5 +1,4 @@
-// From PHP
-        var dcfirst_name = document.getElementById('dcfirst_name');
+var dcfirst_name = document.getElementById('dcfirst_name');
         var dcmiddle_name = document.getElementById('dcmiddle_name');
         var dclast_name = document.getElementById('dclast_name');
         var dcsuffix = document.getElementById('dcsuffix');
@@ -17,21 +16,29 @@
         const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
         var dcdate = new Date(dcbirthdate.value);
-        var dcmonth = cocdate.getMonth();
-        var dcday = cocdate.getDate();
-        var dcyear = cocdate.getFullYear();
+        var dcmonth = dcdate.getMonth();
+        var dcday = dcdate.getDate();
+        var dcyear = dcdate.getFullYear();
         dcmonth = month_names[dcmonth];
+
+        var dcdeathdate = new Date(dcdate_of_death.value);
+        var dcdeathmonth = dcdeathdate.getMonth();
+        var dcdeathday = dcdeathdate.getDate();
+        var dcdeathyear = dcdeathdate.getFullYear();
+        dcdeathmonth = month_names[dcdeathmonth];
 
         // From HTML
         var pdcfirst_name = iframeDocument.getElementById('dcfirst_name');
         var pdcmiddle_name = iframeDocument.getElementById('dcmiddle_name');
         var pdclast_name = iframeDocument.getElementById('dclast_name');
         var pdcsuffix = iframeDocument.getElementById('dcsuffix');
-        var pdcbirthdate_month = iframeDocument.getElementById('pdcbirthdate_month');
-        var pdcbirthdate_day = iframeDocument.getElementById('pdcbirthdate_day');
-        var pdcbirthdate_year = iframeDocument.getElementById('pdcbirthdate_year');
+        var pdcbirthdate_day = iframeDocument.getElementById('dcbirthdate_day');
+        var pdcbirthdate_month = iframeDocument.getElementById('dcbirthdate_month');
+        var pdcbirthdate_year = iframeDocument.getElementById('dcbirthdate_year');
         var pdcpurok = iframeDocument.getElementById('dcpurok');
-        var pdcdate_of_death = iframeDocument.getElementById('dcdate_of_death');
+        var pdcdate_of_death_day = iframeDocument.getElementById('dcdate_of_death_day');
+        var pdcdate_of_death_month = iframeDocument.getElementById('dcdate_of_death_month');
+        var pdcdate_of_death_year = iframeDocument.getElementById('dcdate_of_death_year');
         var pdctime_of_death = iframeDocument.getElementById('dctime_of_death');
         var pdccause_of_death = iframeDocument.getElementById('dccause_of_death');
         var pdcreq_first_name = iframeDocument.getElementById('dcreq_first_name');
@@ -45,12 +52,14 @@
         pdcmiddle_name.innerText = dcmiddle_name.value;
         pdclast_name.innerText = dclast_name.value;
         pdcsuffix.innerText = dcsuffix.value;
-        pdcbirthdate_month.innerText = pdcbirthdate_month.value;
-        pdcbirthdate_day.innerText = pdcbirthdate_day.value;
-        pdcbirthdate_year.innerText = pdcbirthdate_year.value;
+        pdcbirthdate_month.innerText = dcmonth;
+        pdcbirthdate_day.innerText = dcday;
+        pdcbirthdate_year.innerText = dcyear;
         pdcpurok.innerText = dcpurok.value;
-        ptrpurok.innerText = trpurok.value;
-        pdcdate_of_death.innerText = dcdate_of_death.value;
+        pdcpurok.innerText = dcpurok.value;
+        pdcdate_of_death_day.innerText = dcdeathday;
+        pdcdate_of_death_month.innerText = dcdeathmonth;
+        pdcdate_of_death_year.innerText = dcdeathyear;
         pdctime_of_death.innerText = dctime_of_death.value;
         pdccause_of_death.innerText = dccause_of_death.value;
         pdcreq_first_name.innerText = dcreq_first_name.value;
