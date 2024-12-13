@@ -42,7 +42,7 @@
         required><br>
 
     <label for="birthdate">Birthday:</label>
-    <input type="date" class="form-control" id="birthdate" onchange="updateText(); validateBirthdate(this);" name="birthdate" required><br>
+    <input type="date" class="form-control" id="birthdate" onchange=" validateBirthdate(this);updateText();" name="birthdate" required><br>
 
     <label for="civil_status">Civil Status:</label>    
     <select class="form-control" name="civil_status" id="civil_status" oninput="updateText();" required>
@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    <input type="number" class="form-control" id="period_of_residency"  oninput="updateText()" name="period_of_residency"
+    <input type="number" class="form-control" id="period_of_residency" maxlength="2" max="99" min="1" oninput="showAge();updateText()" name="period_of_residency"
         placeholder="Ex. 3 years/months" required><br>
 
     <label for="purpose">Purpose:</label>

@@ -2,21 +2,21 @@
 
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');carldeath();"
         id="dcfirst_name" name="first_name" placeholder="Ex. Juan" required><br>
 
     <label for="middle_name">Middle Name:</label>
     <input type="text" class="form-control" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');carldeath();"
         id="dcmiddle_name" name="middle_name" placeholder="Ex. Reyes"><br>
 
     <label for="last_name">Last Name:</label>
     <input type="text" class="form-control" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');carldeath();"
         id="dclast_name" name="last_name" placeholder="Ex. Dela Cruz" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" onchange="updateText()" name="suffix" id="dcsuffix">
+    <select class="text-left form-control" onchange="carldeath()" name="suffix" id="dcsuffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -26,11 +26,11 @@
     </select><br>
 
     <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" onchange="validatebday(this);updateText();" id="dcbirthdate"
+    <input type="date" class="form-control" onchange="validatebday(this);carldeath();" id="dcbirthdate"
         name="birthdate" required><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="dcpurok" required onchange="updateText()">
+    <select class="text-left form-control" name="purok" id="dcpurok" required onchange="carldeath()">
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -44,15 +44,15 @@
     </select><br>
 
     <label for="dateOfDeath">Date of death:</label>
-    <input type="date" class="form-control" onchange="validateformarriagedate(this);updateText();" name="date_of_death"
+    <input type="date" class="form-control" onchange="validateformarriagedate(this);carldeath();" name="date_of_death"
         id="dcdate_of_death" required><br>
 
     <label for="timeOfDeath">Time of death:</label>
-    <input type="time" class="form-control" onchange="updateText();" name="time_of_death" id="dctime_of_death"
+    <input type="time" class="form-control" onchange="carldeath();" name="time_of_death" id="dctime_of_death"
         required><br>
 
     <label for="causeOfDeath">Cause of death:</label>
-    <input type="text" class="form-control" maxlength="100" oninput="updateText();" name="cause_of_death"
+    <input type="text" class="form-control" maxlength="100" oninput="carldeath();" name="cause_of_death"
         id="dccause_of_death" placeholder="Ex. Sick" required><br>
     <hr>
 
@@ -60,21 +60,21 @@
     <label for="" class="fw-bold">Requester</label><br>
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');carldeath();"
         id="dcreq_first_name" name="req_first_name" placeholder="Ex. Pedro" required><br>
 
     <label for="middle_name">Middle Name:</label>
     <input type="text" class="form-control" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');carldeath();"
         id="dcreq_middle_name" name="req_middle_name" placeholder="Ex. Torres" required><br>
 
     <label for="last_name">Last Name:</label>
     <input type="text" class="form-control" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');carldeath();"
         id="dcreq_last_name" name="req_last_name" placeholder="Ex. Bautista" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" onchange="updateText()" name="req_suffix" id="dcreq_suffix">
+    <select class="text-left form-control" onchange="carldeath()" name="req_suffix" id="dcreq_suffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -84,7 +84,7 @@
     </select><br>
 
     <label for="relationshipToDeadPerson">Relationship to the dead person:</label>
-    <input type="text" class="form-control" onchange="updateText();" name="relationship" id="dcrelationship"
+    <input type="text" class="form-control" onchange="carldeath();" name="relationship" id="dcrelationship"
         placeholder="Ex. Son" required><br>
     <hr>
 

@@ -18,11 +18,11 @@ function changeCertificate() {
         doc = " "
     }
 
-    if (certificate_type == 'barangay_clearance') {
-        var iframe1 = document.getElementById('myIframe1');
-        var doc1 = "certificates/" + "business_permit_new" + ".html";
-        iframe1.src = doc1;
-    }
+    // if (certificate_type == 'barangay_clearance') {
+    //     var iframe1 = document.getElementById('myIframe1');
+    //     var doc1 = "certificates/" + "business_permit_new" + ".html";
+    //     iframe1.src = doc1;
+    // }
 
     iframe.src = doc;
 

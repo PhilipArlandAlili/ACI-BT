@@ -174,6 +174,8 @@ include 'queries.php';
     <script src="assets/js/main.js"></script>
     <!-- <script src="assets/js/main2.js"></script> -->
     <script src="assets/js/mrcxng.js"></script>
+    <script src="assets/js/death_cert_ni_carl.js"></script>
+
     <script>function validatebday(input) {
             const birthDate = new Date(input.value); // Get the selected date
             const today = new Date();

@@ -1,4 +1,18 @@
-var dcfirst_name = document.getElementById('dcfirst_name');
+function carldeath() {
+        var iframe = document.getElementById('myIframe');
+        var iframeDocument;
+    
+        if (iframe && iframe.contentDocument) {
+            iframeDocument = iframe.contentDocument; 
+        } else {
+            console.error('Iframe document is not accessible or does not exist.');
+            return;
+        }
+    
+        console.log(iframeDocument);
+    
+        // Access input fields from the main document
+        var dcfirst_name = document.getElementById('dcfirst_name');
         var dcmiddle_name = document.getElementById('dcmiddle_name');
         var dclast_name = document.getElementById('dclast_name');
         var dcsuffix = document.getElementById('dcsuffix');
@@ -12,22 +26,20 @@ var dcfirst_name = document.getElementById('dcfirst_name');
         var dcreq_last_name = document.getElementById('dcreq_last_name');
         var dcreq_suffix = document.getElementById('dcreq_suffix');
         var dcrelationship = document.getElementById('dcrelationship');
-        
+    
         const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
+    
         var dcdate = new Date(dcbirthdate.value);
-        var dcmonth = dcdate.getMonth();
+        var dcmonth = month_names[dcdate.getMonth()];
         var dcday = dcdate.getDate();
         var dcyear = dcdate.getFullYear();
-        dcmonth = month_names[dcmonth];
-
+    
         var dcdeathdate = new Date(dcdate_of_death.value);
-        var dcdeathmonth = dcdeathdate.getMonth();
+        var dcdeathmonth = month_names[dcdeathdate.getMonth()];
         var dcdeathday = dcdeathdate.getDate();
         var dcdeathyear = dcdeathdate.getFullYear();
-        dcdeathmonth = month_names[dcdeathmonth];
-
-        // From HTML
+    
+        // Access input fields from the iframe document
         var pdcfirst_name = iframeDocument.getElementById('dcfirst_name');
         var pdcmiddle_name = iframeDocument.getElementById('dcmiddle_name');
         var pdclast_name = iframeDocument.getElementById('dclast_name');
@@ -46,24 +58,25 @@ var dcfirst_name = document.getElementById('dcfirst_name');
         var pdcreq_last_name = iframeDocument.getElementById('dcreq_last_name');
         var pdcreq_suffix = iframeDocument.getElementById('dcreq_suffix');
         var pdcrelationship = iframeDocument.getElementById('dcrelationship');
-
-
-        pdcfirst_name.innerText = dcfirst_name.value;
-        pdcmiddle_name.innerText = dcmiddle_name.value;
-        pdclast_name.innerText = dclast_name.value;
-        pdcsuffix.innerText = dcsuffix.value;
-        pdcbirthdate_month.innerText = dcmonth;
-        pdcbirthdate_day.innerText = dcday;
-        pdcbirthdate_year.innerText = dcyear;
-        pdcpurok.innerText = dcpurok.value;
-        pdcpurok.innerText = dcpurok.value;
-        pdcdate_of_death_day.innerText = dcdeathday;
-        pdcdate_of_death_month.innerText = dcdeathmonth;
-        pdcdate_of_death_year.innerText = dcdeathyear;
-        pdctime_of_death.innerText = dctime_of_death.value;
-        pdccause_of_death.innerText = dccause_of_death.value;
-        pdcreq_first_name.innerText = dcreq_first_name.value;
-        pdcreq_middle_name.innerText = dcreq_middle_name.value;
-        pdcreq_last_name.innerText = dcreq_last_name.value;
-        pdcreq_suffix.innerText = dcreq_suffix.value;
-        pdcrelationship.innerText = dcrelationship.value;
+    
+        // Populate the iframe elements
+        if (pdcfirst_name) pdcfirst_name.innerText = dcfirst_name.value;
+        if (pdcmiddle_name) pdcmiddle_name.innerText = dcmiddle_name.value;
+        if (pdclast_name) pdclast_name.innerText = dclast_name.value;
+        if (pdcsuffix) pdcsuffix.innerText = dcsuffix.value;
+        if (pdcbirthdate_month) pdcbirthdate_month.innerText = dcmonth;
+        if (pdcbirthdate_day) pdcbirthdate_day.innerText = dcday;
+        if (pdcbirthdate_year) pdcbirthdate_year.innerText = dcyear;
+        if (pdcpurok) pdcpurok.innerText = dcpurok.value;
+        if (pdcdate_of_death_day) pdcdate_of_death_day.innerText = dcdeathday;
+        if (pdcdate_of_death_month) pdcdate_of_death_month.innerText = dcdeathmonth;
+        if (pdcdate_of_death_year) pdcdate_of_death_year.innerText = dcdeathyear;
+        if (pdctime_of_death) pdctime_of_death.innerText = dctime_of_death.value;
+        if (pdccause_of_death) pdccause_of_death.innerText = dccause_of_death.value;
+        if (pdcreq_first_name) pdcreq_first_name.innerText = dcreq_first_name.value;
+        if (pdcreq_middle_name) pdcreq_middle_name.innerText = dcreq_middle_name.value;
+        if (pdcreq_last_name) pdcreq_last_name.innerText = dcreq_last_name.value;
+        if (pdcreq_suffix) pdcreq_suffix.innerText = dcreq_suffix.value;
+        if (pdcrelationship) pdcrelationship.innerText = dcrelationship.value;
+    }
+    
