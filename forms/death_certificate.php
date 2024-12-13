@@ -1,4 +1,4 @@
-<form action="#" method="post" class="form" id="death_certificateForm">
+<form action="#" method="post" class="form" id="death_certificate_form">
 
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control" maxlength="50"
@@ -16,7 +16,7 @@
         id="dclast_name" name="last_name" placeholder="Ex. Dela Cruz" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="dcsuffix">
+    <select class="text-left form-control" onchange="updateText()" name="suffix" id="dcsuffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -30,7 +30,7 @@
         name="birthdate" required><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="dcpurok" required>
+    <select class="text-left form-control" name="purok" id="dcpurok" required onchange="updateText()">
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -74,7 +74,7 @@
         id="dcreq_last_name" name="req_last_name" placeholder="Ex. Bautista" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="req_suffix" id="dcreq_suffix">
+    <select class="text-left form-control" onchange="updateText()" name="req_suffix" id="dcreq_suffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -113,7 +113,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("deathPrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("death_certificateForm");  // Use the unique form ID
+        let form = document.getElementById("death_certificate_form");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {
