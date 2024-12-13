@@ -1,4 +1,4 @@
-<form action="#" method="post" class="form" id="lot_ownershipForm">
+<form action="#" method="post" class="form" id="lot_ownership_form">
     <label for="">First Name:</label>
     <input type="text" class="form-control" id="lofirst_name" name="first_name" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
@@ -39,19 +39,19 @@
     </select><br>
 
     <div class="form-check">
-        <input class="form-check-input" name="claimant" type="checkbox" value="/" id="loclaimant">
+        <input class="form-check-input" name="claimant" type="checkbox" value="/" id="loclaimant" onchange="updateText()">
         <label class="form-check-label" for="flexCheckDefault">
             Claimant
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" name="beneficiary" type="checkbox" value="/" id="lobeneficiary">
+        <input class="form-check-input" name="beneficiary" type="checkbox" value="/" id="lobeneficiary" onchange="updateText()">
         <label class="form-check-label" for="flexCheckDefault">
             Beneficiary
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" name="actual_occupant" type="checkbox" value="/" id="loactual_occupant">
+        <input class="form-check-input" name="actual_occupant" type="checkbox" value="/" id="loactual_occupant" onchange="updateText()">
         <label class="form-check-label" for="flexCheckChecked">
             Actual Occupant
         </label>
@@ -64,12 +64,12 @@
     <label for="lotAreaNumerical">Area Measurement (Numerical Form):</label>
     <input type="number" class="form-control" oninput="updateText()" name="lot_area_numerical" id="lolot_area_numerical"
         placeholder="Ex. 350 sqm" required><br>
-    <label for="lotAreaNumerical">Area Measurement (Word Form):</label>
-    <input type="text" class="form-control" name="lot_area_word" id="lolot_area_word" placeholder="Ex. One Two Three"
-        readonly><br>
+    <label hidden for="lotAreaNumerical">Area Measurement (Word Form):</label>
+    <input hidden type="text" class="form-control" name="lot_area_word" id="lolot_area_word" placeholder="Ex. One Two Three"
+        readonly>
 
     <label for="purok">Lot Location:</label>
-    <select class="text-left form-control" name="loloc" id="loloc" oninput="updateText();" required>
+    <select class="text-left form-control" name="lot_location_address" id="loloc" oninput="updateText();" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -108,7 +108,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("lotOwnershipPrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("lot_ownershipForm");  // Use the unique form ID
+        let form = document.getElementById("lot_ownership_form");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {

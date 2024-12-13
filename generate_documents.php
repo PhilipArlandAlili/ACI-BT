@@ -145,7 +145,7 @@ include 'queries.php';
                         <h5 class="card-title" style="padding: 20px;">View Certificate</h5>
                         <div class="iframe-container">
                             <iframe id="myIframe" width="100%" height="100%"></iframe>
-                            <iframe id="myIframe1" width="100%" height="100%"></iframe>
+                            <!-- <iframe id="myIframe1" width="100%" height="100%"></iframe> -->
                         </div>
                     </div>
                 </div>
@@ -174,6 +174,8 @@ include 'queries.php';
     <script src="assets/js/main.js"></script>
     <!-- <script src="assets/js/main2.js"></script> -->
     <script src="assets/js/mrcxng.js"></script>
+    <script src="assets/js/death_cert_ni_carl.js"></script>
+
     <script>function validatebday(input) {
             const birthDate = new Date(input.value); // Get the selected date
             const today = new Date();
