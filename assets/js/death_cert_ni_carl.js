@@ -24,7 +24,7 @@ function carldeath() {
         var dcreq_first_name = document.getElementById('dcreq_first_name');
         var dcreq_middle_name = document.getElementById('dcreq_middle_name');
         var dcreq_last_name = document.getElementById('dcreq_last_name');
-        var dcreq_suffix = document.getElementById('dcsuffix');
+        var dcreq_suffix = document.getElementById('dcreq_suffix');
         var dcrelationship = document.getElementById('dcrelationship');
     
         const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
