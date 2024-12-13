@@ -64,12 +64,12 @@
     <label for="lotAreaNumerical">Area Measurement (Numerical Form):</label>
     <input type="number" class="form-control" oninput="updateText()" name="lot_area_numerical" id="lolot_area_numerical"
         placeholder="Ex. 350 sqm" required><br>
-    <label for="lotAreaNumerical">Area Measurement (Word Form):</label>
-    <input type="text" class="form-control" name="lot_area_word" id="lolot_area_word" placeholder="Ex. One Two Three"
-        readonly><br>
+    <label hidden for="lotAreaNumerical">Area Measurement (Word Form):</label>
+    <input hidden type="text" class="form-control" name="lot_area_word" id="lolot_area_word" placeholder="Ex. One Two Three"
+        readonly>
 
     <label for="purok">Lot Location:</label>
-    <select class="text-left form-control" name="loloc" id="loloc" oninput="updateText();" required>
+    <select class="text-left form-control" name="lot_location_address" id="loloc" oninput="updateText();" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>

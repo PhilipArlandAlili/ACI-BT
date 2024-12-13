@@ -335,19 +335,19 @@ function updateText() {
         if (loclaimant.checked) {
             ploclaimant.innerText = "/";
         } else {
-            ploclaimant.innerText = " ";
+            ploclaimant.innerText = "  ";
         }
 
         if (loactual_occupant.checked) {
             ploactual_occupant.innerText = "/";
         } else {
-            ploactual_occupant.innerText = " ";
+            ploactual_occupant.innerText = "  ";
         }
 
         if (lobeneficiary.checked) {
             plobeneficiary.innerText = "/";
         } else {
-            plobeneficiary.innerText = " ";
+            plobeneficiary.innerText = "  ";
         }
 
         plofirst_name.innerText = lofirst_name.value;
@@ -355,12 +355,10 @@ function updateText() {
         plolast_name.innerText = lolast_name.value;
         plosuffix.innerText = losuffix.value;
         plopurok.innerText = lopurok.value;
-        ploclaimant.innerText = loclaimant.value;
-        plobeneficiary.innerText = lobeneficiary.value;
-        ploactual_occupant.innerText = loactual_occupant.value;
         plolot_number.innerText = lolot_number.value;
         plolot_area_numerical.innerText = lolot_area_numerical.value;
-        plolot_area_word.innerText = lolot_area_word.value;
+        plolot_area_word.innerText = numberToWords(lolot_area_numerical.value);
+        lolot_area_word.value = numberToWords(lolot_area_numerical.value);
         plolotloc.innerText = lololoc.value;
 
     } else if (certificate_type.value == 'transfer_of_residency') {
@@ -438,3 +436,56 @@ function showAge(birthdate_input) {
 
     return age;
 }
+
+function numberToWords(num) {
+    if (num === 0) return "zero";
+    if (num > 1_000_000_000) return "Number exceeds 1 billion";
+  
+    const ones = [
+      "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"
+    ];
+    const teens = [
+      "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen",
+      "Sixteen", "Seventeen", "Eighteen", "Nineteen"
+    ];
+    const tens = [
+      "", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
+    ];
+    const thousands = [
+      "", "Thousand", "Million", "Billion"
+    ];
+  
+    function convertChunk(num) {
+      let words = "";
+  
+      if (num >= 100) {
+        words += ones[Math.floor(num / 100)] + " hundred ";
+        num %= 100;
+      }
+      if (num >= 11 && num <= 19) {
+        words += teens[num - 11] + " ";
+      } else if (num === 10 || num >= 20) {
+        words += tens[Math.floor(num / 10)] + " ";
+        num %= 10;
+      }
+      if (num > 0 && num <= 9) {
+        words += ones[num] + " ";
+      }
+  
+      return words.trim();
+    }
+  
+    let result = "";
+    let chunkCount = 0;
+  
+    while (num > 0) {
+      const chunk = num % 1000;
+      if (chunk > 0) {
+        result = convertChunk(chunk) + " " + thousands[chunkCount] + " " + result;
+      }
+      num = Math.floor(num / 1000);
+      chunkCount++;
+    }
+  
+    return result.trim();
+  }
