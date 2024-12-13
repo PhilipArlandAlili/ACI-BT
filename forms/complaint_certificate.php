@@ -1,4 +1,4 @@
-<form action="#" method="post" class="form" id="complaint_certificateForm">
+<form action="#" method="post" class="form" id="complaint_certificate_form">
 
     <label for="" class="fw-bold">Complainant</label><br>
     <label for="">First Name:</label>
@@ -18,7 +18,7 @@
 
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="ccsuffix">
+    <select class="text-left form-control" onchange="updateText()" name="suffix" id="ccsuffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -28,11 +28,11 @@
     </select><br>
 
     <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" onchange="validatebday(this);updateText();" id="ccbirthdate" name="birthdate"
-        required><br>
+    <input type="date" class="form-control" onchange="validatebday(this);updateText();" id="ccbirthdate"
+        name="birthdate" required><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="ccpurok" required>
+    <select class="text-left form-control" name="purok" id="ccpurok" required oninput="updateText()">
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -53,22 +53,22 @@
     <!--Respondent Full Name-->
     <label for="" class="fw-bold">Respondent</label><br>
     <label for="first_name">First Name:</label>
-    <input type="text" class="form-control" id="ccfirst_name" id="first_name" maxlength="50"
+    <input type="text" class="form-control" id="ccfirst_name_respondent" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
         name="first_name_respondent" placeholder="Ex. Pedro" required><br>
 
     <label for="middle_name">Middle Name:</label>
-    <input type="text" class="form-control" id="ccmiddle_name" id="middle_name" maxlength="50"
+    <input type="text" class="form-control" id="ccmiddle_name_respondent" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
         name="middle_name_respondent" placeholder="Ex. Torres" required><br>
 
     <label for="last_name">Last Name:</label>
-    <input type="text" class="form-control" id="cclast_name" id="last_name" maxlength="50"
+    <input type="text" class="form-control" id="cclast_name_respondent" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
         name="last_name_respondent" placeholder="Ex. Bautista" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix_respondent" id="ccsuffix_respondent">
+    <select class="text-left form-control" name="suffix_respondent" id="ccsuffix_respondent" oninput="updateText()">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -78,10 +78,12 @@
     </select><br>
 
     <label for="">Case Number:</label>
-    <input type="number" name="case_no" id="cccase_no" class="form-control" placeholder="165" required><br>
+    <input type="number" name="case_no" id="cccase_no" oninput="updateText()" class="form-control" placeholder="165"
+        required><br>
 
     <label for="">VAWC Official Name</label>
-    <input type="text" name="vawc_official_name" id="ccvawc_official_name" class="form-control" required><br>
+    <input type="text" name="vawc_official_name" id="ccvawc_official_name" oninput="updateText()" class="form-control"
+        required><br>
     <hr>
 
     <div class="complaintPrint" style="text-align: right;">
@@ -109,7 +111,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("complaintPrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("complaint_certificateForm");  // Use the unique form ID
+        let form = document.getElementById("complaint_certificate_form");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {
