@@ -66,7 +66,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'edit_officials') !== false || strpos($_SERV
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
+        <a class="nav-link collapsed" href="logout.php" style="background-color: #F4F3EF;">
             <i class="bi bi-power text-dark fs-5"></i>
             <span class="text-dark">Logout</span>
         </a>
