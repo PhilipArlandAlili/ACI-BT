@@ -519,7 +519,7 @@ if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_nam
             pftoyear_month.innerText = "";
         }
         pftperiod_of_residency.innerText = ftperiod_of_residency.value;
-        pftoperiod_of_residency.innerText = ftperiod_of_residency.value;
+
 
         // Guardian of the galaxy
         var ftogfirst_name = document.getElementById('ftogfirst_name');
@@ -552,6 +552,7 @@ if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_nam
         pftogrole.innerText = ftogrole.value;
         pftogsrole.innerText = ftogrole.value;
         pftogpurok.innerText = ftogpurok.value;
+        pftoperiod_of_residency.innerText = ftperiod_of_residency.value;
 
         if (ftogpormonth.checked) {
             if (ftogperiod_of_residency.value == 1) {
