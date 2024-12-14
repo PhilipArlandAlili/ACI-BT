@@ -18,7 +18,7 @@
 
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" onchange="updateText()" name="suffix" id="ccsuffix">
+    <select class="text-left form-control" name="suffix" id="ccsuffix" onchange="updateText()">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -32,7 +32,7 @@
         name="birthdate" required><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="ccpurok" required oninput="updateText()">
+    <select class="text-left form-control" name="purok" id="ccpurok" onchange="updateText()" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -81,10 +81,10 @@
     <input type="number" name="case_no" id="cccase_no" oninput="updateText()" class="form-control" placeholder="165"
         required><br>
 
-    <label for="">VAWC Official Name</label>
-    <input type="text" name="vawc_official_name" id="ccvawc_official_name" oninput="updateText()" class="form-control"
-        required><br>
-    <hr>
+    <label for="last_name">VAWC Official Name:</label>
+    <input type="text" class="form-control" id="ccvawc_official_name" maxlength="50"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        name="vawc_official_name" required><br>
 
     <div class="complaintPrint" style="text-align: right;">
         <button type="button" class="btn btn-primary w-25" id="complaintPrintBtn">Print</button>
