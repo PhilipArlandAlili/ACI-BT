@@ -485,6 +485,10 @@ if (isset($_POST["death_certificate"])) {
     $req_suffix = $conn->real_escape_string($_POST["req_suffix"]);
     $relationship = $conn->real_escape_string($_POST["relationship"]);
 
+    $suffix = strtoupper($suffix);
+    $req_suffix = strtoupper($req_suffix);
+    $purok = strtoupper($purok);
+
     $fullname = $req_first_name . ' ' . $req_middle_name . ' ' . $req_last_name . ' ' . $req_suffix;
     $age = date('Y') - date('Y', strtotime($birthdate));
 

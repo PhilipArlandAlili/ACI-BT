@@ -419,40 +419,12 @@ function updateText() {
         var dcreq_suffix = document.getElementById('dcreq_suffix');
         var dcrelationship = document.getElementById('dcrelationship');
 
-        const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-        var dcdate = new Date(dcbirthdate.value);
-        var dcmonth = dcdate.getMonth();
-        var dcday = dcdate.getDate();
-        var dcyear = dcdate.getFullYear();
-        dcmonth = month_names[dcmonth];
-
-        if (!dcbirthdate.value) {
-            dcmonth = '';
-            dcday = '';
-            dcyear = '';
-        }
-
-        var dcdeathdate = new Date(dcdate_of_death.value);
-        var dcdeathmonth = dcdeathdate.getMonth();
-        var dcdeathday = dcdeathdate.getDate();
-        var dcdeathyear = dcdeathdate.getFullYear();
-        dcdeathmonth = month_names[dcdeathmonth];
-
-        if (!dcdate_of_death.value) {
-            dcdeathmonth = '';
-            dcdeathday = '';
-            dcdeathyear = '';
-        }
-
         // From HTML
         var pdcfirst_name = iframeDocument.getElementById('dcfirst_name');
         var pdcmiddle_name = iframeDocument.getElementById('dcmiddle_name');
         var pdclast_name = iframeDocument.getElementById('dclast_name');
         var pdcsuffix = iframeDocument.getElementById('dcsuffix');
-        var pdcbirthdate_day = iframeDocument.getElementById('dcbirthdate_day');
-        var pdcbirthdate_month = iframeDocument.getElementById('dcbirthdate_month');
-        var pdcbirthdate_year = iframeDocument.getElementById('dcbirthdate_year');
+        var pdcbirthdate = iframeDocument.getElementById('dcbirthdate');
         var pdcpurok = iframeDocument.getElementById('dcpurok');
         var pdcdate_of_death_day = iframeDocument.getElementById('dcdate_of_death_day');
         var pdcdate_of_death_month = iframeDocument.getElementById('dcdate_of_death_month');
@@ -465,15 +437,21 @@ function updateText() {
         var pdcreq_suffix = iframeDocument.getElementById('dcreq_suffix');
         var pdcrelationship = iframeDocument.getElementById('dcrelationship');
 
+        const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+        var dcdeathdate = new Date(dcdate_of_death.value);
+        var dcdeathmonth = dcdeathdate.getMonth();
+        var dcdeathday = dcdeathdate.getDate();
+        var dcdeathyear = dcdeathdate.getFullYear();
+        dcdeathmonth = month_names[dcdeathmonth];
+
         if (pdcfirst_name) pdcfirst_name.innerText = dcfirst_name.value.toUpperCase();
         if (pdcmiddle_name) pdcmiddle_name.innerText = dcmiddle_name.value.toUpperCase();
         if (pdclast_name) pdclast_name.innerText = dclast_name.value.toUpperCase();
         if (pdcsuffix) pdcsuffix.innerText = dcsuffix.value.toUpperCase();
-        if (pdcbirthdate_month) pdcbirthdate_month.innerText = dcmonth.toUpperCase();
-        if (pdcbirthdate_day) pdcbirthdate_day.innerText = dcday;
-        if (pdcbirthdate_year) pdcbirthdate_year.innerText = dcyear;
         if (pdcpurok) pdcpurok.innerText = dcpurok.value.toUpperCase();
-        if (pdcdate_of_death_day) pdcdate_of_death_day.innerText = dcdeathday.toUpperCase();
+        if (pdcbirthdate) if (showAge(dcbirthdate)) pdcbirthdate.innerText = showAge(dcbirthdate);
+        if (pdcdate_of_death_day) pdcdate_of_death_day.innerText = dcdeathday;
         if (pdcdate_of_death_month) pdcdate_of_death_month.innerText = dcdeathmonth.toUpperCase();
         if (pdcdate_of_death_year) pdcdate_of_death_year.innerText = dcdeathyear;
         if (pdctime_of_death) pdctime_of_death.innerText = convertTo12Hour(dctime_of_death.value);
@@ -879,7 +857,7 @@ function formatNumber(value) {
 function convertTo12Hour(time24) {
     const [hours, minutes] = time24.split(":").map(Number);
 
-    if (hours > 24 || minutes > 59 || hours < 0 || minutes < 0) {
+    if (hours > 23 || minutes > 59 || hours < 0 || minutes < 0) {
         return "Invalid time";
     }
 

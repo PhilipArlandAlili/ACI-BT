@@ -346,7 +346,6 @@ if (!isset($_SESSION['username'])) {
                                         if ($table == "death_certificate") {
                                             echo "<thead>";
                                             echo "<tr>";
-                                            // echo "<th>ID</th>";
                                             echo "<th>Full Name</th>";
                                             echo "<th>Age</th>";
                                             echo "<th>Address</th>";
@@ -360,18 +359,15 @@ if (!isset($_SESSION['username'])) {
                                             echo "</thead>";
                                             echo "<tbody>";
                                             echo "<tr>";
-                                            // echo "<td>" . $row["id"] . "</td>";
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
                                                 . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
-
                                             echo "<td>" . $row["age"] . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
                                             echo "<td>" . $row["date_of_death"] . "</td>";
                                             echo "<td>" . $row["time_of_death"] . "</td>";
-
                                             $fullNameReq = $row["req_first_name"]
                                                 . (!empty($row["req_middle_name"]) ? " " . $row["req_middle_name"] : "")
                                                 . " " . $row["req_last_name"]
@@ -424,7 +420,6 @@ if (!isset($_SESSION['username'])) {
                                         if ($table == "transfer_of_residency") {
                                             echo "<thead>";
                                             echo "<tr>";
-                                            // echo "<th>ID</th>";
                                             echo "<th>Full Name</th>";
                                             echo "<th>Address</th>";
                                             echo "<th>Nationality</th>";
@@ -438,7 +433,6 @@ if (!isset($_SESSION['username'])) {
                                             echo "</thead>";
                                             echo "<tbody>";
                                             echo "<tr>";
-                                            // echo "<td>" . $row["id"] . "</td>";
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
