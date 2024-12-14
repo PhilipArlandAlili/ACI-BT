@@ -622,4 +622,92 @@ if (isset($_POST["transfer_of_residency"])) {
     }
     $stmt->close();
 }
+
+if (isset($_POST["first_time_job_seeker"])) {
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_name = $conn->real_escape_string($_POST["middle_name"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $address = $conn->real_escape_string($_POST["address"]);
+    $period_of_residency = $conn->real_escape_string($_POST["period_of_residency"]);
+    $signed_date = $conn->real_escape_string($_POST["signed_date"]);
+    $validation_date = $conn->real_escape_string($_POST["validation_date"]);
+    $witness = $conn->real_escape_string($_POST["witness"]);
+    $age = $conn->real_escape_string($_POST["age"]);
+    $consent_first_name = $conn->real_escape_string($_POST["consent_first_name"]);
+    $consent_middle_name = $conn->real_escape_string($_POST["consent_middle_name"]);
+    $consent_last_name = $conn->real_escape_string($_POST["consent_last_name"]);
+    $consent_suffix = $conn->real_escape_string($_POST["consent_suffix"]);
+    $relationship = $conn->real_escape_string($_POST["relationship"]);
+    $consent_age = $conn->real_escape_string($_POST["consent_age"]);
+    $consent_address = $conn->real_escape_string($_POST["consent_address"]);
+    $consent_period_of_recidency = $conn->real_escape_string($_POST["consent_period_of_recidency"]);
+    $duty_officer_name = $conn->real_escape_string($_POST["duty_officer_name"]);
+
+    $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
+
+    $stmt = $conn->prepare("INSERT INTO first_time_job_seeker 
+        (first_name, middle_name, last_name, suffix, address, period_of_residency, signed_date, validation_date, witness, age, 
+         consent_first_name, consent_middle_name, consent_last_name, consent_suffix, relationship, consent_age, 
+         consent_address, consent_period_of_recidency, duty_officer_name) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    $stmt->bind_param(
+        'sssssisisssssssisiss',
+        $first_name,
+        $middle_name,
+        $last_name,
+        $suffix,
+        $address,
+        $period_of_residency,
+        $signed_date,
+        $validation_date,
+        $witness,
+        $age,
+        $consent_first_name,
+        $consent_middle_name,
+        $consent_last_name,
+        $consent_suffix,
+        $relationship,
+        $consent_age,
+        $consent_address,
+        $consent_period_of_recidency,
+        $duty_officer_name
+    );
+
+    if ($stmt->execute()) {
+        $_SESSION['success'] = "Added First-Time Job Seeker successfully!";
+
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $duty_officer_name);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            $trans_stmt = $conn->prepare("INSERT INTO transactions 
+                (transact_by, doc_id, fullname, client_trans_id, created_at) 
+                VALUES (?, 13, ?, (SELECT COUNT(*) FROM first_time_job_seeker), ?)");
+            $timestamp = date('Y-m-d H:i:s');
+            $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
+
+            if ($trans_stmt->execute()) {
+                // Transaction recorded successfully
+            } else {
+                // Handle transaction error
+            }
+
+            $trans_stmt->close();
+        } else {
+            // Admin user not found
+        }
+
+        $admin_stmt->close();
+    }
+    $stmt->close();
+}
+
 ?>
