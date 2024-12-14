@@ -2,17 +2,17 @@
 
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" id="cefirst_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
     <input type="text" class="form-control" name="middle_name" id="cemiddle_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
     <input type="text" class="form-control" name="last_name" id="celast_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
@@ -27,11 +27,11 @@
 
     <!-- Birthdate = Age -->
     <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" onchange="validatebday(this);updateText();" id="cebirthdate"
+    <input type="date" class="form-control" onchange="validatebday(this);this.value = this.value.toUpperCase();updateText();" id="cebirthdate"
         name="birthdate" required><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="cepurok" onchange="updateText()" required>
+    <select class="text-left form-control" name="purok" id="cepurok" onchange="this.value = this.value.toUpperCase();updateText()" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -45,7 +45,7 @@
     </select><br>
 
     <label for="purpose">Purpose:</label>
-    <input type="text" name="purpose" class="form-control" id="cepurpose" oninput="updateText()"
+    <input type="text" name="purpose" class="form-control" id="cepurpose" oninput="this.value = this.value.toUpperCase();updateText()"
         placeholder="Ex. Employment" required><br>
     <hr>
 

@@ -1,17 +1,17 @@
 <form action="#" method="post" class="form" id="lot_ownership_form">
     <label for="">First Name:</label>
     <input type="text" class="form-control" id="lofirst_name" name="first_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
     <input type="text" class="form-control" id="lomiddle_name" name="middle_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
     <input type="text" class="form-control" id="lolast_name" name="last_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
@@ -25,7 +25,7 @@
     </select><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="lopurok" oninput="updateText();" required>
+    <select class="text-left form-control" name="purok" id="lopurok" oninput="this.value = this.value.toUpperCase();updateText();" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -39,37 +39,37 @@
     </select><br>
 
     <div class="form-check">
-        <input class="form-check-input" name="claimant" type="checkbox" value="/" id="loclaimant" onchange="updateText()">
+        <input class="form-check-input" name="claimant" type="checkbox" value="/" id="loclaimant" onchange="this.value = this.value.toUpperCase();updateText()">
         <label class="form-check-label" for="flexCheckDefault">
             Claimant
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" name="beneficiary" type="checkbox" value="/" id="lobeneficiary" onchange="updateText()">
+        <input class="form-check-input" name="beneficiary" type="checkbox" value="/" id="lobeneficiary" onchange="this.value = this.value.toUpperCase();updateText()">
         <label class="form-check-label" for="flexCheckDefault">
             Beneficiary
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" name="actual_occupant" type="checkbox" value="/" id="loactual_occupant" onchange="updateText()">
+        <input class="form-check-input" name="actual_occupant" type="checkbox" value="/" id="loactual_occupant" onchange="this.value = this.value.toUpperCase();updateText()">
         <label class="form-check-label" for="flexCheckChecked">
             Actual Occupant
         </label>
     </div><br>
 
     <label for="lotNumber">Lot Number:</label>
-    <input type="number" class="form-control" oninput="updateText()" name="lot_number" id="lolot_number"
+    <input type="number" class="form-control" oninput="this.value = this.value.toUpperCase();updateText()" name="lot_number" id="lolot_number"
         placeholder="Ex. 5003" required><br>
 
     <label for="lotAreaNumerical">Area Measurement (Numerical Form):</label>
-    <input type="number" class="form-control" oninput="updateText()" name="lot_area_numerical" id="lolot_area_numerical"
+    <input type="number" class="form-control" oninput="this.value = this.value.toUpperCase();updateText()" name="lot_area_numerical" id="lolot_area_numerical"
         placeholder="Ex. 350 sqm" required><br>
     <label hidden for="lotAreaNumerical">Area Measurement (Word Form):</label>
     <input hidden type="text" class="form-control" name="lot_area_word" id="lolot_area_word" placeholder="Ex. One Two Three"
         readonly>
 
     <label for="purok">Lot Location:</label>
-    <select class="text-left form-control" name="lot_location_address" id="loloc" oninput="updateText();" required>
+    <select class="text-left form-control" name="lot_location_address" id="loloc" oninput="this.value = this.value.toUpperCase();updateText();" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>

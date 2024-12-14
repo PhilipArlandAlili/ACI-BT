@@ -60,8 +60,9 @@
                                         } elseif ($doc_id == 2 || $doc_id == 3) {
                                             echo "
                                             <th>Business Name</th>
-                                            <th>Address</th>
-                                            <th>Owner</th>
+                                            <th>Business Address</th>
+                                            <th>Purok</th>
+                                            <th>Business Owner</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
@@ -175,6 +176,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
+                                    // Barangay Clearance
                                     if ($doc_id == 1) {
                                         // Fetch data from barangay_clearance table when doc_id is 1
                                         $sql = "SELECT first_name, middle_name, last_name, suffix, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name
@@ -218,9 +220,11 @@
                                         } else {
                                             echo "<tr><td colspan='9'><center>No barangay clearances found</center></td></tr>";
                                         }
-                                    } elseif ($doc_id == 2) {
+                                    } 
+                                    // Business Permit New
+                                    elseif ($doc_id == 2) {
                                         // Fetch data from business_permit_new table when doc_id is 2
-                                        $sql = "SELECT business_name, manager, address, issued_date, duty_officer_name
+                                        $sql = "SELECT business_name, manager, address, purok, issued_date, duty_officer_name
                                         FROM business_permit_new";
 
                                         $result = $conn->query($sql);
@@ -230,6 +234,7 @@
                                                 echo "<tr>";
                                                 echo "<td>" . $row["business_name"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
+                                                echo "<td>" . $row["purok"] . "</td>";
                                                 echo "<td>" . $row["manager"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
                                                 echo "<td>" . $row["duty_officer_name"] . "</td>";
@@ -238,9 +243,11 @@
                                         } else {
                                             echo "<tr><td colspan='3'><center>No new business permits found</center></td></tr>";
                                         }
-                                    } elseif ($doc_id == 3) {
+                                    } 
+                                    // Business Permit Renew
+                                    elseif ($doc_id == 3) {
                                         // Fetch data from business_permit_renew table when doc_id is 3
-                                        $sql = "SELECT business_name, manager, address, issued_date, duty_officer_name
+                                        $sql = "SELECT business_name, manager, address, purok, issued_date, duty_officer_name
                                         FROM business_permit_renew";
 
                                         $result = $conn->query($sql);
@@ -250,6 +257,7 @@
                                                 echo "<tr>";
                                                 echo "<td>" . $row["business_name"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
+                                                echo "<td>" . $row["purok"] . "</td>";
                                                 echo "<td>" . $row["manager"] . "</td>";
     
                                                 echo "<td>" . $row["issued_date"] . "</td>";
@@ -259,7 +267,9 @@
                                         } else {
                                             echo "<tr><td colspan='3'><center>No renewed business permits found</center></td></tr>";
                                         }
-                                    } elseif ($doc_id == 4) {
+                                    } 
+                                    // Certificate of Cohabitation
+                                    elseif ($doc_id == 4) {
                                         // Fetch data from cohabitation table when doc_id is 4
                                         $sql = "SELECT first_name_male, middle_name_male, last_name_male, suffix_male, birthdate_male, first_name_female, middle_name_female, last_name_female, birthdate_female, address, date_of_marriage, years_married, issued_date, duty_officer_name
                                         FROM certificate_of_cohabitation";

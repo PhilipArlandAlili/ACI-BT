@@ -1,17 +1,17 @@
 <form action="#" method="post" class="form" id="certificate_of_incomeForm">
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" id="cifirst_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
     <input type="text" class="form-control" name="middle_name" id="cimiddle_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
     <input type="text" class="form-control" name="last_name" id="cilast_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
@@ -25,7 +25,7 @@
     </select><br>
 
     <label for="puroks">Purok:</label>
-    <select class="text-left form-control" onchange="updateText()"name="purok" id="cipurok" required>
+    <select class="text-left form-control" onchange="this.value = this.value.toUpperCase();updateText()"name="purok" id="cipurok" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -39,7 +39,7 @@
     </select><br>
 
     <label for="amount">Amount (In Numeric Form):</label>
-    <input type="number" max="999999999" min="1" id="ciincome_num" name="income_num" oninput="updateText()"
+    <input type="number" max="999999999" min="1" id="ciincome_num" name="income_num" oninput="this.value = this.value.toUpperCase();updateText()"
         class="form-control" maxlength="10" placeholder="Ex. 20000" required><br>
 
     <label for="income_words">Amount (In Words):</label>
