@@ -194,6 +194,7 @@ if (!isset($_SESSION['username'])) {
                                             echo "</tr>";
                                             echo "</tbody>";
                                         }
+                                        // For Certificate of Employability
                                         if ($table == "certificate_of_employability") {
                                             echo "<thead>";
                                             echo "<tr>";
@@ -220,10 +221,10 @@ if (!isset($_SESSION['username'])) {
                                             echo "</tr>";
                                             echo "</tbody>";
                                         }
+                                        // For Certificate of Income
                                         if ($table == "certificate_of_income") {
                                             echo "<thead>";
                                             echo "<tr>";
-                                            // echo "<th>ID</th>";
                                             echo "<th>Full Name</th>";
                                             echo "<th>Address</th>";
                                             echo "<th>Income (Number)</th>";
@@ -234,7 +235,6 @@ if (!isset($_SESSION['username'])) {
                                             echo "</thead>";
                                             echo "<tbody>";
                                             echo "<tr>";
-                                            // echo "<td>" . $row["id"] . "</td>";
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
@@ -248,10 +248,10 @@ if (!isset($_SESSION['username'])) {
                                             echo "</tr>";
                                             echo "</tbody>";
                                         }
+                                        // For Certificate of Indigency
                                         if ($table == "certificate_of_indigency") {
                                             echo "<thead>";
                                             echo "<tr>";
-                                            // echo "<th>ID</th>";
                                             echo "<th>Full Name</th>";
                                             echo "<th>Age</th>";
                                             echo "<th>Civil Status</th>";
@@ -263,7 +263,6 @@ if (!isset($_SESSION['username'])) {
                                             echo "</thead>";
                                             echo "<tbody>";
                                             echo "<tr>";
-                                            // echo "<td>" . $row["id"] . "</td>";
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
@@ -278,25 +277,30 @@ if (!isset($_SESSION['username'])) {
                                             echo "</tr>";
                                             echo "</tbody>";
                                         }
+                                        // For Certificate of Indigency AICS
                                         if ($table == "certificate_of_indigency_aics") {
                                             echo "<thead>";
                                             echo "<tr>";
-                                            // echo "<th>ID</th>";
                                             echo "<th>Full Name</th>";
+                                            echo "<th>Birthdate</th>";
+                                            echo "<th>Civil Status</th>";
                                             echo "<th>Address</th>";
+                                            echo "<th>Purpose</th>";
                                             echo "<th>Issued Date</th>";
                                             echo "<th>Duty Officer Name</th>";
                                             echo "</tr>";
                                             echo "</thead>";
                                             echo "<tbody>";
                                             echo "<tr>";
-                                            // echo "<td>" . $row["id"] . "</td>";
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
                                                 . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
+                                            echo "<td>" . $row["birthdate"] . "</td>";
+                                            echo "<td>" . $row["civil_status"] . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
+                                            echo "<td>" . $row["purpose"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
                                             echo "<td>" . $row["duty_officer_name"] . "</td>";
                                             echo "</tr>";

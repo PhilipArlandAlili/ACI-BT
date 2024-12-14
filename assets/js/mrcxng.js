@@ -301,23 +301,49 @@ function updateText() {
         var cidpurok = document.getElementById('cidpurok');
         var cidpurpose = document.getElementById('cidpurpose');
 
+        var ciddate = new Date(cidbirthdate.value);
+        var cidmonth = ciddate.getMonth();
+        var cidday = ciddate.getDate();
+        var cidyear = ciddate.getFullYear();
+
+        const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        cidmonth = month_names[cidmonth];
+
         var pcidfirst_name = iframeDocument.getElementById('cidfirst_name');
         var pcidmiddle_name = iframeDocument.getElementById('cidmiddle_name');
         var pcidlast_name = iframeDocument.getElementById('cidlast_name');
         var pcidsuffix = iframeDocument.getElementById('cidsuffix');
-        var pcidbirthdate = iframeDocument.getElementById('cidbirthdate');
+        var pcidbirthdate_month = iframeDocument.getElementById('cidbirthdate_month');
+        var pcidbirthdate_day = iframeDocument.getElementById('cidbirthdate_day');
+        var pcidbirthdate_year = iframeDocument.getElementById('cidbirthdate_year');
         var pcidcivil_status = iframeDocument.getElementById('cidcivil_status');
         var pcidpurok = iframeDocument.getElementById('cidpurok');
         var pcidpurpose = iframeDocument.getElementById('cidpurpose');
 
-        pcidfirst_name.innerText = cidfirst_name.value;
-        pcidmiddle_name.innerText = cidmiddle_name.value;
-        pcidlast_name.innerText = cidlast_name.value;
-        pcidsuffix.innerText = cidsuffix.value;
-        pcidbirthdate.innerText = cidbirthdate.value;
-        pcidcivil_status.innerText = cidcivil_status.value;
-        pcidpurok.innerText = cidpurok.value;
-        pcidpurpose.innerText = cidpurpose.value;
+        pcidfirst_name.innerText = cidfirst_name.value.toUpperCase();
+        pcidmiddle_name.innerText = cidmiddle_name.value.toUpperCase();
+        pcidlast_name.innerText = cidlast_name.value.toUpperCase();
+        pcidsuffix.innerText = cidsuffix.value.toUpperCase();
+
+        if (cidbirthdate.value) {
+            if (validateBirthdate(cidbirthdate.value)) {
+                pcidbirthdate_month.innerText = "";
+                pcidbirthdate_day.innerText = "";
+                pcidbirthdate_year.innerText = "";
+            } else {
+                pcidbirthdate_month.innerText = cidmonth.toUpperCase();
+                pcidbirthdate_day.innerText = cidday + ", ";
+                pcidbirthdate_year.innerText = cidyear;
+            }
+        } else {
+            pcidbirthdate_month.innerText = "";
+            pcidbirthdate_day.innerText = "";
+            pcidbirthdate_year.innerText = "";
+        }
+
+        pcidcivil_status.innerText = cidcivil_status.value.toUpperCase();
+        pcidpurok.innerText = cidpurok.value.toUpperCase();
+        pcidpurpose.innerText = cidpurpose.value.toUpperCase();
 
     } else if (certificate_type.value == 'complaint_certificate') {
 

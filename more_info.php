@@ -94,7 +94,9 @@
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
-                                        } elseif ($doc_id == 6) {
+                                        } 
+                                        // Certificate of Income
+                                        elseif ($doc_id == 6) {
                                             echo "
                                             <th>Full Name</th>
                                             <th>Address</th>
@@ -103,7 +105,9 @@
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
-                                        } elseif ($doc_id == 7) {
+                                        } 
+                                        // Certificate of Indigency
+                                        elseif ($doc_id == 7) {
                                             echo "
                                             <th>Full Name</th>
                                             <th>Age</th>
@@ -113,14 +117,21 @@
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
-                                        } elseif ($doc_id == 8) {
+                                        } 
+                                        // Certificate of Indigency (AICS)
+                                        elseif ($doc_id == 8) {
                                             echo "
                                             <th>Full Name</th>
+                                            <th>Birthdate</th>
+                                            <th>Civil Status</th>
                                             <th>Address</th>
+                                            <th>Purpose</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
-                                        } elseif ($doc_id == 9) {
+                                        } 
+                                        // Complaint Certificate
+                                        elseif ($doc_id == 9) {
                                             echo "
                                             <th>Full Name (Complainant)</th>
                                             <th>Age</th>
@@ -198,7 +209,7 @@
                                                 $fullName = $row["first_name"]
                                                     . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                     . " " . $row["last_name"]
-                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                    . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                                 echo "<td>" . $fullName . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["birthplace"] . "</td>";
@@ -288,7 +299,7 @@
                                                 $fullNameMale = $row["first_name_male"]
                                                     . (!empty($row["middle_name_male"]) ? " " . $row["middle_name_male"] : "")
                                                     . " " . $row["last_name_male"]
-                                                    . (!empty($row["suffix_male"]) ? ", " . $row["suffix_male"] : "");
+                                                    . (!empty($row["suffix_male"]) ? " " . $row["suffix_male"] : "");
                                                 echo "<td>" . $fullNameMale . "</td>";
                                                 echo "<td>" . $row["birthdate_male"] . "</td>";
 
@@ -322,7 +333,7 @@
                                                 $fullName = $row["first_name"]
                                                     . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                     . " " . $row["last_name"]
-                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                    . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                                 echo "<td>" . $fullName . "</td>";
                                                 echo "<td>" . $row["birthdate"] . "</td>";
                                                 echo "<td>" . $row["age"] . "</td>";
@@ -334,7 +345,9 @@
                                         } else {
                                             echo "<tr><td colspan='5'><center>No employability certificates found</center></td></tr>";
                                         }
-                                    } elseif ($doc_id == 6) {
+                                    }
+                                    // Certificate of Income
+                                    elseif ($doc_id == 6) {
                                         // Fetch data from certificate_of_income table when doc_id is 8
                                         $sql = "SELECT first_name, middle_name, last_name, suffix, address, income_num, income_words, issued_date, duty_officer_name
                                         FROM certificate_of_income";
@@ -348,7 +361,7 @@
                                                 $fullName = $row["first_name"]
                                                     . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                     . " " . $row["last_name"]
-                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                    . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                                 echo "<td>" . $fullName . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["income_num"] . "</td>";
@@ -360,7 +373,9 @@
                                         } else {
                                             echo "<tr><td colspan='6'><center>No certificates of income found</center></td></tr>";
                                         }
-                                    } elseif ($doc_id == 7) {
+                                    } 
+                                    // Certificate of Indigency
+                                    elseif ($doc_id == 7) {
                                         // Fetch data from indigency table when doc_id is 6
                                         $sql = "SELECT first_name, middle_name, last_name, suffix, age, civil_status, address, purpose, issued_date, duty_officer_name
                                         FROM certificate_of_indigency";
@@ -387,9 +402,11 @@
                                         } else {
                                             echo "<tr><td colspan='6'><center>No indigency certificates found</center></td></tr>";
                                         }
-                                    } elseif ($doc_id == 8) {
+                                    }
+                                    // Certificate of Indigency (AICS)
+                                    elseif ($doc_id == 8) {
                                         // Fetch data from indigency_aics table when doc_id is 7
-                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, issued_date, duty_officer_name
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, birthdate, civil_status, address, purpose, issued_date, duty_officer_name
                                         FROM certificate_of_indigency_aics";
 
                                         $result = $conn->query($sql);
@@ -401,9 +418,12 @@
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
-                                                . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
+                                            echo "<td>" . $row["birthdate"] . "</td>";
+                                            echo "<td>" . $row["civil_status"] . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
+                                            echo "<td>" . $row["purpose"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
                                             echo "<td>" . $row["duty_officer_name"] . "</td>";
                                             echo "</tr>";
@@ -411,7 +431,9 @@
                                         } else {
                                             echo "<tr><td colspan='4'><center>No indigency (AICS) certificates found</center></td></tr>";
                                         }
-                                    } elseif ($doc_id == 9) {
+                                    } 
+                                    // Complaint Certificate
+                                    elseif ($doc_id == 9) {
                                         // Fetch data from complaint_certificate table when doc_id is 9
                                         $sql = "SELECT first_name_complainant, middle_name_complainant, last_name_complainant, suffix_complainant, age, address, date_of_complain, first_name_respondent, middle_name_respondent, last_name_respondent, suffix_respondent, case_no, vawc_official_name, issued_date, duty_officer_name
                                         FROM complaint_certificate";

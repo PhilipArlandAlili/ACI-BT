@@ -362,12 +362,19 @@ if (isset($_POST["certificate_of_indigency_aics"])) {
     $middle_name = $conn->real_escape_string($_POST["middle_name"]);
     $last_name = $conn->real_escape_string($_POST["last_name"]);
     $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $birthdate = $conn->real_escape_string($_POST["birthdate"]);
+    $civil_status = $conn->real_escape_string($_POST["civil_status"]);
     $purok = $conn->real_escape_string($_POST["purok"]);
+    $purpose = $conn->real_escape_string($_POST["purpose"]);
+
+    $suffix = strtoupper($suffix);
+    $civil_status = strtoupper($civil_status);
+    $purok = strtoupper($purok);
 
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 
-    $stmt = $conn->prepare("INSERT INTO certificate_of_indigency_aics (first_name, middle_name, last_name, suffix, address, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssss', $first_name, $middle_name, $last_name, $suffix, $purok, $issued_date, $duty_officer_name);
+    $stmt = $conn->prepare("INSERT INTO certificate_of_indigency_aics (first_name, middle_name, last_name, suffix, birthdate, civil_status, address, purpose, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
+    $stmt->bind_param('ssssssssss', $first_name, $middle_name, $last_name, $suffix, $birthdate, $civil_status, $purok, $purpose, $issued_date, $duty_officer_name);
 
     if ($stmt->execute()) {
         //echo "New record inserted successfully";

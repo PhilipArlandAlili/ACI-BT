@@ -1,4 +1,4 @@
-<form action="#" method="post" class="form" id="certificate_of_indigency_aicsForm">
+<form action="#" method="post" class="form" id="certificate_of_indigency_aics_form">
 
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" id="cidfirst_name" maxlength="50"
@@ -16,7 +16,7 @@
         required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="cidsuffix" oninput="updateText()">
+    <select class="text-left form-control" name="suffix" id="cidsuffix" onchange="updateText()">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -27,11 +27,11 @@
 
     <!-- Birthday = Age -->
     <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" onchange="validatebday(this);this.value = this.value.toUpperCase();updateText();" id="cidbirthdate"
+    <input type="date" class="form-control" oninput="validateBirthdate(this);updateText();" id="cidbirthdate"
         name="birthdate" required><br>
 
     <label for="civil_status">Civil Status:</label>
-    <select class="form-control" name="civil_status" id="cidcivil_status" oninput="this.value = this.value.toUpperCase();updateText();" required>
+    <select class="form-control" name="civil_status" id="cidcivil_status" onchange="updateText();" required>
         <option value="">--Select Civil Status--</option>
         <option value="Single">Single</option>
         <option value="Married">Married</option>
@@ -39,10 +39,10 @@
     </select><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="cidpurok" oninput="this.value = this.value.toUpperCase();updateText()" required>
+    <select class="text-left form-control" name="purok" id="cidpurok" onchange="updateText()" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
-        <option value="Hurawan">Huwaran</option>
+        <option value="Huwaran">Huwaran</option>
         <option value="Kaakbayan">Kaakbayan</option>
         <option value="New Princesa">New Princesa</option>
         <option value="San Franciso I">San Franciso I</option>
@@ -82,7 +82,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("indigency2PrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("certificate_of_indigency_aicsForm");  // Use the unique form ID
+        let form = document.getElementById("certificate_of_indigency_aics_form");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {
