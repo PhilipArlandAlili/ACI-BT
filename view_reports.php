@@ -57,6 +57,7 @@ if (!isset($_SESSION['username'])) {
             const certificate_of_indigency_aics = <?php echo isset($count_certificate_of_indigency_aics) ? (int) $count_certificate_of_indigency_aics : 0; ?>;
             const complaint_certificate = <?php echo isset($count_complaint_certificate) ? (int) $count_complaint_certificate : 0; ?>;
             const death_certificate = <?php echo isset($count_death_certificate) ? (int) $count_death_certificate : 0; ?>;
+            const first_time_job_seeker = <?php echo isset($count_first_time_job_seeker) ? (int) $count_first_time_job_seeker : 0; ?>;
             const lot_ownership = <?php echo isset($count_lot_ownership) ? (int) $count_lot_ownership : 0; ?>;
             const transfer_of_residency = <?php echo isset($count_transfer_of_residency) ? (int) $count_transfer_of_residency : 0; ?>;
 
@@ -74,6 +75,7 @@ if (!isset($_SESSION['username'])) {
                 const certificate_of_indigency_aics_percent = (certificate_of_indigency_aics / sum) * 100;
                 const complaint_certificate_percent = (complaint_certificate / sum) * 100;
                 const death_certificate_percent = (death_certificate / sum) * 100;
+                const first_time_job_seeker_percent = (first_time_job_seeker / sum) * 100;
                 const lot_ownership_percent = (lot_ownership / sum) * 100;
                 const transfer_of_residency_percent = (transfer_of_residency / sum) * 100;
 
@@ -88,6 +90,7 @@ if (!isset($_SESSION['username'])) {
                 document.getElementById('certificate_of_indigency_aics_percent').innerHTML = certificate_of_indigency_aics_percent.toFixed(2) + '%';
                 document.getElementById('complaint_certificate_percent').innerHTML = complaint_certificate_percent.toFixed(2) + '%';
                 document.getElementById('death_certificate_percent').innerHTML = death_certificate_percent.toFixed(2) + '%';
+                document.getElementById('first_time_job_seeker').innerHTML = first_time_job_seeker.toFixed(2) + '%';
                 document.getElementById('lot_ownership_percent').innerHTML = lot_ownership_percent.toFixed(2) + '%';
                 document.getElementById('transfer_of_residency_percent').innerHTML = transfer_of_residency_percent.toFixed(2) + '%';
             })
@@ -841,7 +844,7 @@ if (!isset($_SESSION['username'])) {
                             <script>
                                 // Data for the bar chart
                                 const chartData = {
-                                    labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Cohabitation', 'Certificate of Employability', 'Certificate of Income', 'Certificate of Indigency', 'Certificate of Indidency (AICS)', 'Complaint Certificate', 'Death Certificate', 'Lot Ownership', 'Transfer of Residency'],
+                                    labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Cohabitation', 'Certificate of Employability', 'Certificate of Income', 'Certificate of Indigency', 'Certificate of Indidency (AICS)', 'Complaint Certificate', 'Death Certificate', 'First Time Job Seeker', 'Lot Ownership', 'Transfer of Residency'],
                                     datasets: [{
                                         label: 'Number of Issued Certificates',
                                         backgroundColor: [
@@ -856,7 +859,8 @@ if (!isset($_SESSION['username'])) {
                                             'rgba(153, 0, 0, 0.2)',
                                             'rgba(77, 0, 77, 0.2)',
                                             'rgba(128, 0, 0, 0.2)',
-                                            'rgba(153, 153, 0, 0.2)'
+                                            'rgba(153, 153, 0, 0.2)',
+                                            'rgba(353, 153, 0, 0.2)'
                                         ],
                                         borderColor: [
                                             'rgba(255, 0, 0, 1)',
@@ -870,7 +874,8 @@ if (!isset($_SESSION['username'])) {
                                             'rgba(153, 0, 0, 1)',
                                             'rgba(77, 0, 77, 1)',
                                             'rgba(128, 0, 0, 1)',
-                                            'rgba(153, 153, 0, 1)'
+                                            'rgba(153, 153, 0, 1)',
+                                            'rgba(353, 100, 10, 0.2)'
                                         ],
                                         borderWidth: 1,
                                         data: [
@@ -884,6 +889,7 @@ if (!isset($_SESSION['username'])) {
                                             certificate_of_indigency_aics,
                                             complaint_certificate,
                                             death_certificate,
+                                            first_time_job_seeker,
                                             lot_ownership,
                                             transfer_of_residency
                                         ]
@@ -1023,16 +1029,16 @@ if (!isset($_SESSION['username'])) {
                                                     </thead>
                                                     <tbody>`;
 
-                                                        // Populate table rows dynamically
-                                                        chartLabels.forEach((label, index) => {
-                                                        content += `
+                                    // Populate table rows dynamically
+                                    chartLabels.forEach((label, index) => {
+                                        content += `
                                                         <tr>
                                                             <td>${label}</td>
                                                             <td class="num_issued">${chartValues[index]}</td>
                                                         </tr>`;
-                                                        });
+                                    });
 
-                                                        content += `
+                                    content += `
                                                     </tbody>
                                                 </table>
                                                 <div class="chart-container" style="border: 1px solid;">
@@ -1097,6 +1103,7 @@ if (!isset($_SESSION['username'])) {
                                                     data["Certificate of Indigency AICS"],
                                                     data["Complaint Certificate"],
                                                     data["Death Certificate"],
+                                                    data["First Time Job Seeker"],
                                                     data["Lot Ownership"],
                                                     data["Transfer of Residency"]
                                                 ];
