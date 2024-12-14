@@ -79,11 +79,11 @@ include 'queries.php';
                                 <option value="certificate_of_income">Certificate of Income</option>
                                 <!-- <option value="certificate_of_indigency">Certificate of Indigency</option> -->
                                 <option value="certificate_of_indigency_aics">Certificate of Indigency</option>
+                                <option value="transfer_of_residency">Certificate of Transfer</option>
                                 <option value="complaint_certificate">Complaint Certificate</option>
                                 <option value="death_certificate">Death Certificate</option>
                                 <option value="first_time_job_seeker">First Time Job Seeker</option>
                                 <option value="lot_ownership">Lot Ownership</option>
-                                <option value="transfer_of_residency">Certificate of Transfer</option>
                             </select>
                         </div>
                         <hr>
