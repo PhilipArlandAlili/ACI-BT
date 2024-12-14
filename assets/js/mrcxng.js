@@ -301,6 +301,63 @@ function updateText() {
 
     } else if (certificate_type.value == 'complaint_certificate') {
 
+        var ccfirst_name = document.getElementById('ccfirst_name');
+        var ccmiddle_name = document.getElementById('ccmiddle_name');
+        var cclast_name = document.getElementById('cclast_name');
+        var ccsuffix = document.getElementById('ccsuffix');
+        var ccbirthdate = document.getElementById('ccbirthdate');
+        var ccpurok = document.getElementById('ccpurok');
+        var ccdate_of_complain = document.getElementById('ccdate_of_complain');
+        var ccfirst_name_respondent = document.getElementById('ccfirst_name_respondent');
+        var ccmiddle_name_respondent = document.getElementById('ccmiddle_name_respondent');
+        var cclast_name_respondent = document.getElementById('cclast_name_respondent');
+        var ccsuffix_respondent = document.getElementById('ccsuffix_respondent');
+        var cccase_no = document.getElementById('cccase_no');
+        var ccvawc_official_name = document.getElementById('ccvawc_official_name');
+        
+    
+        const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+// Safely handle ccdate_of_complain
+var complain_date = ccdate_of_complain.value ? new Date(ccdate_of_complain.value) : null;
+var complain_month = complain_date && !isNaN(complain_date.getTime()) ? month_names[complain_date.getMonth()] : '';
+var complain_day = complain_date && !isNaN(complain_date.getTime()) ? complain_date.getDate() : '';
+var complain_year = complain_date && !isNaN(complain_date.getTime()) ? complain_date.getFullYear() : '';
+
+// Safely retrieve elements from iframeDocument
+var pccfirst_name = iframeDocument.getElementById('ccfirst_name');
+var pccmiddle_name = iframeDocument.getElementById('ccmiddle_name');
+var pcclast_name = iframeDocument.getElementById('cclast_name');
+var pccsuffix = iframeDocument.getElementById('ccsuffix');
+var pccbirthdate = iframeDocument.getElementById('ccbirthdate');
+var pccpurok = iframeDocument.getElementById('ccpurok');
+var pcomplain_day = iframeDocument.getElementById('complain_day');
+var pcomplain_month = iframeDocument.getElementById('complain_month');
+var pcomplain_year = iframeDocument.getElementById('complain_year');
+var pccfirst_name_respondent = iframeDocument.getElementById('ccfirst_name_respondent');
+var pccmiddle_name_respondent = iframeDocument.getElementById('ccmiddle_name_respondent');
+var pcclast_name_respondent = iframeDocument.getElementById('cclast_name_respondent');
+var pccsuffix_respondent = iframeDocument.getElementById('ccsuffix_respondent');
+var pcccase_no = iframeDocument.getElementById('cccase_no');
+var pccvawc_official_name = iframeDocument.getElementById('ccvawc_official_name');
+
+// Populate the iframe elements
+if (pccfirst_name) pccfirst_name.innerText = ccfirst_name.value;
+if (pccmiddle_name) pccmiddle_name.innerText = ccmiddle_name.value;
+if (pcclast_name) pcclast_name.innerText = cclast_name.value;
+if (pccsuffix) pccsuffix.innerText = ccsuffix.value;
+if (pccbirthdate) pccbirthdate.innerText = showAge(ccbirthdate);
+if (pccpurok) pccpurok.innerText = ccpurok.value;
+if (pcomplain_day) pcomplain_day.innerText = complain_day;
+if (pcomplain_month) pcomplain_month.innerText = complain_month;
+if (pcomplain_year) pcomplain_year.innerText = complain_year;
+if (pccfirst_name_respondent) pccfirst_name_respondent.innerText = ccfirst_name_respondent.value;
+if (pccmiddle_name_respondent) pccmiddle_name_respondent.innerText = ccmiddle_name_respondent.value;
+if (pcclast_name_respondent) pcclast_name_respondent.innerText = cclast_name_respondent.value;
+if (pccsuffix_respondent) pccsuffix_respondent.innerText = ccsuffix_respondent.value;
+if (pcccase_no) pcccase_no.innerText = cccase_no.value;
+if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_name.value
+
     } else if (certificate_type.value == 'death_certificate') {
         var dcfirst_name = document.getElementById('dcfirst_name');
         var dcmiddle_name = document.getElementById('dcmiddle_name');
