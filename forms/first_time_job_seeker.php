@@ -98,10 +98,30 @@
 
     <label for="suffix">Role:</label>
     <select class="text-left form-control" name="suffix" id="ftogrole" oninput="updateText();">
-        <option value="">N/A</option>
         <option value="Parent">Parent</option>
         <option value="Guardian">Guardian</option>
     </select><br>
+
+    <label for="period_of_residency">Period of Residency:</label>
+    <div class="radios d-flex gap-3">
+        <div class="form-check">
+            <input class="form-check-input" name="ftogperiod_of_residency" onclick="updateText()" type="radio"
+                value="months" id="ftogmonth" required>
+            <label class="form-check-label" for="radioMonths">
+                Months
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" name="ftogperiod_of_residency" onclick="updateText()" type="radio" value="years"
+                id="ftogyear" required>
+            <label class="form-check-label" for="radioYears">
+                Years
+            </label>
+        </div>
+    </div>
+
+    <input type="number" class="form-control" id="ftogperiod_of_residency" maxlength="2" max="99" min="1"
+        oninput="showAge();updateText()" name="period_of_residency" placeholder="Ex. 3 years/months" required><br>
 
     <label for="purok">Purok:</label>
     <select class="text-left form-control" name="purok" id="ftogpurok" oninput="updateText();" required>
@@ -117,26 +137,6 @@
         <option value="Uha">UHA</option>
     </select><br>
 
-    <label for="period_of_residency">Period of Residency:</label>
-    <div class="radios d-flex gap-3">
-        <div class="form-check">
-            <input class="form-check-input" name="period_of_residency" onclick="updateText()" type="radio"
-                value="months" id="ftogmonth" required>
-            <label class="form-check-label" for="radioMonths">
-                Months
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" name="period_of_residency" onclick="updateText()" type="radio" value="years"
-                id="ftogyear" required>
-            <label class="form-check-label" for="radioYears">
-                Years
-            </label>
-        </div>
-    </div>
-
-    <input type="number" class="form-control" id="ftogperiod_of_residency" maxlength="2" max="99" min="1"
-        oninput="showAge();updateText()" name="period_of_residency" placeholder="Ex. 3 years/months" required><br>
     <hr>
 
 

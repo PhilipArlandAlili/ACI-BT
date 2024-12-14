@@ -124,6 +124,11 @@
         .text-justify {
             text-align: justify;
         }
+
+        .cap-officers {
+            display: flex;
+            justify-content: space-around;
+        }
     </style>
 </head>
 
@@ -183,8 +188,7 @@
                 <br>
 
                 <div class="text-justify indent">
-                    This certification is valid only until <b><span id="vmonth"></span>
-                        <span id="strong"></span></b>, one( <b>1</b> ) year from the issuance.
+                    This certification is valid only until, one ( <b>1</b> ) year from the issuance.
                 </div>
             </div>
 
@@ -331,13 +335,13 @@
             <div id="cert" style="font-size: 14px;">
                 To whom it may concern:
                 <br><br>
-                <div class="text-justify" style="font-size: 15px;">
+                <div class="text-justify indent" style="font-size: 15px;">
                     I, <!-- ft oteking -->
                     <b><span id="ftofirst_name"></span>
                         <span id="ftomiddle_name"></span>
                         <span id="ftolast_name"></span>
                         <span id="ftosuffix"></span>,
-                        <span id="ftoage">{age}</span></b> years of age,
+                        <span id="ftbirthdate"></span></b> years of age,
                     resident of <b><span id="ftoperiod_of_residency"></span></b>
                     <b id="ftoyear_month"></b>, availing the benefit of
                     <b>Republic Act 11261</b>, otherwise known as the
@@ -378,12 +382,6 @@
                         id="years"></span></b>.
             </div><br>
 
-            <style>
-                .cap-officers {
-                    display: flex;
-                    justify-content: space-around;
-                }
-            </style>
             <div class="officer-containers">
                 <div class="cap-officers">
                     <div class="captain center">
@@ -401,40 +399,42 @@
                         <b>
                             <h4>PHILIP ARLAND P. ALILI</h4>
                         </b>
-                        <div style="margin-top: -25px;"><i>Duty Officer</i></div>
+                        <div style="margin-top: -25px;"><i>Barangay Kagawad/Duty Officer</i></div>
                     </div>
                 </div>
             </div>
             <hr>
             <div class="guardians" style="font-size: 16px;">
                 <p style="margin-top: -2%;">For applicants at least fifteen years old to less than 18 years of age:</p>
-                <div class="guardian-details text-justify">
+                <div class="guardian-details text-justify indent">
                     I, <!-- fto guardian  -->
                     <b><span id="ftogfirst_name"></span>
                         <span id="ftogmiddle_name"></span>
                         <span id="ftoglast_name"></span>
                         <span id="ftogsuffix"></span></b>,
-                    <b><span id="ftogage">Age</span></b> years old, <b>parent/guardian</b>
+                    <b><span id="ftogbirthdate"></span></b> years old, <b><span id="ftogrole"></span></b>
                     of <!-- ftoa alaga  -->
                     <b><span id="ftogafirst_name"></span>
                         <span id="ftogamiddle_name"></span>
                         <span id="ftogalast_name"></span>
                         <span id="ftogasuffix"></span></b>,
-                        
+
                     and a resident of <b><span id="ftogpurok"></span></b> for
-                    <b><span>3</span></b>
-                    <b>(years/months)</b>, do hereby give my consent for my child/dependent to avail the benefits of
-                    Republic Act 11261 and be bound by the above-mentioned conditions.
+                    <b><span id="ftogperiod_of_residency"></span></b>
+                    <b><span id="ftogyear_month"></span></b>, do hereby give my consent for my child/dependent to avail
+                    the benefits of <b>Republic Act 11261</b> and be bound by the above-mentioned conditions.
                 </div><br>
-                <div class="officer-container" style="margin-top: -1px;">
+                <div class="officer-container" style="margin-top: 1px;">
                     Signed by:
                     <b style="margin-top: 20px;">
-                        <span id="ftogsfirst_name"></span>
+                        <span id="ftogsfirst_name">Philip Arland Alili</span>
                         <span id="ftogsmiddle_name"></span>
                         <span id="ftogslast_name"></span>
                         <span id="ftogssuffix"></span></b>
                     </b>
-                    <p style="margin-top: -5px;">Parent/Guardian</p>
+                    <p style="margin-top: -5px;">
+                        <span id="ftogsrole">Parent</span>
+                    </p>
                 </div>
             </div>
         </div>

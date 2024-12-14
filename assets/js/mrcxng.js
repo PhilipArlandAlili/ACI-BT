@@ -370,6 +370,163 @@ function updateText() {
         pdcreq_last_name.innerText = dcreq_last_name.value;
         pdcreq_suffix.innerText = dcreq_suffix.value;
         pdcrelationship.innerText = dcrelationship.value;
+    } else if (certificate_type.value == 'first_time_job_seeker') {
+        // From PHP
+        // First time jobseeker
+        var ftfirst_name = document.getElementById('ftfirst_name');
+        var ftmiddle_name = document.getElementById('ftmiddle_name');
+        var ftlast_name = document.getElementById('ftlast_name');
+        var ftsuffix = document.getElementById('ftsuffix');
+        var ftbirthdate = document.getElementById('ftbirthdate');
+        var ftpurok = document.getElementById('ftpurok');
+        var ftpormonth = document.getElementById('ftmonth');
+        var ftporyear = document.getElementById('ftyear');
+        var ftperiod_of_residency = document.getElementById('ftperiod_of_residency');
+
+        // From HTML
+        var pftfirst_name = iframeDocument.getElementById('ftfirst_name');
+        var pftmiddle_name = iframeDocument.getElementById('ftmiddle_name');
+        var pftlast_name = iframeDocument.getElementById('ftlast_name');
+        var pftsuffix = iframeDocument.getElementById('ftsuffix');
+        var pftbirthdate = iframeDocument.getElementById('ftbirthdate');
+        var pftpurok = iframeDocument.getElementById('ftpurok');
+        var pftyear_month = iframeDocument.getElementById('ftyear_month');
+        var pftperiod_of_residency = iframeDocument.getElementById('ftperiod_of_residency');
+
+        pftfirst_name.innerText = ftfirst_name.value;
+        pftmiddle_name.innerText = ftmiddle_name.value;
+        pftlast_name.innerText = ftlast_name.value;
+        pftsuffix.innerText = ftsuffix.value;
+        pftbirthdate.innerText = showAge(ftbirthdate);
+        pftpurok.innerText = ftpurok.value;
+
+        // Oathtaking Seeker Name
+        var pftofirst_name = iframeDocument.getElementById('ftofirst_name');
+        var pftomiddle_name = iframeDocument.getElementById('ftomiddle_name');
+        var pftolast_name = iframeDocument.getElementById('ftolast_name');
+        var pftosuffix = iframeDocument.getElementById('ftosuffix');
+        var pftoyear_month = iframeDocument.getElementById('ftoyear_month');
+        var pftoperiod_of_residency = iframeDocument.getElementById('ftoperiod_of_residency');
+
+        pftofirst_name.innerText = ftfirst_name.value;
+        pftomiddle_name.innerText = ftmiddle_name.value;
+        pftolast_name.innerText = ftlast_name.value;
+        pftosuffix.innerText = ftsuffix.value;
+
+        // Seeker Signature Name
+        var pftosfirst_name = iframeDocument.getElementById('ftosfirst_name');
+        var pftosmiddle_name = iframeDocument.getElementById('ftosmiddle_name');
+        var pftoslast_name = iframeDocument.getElementById('ftoslast_name');
+        var pftossuffix = iframeDocument.getElementById('ftossuffix');
+
+        pftosfirst_name.innerText = ftfirst_name.value;
+        pftosmiddle_name.innerText = ftmiddle_name.value;
+        pftoslast_name.innerText = ftlast_name.value;
+        pftossuffix.innerText = ftsuffix.value;
+
+        // Guardian Alaga Name
+        var pftogafirst_name = iframeDocument.getElementById('ftogafirst_name');
+        var pftogamiddle_name = iframeDocument.getElementById('ftogamiddle_name');
+        var pftogalast_name = iframeDocument.getElementById('ftogalast_name');
+        var pftogasuffix = iframeDocument.getElementById('ftogasuffix');
+
+        pftogafirst_name.innerText = ftfirst_name.value;
+        pftogamiddle_name.innerText = ftmiddle_name.value;
+        pftogalast_name.innerText = ftlast_name.value;
+        pftogasuffix.innerText = ftsuffix.value;
+
+        if (ftpormonth.checked) {
+            if (ftperiod_of_residency.value == 1) {
+                pftyear_month.innerText = " Month";
+                pftoyear_month.innerText = " Month";
+            } else if (ftperiod_of_residency.value > 1) {
+                pftyear_month.innerText = " Months";
+                pftoyear_month.innerText = " Months";
+            } else {
+                pftyear_month.innerText = "";
+                pftoyear_month.innerText = "";
+            }
+        } else if (ftporyear.checked) {
+            if (ftperiod_of_residency.value == 1) {
+                pftyear_month.innerText = " Year";
+                pftoyear_month.innerText = " Year";
+            } else if (ftperiod_of_residency.value > 1) {
+                pftyear_month.innerText = " Years";
+                pftoyear_month.innerText = " Years";
+            } else {
+                pftyear_month.innerText = "";
+                pftoyear_month.innerText = "";
+            }
+        } else {
+            pftyear_month.innerText = "";
+            pftoyear_month.innerText = "";
+        }
+        pftperiod_of_residency.innerText = ftperiod_of_residency.value;
+        pftoperiod_of_residency.innerText = ftperiod_of_residency.value;
+
+        // Guardian of the galaxy
+        var ftogfirst_name = document.getElementById('ftogfirst_name');
+        var ftogmiddle_name = document.getElementById('ftogmiddle_name');
+        var ftoglast_name = document.getElementById('ftoglast_name');
+        var ftogsuffix = document.getElementById('ftogsuffix');
+        var ftogbirthdate = document.getElementById('ftogbirthdate');
+        var ftogrole = document.getElementById('ftogrole');
+        var ftogpurok = document.getElementById('ftogpurok');
+        var ftogpormonth = document.getElementById('ftogmonth');
+        var ftogporyear = document.getElementById('ftogyear');
+        var ftogperiod_of_residency = document.getElementById('ftogperiod_of_residency');
+
+        var pftogfirst_name = iframeDocument.getElementById('ftogfirst_name');
+        var pftogmiddle_name = iframeDocument.getElementById('ftogmiddle_name');
+        var pftoglast_name = iframeDocument.getElementById('ftoglast_name');
+        var pftogsuffix = iframeDocument.getElementById('ftogsuffix');
+        var pftogbirthdate = iframeDocument.getElementById('ftogbirthdate');
+        var pftogrole = iframeDocument.getElementById('ftogrole');
+        var pftogsrole = iframeDocument.getElementById('ftogsrole');
+        var pftogpurok = iframeDocument.getElementById('ftogpurok');
+        var pftogyear_month = iframeDocument.getElementById('ftogyear_month');
+        var pftogperiod_of_residency = iframeDocument.getElementById('ftogperiod_of_residency');
+
+        pftogfirst_name.innerText = ftogfirst_name.value;
+        pftogmiddle_name.innerText = ftogmiddle_name.value;
+        pftoglast_name.innerText = ftoglast_name.value;
+        pftogsuffix.innerText = ftogsuffix.value;
+        pftogbirthdate.innerText = showAge(ftogbirthdate);
+        pftogrole.innerText = ftogrole.value;
+        pftogsrole.innerText = ftogrole.value;
+        pftogpurok.innerText = ftogpurok.value;
+
+        if (ftogpormonth.checked) {
+            if (ftogperiod_of_residency.value == 1) {
+                pftogyear_month.innerText = " Month";
+            } else if (ftogperiod_of_residency.value > 1) {
+                pftogyear_month.innerText = " Months";
+            } else {
+                pftogyear_month.innerText = "";
+            }
+        } else if (ftogporyear.checked) {
+            if (ftogperiod_of_residency.value == 1) {
+                pftogyear_month.innerText = " Year";
+            } else if (ftogperiod_of_residency.value > 1) {
+                pftogyear_month.innerText = " Years";
+            } else {
+                pftogyear_month.innerText = "";
+            }
+        } else {
+            pftogyear_month.innerText = "";
+        }
+        pftogperiod_of_residency.innerText = ftogperiod_of_residency.value;
+
+        // Guardian of the Galaxy Signature
+        var pftogsfirst_name = iframeDocument.getElementById('ftogsfirst_name');
+        var pftogsmiddle_name = iframeDocument.getElementById('ftogsmiddle_name');
+        var pftogslast_name = iframeDocument.getElementById('ftogslast_name');
+        var pftogssuffix = iframeDocument.getElementById('ftogssuffix');
+
+        pftogsfirst_name.innerText = ftogfirst_name.value;
+        pftogsmiddle_name.innerText = ftogmiddle_name.value;
+        pftogslast_name.innerText = ftoglast_name.value;
+        pftogssuffix.innerText = ftogsuffix.value;
     } else if (certificate_type.value == 'lot_ownership') {
         // From PHP
         var lofirst_name = document.getElementById('lofirst_name');
@@ -465,7 +622,6 @@ function updateText() {
         ptrprevious_address.innerText = trprevious_address.value;
         ptrpurpose.innerText = trpurpose.value;
     }
-
 }   
 
 function validateBirthdate(birthdate_input) {
