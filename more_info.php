@@ -164,7 +164,17 @@
                                             echo "
                                             <th>Full Name</th>
                                             <th>Address</th>
-                                            <th>Birthdate</th>
+                                            <th>Period of Residency</th>
+                                            <th>Singed Date</th>
+                                            <th>Validation Date</th>
+                                            <th>Witness</th>
+                                            <th>Age</th>
+                                            <th>Full Name (Consent)</th>
+                                            <th>Relationship</th>
+                                            <th>Age</th>
+                                            <th>Adress</th>
+                                            <th>Period of Residency</th>
+                                            <th>Duty Officer Name</th>
                                             ";
                                         }
                                         // Lot Ownership
@@ -534,23 +544,36 @@
                                     // First Time Job Seeker
                                     elseif ($doc_id == 11) {
                                         // Fetch data from first_time_job_seeker table when doc_id is 11
-                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, birthdate
-                                        FROM first_time_job_seeker";
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, period_of_residency, signed_date, validation_date, witness, age, consent_first_name, consent_middle_name, consent_last_name, consent_suffix, relationship, consent_age, consent_address, consent_period_of_residency, duty_officer_name
+                                        FROM first_time_job_seeker
+                                        ORDER BY id DESC";
 
                                         $result = $conn->query($sql);
 
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                // echo "<td>" . $row["id"] . "</td>";
                                                 $fullName = $row["first_name"]
                                                     . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                     . " " . $row["last_name"]
-                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                    . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                                 echo "<td>" . $fullName . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
-                                                echo "<td>" . $row["birthdate"] . "</td>";
-                                                echo "</tr>";
+                                                echo "<td>" . $row["period_of_residency"] . "</td>";
+                                                echo "<td>" . $row["signed_date"] . "</td>";
+                                                echo "<td>" . $row["validation_date"] . "</td>";
+                                                echo "<td>" . $row["witness"] . "</td>";
+                                                echo "<td>" . $row["age"] . "</td>";
+                                                $fullNameConsent = $row["consent_first_name"]
+                                                    . (!empty($row["consent_middle_name"]) ? " " . $row["consent_middle_name"] : "")
+                                                    . " " . $row["consent_last_name"]
+                                                    . (!empty($row["consent_suffix"]) ? " " . $row["consent_suffix"] : "");
+                                                echo "<td>" . $fullNameConsent . "</td>";
+                                                echo "<td>" . $row["relationship"] . "</td>";
+                                                echo "<td>" . $row["consent_age"] . "</td>";
+                                                echo "<td>" . $row["consent_address"] . "</td>";
+                                                echo "<td>" . $row["consent_period_of_residency"] . "</td>";
+                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
                                             }
                                         } else {
                                             echo "<tr><td colspan='3'><center>No first time job seekers found</center></td></tr>";

@@ -249,34 +249,34 @@ if (!isset($_SESSION['username'])) {
                                             echo "</tbody>";
                                         }
                                         // For Certificate of Indigency
-                                        if ($table == "certificate_of_indigency_keeps") {
-                                            echo "<thead>";
-                                            echo "<tr>";
-                                            echo "<th>Full Name</th>";
-                                            echo "<th>Age</th>";
-                                            echo "<th>Civil Status</th>";
-                                            echo "<th>Address</th>";
-                                            echo "<th>Purpose</th>";
-                                            echo "<th>Issued Date</th>";
-                                            echo "<th>Duty Officer Name</th>";
-                                            echo "</tr>";
-                                            echo "</thead>";
-                                            echo "<tbody>";
-                                            echo "<tr>";
-                                            $fullName = $row["first_name"]
-                                                . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
-                                                . " " . $row["last_name"]
-                                                . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
-                                            echo "<td>" . $fullName . "</td>";
-                                            echo "<td>" . $row["age"] . "</td>";
-                                            echo "<td>" . $row["civil_status"] . "</td>";
-                                            echo "<td>" . $row["address"] . "</td>";
-                                            echo "<td>" . $row["purpose"] . "</td>";
-                                            echo "<td>" . $row["issued_date"] . "</td>";
-                                            echo "<td>" . $row["duty_officer_name"] . "</td>";
-                                            echo "</tr>";
-                                            echo "</tbody>";
-                                        }
+                                        // if ($table == "certificate_of_indigency_keeps") {
+                                        //     echo "<thead>";
+                                        //     echo "<tr>";
+                                        //     echo "<th>Full Name</th>";
+                                        //     echo "<th>Age</th>";
+                                        //     echo "<th>Civil Status</th>";
+                                        //     echo "<th>Address</th>";
+                                        //     echo "<th>Purpose</th>";
+                                        //     echo "<th>Issued Date</th>";
+                                        //     echo "<th>Duty Officer Name</th>";
+                                        //     echo "</tr>";
+                                        //     echo "</thead>";
+                                        //     echo "<tbody>";
+                                        //     echo "<tr>";
+                                        //     $fullName = $row["first_name"]
+                                        //         . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
+                                        //         . " " . $row["last_name"]
+                                        //         . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
+                                        //     echo "<td>" . $fullName . "</td>";
+                                        //     echo "<td>" . $row["age"] . "</td>";
+                                        //     echo "<td>" . $row["civil_status"] . "</td>";
+                                        //     echo "<td>" . $row["address"] . "</td>";
+                                        //     echo "<td>" . $row["purpose"] . "</td>";
+                                        //     echo "<td>" . $row["issued_date"] . "</td>";
+                                        //     echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                        //     echo "</tr>";
+                                        //     echo "</tbody>";
+                                        // }
                                         // For Certificate of Indigency AICS
                                         if ($table == "certificate_of_indigency") {
                                             echo "<thead>";
@@ -452,13 +452,46 @@ if (!isset($_SESSION['username'])) {
                                         if ($table == "first_time_job_seeker") {
                                             echo "<thead>";
                                             echo "<tr>";
-                                            // echo "<th>ID</th>";
                                             echo "<th>Full Name</th>";
                                             echo "<th>Address</th>";
-                                            echo "<th>Birthdate</th>";
+                                            echo "<th>Period of Residency</th>";
+                                            echo "<th>Singed Date</th>";
+                                            echo "<th>Validation Date</th>";
+                                            echo "<th>Witness</th>";
                                             echo "<th>Age</th>";
-                                            echo "<th>Civil Status</th>";
-
+                                            echo "<th>Full Name (Consent)</th>";
+                                            echo "<th>Relationship</th>";
+                                            echo "<th>Age</th>";
+                                            echo "<th>Adress</th>";
+                                            echo "<th>Period of Residency</th>";
+                                            echo "<th>Duty Officer Name</th>";
+                                            echo "</tr>";
+                                            echo "</thead>";
+                                            echo "<tbody>";
+                                            echo "<tr>";
+                                            $fullName = $row["first_name"]
+                                                . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
+                                                . " " . $row["last_name"]
+                                                . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
+                                            echo "<td>" . $fullName . "</td>";
+                                            echo "<td>" . $row["address"] . "</td>";
+                                            echo "<td>" . $row["period_of_residency"] . "</td>";
+                                            echo "<td>" . $row["signed_date"] . "</td>";
+                                            echo "<td>" . $row["validation_date"] . "</td>";
+                                            echo "<td>" . $row["witness"] . "</td>";
+                                            echo "<td>" . $row["age"] . "</td>";
+                                            $fullNameConsent = $row["consent_first_name"]
+                                                . (!empty($row["consent_middle_name"]) ? " " . $row["consent_middle_name"] : "")
+                                                . " " . $row["consent_last_name"]
+                                                . (!empty($row["consent_suffix"]) ? " " . $row["consent_suffix"] : "");
+                                            echo "<td>" . $fullNameConsent . "</td>";
+                                            echo "<td>" . $row["relationship"] . "</td>";
+                                            echo "<td>" . $row["consent_age"] . "</td>";
+                                            echo "<td>" . $row["consent_address"] . "</td>";
+                                            echo "<td>" . $row["consent_period_of_residency"] . "</td>";
+                                            echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                            echo "</tr>";
+                                            echo "</tbody>";
                                         }
                                     }
                                 } else {

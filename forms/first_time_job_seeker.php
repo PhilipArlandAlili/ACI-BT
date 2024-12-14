@@ -93,7 +93,7 @@
                             <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                         </div>
                         <div class="modal-footer d-flex justify-content-around">
-                            <button class="w-25 btn btn-primary" name="business_permit_new"
+                            <button class="w-25 btn btn-primary" name="first_time_job_seeker"
                                 onclick="printIframe()">Yes</button>
                             <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                         </div>
@@ -107,22 +107,22 @@
     <div class="form-section" id="guardian_section">
         <label for="" class="fw-bold">Guardian</label><br>
         <label for="">First Name:</label>
-        <input type="text" class="form-control" id="ftogfirst_name" name="first_name" maxlength="50"
+        <input type="text" class="form-control" id="ftogfirst_name" name="ftogfirst_name" maxlength="50"
             oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
             placeholder="Ex. Juan"><br>
 
         <label for="">Middle Name:</label>
-        <input type="text" class="form-control" id="ftogmiddle_name" name="middle_name" maxlength="50"
+        <input type="text" class="form-control" id="ftogmiddle_name" name="ftogmiddle_name" maxlength="50"
             oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
             placeholder="Ex. Reyes"><br>
 
         <label for="">Last Name:</label>
-        <input type="text" class="form-control" id="ftoglast_name" name="last_name" maxlength="50"
+        <input type="text" class="form-control" id="ftoglast_name" name="ftoglast_name" maxlength="50"
             oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
             placeholder="Ex. Dela Cruz"><br>
 
         <label for="suffix">Suffix:</label>
-        <select class="text-left form-control" name="suffix" id="ftogsuffix" onchange="updateText();">
+        <select class="text-left form-control" name="ftogsuffix" id="ftogsuffix" onchange="updateText();">
             <option value="">N/A</option>
             <option value="Jr">Jr</option>
             <option value="Sr">Sr</option>
@@ -133,11 +133,11 @@
 
         <label for="birthdate">Birthday:</label>
         <input type="date" class="form-control" id="ftogbirthdate"
-            oninput=" validateBirthdate(this);this.value = this.value.toUpperCase();updateText();" name="birthdate"
+            oninput=" validateBirthdate(this);this.value = this.value.toUpperCase();updateText();" name="ftogbirthdate"
             required><br>
 
         <label for="suffix">Role:</label>
-        <select class="text-left form-control" name="suffix" id="ftogrole" onchange="updateText();">
+        <select class="text-left form-control" name="relationship" id="ftogrole" onchange="updateText();">
             <option value="">--Select Role--</option>
             <option value="Parent">Parent</option>
             <option value="Guardian">Guardian</option>
@@ -164,11 +164,11 @@
         </div>
 
         <input type="number" class="form-control" id="ftogperiod_of_residency" maxlength="2" max="99" min="1"
-            oninput="validatePeriodOfResidency(this);updateText()" name="period_of_residency"
+            oninput="validatePeriodOfResidency(this);updateText()" name="ftogperiod_of_residency"
             placeholder="Ex. 3 years/months"><br>
 
         <label for="purok">Purok:</label>
-        <select class="text-left form-control" name="purok" id="ftogpurok" onchange="updateText();" required>
+        <select class="text-left form-control" name="ftogpurok" id="ftogpurok" onchange="updateText();" required>
             <option value="">--Select Purok--</option>
             <option value="Centro">Centro</option>
             <option value="Huwaran">Huwaran</option>
@@ -195,7 +195,7 @@
                             <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                         </div>
                         <div class="modal-footer d-flex justify-content-around">
-                            <button class="w-25 btn btn-primary" name="business_permit_new"
+                            <button class="w-25 btn btn-primary" name="first_time_job_seeker"
                                 onclick="printIframe()">Yes</button>
                             <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                         </div>

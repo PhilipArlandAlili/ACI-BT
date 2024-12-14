@@ -60,6 +60,7 @@ if (!isset($_SESSION['username'])) {
                                                     WHEN dt.id = 7 THEN CONCAT(COALESCE(cinda.first_name, ''), ' ', COALESCE(cinda.middle_name, ''), ' ', COALESCE(cinda.last_name, ''), ' ', COALESCE(cinda.suffix, ''))
                                                     WHEN dt.id = 9 THEN CONCAT(COALESCE(cpc.first_name_complainant, ''), ' ', COALESCE(cpc.middle_name_complainant, ''), ' ', COALESCE(cpc.last_name_complainant, ''), ' ', COALESCE(cpc.suffix_complainant, ''))
                                                     WHEN dt.id = 10 THEN CONCAT(COALESCE(dc.first_name, ''), ' ', COALESCE(dc.middle_name, ''), ' ', COALESCE(dc.last_name, ''), ' ', COALESCE(dc.suffix, ''))
+                                                    WHEN dt.id = 11 THEN CONCAT(COALESCE(ftjs.first_name, ''), ' ', COALESCE(ftjs.middle_name, ''), ' ', COALESCE(ftjs.last_name, ''), ' ', COALESCE(ftjs.suffix, ''))
                                                     WHEN dt.id = 12 THEN CONCAT(COALESCE(lo.first_name, ''), ' ', COALESCE(lo.middle_name, ''), ' ', COALESCE(lo.last_name, ''), ' ', COALESCE(lo.suffix, ''))
                                                     WHEN dt.id = 8 THEN CONCAT(COALESCE(tor.first_name, ''), ' ', COALESCE(tor.middle_name, ''), ' ', COALESCE(tor.last_name, ''), ' ', COALESCE(tor.suffix, ''))
                                                 ELSE 'Unknown' 
@@ -76,6 +77,7 @@ if (!isset($_SESSION['username'])) {
                                                     LEFT JOIN certificate_of_indigency cinda ON t.client_trans_id = cinda.id AND dt.id = 7
                                                     LEFT JOIN complaint_certificate cpc ON t.client_trans_id = cpc.id AND dt.id = 9
                                                     LEFT JOIN death_certificate dc ON t.client_trans_id = dc.id AND dt.id = 10
+                                                    LEFT JOIN first_time_job_seeker ftjs ON t.client_trans_id = ftjs.id AND dt.id = 11
                                                     LEFT JOIN lot_ownership lo ON t.client_trans_id = lo.id AND dt.id = 12
                                                     LEFT JOIN transfer_of_residency tor ON t.client_trans_id = tor.id AND dt.id = 18
                                                     ORDER BY t.created_at DESC";
@@ -90,7 +92,6 @@ if (!isset($_SESSION['username'])) {
                                             echo "<td>" . $row["transact_by"] . "</td>";
                                             echo "<td>" . $row["doc_name"] . "</td>";
                                             echo "<td>" . $row["fullname"] . "</td>";
-                                            // echo "<td>" . $row["client_trans_id"] . "</td>";
                                             echo "<td>" . $row["created_at"] . "</td>";
                                             echo "<td><a href='show_client_trans.php?id=" . $row["client_trans_id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_name"]) . "'><button type='submit' class='btn btn-primary'>VIEW</button></a></td>";
                                             echo "</tr>";

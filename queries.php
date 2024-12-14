@@ -337,7 +337,7 @@ if (isset($_POST["certificate_of_indigency_keeps"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 7, ?, (SELECT COUNT(*) FROM certificate_of_indigency), ?)");
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 13, ?, (SELECT COUNT(*) FROM certificate_of_indigency), ?)");
             $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
@@ -390,7 +390,7 @@ if (isset($_POST["certificate_of_indigency"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 8, ?, (SELECT COUNT(*) FROM certificate_of_indigency_aics), ?)");
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 7, ?, (SELECT COUNT(*) FROM certificate_of_indigency_aics), ?)");
             $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
@@ -569,7 +569,7 @@ if (isset($_POST["lot_ownership"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 11, ?, (SELECT COUNT(*) FROM lot_ownership), ?)");
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 12, ?, (SELECT COUNT(*) FROM lot_ownership), ?)");
             $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
@@ -623,7 +623,7 @@ if (isset($_POST["transfer_of_residency"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 12, ?, (SELECT COUNT(*) FROM transfer_of_residency), ?)");
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 8, ?, (SELECT COUNT(*) FROM transfer_of_residency), ?)");
             $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
@@ -648,37 +648,49 @@ if (isset($_POST["first_time_job_seeker"])) {
     $middle_name = $conn->real_escape_string($_POST["middle_name"]);
     $last_name = $conn->real_escape_string($_POST["last_name"]);
     $suffix = $conn->real_escape_string($_POST["suffix"]);
-    $birthdate = $conn->real_escape_string($_POST["birthdate"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
     $period_of_residency_ym = $conn->real_escape_string($_POST["period_of_residency_ym"]);
     $period_of_residency = $conn->real_escape_string($_POST["period_of_residency"]);
-    $purok = $conn->real_escape_string($_POST["purok"]);
-    $witness = $conn->real_escape_string($_POST["witness"]);
-    $age = $conn->real_escape_string($_POST["age"]);
-    $consent_first_name = $conn->real_escape_string($_POST["consent_first_name"]);
-    $consent_middle_name = $conn->real_escape_string($_POST["consent_middle_name"]);
-    $consent_last_name = $conn->real_escape_string($_POST["consent_last_name"]);
-    $consent_suffix = $conn->real_escape_string($_POST["consent_suffix"]);
+    // $witness = $conn->real_escape_string($_POST["witness"]);
+    $birthdate = $conn->real_escape_string($_POST["birthdate"]);
+    $consent_first_name = $conn->real_escape_string($_POST["ftogfirst_name"]);
+    $consent_middle_name = $conn->real_escape_string($_POST["ftogmiddle_name"]);
+    $consent_last_name = $conn->real_escape_string($_POST["ftoglast_name"]);
+    $consent_suffix = $conn->real_escape_string($_POST["ftogsuffix"]);
     $relationship = $conn->real_escape_string($_POST["relationship"]);
-    $consent_age = $conn->real_escape_string($_POST["consent_age"]);
-    $consent_address = $conn->real_escape_string($_POST["consent_address"]);
-    $consent_period_of_recidency = $conn->real_escape_string($_POST["consent_period_of_recidency"]);
-    $duty_officer_name = $conn->real_escape_string($_POST["duty_officer_name"]);
+    $consent_age = $conn->real_escape_string($_POST["ftogbirthdate"]);
+    $consent_address = $conn->real_escape_string($_POST["ftogpurok"]);
+    $consent_period_of_recidency = $conn->real_escape_string($_POST["ftogperiod_of_residency"]);
+
+    date_default_timezone_set('Asia/Manila');
+    $signed_date = date('Y-m-d H:i:s');
+    $validation_date = date('Y-m-d H:i:s');
+    $witness = strtoupper($_SESSION['username']);
+
+    $age = date('Y') - date('Y', strtotime($birthdate));
+    $consent_age = date('Y') - date('Y', strtotime($consent_age));
+
+    $suffix = strtoupper($suffix);
+    $purok = strtoupper($purok);
+    $consent_suffix = strtoupper($consent_suffix);
+    $relationship = strtoupper($relationship);
+    $consent_address = strtoupper($consent_address);
 
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 
     $stmt = $conn->prepare("INSERT INTO first_time_job_seeker 
         (first_name, middle_name, last_name, suffix, address, period_of_residency, signed_date, validation_date, witness, age, 
          consent_first_name, consent_middle_name, consent_last_name, consent_suffix, relationship, consent_age, 
-         consent_address, consent_period_of_recidency, duty_officer_name) 
+         consent_address, consent_period_of_residency, duty_officer_name) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     $stmt->bind_param(
-        'sssssisisssssssisiss',
+        'sssssisssisssssisis',
         $first_name,
         $middle_name,
         $last_name,
         $suffix,
-        $address,
+        $purok,
         $period_of_residency,
         $signed_date,
         $validation_date,
@@ -710,7 +722,7 @@ if (isset($_POST["first_time_job_seeker"])) {
 
             $trans_stmt = $conn->prepare("INSERT INTO transactions 
                 (transact_by, doc_id, fullname, client_trans_id, created_at) 
-                VALUES (?, 13, ?, (SELECT COUNT(*) FROM first_time_job_seeker), ?)");
+                VALUES (?, 11, ?, (SELECT COUNT(*) FROM first_time_job_seeker), ?)");
             $timestamp = date('Y-m-d H:i:s');
             $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
