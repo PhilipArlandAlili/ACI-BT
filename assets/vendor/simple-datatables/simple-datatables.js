@@ -129,42 +129,15 @@
                   return !s;
                 },
                 c = (t, e) => (t ? (e ? `${t} ${e}` : t) : e || "");
-              var h = function () {
-                return (
-                  (h =
-                    Object.assign ||
-                    function (t) {
-                      for (
-                        var e, s = arguments, i = 1, n = arguments.length;
-                        i < n;
-                        i++
-                      )
-                        for (var a in (e = s[i]))
-                          Object.prototype.hasOwnProperty.call(e, a) &&
-                            (t[a] = e[a]);
-                      return t;
-                    }),
-                  h.apply(this, arguments)
-                );
-              };
-              function u(t, e, s) {
-                if (s || 2 === arguments.length)
-                  for (var i, n = 0, a = e.length; n < a; n++)
-                    (!i && n in e) ||
-                      (i || (i = Array.prototype.slice.call(e, 0, n)),
-                      (i[n] = e[n]));
-                return t.concat(i || Array.prototype.slice.call(e));
-              }
-              "function" == typeof SuppressedError && SuppressedError;
-              var p = (function () {
+              var h = (function () {
                 function t(t) {
-                  void 0 === t && (t = {});
                   var e = this;
-                  Object.entries(t).forEach(function (t) {
-                    var s = t[0],
-                      i = t[1];
-                    return (e[s] = i);
-                  });
+                  void 0 === t && (t = {}),
+                    Object.entries(t).forEach(function (t) {
+                      var s = t[0],
+                        i = t[1];
+                      return (e[s] = i);
+                    });
                 }
                 return (
                   (t.prototype.toString = function () {
@@ -176,7 +149,7 @@
                   t
                 );
               })();
-              function f(t) {
+              function u(t) {
                 for (
                   var e = arguments, s = [], i = 1;
                   i < arguments.length;
@@ -202,7 +175,7 @@
                   })
                 );
               }
-              function m(t, e, s) {
+              function p(t, e, s) {
                 var i;
                 return (
                   "#text" === t.nodeName
@@ -210,11 +183,10 @@
                     : "#comment" === t.nodeName
                     ? (i = s.document.createComment(t.data))
                     : (e
-                        ? ((i = s.document.createElementNS(
+                        ? (i = s.document.createElementNS(
                             "http://www.w3.org/2000/svg",
                             t.nodeName
-                          )),
-                          "foreignObject" === t.nodeName && (e = !1))
+                          ))
                         : "svg" === t.nodeName.toLowerCase()
                         ? ((i = s.document.createElementNS(
                             "http://www.w3.org/2000/svg",
@@ -230,11 +202,11 @@
                         }),
                       t.childNodes &&
                         t.childNodes.forEach(function (t) {
-                          return i.appendChild(m(t, e, s));
+                          return i.appendChild(p(t, e, s));
                         }),
                       s.valueDiffing &&
                         (t.value &&
-                          f(
+                          u(
                             i,
                             "HTMLButtonElement",
                             "HTMLDataElement",
@@ -247,56 +219,56 @@
                           ) &&
                           (i.value = t.value),
                         t.checked &&
-                          f(i, "HTMLInputElement") &&
+                          u(i, "HTMLInputElement") &&
                           (i.checked = t.checked),
                         t.selected &&
-                          f(i, "HTMLOptionElement") &&
+                          u(i, "HTMLOptionElement") &&
                           (i.selected = t.selected))),
                   i
                 );
               }
-              var g = function (t, e) {
+              var f = function (t, e) {
                 for (e = e.slice(); e.length > 0; ) {
                   var s = e.splice(0, 1)[0];
                   t = t.childNodes[s];
                 }
                 return t;
               };
-              function b(t, e, s) {
+              function m(t, e, s) {
                 var i,
                   n,
                   a,
                   o = e[s._const.action],
                   r = e[s._const.route];
                 [s._const.addElement, s._const.addTextElement].includes(o) ||
-                  (i = g(t, r));
+                  (i = f(t, r));
                 var l = { diff: e, node: i };
                 if (s.preDiffApply(l)) return !0;
                 switch (o) {
                   case s._const.addAttribute:
-                    if (!i || !f(i, "Element")) return !1;
+                    if (!i || !u(i, "Element")) return !1;
                     i.setAttribute(e[s._const.name], e[s._const.value]);
                     break;
                   case s._const.modifyAttribute:
-                    if (!i || !f(i, "Element")) return !1;
+                    if (!i || !u(i, "Element")) return !1;
                     i.setAttribute(e[s._const.name], e[s._const.newValue]),
-                      f(i, "HTMLInputElement") &&
+                      u(i, "HTMLInputElement") &&
                         "value" === e[s._const.name] &&
                         (i.value = e[s._const.newValue]);
                     break;
                   case s._const.removeAttribute:
-                    if (!i || !f(i, "Element")) return !1;
+                    if (!i || !u(i, "Element")) return !1;
                     i.removeAttribute(e[s._const.name]);
                     break;
                   case s._const.modifyTextElement:
-                    if (!i || !f(i, "Text")) return !1;
+                    if (!i || !u(i, "Text")) return !1;
                     s.textDiff(
                       i,
                       i.data,
                       e[s._const.oldValue],
                       e[s._const.newValue]
                     ),
-                      f(i.parentNode, "HTMLTextAreaElement") &&
+                      u(i.parentNode, "HTMLTextAreaElement") &&
                         (i.parentNode.value = e[s._const.newValue]);
                     break;
                   case s._const.modifyValue:
@@ -304,7 +276,7 @@
                     i.value = e[s._const.newValue];
                     break;
                   case s._const.modifyComment:
-                    if (!i || !f(i, "Comment")) return !1;
+                    if (!i || !u(i, "Comment")) return !1;
                     s.textDiff(
                       i,
                       i.data,
@@ -325,10 +297,10 @@
                       "svg" === e[s._const.newValue].nodeName.toLowerCase() ||
                       "http://www.w3.org/2000/svg" ===
                         i.parentNode.namespaceURI;
-                    i.parentNode.replaceChild(m(e[s._const.newValue], d, s), i);
+                    i.parentNode.replaceChild(p(e[s._const.newValue], d, s), i);
                     break;
                   case s._const.relocateGroup:
-                    u([], new Array(e[s._const.groupLength]), !0)
+                    Array.apply(void 0, new Array(e[s._const.groupLength]))
                       .map(function () {
                         return i.removeChild(i.childNodes[e[s._const.from]]);
                       })
@@ -341,10 +313,10 @@
                     i.parentNode.removeChild(i);
                     break;
                   case s._const.addElement:
-                    var c = (p = r.slice()).splice(p.length - 1, 1)[0];
-                    if (!f((i = g(t, p)), "Element")) return !1;
+                    var c = (m = r.slice()).splice(m.length - 1, 1)[0];
+                    if (!u((i = f(t, m)), "Element")) return !1;
                     i.insertBefore(
-                      m(
+                      p(
                         e[s._const.element],
                         "http://www.w3.org/2000/svg" === i.namespaceURI,
                         s
@@ -356,18 +328,18 @@
                     if (!i || 3 !== i.nodeType) return !1;
                     var h = i.parentNode;
                     h.removeChild(i),
-                      f(h, "HTMLTextAreaElement") && (h.value = "");
+                      u(h, "HTMLTextAreaElement") && (h.value = "");
                     break;
                   case s._const.addTextElement:
-                    var p;
-                    c = (p = r.slice()).splice(p.length - 1, 1)[0];
+                    var m;
+                    c = (m = r.slice()).splice(m.length - 1, 1)[0];
                     if (
                       ((n = s.document.createTextNode(e[s._const.value])),
-                      !(i = g(t, p)).childNodes)
+                      !(i = f(t, m)).childNodes)
                     )
                       return !1;
                     i.insertBefore(n, i.childNodes[c] || null),
-                      f(i.parentNode, "HTMLTextAreaElement") &&
+                      u(i.parentNode, "HTMLTextAreaElement") &&
                         (i.parentNode.value = e[s._const.value]);
                     break;
                   default:
@@ -378,26 +350,26 @@
                   !0
                 );
               }
-              function v(t, e, s) {
+              function g(t, e, s) {
                 var i = t[e];
                 (t[e] = t[s]), (t[s] = i);
               }
-              function _(t, e, s) {
+              function b(t, e, s) {
                 (e = e.slice()).reverse(),
                   e.forEach(function (e) {
                     !(function (t, e, s) {
                       switch (e[s._const.action]) {
                         case s._const.addAttribute:
                           (e[s._const.action] = s._const.removeAttribute),
-                            b(t, e, s);
+                            m(t, e, s);
                           break;
                         case s._const.modifyAttribute:
-                          v(e, s._const.oldValue, s._const.newValue),
-                            b(t, e, s);
+                          g(e, s._const.oldValue, s._const.newValue),
+                            m(t, e, s);
                           break;
                         case s._const.removeAttribute:
                           (e[s._const.action] = s._const.addAttribute),
-                            b(t, e, s);
+                            m(t, e, s);
                           break;
                         case s._const.modifyTextElement:
                         case s._const.modifyValue:
@@ -405,27 +377,27 @@
                         case s._const.modifyChecked:
                         case s._const.modifySelected:
                         case s._const.replaceElement:
-                          v(e, s._const.oldValue, s._const.newValue),
-                            b(t, e, s);
+                          g(e, s._const.oldValue, s._const.newValue),
+                            m(t, e, s);
                           break;
                         case s._const.relocateGroup:
-                          v(e, s._const.from, s._const.to), b(t, e, s);
+                          g(e, s._const.from, s._const.to), m(t, e, s);
                           break;
                         case s._const.removeElement:
                           (e[s._const.action] = s._const.addElement),
-                            b(t, e, s);
+                            m(t, e, s);
                           break;
                         case s._const.addElement:
                           (e[s._const.action] = s._const.removeElement),
-                            b(t, e, s);
+                            m(t, e, s);
                           break;
                         case s._const.removeTextElement:
                           (e[s._const.action] = s._const.addTextElement),
-                            b(t, e, s);
+                            m(t, e, s);
                           break;
                         case s._const.addTextElement:
                           (e[s._const.action] = s._const.removeTextElement),
-                            b(t, e, s);
+                            m(t, e, s);
                           break;
                         default:
                           console.log("unknown action");
@@ -433,6 +405,25 @@
                     })(t, e, s);
                   });
               }
+              var v = function () {
+                return (
+                  (v =
+                    Object.assign ||
+                    function (t) {
+                      for (
+                        var e, s = arguments, i = 1, n = arguments.length;
+                        i < n;
+                        i++
+                      )
+                        for (var a in (e = s[i]))
+                          Object.prototype.hasOwnProperty.call(e, a) &&
+                            (t[a] = e[a]);
+                      return t;
+                    }),
+                  v.apply(this, arguments)
+                );
+              };
+              "function" == typeof SuppressedError && SuppressedError;
               var w = function (t) {
                   var e = [];
                   return (
@@ -453,7 +444,7 @@
                     e
                   );
                 },
-                y = function (t) {
+                _ = function (t) {
                   var e = {},
                     s = {};
                   return (
@@ -468,9 +459,9 @@
                     e
                   );
                 },
-                D = function (t, e) {
-                  var s = y(t),
-                    i = y(e),
+                y = function (t, e) {
+                  var s = _(t),
+                    i = _(e),
                     n = {};
                   return (
                     Object.keys(s).forEach(function (t) {
@@ -479,15 +470,15 @@
                     n
                   );
                 },
-                M = function (t) {
+                N = function (t) {
                   return (
                     delete t.outerDone,
                     delete t.innerDone,
                     delete t.valueDone,
-                    !t.childNodes || t.childNodes.every(M)
+                    !t.childNodes || t.childNodes.every(N)
                   );
                 },
-                N = function (t) {
+                x = function (t) {
                   if (Object.prototype.hasOwnProperty.call(t, "data"))
                     return {
                       nodeName: "#text" === t.nodeName ? "#text" : "#comment",
@@ -496,7 +487,7 @@
                   var e = { nodeName: t.nodeName };
                   return (
                     Object.prototype.hasOwnProperty.call(t, "attributes") &&
-                      (e.attributes = h({}, t.attributes)),
+                      (e.attributes = v({}, t.attributes)),
                     Object.prototype.hasOwnProperty.call(t, "checked") &&
                       (e.checked = t.checked),
                     Object.prototype.hasOwnProperty.call(t, "value") &&
@@ -505,12 +496,12 @@
                       (e.selected = t.selected),
                     Object.prototype.hasOwnProperty.call(t, "childNodes") &&
                       (e.childNodes = t.childNodes.map(function (t) {
-                        return N(t);
+                        return x(t);
                       })),
                     e
                   );
                 },
-                x = function (t, e) {
+                D = function (t, e) {
                   if (
                     !["nodeName", "value", "checked", "selected", "data"].every(
                       function (s) {
@@ -540,14 +531,14 @@
                     if (t.childNodes.length !== e.childNodes.length) return !1;
                     if (
                       !t.childNodes.every(function (t, s) {
-                        return x(t, e.childNodes[s]);
+                        return D(t, e.childNodes[s]);
                       })
                     )
                       return !1;
                   }
                   return !0;
                 },
-                O = function (t, e, s, i, n) {
+                M = function (t, e, s, i, n) {
                   if ((void 0 === n && (n = !1), !t || !e)) return !1;
                   if (t.nodeName !== e.nodeName) return !1;
                   if (["#text", "#comment"].includes(t.nodeName))
@@ -580,22 +571,22 @@
                     return a.every(function (t, e) {
                       return t.nodeName === o[e].nodeName;
                     });
-                  var r = D(a, o);
+                  var r = y(a, o);
                   return a.every(function (t, e) {
-                    return O(t, o[e], r, !0, !0);
+                    return M(t, o[e], r, !0, !0);
                   });
                 },
-                E = function (t, e) {
-                  return u([], new Array(t), !0).map(function () {
+                O = function (t, e) {
+                  return Array.apply(void 0, new Array(t)).map(function () {
                     return e;
                   });
                 },
-                V = function (t, e) {
+                E = function (t, e) {
                   for (
                     var s = t.childNodes ? t.childNodes : [],
                       i = e.childNodes ? e.childNodes : [],
-                      n = E(s.length, !1),
-                      a = E(i.length, !1),
+                      n = O(s.length, !1),
+                      a = O(i.length, !1),
                       o = [],
                       r = function () {
                         return arguments[1];
@@ -607,10 +598,12 @@
                             a = [],
                             o = t.length,
                             r = e.length,
-                            l = u([], new Array(o + 1), !0).map(function () {
-                              return [];
-                            }),
-                            d = D(t, e),
+                            l = Array.apply(void 0, new Array(o + 1)).map(
+                              function () {
+                                return [];
+                              }
+                            ),
+                            d = y(t, e),
                             c = o === r;
                           c &&
                             t.some(function (t, s) {
@@ -624,16 +617,16 @@
                                   !c || void 0);
                             });
                           for (var h = 0; h < o; h++)
-                            for (var p = t[h], f = 0; f < r; f++) {
-                              var m = e[f];
-                              s[h] || i[f] || !O(p, m, d, c)
-                                ? (l[h + 1][f + 1] = 0)
-                                : ((l[h + 1][f + 1] = l[h][f]
-                                    ? l[h][f] + 1
+                            for (var u = t[h], p = 0; p < r; p++) {
+                              var f = e[p];
+                              s[h] || i[p] || !M(u, f, d, c)
+                                ? (l[h + 1][p + 1] = 0)
+                                : ((l[h + 1][p + 1] = l[h][p]
+                                    ? l[h][p] + 1
                                     : 1),
-                                  l[h + 1][f + 1] >= n &&
-                                    ((n = l[h + 1][f + 1]),
-                                    (a = [h + 1, f + 1])));
+                                  l[h + 1][p + 1] >= n &&
+                                    ((n = l[h + 1][p + 1]),
+                                    (a = [h + 1, p + 1])));
                             }
                           return (
                             0 !== n && {
@@ -645,7 +638,7 @@
                         })(s, i, n, a);
                         t
                           ? (o.push(t),
-                            u([], new Array(t.length), !0)
+                            Array.apply(void 0, new Array(t.length))
                               .map(r)
                               .forEach(function (e) {
                                 return (function (t, e, s, i) {
@@ -661,7 +654,7 @@
                     d();
                   return (t.subsets = o), (t.subsetsAge = 100), o;
                 },
-                $ = (function () {
+                V = (function () {
                   function t() {
                     this.list = [];
                   }
@@ -678,7 +671,7 @@
                     t
                   );
                 })();
-              function C(t, e) {
+              function $(t, e) {
                 var s,
                   i,
                   n = t;
@@ -688,7 +681,7 @@
                     (n = n.childNodes ? n.childNodes[i] : void 0);
                 return { node: n, parentNode: s, nodeIndex: i };
               }
-              function S(t, e, s) {
+              function C(t, e, s) {
                 return (
                   e.forEach(function (e) {
                     !(function (t, e, s) {
@@ -699,7 +692,7 @@
                           s._const.addTextElement,
                         ].includes(e[s._const.action])
                       ) {
-                        var r = C(t, e[s._const.route]);
+                        var r = $(t, e[s._const.route]);
                         (n = r.node), (a = r.parentNode), (o = r.nodeIndex);
                       }
                       var l,
@@ -753,7 +746,7 @@
                           n.selected = e[s._const.newValue];
                           break;
                         case s._const.replaceElement:
-                          (l = N(e[s._const.newValue])), (a.childNodes[o] = l);
+                          (l = x(e[s._const.newValue])), (a.childNodes[o] = l);
                           break;
                         case s._const.relocateGroup:
                           n.childNodes
@@ -831,10 +824,10 @@
                             1
                           )[0];
                           (n =
-                            null === (i = C(t, d)) || void 0 === i
+                            null === (i = $(t, d)) || void 0 === i
                               ? void 0
                               : i.node),
-                            (l = N(e[s._const.element])),
+                            (l = x(e[s._const.element])),
                             n.childNodes || (n.childNodes = []),
                             u >= n.childNodes.length
                               ? n.childNodes.push(l)
@@ -884,7 +877,7 @@
                             1
                           )[0];
                           (l = { nodeName: "#text", data: e[s._const.value] }),
-                            (n = C(t, d).node).childNodes ||
+                            (n = $(t, d).node).childNodes ||
                               (n.childNodes = []),
                             p >= n.childNodes.length
                               ? n.childNodes.push(l)
@@ -925,10 +918,10 @@
                   !0
                 );
               }
-              function k(t, e) {
+              function S(t, e) {
                 void 0 === e && (e = { valueDiffing: !0 });
                 var s = { nodeName: t.nodeName };
-                if (f(t, "Text", "Comment")) s.data = t.data;
+                if (u(t, "Text", "Comment")) s.data = t.data;
                 else {
                   if (t.attributes && t.attributes.length > 0)
                     (s.attributes = {}),
@@ -942,15 +935,15 @@
                       Array.prototype.slice
                         .call(t.childNodes)
                         .forEach(function (t) {
-                          return s.childNodes.push(k(t, e));
+                          return s.childNodes.push(S(t, e));
                         });
                   e.valueDiffing &&
-                    (f(t, "HTMLTextAreaElement") && (s.value = t.value),
-                    f(t, "HTMLInputElement") &&
+                    (u(t, "HTMLTextAreaElement") && (s.value = t.value),
+                    u(t, "HTMLInputElement") &&
                     ["radio", "checkbox"].includes(t.type.toLowerCase()) &&
                     void 0 !== t.checked
                       ? (s.checked = t.checked)
-                      : f(
+                      : u(
                           t,
                           "HTMLButtonElement",
                           "HTMLDataElement",
@@ -961,20 +954,20 @@
                           "HTMLProgressElement",
                           "HTMLParamElement"
                         ) && (s.value = t.value),
-                    f(t, "HTMLOptionElement") && (s.selected = t.selected));
+                    u(t, "HTMLOptionElement") && (s.selected = t.selected));
                 }
                 return s;
               }
-              var T =
+              var k =
                   /<\s*\/*[a-zA-Z:_][a-zA-Z0-9:_\-.]*\s*(?:"[^"]*"['"]*|'[^']*'['"]*|[^'"/>])*\/*\s*>|<!--(?:.|\n|\r)*?-->/g,
-                A = /\s([^'"/\s><]+?)[\s/>]|([^\s=]+)=\s?(".*?"|'.*?')/g;
-              function L(t) {
+                T = /\s([^'"/\s><]+?)[\s/>]|([^\s=]+)=\s?(".*?"|'.*?')/g;
+              function A(t) {
                 return t
                   .replace(/&lt;/g, "<")
                   .replace(/&gt;/g, ">")
                   .replace(/&amp;/g, "&");
               }
-              var P = {
+              var L = {
                   area: !0,
                   base: !0,
                   br: !0,
@@ -992,7 +985,7 @@
                   track: !0,
                   wbr: !0,
                 },
-                R = function (t, e) {
+                P = function (t, e) {
                   var s = { nodeName: "", attributes: {} },
                     i = !1,
                     n = t.match(/<\/?([^\s]+?)[/\s>]/);
@@ -1000,7 +993,7 @@
                     n &&
                     ((s.nodeName =
                       e || "svg" === n[1] ? n[1] : n[1].toUpperCase()),
-                    (P[n[1]] || "/" === t.charAt(t.length - 2)) && (i = !0),
+                    (L[n[1]] || "/" === t.charAt(t.length - 2)) && (i = !0),
                     s.nodeName.startsWith("!--"))
                   ) {
                     var a = t.indexOf("--\x3e");
@@ -1013,7 +1006,7 @@
                       voidElement: i,
                     };
                   }
-                  for (var o = new RegExp(A), r = null, l = !1; !l; )
+                  for (var o = new RegExp(T), r = null, l = !1; !l; )
                     if (null === (r = o.exec(t))) l = !0;
                     else if (r[0].trim())
                       if (r[1]) {
@@ -1029,7 +1022,7 @@
                             .substring(1, r[3].length - 1));
                   return { type: "tag", node: s, voidElement: i };
                 },
-                H = function (t, e) {
+                R = function (t, e) {
                   void 0 === e && (e = { valueDiffing: !0, caseSensitive: !1 });
                   var s,
                     i = [],
@@ -1044,13 +1037,13 @@
                     });
                   }
                   return (
-                    t.replace(T, function (r, l) {
+                    t.replace(k, function (r, l) {
                       var d = "/" !== r.charAt(1),
                         c = r.startsWith("\x3c!--"),
                         h = l + r.length,
                         u = t.charAt(h);
                       if (c) {
-                        var p = R(r, e.caseSensitive).node;
+                        var p = P(r, e.caseSensitive).node;
                         if (n < 0) return i.push(p), "";
                         var f = a[n];
                         return (
@@ -1064,13 +1057,13 @@
                       if (d) {
                         if (
                           ("svg" ===
-                            (s = R(r, e.caseSensitive || o)).node.nodeName &&
+                            (s = P(r, e.caseSensitive || o)).node.nodeName &&
                             (o = !0),
                           n++,
                           !s.voidElement && u && "<" !== u)
                         ) {
                           s.node.childNodes || (s.node.childNodes = []);
-                          var m = L(t.slice(h, t.indexOf("<", h)));
+                          var m = A(t.slice(h, t.indexOf("<", h)));
                           s.node.childNodes.push({
                             nodeName: "#text",
                             data: m,
@@ -1102,7 +1095,7 @@
                       ) {
                         var b = -1 === n ? i : a[n].node.childNodes || [],
                           v = t.indexOf("<", h);
-                        m = L(t.slice(h, -1 === v ? void 0 : v));
+                        m = A(t.slice(h, -1 === v ? void 0 : v));
                         b.push({ nodeName: "#text", data: m });
                       }
                       return "";
@@ -1110,37 +1103,37 @@
                     i[0]
                   );
                 },
-                I = (function () {
+                H = (function () {
                   function t(t, e, s) {
                     (this.options = s),
                       (this.t1 =
-                        "undefined" != typeof Element && f(t, "Element")
-                          ? k(t, this.options)
+                        "undefined" != typeof Element && u(t, "Element")
+                          ? S(t, this.options)
                           : "string" == typeof t
-                          ? H(t, this.options)
+                          ? R(t, this.options)
                           : JSON.parse(JSON.stringify(t))),
                       (this.t2 =
-                        "undefined" != typeof Element && f(e, "Element")
-                          ? k(e, this.options)
+                        "undefined" != typeof Element && u(e, "Element")
+                          ? S(e, this.options)
                           : "string" == typeof e
-                          ? H(e, this.options)
+                          ? R(e, this.options)
                           : JSON.parse(JSON.stringify(e))),
                       (this.diffcount = 0),
                       (this.foundAll = !1),
                       this.debug &&
                         ((this.t1Orig =
-                          "undefined" != typeof Element && f(t, "Element")
-                            ? k(t, this.options)
+                          "undefined" != typeof Element && u(t, "Element")
+                            ? S(t, this.options)
                             : "string" == typeof t
-                            ? H(t, this.options)
+                            ? R(t, this.options)
                             : JSON.parse(JSON.stringify(t))),
                         (this.t2Orig =
-                          "undefined" != typeof Element && f(e, "Element")
-                            ? k(e, this.options)
+                          "undefined" != typeof Element && u(e, "Element")
+                            ? S(e, this.options)
                             : "string" == typeof e
-                            ? H(e, this.options)
+                            ? R(e, this.options)
                             : JSON.parse(JSON.stringify(e)))),
-                      (this.tracker = new $());
+                      (this.tracker = new V());
                   }
                   return (
                     (t.prototype.init = function () {
@@ -1160,16 +1153,16 @@
                               .concat(JSON.stringify(this.t2Orig))
                           );
                         0 === (s = this.findNextDiff(t, e, [])).length &&
-                          (x(t, e) ||
+                          (D(t, e) ||
                             (this.foundAll
                               ? console.error("Could not find remaining diffs!")
                               : ((this.foundAll = !0),
-                                M(t),
+                                N(t),
                                 (s = this.findNextDiff(t, e, []))))),
                           s.length > 0 &&
                             ((this.foundAll = !1),
                             this.tracker.add(s),
-                            S(t, s, this.options));
+                            C(t, s, this.options));
                       } while (s.length > 0);
                       return this.tracker.list;
                     }),
@@ -1219,13 +1212,13 @@
                             "Top level nodes have to be of the same kind."
                           );
                         return [
-                          new p()
+                          new h()
                             .setValue(
                               this.options._const.action,
                               this.options._const.replaceElement
                             )
-                            .setValue(this.options._const.oldValue, N(t))
-                            .setValue(this.options._const.newValue, N(e))
+                            .setValue(this.options._const.oldValue, x(t))
+                            .setValue(this.options._const.newValue, x(e))
                             .setValue(this.options._const.route, s),
                         ];
                       }
@@ -1238,13 +1231,13 @@
                           )
                       )
                         return [
-                          new p()
+                          new h()
                             .setValue(
                               this.options._const.action,
                               this.options._const.replaceElement
                             )
-                            .setValue(this.options._const.oldValue, N(t))
-                            .setValue(this.options._const.newValue, N(e))
+                            .setValue(this.options._const.oldValue, x(t))
+                            .setValue(this.options._const.newValue, x(e))
                             .setValue(this.options._const.route, s),
                         ];
                       if (
@@ -1253,7 +1246,7 @@
                       )
                         return "#text" === t.nodeName
                           ? [
-                              new p()
+                              new h()
                                 .setValue(
                                   this.options._const.action,
                                   this.options._const.modifyTextElement
@@ -1263,7 +1256,7 @@
                                 .setValue(this.options._const.newValue, e.data),
                             ]
                           : [
-                              new p()
+                              new h()
                                 .setValue(
                                   this.options._const.action,
                                   this.options._const.modifyComment
@@ -1287,7 +1280,7 @@
                         (i = n[l]),
                           -1 === (r = a.indexOf(i))
                             ? d.push(
-                                new p()
+                                new h()
                                   .setValue(
                                     this.options._const.action,
                                     this.options._const.removeAttribute
@@ -1302,7 +1295,7 @@
                             : (a.splice(r, 1),
                               t.attributes[i] !== e.attributes[i] &&
                                 d.push(
-                                  new p()
+                                  new h()
                                     .setValue(
                                       this.options._const.action,
                                       this.options._const.modifyAttribute
@@ -1321,7 +1314,7 @@
                       for (o = a.length, l = 0; l < o; l++)
                         (i = a[l]),
                           d.push(
-                            new p()
+                            new h()
                               .setValue(
                                 this.options._const.action,
                                 this.options._const.addAttribute
@@ -1350,7 +1343,7 @@
                           c = d
                             ? t.subsets
                             : t.childNodes && e.childNodes
-                            ? V(t, e)
+                            ? E(t, e)
                             : [];
                         if (
                           c.length > 0 &&
@@ -1359,14 +1352,14 @@
                         )
                           return r;
                       }
-                      for (var h = 0; h < a; h += 1) {
-                        var u = i[h],
-                          f = n[h];
+                      for (var u = 0; u < a; u += 1) {
+                        var p = i[u],
+                          f = n[u];
                         o &&
-                          (u && !f
-                            ? "#text" === u.nodeName
+                          (p && !f
+                            ? "#text" === p.nodeName
                               ? (r.push(
-                                  new p()
+                                  new h()
                                     .setValue(
                                       this.options._const.action,
                                       this.options._const.removeTextElement
@@ -1375,11 +1368,11 @@
                                       this.options._const.route,
                                       s.concat(l)
                                     )
-                                    .setValue(this.options._const.value, u.data)
+                                    .setValue(this.options._const.value, p.data)
                                 ),
                                 (l -= 1))
                               : (r.push(
-                                  new p()
+                                  new h()
                                     .setValue(
                                       this.options._const.action,
                                       this.options._const.removeElement
@@ -1388,14 +1381,14 @@
                                       this.options._const.route,
                                       s.concat(l)
                                     )
-                                    .setValue(this.options._const.element, N(u))
+                                    .setValue(this.options._const.element, x(p))
                                 ),
                                 (l -= 1))
                             : f &&
-                              !u &&
+                              !p &&
                               ("#text" === f.nodeName
                                 ? r.push(
-                                    new p()
+                                    new h()
                                       .setValue(
                                         this.options._const.action,
                                         this.options._const.addTextElement
@@ -1410,7 +1403,7 @@
                                       )
                                   )
                                 : r.push(
-                                    new p()
+                                    new h()
                                       .setValue(
                                         this.options._const.action,
                                         this.options._const.addElement
@@ -1421,21 +1414,21 @@
                                       )
                                       .setValue(
                                         this.options._const.element,
-                                        N(f)
+                                        x(f)
                                       )
                                   ))),
-                          u &&
+                          p &&
                             f &&
                             (!this.options.maxChildCount ||
                             a < this.options.maxChildCount
                               ? (r = r.concat(
-                                  this.findNextDiff(u, f, s.concat(l))
+                                  this.findNextDiff(p, f, s.concat(l))
                                 ))
-                              : x(u, f) ||
+                              : D(p, f) ||
                                 (i.length > n.length
-                                  ? ("#text" === u.nodeName
+                                  ? ("#text" === p.nodeName
                                       ? r.push(
-                                          new p()
+                                          new h()
                                             .setValue(
                                               this.options._const.action,
                                               this.options._const
@@ -1447,59 +1440,59 @@
                                             )
                                             .setValue(
                                               this.options._const.value,
-                                              u.data
+                                              p.data
                                             )
                                         )
                                       : r.push(
-                                          new p()
+                                          new h()
                                             .setValue(
                                               this.options._const.action,
                                               this.options._const.removeElement
                                             )
                                             .setValue(
                                               this.options._const.element,
-                                              N(u)
+                                              x(p)
                                             )
                                             .setValue(
                                               this.options._const.route,
                                               s.concat(l)
                                             )
                                         ),
-                                    i.splice(h, 1),
-                                    (h -= 1),
+                                    i.splice(u, 1),
+                                    (u -= 1),
                                     (l -= 1),
                                     (o -= 1))
                                   : i.length < n.length
                                   ? ((r = r.concat([
-                                      new p()
+                                      new h()
                                         .setValue(
                                           this.options._const.action,
                                           this.options._const.addElement
                                         )
                                         .setValue(
                                           this.options._const.element,
-                                          N(f)
+                                          x(f)
                                         )
                                         .setValue(
                                           this.options._const.route,
                                           s.concat(l)
                                         ),
                                     ])),
-                                    i.splice(h, 0, N(f)),
+                                    i.splice(u, 0, x(f)),
                                     (o -= 1))
                                   : (r = r.concat([
-                                      new p()
+                                      new h()
                                         .setValue(
                                           this.options._const.action,
                                           this.options._const.replaceElement
                                         )
                                         .setValue(
                                           this.options._const.oldValue,
-                                          N(u)
+                                          x(p)
                                         )
                                         .setValue(
                                           this.options._const.newValue,
-                                          N(f)
+                                          x(f)
                                         )
                                         .setValue(
                                           this.options._const.route,
@@ -1525,10 +1518,10 @@
                           d,
                           c = (function (t, e, s) {
                             var i = t.childNodes
-                                ? E(t.childNodes.length, !0)
+                                ? O(t.childNodes.length, !0)
                                 : [],
                               n = e.childNodes
-                                ? E(e.childNodes.length, !0)
+                                ? O(e.childNodes.length, !0)
                                 : [],
                               a = 0;
                             return (
@@ -1547,42 +1540,42 @@
                               { gaps1: i, gaps2: n }
                             );
                           })(t, e, s),
-                          h = c.gaps1,
-                          u = c.gaps2,
+                          u = c.gaps1,
+                          p = c.gaps2,
                           f = t.childNodes.slice(),
                           m = e.childNodes.slice(),
-                          g = Math.min(h.length, u.length),
+                          g = Math.min(u.length, p.length),
                           b = [],
                           v = 0,
-                          _ = 0;
+                          w = 0;
                         v < g;
-                        _ += 1, v += 1
+                        w += 1, v += 1
                       )
-                        if (!n || (!0 !== h[v] && !0 !== u[v])) {
-                          if (!0 === h[_])
-                            if ("#text" === (l = f[_]).nodeName)
+                        if (!n || (!0 !== u[v] && !0 !== p[v])) {
+                          if (!0 === u[w])
+                            if ("#text" === (l = f[w]).nodeName)
                               if ("#text" === m[v].nodeName) {
                                 if (l.data !== m[v].data) {
                                   for (
-                                    var w = _;
-                                    f.length > w + 1 &&
-                                    "#text" === f[w + 1].nodeName;
+                                    var _ = w;
+                                    f.length > _ + 1 &&
+                                    "#text" === f[_ + 1].nodeName;
 
                                   )
-                                    if (((w += 1), m[v].data === f[w].data)) {
+                                    if (((_ += 1), m[v].data === f[_].data)) {
                                       d = !0;
                                       break;
                                     }
                                   d ||
                                     b.push(
-                                      new p()
+                                      new h()
                                         .setValue(
                                           this.options._const.action,
                                           this.options._const.modifyTextElement
                                         )
                                         .setValue(
                                           this.options._const.route,
-                                          i.concat(_)
+                                          i.concat(w)
                                         )
                                         .setValue(
                                           this.options._const.oldValue,
@@ -1596,102 +1589,102 @@
                                 }
                               } else
                                 b.push(
-                                  new p()
+                                  new h()
                                     .setValue(
                                       this.options._const.action,
                                       this.options._const.removeTextElement
                                     )
                                     .setValue(
                                       this.options._const.route,
-                                      i.concat(_)
+                                      i.concat(w)
                                     )
                                     .setValue(this.options._const.value, l.data)
                                 ),
-                                  h.splice(_, 1),
-                                  f.splice(_, 1),
-                                  (g = Math.min(h.length, u.length)),
-                                  (_ -= 1),
+                                  u.splice(w, 1),
+                                  f.splice(w, 1),
+                                  (g = Math.min(u.length, p.length)),
+                                  (w -= 1),
                                   (v -= 1);
                             else
-                              !0 === u[v]
+                              !0 === p[v]
                                 ? b.push(
-                                    new p()
+                                    new h()
                                       .setValue(
                                         this.options._const.action,
                                         this.options._const.replaceElement
                                       )
                                       .setValue(
                                         this.options._const.oldValue,
-                                        N(l)
+                                        x(l)
                                       )
                                       .setValue(
                                         this.options._const.newValue,
-                                        N(m[v])
+                                        x(m[v])
                                       )
                                       .setValue(
                                         this.options._const.route,
-                                        i.concat(_)
+                                        i.concat(w)
                                       )
                                   )
                                 : (b.push(
-                                    new p()
+                                    new h()
                                       .setValue(
                                         this.options._const.action,
                                         this.options._const.removeElement
                                       )
                                       .setValue(
                                         this.options._const.route,
-                                        i.concat(_)
+                                        i.concat(w)
                                       )
                                       .setValue(
                                         this.options._const.element,
-                                        N(l)
+                                        x(l)
                                       )
                                   ),
-                                  h.splice(_, 1),
-                                  f.splice(_, 1),
-                                  (g = Math.min(h.length, u.length)),
-                                  (_ -= 1),
+                                  u.splice(w, 1),
+                                  f.splice(w, 1),
+                                  (g = Math.min(u.length, p.length)),
+                                  (w -= 1),
                                   (v -= 1));
-                          else if (!0 === u[v])
+                          else if (!0 === p[v])
                             "#text" === (l = m[v]).nodeName
                               ? (b.push(
-                                  new p()
+                                  new h()
                                     .setValue(
                                       this.options._const.action,
                                       this.options._const.addTextElement
                                     )
                                     .setValue(
                                       this.options._const.route,
-                                      i.concat(_)
+                                      i.concat(w)
                                     )
                                     .setValue(this.options._const.value, l.data)
                                 ),
-                                h.splice(_, 0, !0),
-                                f.splice(_, 0, {
+                                u.splice(w, 0, !0),
+                                f.splice(w, 0, {
                                   nodeName: "#text",
                                   data: l.data,
                                 }),
-                                (g = Math.min(h.length, u.length)))
+                                (g = Math.min(u.length, p.length)))
                               : (b.push(
-                                  new p()
+                                  new h()
                                     .setValue(
                                       this.options._const.action,
                                       this.options._const.addElement
                                     )
                                     .setValue(
                                       this.options._const.route,
-                                      i.concat(_)
+                                      i.concat(w)
                                     )
-                                    .setValue(this.options._const.element, N(l))
+                                    .setValue(this.options._const.element, x(l))
                                 ),
-                                h.splice(_, 0, !0),
-                                f.splice(_, 0, N(l)),
-                                (g = Math.min(h.length, u.length)));
-                          else if (h[_] !== u[v]) {
+                                u.splice(w, 0, !0),
+                                f.splice(w, 0, x(l)),
+                                (g = Math.min(u.length, p.length)));
+                          else if (u[w] !== p[v]) {
                             if (b.length > 0) return b;
                             if (
-                              ((r = s[h[_]]),
+                              ((r = s[u[w]]),
                               (o = Math.min(
                                 r.newValue,
                                 f.length - r.length
@@ -1699,11 +1692,11 @@
                             ) {
                               a = !1;
                               for (var y = 0; y < r.length; y += 1)
-                                O(f[o + y], f[r.oldValue + y], {}, !1, !0) ||
+                                M(f[o + y], f[r.oldValue + y], {}, !1, !0) ||
                                   (a = !0);
                               if (a)
                                 return [
-                                  new p()
+                                  new h()
                                     .setValue(
                                       this.options._const.action,
                                       this.options._const.relocateGroup
@@ -1729,7 +1722,7 @@
                       return (
                         t.selected !== e.selected &&
                           i.push(
-                            new p()
+                            new h()
                               .setValue(
                                 this.options._const.action,
                                 this.options._const.modifySelected
@@ -1748,7 +1741,7 @@
                           t.value !== e.value &&
                           "OPTION" !== t.nodeName &&
                           i.push(
-                            new p()
+                            new h()
                               .setValue(
                                 this.options._const.action,
                                 this.options._const.modifyValue
@@ -1765,7 +1758,7 @@
                           ),
                         t.checked !== e.checked &&
                           i.push(
-                            new p()
+                            new h()
                               .setValue(
                                 this.options._const.action,
                                 this.options._const.modifyChecked
@@ -1780,7 +1773,7 @@
                     t
                   );
                 })(),
-                Y = {
+                I = {
                   debug: !1,
                   diffcap: 10,
                   maxDepth: !1,
@@ -1801,11 +1794,11 @@
                     window.document,
                   components: [],
                 },
-                j = (function () {
+                Y = (function () {
                   function t(t) {
                     if (
                       (void 0 === t && (t = {}),
-                      Object.entries(Y).forEach(function (e) {
+                      Object.entries(I).forEach(function (e) {
                         var s = e[0],
                           i = e[1];
                         Object.prototype.hasOwnProperty.call(t, s) ||
@@ -1862,20 +1855,20 @@
                     (t.prototype.apply = function (t, e) {
                       return (function (t, e, s) {
                         return e.every(function (e) {
-                          return b(t, e, s);
+                          return m(t, e, s);
                         });
                       })(t, e, this.options);
                     }),
                     (t.prototype.undo = function (t, e) {
-                      return _(t, e, this.options);
+                      return b(t, e, this.options);
                     }),
                     (t.prototype.diff = function (t, e) {
-                      return new I(t, e, this.options).init();
+                      return new H(t, e, this.options).init();
                     }),
                     t
                   );
                 })();
-              const F = (
+              const j = (
                   t,
                   e,
                   s,
@@ -1974,11 +1967,11 @@
                     rowRender: g,
                     tabIndex: b,
                   },
-                  { noColumnWidths: v, unhideHeader: _, renderHeader: w },
+                  { noColumnWidths: v, unhideHeader: w, renderHeader: _ },
                   y,
-                  D
+                  N
                 ) => {
-                  const M = {
+                  const x = {
                     nodeName: "TABLE",
                     attributes: { ...t },
                     childNodes: [
@@ -2030,7 +2023,7 @@
                                   if (i) {
                                     if ("string" != typeof i) return i;
                                     {
-                                      const t = H(`<td>${i}</td>`);
+                                      const t = R(`<td>${i}</td>`);
                                       1 === t.childNodes.length &&
                                       ["#text", "#comment"].includes(
                                         t.childNodes[0].nodeName
@@ -2056,7 +2049,7 @@
                             if (i) {
                               if ("string" != typeof i) return i;
                               {
-                                const t = H(`<tr>${i}</tr>`);
+                                const t = R(`<tr>${i}</tr>`);
                                 !t.childNodes ||
                                 (1 === t.childNodes.length &&
                                   ["#text", "#comment"].includes(
@@ -2073,22 +2066,22 @@
                     ],
                   };
                   if (
-                    ((M.attributes.class = c(M.attributes.class, r.table)),
-                    d || h || w)
+                    ((x.attributes.class = c(x.attributes.class, r.table)),
+                    d || h || _)
                   ) {
-                    const t = F(
+                    const t = j(
                       e,
                       i,
                       a,
                       { classes: r, hiddenHeader: l, sortable: p, scrollY: f },
-                      { noColumnWidths: v, unhideHeader: _ }
+                      { noColumnWidths: v, unhideHeader: w }
                     );
-                    if (d || w) {
+                    if (d || _) {
                       const e = { nodeName: "THEAD", childNodes: [t] };
                       (!f.length && !l) ||
-                        _ ||
+                        w ||
                         (e.attributes = { style: "height: 0px;" }),
-                        M.childNodes.unshift(e);
+                        x.childNodes.unshift(e);
                     }
                     if (h) {
                       const e = {
@@ -2096,16 +2089,16 @@
                         childNodes: [d ? structuredClone(t) : t],
                       };
                       (!f.length && !l) ||
-                        _ ||
+                        w ||
                         (e.attributes = { style: "height: 0px;" }),
-                        M.childNodes.push(e);
+                        x.childNodes.push(e);
                     }
                   }
                   return (
-                    y.forEach((t) => M.childNodes.push(t)),
-                    D.forEach((t) => M.childNodes.push(t)),
-                    !1 !== b && (M.attributes.tabindex = String(b)),
-                    M
+                    y.forEach((t) => x.childNodes.push(t)),
+                    N.forEach((t) => x.childNodes.push(t)),
+                    !1 !== b && (x.attributes.tabindex = String(b)),
+                    x
                   );
                 };
               "undefined" != typeof globalThis
@@ -2115,16 +2108,16 @@
                 : "undefined" != typeof global
                 ? global
                 : "undefined" != typeof self && self;
-              function B(t) {
+              function F(t) {
                 return t &&
                   t.__esModule &&
                   Object.prototype.hasOwnProperty.call(t, "default")
                   ? t.default
                   : t;
               }
-              var z = { exports: {} },
-                U = B(
-                  (z.exports = (function () {
+              var B = { exports: {} },
+                z = F(
+                  (B.exports = (function () {
                     var t = 1e3,
                       e = 6e4,
                       s = 36e5,
@@ -2217,37 +2210,37 @@
                           return void 0 === t;
                         },
                       },
-                      _ = "en",
-                      w = {};
-                    w[_] = g;
+                      w = "en",
+                      _ = {};
+                    _[w] = g;
                     var y = "$isDayjsObject",
-                      D = function (t) {
+                      N = function (t) {
                         return t instanceof O || !(!t || !t[y]);
                       },
-                      M = function t(e, s, i) {
+                      x = function t(e, s, i) {
                         var n;
-                        if (!e) return _;
+                        if (!e) return w;
                         if ("string" == typeof e) {
                           var a = e.toLowerCase();
-                          w[a] && (n = a), s && ((w[a] = s), (n = a));
+                          _[a] && (n = a), s && ((_[a] = s), (n = a));
                           var o = e.split("-");
                           if (!n && o.length > 1) return t(o[0]);
                         } else {
                           var r = e.name;
-                          (w[r] = e), (n = r);
+                          (_[r] = e), (n = r);
                         }
-                        return !i && n && (_ = n), n || (!i && _);
+                        return !i && n && (w = n), n || (!i && w);
                       },
-                      N = function (t, e) {
-                        if (D(t)) return t.clone();
+                      D = function (t, e) {
+                        if (N(t)) return t.clone();
                         var s = "object" == typeof e ? e : {};
                         return (s.date = t), (s.args = arguments), new O(s);
                       },
-                      x = v;
-                    (x.l = M),
-                      (x.i = D),
-                      (x.w = function (t, e) {
-                        return N(t, {
+                      M = v;
+                    (M.l = x),
+                      (M.i = N),
+                      (M.w = function (t, e) {
+                        return D(t, {
                           locale: e.$L,
                           utc: e.$u,
                           x: e.$x,
@@ -2256,7 +2249,7 @@
                       });
                     var O = (function () {
                         function g(t) {
-                          (this.$L = M(t.locale, null, !0)),
+                          (this.$L = x(t.locale, null, !0)),
                             this.parse(t),
                             (this.$x = this.$x || t.x || {}),
                             (this[y] = !0);
@@ -2268,7 +2261,7 @@
                               var e = t.date,
                                 s = t.utc;
                               if (null === e) return new Date(NaN);
-                              if (x.u(e)) return new Date();
+                              if (M.u(e)) return new Date();
                               if (e instanceof Date) return new Date(e);
                               if ("string" == typeof e && !/Z$/i.test(e)) {
                                 var i = e.match(f);
@@ -2314,23 +2307,23 @@
                               (this.$ms = t.getMilliseconds());
                           }),
                           (b.$utils = function () {
-                            return x;
+                            return M;
                           }),
                           (b.isValid = function () {
                             return !(this.$d.toString() === p);
                           }),
                           (b.isSame = function (t, e) {
-                            var s = N(t);
+                            var s = D(t);
                             return this.startOf(e) <= s && s <= this.endOf(e);
                           }),
                           (b.isAfter = function (t, e) {
-                            return N(t) < this.startOf(e);
+                            return D(t) < this.startOf(e);
                           }),
                           (b.isBefore = function (t, e) {
-                            return this.endOf(e) < N(t);
+                            return this.endOf(e) < D(t);
                           }),
                           (b.$g = function (t, e, s) {
-                            return x.u(t) ? this[e] : this.set(s, t);
+                            return M.u(t) ? this[e] : this.set(s, t);
                           }),
                           (b.unix = function () {
                             return Math.floor(this.valueOf() / 1e3);
@@ -2340,10 +2333,10 @@
                           }),
                           (b.startOf = function (t, e) {
                             var s = this,
-                              i = !!x.u(e) || e,
-                              c = x.p(t),
+                              i = !!M.u(e) || e,
+                              c = M.p(t),
                               p = function (t, e) {
-                                var n = x.w(
+                                var n = M.w(
                                   s.$u
                                     ? Date.UTC(s.$y, e, t)
                                     : new Date(s.$y, e, t),
@@ -2352,7 +2345,7 @@
                                 return i ? n : n.endOf(r);
                               },
                               f = function (t, e) {
-                                return x.w(
+                                return M.w(
                                   s
                                     .toDate()
                                     [t].apply(
@@ -2375,9 +2368,9 @@
                               case d:
                                 return i ? p(1, g) : p(0, g + 1);
                               case l:
-                                var _ = this.$locale().weekStart || 0,
-                                  w = (m < _ ? m + 7 : m) - _;
-                                return p(i ? b - w : b + (6 - w), g);
+                                var w = this.$locale().weekStart || 0,
+                                  _ = (m < w ? m + 7 : m) - w;
+                                return p(i ? b - _ : b + (6 - _), g);
                               case r:
                               case u:
                                 return f(v + "Hours", 0);
@@ -2396,7 +2389,7 @@
                           }),
                           (b.$set = function (t, e) {
                             var s,
-                              l = x.p(t),
+                              l = M.p(t),
                               c = "set" + (this.$u ? "UTC" : ""),
                               p = ((s = {}),
                               (s[r] = c + "Date"),
@@ -2424,16 +2417,16 @@
                             return this.clone().$set(t, e);
                           }),
                           (b.get = function (t) {
-                            return this[x.p(t)]();
+                            return this[M.p(t)]();
                           }),
                           (b.add = function (i, c) {
                             var u,
                               p = this;
                             i = Number(i);
-                            var f = x.p(c),
+                            var f = M.p(c),
                               m = function (t) {
-                                var e = N(p);
-                                return x.w(
+                                var e = D(p);
+                                return M.w(
                                   e.date(e.date() + Math.round(t * i)),
                                   p
                                 );
@@ -2449,7 +2442,7 @@
                                 (u[n] = t),
                                 u)[f] || 1,
                               b = this.$d.getTime() + i * g;
-                            return x.w(b, this);
+                            return M.w(b, this);
                           }),
                           (b.subtract = function (t, e) {
                             return this.add(-1 * t, e);
@@ -2459,7 +2452,7 @@
                               s = this.$locale();
                             if (!this.isValid()) return s.invalidDate || p;
                             var i = t || "YYYY-MM-DDTHH:mm:ssZ",
-                              n = x.z(this),
+                              n = M.z(this),
                               a = this.$H,
                               o = this.$m,
                               r = this.$M,
@@ -2472,7 +2465,7 @@
                                 );
                               },
                               u = function (t) {
-                                return x.s(a % 12 || 12, t, "0");
+                                return M.s(a % 12 || 12, t, "0");
                               },
                               f =
                                 c ||
@@ -2488,11 +2481,11 @@
                                     case "YY":
                                       return String(e.$y).slice(-2);
                                     case "YYYY":
-                                      return x.s(e.$y, 4, "0");
+                                      return M.s(e.$y, 4, "0");
                                     case "M":
                                       return r + 1;
                                     case "MM":
-                                      return x.s(r + 1, 2, "0");
+                                      return M.s(r + 1, 2, "0");
                                     case "MMM":
                                       return h(s.monthsShort, r, d, 3);
                                     case "MMMM":
@@ -2500,7 +2493,7 @@
                                     case "D":
                                       return e.$D;
                                     case "DD":
-                                      return x.s(e.$D, 2, "0");
+                                      return M.s(e.$D, 2, "0");
                                     case "d":
                                       return String(e.$W);
                                     case "dd":
@@ -2512,7 +2505,7 @@
                                     case "H":
                                       return String(a);
                                     case "HH":
-                                      return x.s(a, 2, "0");
+                                      return M.s(a, 2, "0");
                                     case "h":
                                       return u(1);
                                     case "hh":
@@ -2524,13 +2517,13 @@
                                     case "m":
                                       return String(o);
                                     case "mm":
-                                      return x.s(o, 2, "0");
+                                      return M.s(o, 2, "0");
                                     case "s":
                                       return String(e.$s);
                                     case "ss":
-                                      return x.s(e.$s, 2, "0");
+                                      return M.s(e.$s, 2, "0");
                                     case "SSS":
-                                      return x.s(e.$ms, 3, "0");
+                                      return M.s(e.$ms, 3, "0");
                                     case "Z":
                                       return n;
                                   }
@@ -2548,57 +2541,57 @@
                           (b.diff = function (i, u, p) {
                             var f,
                               m = this,
-                              g = x.p(u),
-                              b = N(i),
+                              g = M.p(u),
+                              b = D(i),
                               v = (b.utcOffset() - this.utcOffset()) * e,
-                              _ = this - b,
-                              w = function () {
-                                return x.m(m, b);
+                              w = this - b,
+                              _ = function () {
+                                return M.m(m, b);
                               };
                             switch (g) {
                               case h:
-                                f = w() / 12;
+                                f = _() / 12;
                                 break;
                               case d:
-                                f = w();
+                                f = _();
                                 break;
                               case c:
-                                f = w() / 3;
+                                f = _() / 3;
                                 break;
                               case l:
-                                f = (_ - v) / 6048e5;
+                                f = (w - v) / 6048e5;
                                 break;
                               case r:
-                                f = (_ - v) / 864e5;
+                                f = (w - v) / 864e5;
                                 break;
                               case o:
-                                f = _ / s;
+                                f = w / s;
                                 break;
                               case a:
-                                f = _ / e;
+                                f = w / e;
                                 break;
                               case n:
-                                f = _ / t;
+                                f = w / t;
                                 break;
                               default:
-                                f = _;
+                                f = w;
                             }
-                            return p ? f : x.a(f);
+                            return p ? f : M.a(f);
                           }),
                           (b.daysInMonth = function () {
                             return this.endOf(d).$D;
                           }),
                           (b.$locale = function () {
-                            return w[this.$L];
+                            return _[this.$L];
                           }),
                           (b.locale = function (t, e) {
                             if (!t) return this.$L;
                             var s = this.clone(),
-                              i = M(t, e, !0);
+                              i = x(t, e, !0);
                             return i && (s.$L = i), s;
                           }),
                           (b.clone = function () {
-                            return x.w(this.$d, this);
+                            return M.w(this.$d, this);
                           }),
                           (b.toDate = function () {
                             return new Date(this.valueOf());
@@ -2617,7 +2610,7 @@
                       })(),
                       E = O.prototype;
                     return (
-                      (N.prototype = E),
+                      (D.prototype = E),
                       [
                         ["$ms", i],
                         ["$s", n],
@@ -2632,24 +2625,24 @@
                           return this.$g(e, t[0], t[1]);
                         };
                       }),
-                      (N.extend = function (t, e) {
-                        return t.$i || (t(e, O, N), (t.$i = !0)), N;
+                      (D.extend = function (t, e) {
+                        return t.$i || (t(e, O, D), (t.$i = !0)), D;
                       }),
-                      (N.locale = M),
-                      (N.isDayjs = D),
-                      (N.unix = function (t) {
-                        return N(1e3 * t);
+                      (D.locale = x),
+                      (D.isDayjs = N),
+                      (D.unix = function (t) {
+                        return D(1e3 * t);
                       }),
-                      (N.en = w[_]),
-                      (N.Ls = w),
-                      (N.p = {}),
-                      N
+                      (D.en = _[w]),
+                      (D.Ls = _),
+                      (D.p = {}),
+                      D
                     );
                   })())
                 ),
-                J = { exports: {} },
-                W = B(
-                  (J.exports = (function () {
+                U = { exports: {} },
+                J = F(
+                  (U.exports = (function () {
                     var t = {
                         LTS: "h:mm:ss A",
                         LT: "h:mm A",
@@ -2890,8 +2883,8 @@
                                 (n && !a) || (g = a > 0 ? a - 1 : p.getMonth());
                                 var b = r || 0,
                                   v = l || 0,
-                                  _ = d || 0,
-                                  w = c || 0;
+                                  w = d || 0,
+                                  _ = c || 0;
                                 return h
                                   ? new Date(
                                       Date.UTC(
@@ -2900,13 +2893,13 @@
                                         f,
                                         b,
                                         v,
-                                        _,
-                                        w + 60 * h.offset * 1e3
+                                        w,
+                                        _ + 60 * h.offset * 1e3
                                       )
                                     )
                                   : s
-                                  ? new Date(Date.UTC(m, g, f, b, v, _, w))
-                                  : new Date(m, g, f, b, v, _, w);
+                                  ? new Date(Date.UTC(m, g, f, b, v, w, _))
+                                  : new Date(m, g, f, b, v, w, _);
                               } catch (t) {
                                 return new Date("");
                               }
@@ -2932,8 +2925,8 @@
                     };
                   })())
                 );
-              U.extend(W);
-              const Q = (t, e) => {
+              z.extend(J);
+              const W = (t, e) => {
                   let s;
                   if (e)
                     switch (e) {
@@ -2941,20 +2934,20 @@
                         s = t;
                         break;
                       case "RFC_2822":
-                        s = U(t.slice(5), "DD MMM YYYY HH:mm:ss ZZ").unix();
+                        s = z(t.slice(5), "DD MMM YYYY HH:mm:ss ZZ").unix();
                         break;
                       case "MYSQL":
-                        s = U(t, "YYYY-MM-DD hh:mm:ss").unix();
+                        s = z(t, "YYYY-MM-DD hh:mm:ss").unix();
                         break;
                       case "UNIX":
-                        s = U(t).unix();
+                        s = z(t).unix();
                         break;
                       default:
-                        s = U(t, e, !0).valueOf();
+                        s = z(t, e, !0).valueOf();
                     }
                   return s;
                 },
-                X = (t, e) => {
+                Q = (t, e) => {
                   if (
                     t?.constructor === Object &&
                     Object.prototype.hasOwnProperty.call(t, "data") &&
@@ -2971,17 +2964,16 @@
                         ((s.text = String(s.data)), (s.order = s.text));
                       break;
                     case "date":
-                      e.format && (s.order = Q(String(s.data), e.format));
+                      e.format && (s.order = W(String(s.data), e.format));
                       break;
                     case "number":
                       (s.text = String(s.data)),
-                        (s.data = parseFloat(s.data)),
-                        (s.order = s.data);
+                        (s.data = parseInt(s.data, 10));
                       break;
                     case "html": {
                       const t = Array.isArray(s.data)
                         ? { nodeName: "TD", childNodes: s.data }
-                        : H(`<td>${String(s.data)}</td>`);
+                        : R(`<td>${String(s.data)}</td>`);
                       s.data = t.childNodes || [];
                       const e = i(t);
                       (s.text = e), (s.order = e);
@@ -3004,7 +2996,7 @@
                   }
                   return s;
                 },
-                Z = (t) => {
+                X = (t) => {
                   if (
                     t instanceof Object &&
                     t.constructor === Object &&
@@ -3015,7 +3007,7 @@
                   const e = { data: t };
                   if ("string" == typeof t) {
                     if (t.length) {
-                      const s = H(`<th>${t}</th>`);
+                      const s = R(`<th>${t}</th>`);
                       if (
                         s.childNodes &&
                         (1 !== s.childNodes.length ||
@@ -3032,14 +3024,14 @@
                       : (e.text = JSON.stringify(t));
                   return e;
                 },
-                G = (t, e = void 0, s, n, a) => {
+                Z = (t, e = void 0, s, n, a) => {
                   const o = { data: [], headings: [] };
-                  if (t.headings) o.headings = t.headings.map((t) => Z(t));
+                  if (t.headings) o.headings = t.headings.map((t) => X(t));
                   else if (e?.tHead)
                     o.headings = Array.from(e.tHead.querySelectorAll("th")).map(
                       (t, e) => {
                         const o = ((t) => {
-                          const e = k(t, { valueDiffing: !1 });
+                          const e = S(t, { valueDiffing: !1 });
                           let s;
                           return (
                             (s =
@@ -3095,11 +3087,11 @@
                   else if (t.data?.length) {
                     const e = t.data[0],
                       s = Array.isArray(e) ? e : e.cells;
-                    o.headings = s.map((t) => Z(""));
+                    o.headings = s.map((t) => X(""));
                   } else
                     e?.tBodies.length &&
                       (o.headings = Array.from(e.tBodies[0].rows[0].cells).map(
-                        (t) => Z("")
+                        (t) => X("")
                       ));
                   for (let t = 0; t < o.headings.length; t++)
                     s[t] ||
@@ -3109,102 +3101,86 @@
                         sortable: !0,
                         searchable: !0,
                       });
-                  if (t.data) {
-                    const e = o.headings.map((t) =>
-                      t.data ? String(t.data) : t.text
-                    );
-                    o.data = t.data.map((t) => {
-                      let i, n;
-                      return (
-                        Array.isArray(t)
-                          ? ((i = {}), (n = t))
-                          : t.hasOwnProperty("cells") &&
-                            Object.keys(t).every((t) =>
-                              ["cells", "attributes"].includes(t)
-                            )
-                          ? ((i = t.attributes), (n = t.cells))
-                          : ((i = {}),
-                            (n = []),
-                            Object.entries(t).forEach(([t, s]) => {
-                              const i = e.indexOf(t);
-                              i > -1 && (n[i] = s);
-                            })),
-                        { attributes: i, cells: n.map((t, e) => X(t, s[e])) }
-                      );
-                    });
-                  } else
-                    e?.tBodies?.length &&
-                      (o.data = Array.from(e.tBodies[0].rows).map((t) => ({
-                        attributes: r(t.attributes),
-                        cells: Array.from(t.cells).map((t, e) => {
-                          const i = t.dataset.content
-                            ? X(t.dataset.content, s[e])
-                            : ((t, e) => {
-                                let s;
-                                switch (e.type) {
-                                  case "string":
-                                    s = { data: t.innerText };
-                                    break;
-                                  case "date": {
-                                    const i = t.innerText;
-                                    s = { data: i, order: Q(i, e.format) };
-                                    break;
-                                  }
-                                  case "number": {
-                                    const e = parseFloat(t.innerText);
-                                    s = {
-                                      data: e,
-                                      order: e,
-                                      text: t.innerText,
-                                    };
-                                    break;
-                                  }
-                                  case "boolean": {
-                                    const e = ![
-                                      "false",
-                                      "0",
-                                      "null",
-                                      "undefined",
-                                    ].includes(
-                                      t.innerText.toLowerCase().trim()
-                                    );
-                                    s = {
-                                      data: e,
-                                      text: e ? "1" : "0",
-                                      order: e ? 1 : 0,
-                                    };
-                                    break;
-                                  }
-                                  default:
-                                    s = {
-                                      data:
-                                        k(t, { valueDiffing: !1 }).childNodes ||
-                                        [],
-                                      text: t.innerText,
-                                      order: t.innerText,
-                                    };
-                                }
-                                return (s.attributes = r(t.attributes)), s;
-                              })(t, s[e]);
-                          return (
-                            t.dataset.order &&
-                              (i.order = isNaN(parseFloat(t.dataset.order))
-                                ? t.dataset.order
-                                : parseFloat(t.dataset.order)),
-                            i
-                          );
-                        }),
-                      })));
                   if (
+                    (t.data
+                      ? (o.data = t.data.map((t) => {
+                          let e, i;
+                          return (
+                            Array.isArray(t)
+                              ? ((e = {}), (i = t))
+                              : ((e = t.attributes), (i = t.cells)),
+                            {
+                              attributes: e,
+                              cells: i.map((t, e) => Q(t, s[e])),
+                            }
+                          );
+                        }))
+                      : e?.tBodies?.length &&
+                        (o.data = Array.from(e.tBodies[0].rows).map((t) => ({
+                          attributes: r(t.attributes),
+                          cells: Array.from(t.cells).map((t, e) => {
+                            const i = t.dataset.content
+                              ? Q(t.dataset.content, s[e])
+                              : ((t, e) => {
+                                  let s;
+                                  switch (e.type) {
+                                    case "string":
+                                      s = { data: t.innerText };
+                                      break;
+                                    case "date": {
+                                      const i = t.innerText;
+                                      s = { data: i, order: W(i, e.format) };
+                                      break;
+                                    }
+                                    case "number":
+                                      s = {
+                                        data: parseInt(t.innerText, 10),
+                                        text: t.innerText,
+                                      };
+                                      break;
+                                    case "boolean": {
+                                      const e = ![
+                                        "false",
+                                        "0",
+                                        "null",
+                                        "undefined",
+                                      ].includes(
+                                        t.innerText.toLowerCase().trim()
+                                      );
+                                      s = {
+                                        data: e,
+                                        text: e ? "1" : "0",
+                                        order: e ? 1 : 0,
+                                      };
+                                      break;
+                                    }
+                                    default:
+                                      s = {
+                                        data:
+                                          S(t, { valueDiffing: !1 })
+                                            .childNodes || [],
+                                        text: t.innerText,
+                                        order: t.innerText,
+                                      };
+                                  }
+                                  return (s.attributes = r(t.attributes)), s;
+                                })(t, s[e]);
+                            return (
+                              t.dataset.order &&
+                                (i.order = isNaN(parseFloat(t.dataset.order))
+                                  ? t.dataset.order
+                                  : parseFloat(t.dataset.order)),
+                              i
+                            );
+                          }),
+                        }))),
                     o.data.length &&
-                    o.data[0].cells.length !== o.headings.length
+                      o.data[0].cells.length !== o.headings.length)
                   )
                     throw new Error("Data heading length mismatch.");
                   return o;
                 };
-              class K {
-                cursor;
-                dt;
+              class G {
                 constructor(t) {
                   (this.dt = t), (this.cursor = !1);
                 }
@@ -3227,7 +3203,7 @@
                   const e = {
                     cells: t.map((t, e) => {
                       const s = this.dt.columns.settings[e];
-                      return X(t, s);
+                      return Q(t, s);
                     }),
                   };
                   this.dt.data.data.push(e),
@@ -3259,16 +3235,13 @@
                   const s = {
                     cells: e.map((t, e) => {
                       const s = this.dt.columns.settings[e];
-                      return X(t, s);
+                      return Q(t, s);
                     }),
                   };
                   this.dt.data.data.splice(t, 1, s), this.dt.update(!0);
                 }
               }
-              class tt {
-                dt;
-                settings;
-                _state;
+              class K {
                 constructor(t) {
                   (this.dt = t), this.init();
                 }
@@ -3365,24 +3338,22 @@
                     this.dt.update();
                 }
                 hide(t) {
-                  Array.isArray(t) || (t = [t]),
-                    t.length &&
-                      (t.forEach((t) => {
-                        this.settings[t] ||
-                          (this.settings[t] = { type: "string" });
-                        this.settings[t].hidden = !0;
-                      }),
-                      this.dt.update());
+                  t.length &&
+                    (t.forEach((t) => {
+                      this.settings[t] ||
+                        (this.settings[t] = { type: "string" });
+                      this.settings[t].hidden = !0;
+                    }),
+                    this.dt.update());
                 }
                 show(t) {
-                  Array.isArray(t) || (t = [t]),
-                    t.length &&
-                      (t.forEach((t) => {
-                        this.settings[t] ||
-                          (this.settings[t] = { type: "string", sortable: !0 });
-                        delete this.settings[t].hidden;
-                      }),
-                      this.dt.update());
+                  t.length &&
+                    (t.forEach((t) => {
+                      this.settings[t] ||
+                        (this.settings[t] = { type: "string", sortable: !0 });
+                      delete this.settings[t].hidden;
+                    }),
+                    this.dt.update());
                 }
                 visible(t) {
                   return (
@@ -3397,10 +3368,10 @@
                   const e = this.dt.data.headings.length;
                   if (
                     ((this.dt.data.headings = this.dt.data.headings.concat([
-                      Z(t.heading),
+                      X(t.heading),
                     ])),
                     this.dt.data.data.forEach((e, s) => {
-                      e.cells = e.cells.concat([X(t.data[s], t)]);
+                      e.cells = e.cells.concat([Q(t.data[s], t)]);
                     }),
                     (this.settings[e] = {
                       type: t.type || "string",
@@ -3432,10 +3403,10 @@
                   this.dt.update(!0);
                 }
                 remove(t) {
-                  Array.isArray(t) || (t = [t]),
-                    (this.dt.data.headings = this.dt.data.headings.filter(
-                      (e, s) => !t.includes(s)
-                    )),
+                  if (!Array.isArray(t)) return this.remove([t]);
+                  (this.dt.data.headings = this.dt.data.headings.filter(
+                    (e, s) => !t.includes(s)
+                  )),
                     this.dt.data.data.forEach(
                       (e) =>
                         (e.cells = e.cells.filter((e, s) => !t.includes(s)))
@@ -3567,7 +3538,7 @@
                   }
                 }
               }
-              const et = {
+              const tt = {
                   sortable: !0,
                   locale: "en",
                   numeric: !0,
@@ -3620,7 +3591,7 @@
                   template: (t, e) =>
                     `<div class='${t.classes.top}'>\n    ${
                       t.paging && t.perPageSelect
-                        ? `<div class='${t.classes.dropdown}'>\n            <label>\n                <select class='${t.classes.selector}' name="per-page"></select> ${t.labels.perPage}\n            </label>\n        </div>`
+                        ? `<div class='${t.classes.dropdown}'>\n            <label>\n                <select class='${t.classes.selector}'></select> ${t.labels.perPage}\n            </label>\n        </div>`
                         : ""
                     }\n    ${
                       t.searchable
@@ -3630,9 +3601,7 @@
                             t.classes.input
                           }' placeholder='${
                             t.labels.placeholder
-                          }' type='search' name="search" title='${
-                            t.labels.searchTitle
-                          }'${
+                          }' type='search' title='${t.labels.searchTitle}'${
                             e.id ? ` aria-controls="${e.id}"` : ""
                           }>\n        </div>`
                         : ""
@@ -3674,7 +3643,7 @@
                     wrapper: "datatable-wrapper",
                   },
                 },
-                st = (t, e, s, i = {}) => ({
+                et = (t, e, s, i = {}) => ({
                   nodeName: "LI",
                   attributes: {
                     class:
@@ -3699,16 +3668,16 @@
                     },
                   ],
                 }),
-                it = (t, e, s, i, n) => {
+                st = (t, e, s, i, n) => {
                   let a = [];
                   if (
-                    (n.firstLast && a.push(st(1, n.firstText, n)), n.nextPrev)
+                    (n.firstLast && a.push(et(1, n.firstText, n)), n.nextPrev)
                   ) {
                     const e = t ? 1 : s - 1;
-                    a.push(st(e, n.prevText, n, { hidden: t }));
+                    a.push(et(e, n.prevText, n, { hidden: t }));
                   }
                   let o = [...Array(i).keys()].map((t) =>
-                    st(t + 1, String(t + 1), n, { active: t === s - 1 })
+                    et(t + 1, String(t + 1), n, { active: t === s - 1 })
                   );
                   if (
                     (n.truncatePager &&
@@ -3772,16 +3741,16 @@
                     n.nextPrev)
                   ) {
                     const t = e ? i : s + 1;
-                    a.push(st(t, n.nextText, n, { hidden: e }));
+                    a.push(et(t, n.nextText, n, { hidden: e }));
                   }
-                  n.firstLast && a.push(st(i, n.lastText, n));
+                  n.firstLast && a.push(et(i, n.lastText, n));
                   return {
                     nodeName: "UL",
                     attributes: { class: n.classes.paginationList },
                     childNodes: o.length > 1 ? a : [],
                   };
                 };
-              const nt = {
+              const it = {
                 classes: {
                   row: "datatable-editor-row",
                   form: "datatable-editor-form",
@@ -3850,27 +3819,9 @@
                   },
                 ],
               };
-              class at {
-                menuOpen;
-                containerDOM;
-                data;
-                disabled;
-                dt;
-                editing;
-                editingCell;
-                editingRow;
-                event;
-                events;
-                initialized;
-                limits;
-                menuDOM;
-                modalDOM;
-                options;
-                originalRowRender;
-                rect;
-                wrapperDOM;
+              class nt {
                 constructor(t, e = {}) {
-                  (this.dt = t), (this.options = { ...nt, ...e });
+                  (this.dt = t), (this.options = { ...it, ...e });
                 }
                 init() {
                   this.initialized ||
@@ -4131,7 +4082,7 @@
                     const e =
                       this.dt.columns.settings[this.data.columnIndex].format ||
                       this.dt.options.format;
-                    n = { data: t, order: Q(String(t), e) };
+                    n = { data: t, order: W(String(t), e) };
                   } else n = { data: t };
                   (this.dt.data.data[this.data.rowIndex].cells[
                     this.data.columnIndex
@@ -4257,7 +4208,7 @@
                         const t =
                           this.dt.columns.settings[i].format ||
                           this.dt.options.format;
-                        o = { data: a, order: Q(String(a), t) };
+                        o = { data: a, order: W(String(a), t) };
                       } else o = { data: a };
                       return o;
                     });
@@ -4392,7 +4343,7 @@
                   return e;
                 }
               }
-              const ot = {
+              const at = {
                 classes: {
                   button: "datatable-column-filter-button",
                   menu: "datatable-column-filter-menu",
@@ -4402,22 +4353,9 @@
                 labels: { button: "Filter columns within the table" },
                 hiddenColumns: [],
               };
-              class rt {
-                addedButtonDOM;
-                menuOpen;
-                buttonDOM;
-                dt;
-                events;
-                initialized;
-                options;
-                menuDOM;
-                containerDOM;
-                wrapperDOM;
-                limits;
-                rect;
-                event;
+              class ot {
                 constructor(t, e = {}) {
-                  (this.dt = t), (this.options = { ...ot, ...e });
+                  (this.dt = t), (this.options = { ...at, ...e });
                 }
                 init() {
                   if (this.initialized) return;
@@ -4521,38 +4459,6 @@
                 }
               }
               (exports.DataTable = class {
-                columns;
-                containerDOM;
-                _currentPage;
-                data;
-                _dd;
-                dom;
-                _events;
-                hasHeadings;
-                hasRows;
-                headerDOM;
-                _initialHTML;
-                initialized;
-                _label;
-                lastPage;
-                _listeners;
-                onFirstPage;
-                onLastPage;
-                options;
-                _pagerDOMs;
-                _virtualPagerDOM;
-                pages;
-                _rect;
-                rows;
-                _searchData;
-                _searchQueries;
-                _tableAttributes;
-                _tableFooters;
-                _tableCaptions;
-                totalPages;
-                _virtualDOM;
-                _virtualHeaderDOM;
-                wrapperDOM;
                 constructor(t, e = {}) {
                   const s =
                     "string" == typeof t ? document.querySelector(t) : t;
@@ -4560,18 +4466,18 @@
                     ? (this.dom = s)
                     : ((this.dom = document.createElement("table")),
                       s.appendChild(this.dom));
-                  const i = { ...et.diffDomOptions, ...e.diffDomOptions },
-                    n = { ...et.labels, ...e.labels },
-                    a = { ...et.classes, ...e.classes };
+                  const i = { ...tt.diffDomOptions, ...e.diffDomOptions },
+                    n = { ...tt.labels, ...e.labels },
+                    a = { ...tt.classes, ...e.classes };
                   (this.options = {
-                    ...et,
+                    ...tt,
                     ...e,
                     diffDomOptions: i,
                     labels: n,
                     classes: a,
                   }),
-                    (this._initialHTML = this.options.destroyable
-                      ? s.outerHTML
+                    (this._initialInnerHTML = this.options.destroyable
+                      ? this.dom.innerHTML
                       : ""),
                     this.options.tabIndex
                       ? (this.dom.tabIndex = this.options.tabIndex)
@@ -4579,7 +4485,7 @@
                         -1 === this.dom.tabIndex &&
                         (this.dom.tabIndex = 0),
                     (this._listeners = { onResize: () => this._onResize() }),
-                    (this._dd = new j(this.options.diffDomOptions || {})),
+                    (this._dd = new Y(this.options.diffDomOptions || {})),
                     (this.initialized = !1),
                     (this._events = {}),
                     (this._currentPage = 0),
@@ -4595,7 +4501,7 @@
                     d(this.dom, this.options.classes.table)
                   )
                     return !1;
-                  (this._virtualDOM = k(
+                  (this._virtualDOM = S(
                     this.dom,
                     this.options.diffDomOptions || {}
                   )),
@@ -4617,9 +4523,9 @@
                           { nodeName: "#text", data: this.options.caption },
                         ],
                       }),
-                    (this.rows = new K(this)),
-                    (this.columns = new tt(this)),
-                    (this.data = G(
+                    (this.rows = new G(this)),
+                    (this.columns = new K(this)),
+                    (this.data = Z(
                       this.options.data,
                       this.dom,
                       this.columns.settings,
@@ -4777,7 +4683,7 @@
                 }
                 _renderPagers() {
                   if (!this.options.paging) return;
-                  let t = it(
+                  let t = st(
                     this.onFirstPage,
                     this.onLastPage,
                     this._currentPage,
@@ -4815,7 +4721,7 @@
                       {
                         nodeName: "THEAD",
                         childNodes: [
-                          F(
+                          j(
                             this.data.headings,
                             this.columns.settings,
                             this.columns._state,
@@ -5020,25 +4926,21 @@
                     this._rect.width && this.update(!0);
                 }
                 destroy() {
-                  if (this.options.destroyable) {
-                    if (this.wrapperDOM)
-                      if (this.wrapperDOM.parentElement) {
-                        const t = s("div");
-                        (t.innerHTML = this._initialHTML),
-                          this.wrapperDOM.parentElement.replaceChild(
-                            t.firstElementChild,
-                            this.wrapperDOM
-                          );
-                      } else
-                        this.options.classes.table
-                          ?.split(" ")
-                          .forEach((t) => this.wrapperDOM.classList.remove(t));
+                  this.options.destroyable &&
+                    ((this.dom.innerHTML = this._initialInnerHTML),
+                    this.options.classes.table
+                      ?.split(" ")
+                      .forEach((t) => this.wrapperDOM.classList.remove(t)),
+                    this.wrapperDOM.parentElement &&
+                      this.wrapperDOM.parentElement.replaceChild(
+                        this.dom,
+                        this.wrapperDOM
+                      ),
+                    (this.initialized = !1),
                     window.removeEventListener(
                       "resize",
                       this._listeners.onResize
-                    ),
-                      (this.initialized = !1);
-                  }
+                    ));
                 }
                 update(t = !1) {
                   t &&
@@ -5195,24 +5097,24 @@
                 insert(e) {
                   let s = [];
                   if (Array.isArray(e)) {
-                    const t = this.data.headings.map((t) =>
-                      t.data ? String(t.data) : t.text
+                    const t = this.data.headings.map(
+                      (t) => t.text ?? String(t.data)
                     );
                     e.forEach((e, i) => {
                       const n = [];
                       Object.entries(e).forEach(([e, s]) => {
                         const a = t.indexOf(e);
                         a > -1
-                          ? (n[a] = X(s, this.columns.settings[a]))
+                          ? (n[a] = Q(s, this.columns.settings[a]))
                           : this.hasHeadings ||
                             this.hasRows ||
                             0 !== i ||
-                            ((n[t.length] = X(
+                            ((n[t.length] = Q(
                               s,
                               this.columns.settings[t.length]
                             )),
                             t.push(e),
-                            this.data.headings.push(Z(e)));
+                            this.data.headings.push(X(e)));
                       }),
                         s.push({ cells: n });
                     });
@@ -5230,12 +5132,12 @@
                               {
                                 attributes: e,
                                 cells: s.map((t, e) =>
-                                  X(t, this.columns.settings[e])
+                                  Q(t, this.columns.settings[e])
                                 ),
                               }
                             );
                           }))
-                        : (this.data = G(
+                        : (this.data = Z(
                             e,
                             void 0,
                             this.columns.settings,
@@ -5306,7 +5208,7 @@
                       {
                         nodeName: "THEAD",
                         childNodes: [
-                          F(
+                          j(
                             this.data.headings,
                             this.columns.settings,
                             this.columns._state,
@@ -5365,7 +5267,7 @@
                 }
               }),
                 (exports.addColumnFilter = function (t, e = {}) {
-                  const s = new rt(t, e);
+                  const s = new ot(t, e);
                   return (
                     t.initialized
                       ? s.init()
@@ -5697,7 +5599,7 @@
                 (exports.isJson = e),
                 (exports.isObject = t),
                 (exports.makeEditable = function (t, e = {}) {
-                  const s = new at(t, e);
+                  const s = new nt(t, e);
                   return (
                     t.initialized
                       ? s.init()
