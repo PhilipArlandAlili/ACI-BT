@@ -19,6 +19,7 @@ $certificates = [
     "Certificate of Indigency AICS",
     "Complaint Certificate",
     "Death Certificate",
+    "First Time Job Seeker",
     "Lot Ownership",
     "Transfer of Residency",
 ];
