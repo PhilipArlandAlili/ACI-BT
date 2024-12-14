@@ -81,12 +81,12 @@ function updateText() {
         const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         month = month_names[month];
 
-        if (pfirst_name) pfirst_name.innerText = first_name.value;
-        if (pmiddle_name) pmiddle_name.innerText = middle_name.value;
-        if (plast_name) plast_name.innerText = last_name.value;
-        if (psuffix) psuffix.innerText = suffix.value;
-        if (ppurok) ppurok.innerText = purok.value;
-        if (pbirthplace) pbirthplace.innerText = birthplace.value;
+        if (pfirst_name) pfirst_name.innerText = first_name.value.toUpperCase();
+        if (pmiddle_name) pmiddle_name.innerText = middle_name.value.toUpperCase();
+        if (plast_name) plast_name.innerText = last_name.value.toUpperCase();
+        if (psuffix) psuffix.innerText = suffix.value.toUpperCase();
+        if (ppurok) ppurok.innerText = purok.value.toUpperCase();
+        if (pbirthplace) pbirthplace.innerText = birthplace.value.toUpperCase();
 
         if (birthdate.value) {
             if (validateBirthdate(birthdate.value)) {
@@ -94,7 +94,7 @@ function updateText() {
                 pbirthdate_day.innerText = "";
                 pbirthdate_year.innerText = "";
             } else {
-                pbirthdate_month.innerText = month;
+                pbirthdate_month.innerText = month.toUpperCase();
                 pbirthdate_day.innerText = day + ", ";
                 pbirthdate_year.innerText = year;
             }
@@ -104,7 +104,7 @@ function updateText() {
             pbirthdate_year.innerText = "";
         }
 
-        if (pcivil_status) pcivil_status.innerText = civil_status.value;
+        if (pcivil_status) pcivil_status.innerText = civil_status.value.toUpperCase();
 
         if (period_of_residency) {
             if (pormonth.checked) {
@@ -129,7 +129,7 @@ function updateText() {
         }
 
         if (pperiod_of_residency) pperiod_of_residency.innerText = period_of_residency.value;
-        if (ppurpose) ppurpose.innerText = purpose.value;
+        if (ppurpose) ppurpose.innerText = purpose.value.toUpperCase();
 
     } else if (certificate_type.value == 'business_permit_new') {
         // From PHP
@@ -144,10 +144,10 @@ function updateText() {
         var pbpnmanager = iframeDocument.getElementById('bpnmanager');
         var pbpnaddress = iframeDocument.getElementById('bpnaddress');
 
-        if (pbpnbusiness_name) pbpnbusiness_name.innerText = bpnbusiness_name.value;
-        if (pbpnpurok) pbpnpurok.innerText = bpnpurok.value;
-        if (pbpnmanager) pbpnmanager.innerText = bpnmanager.value;
-        if (pbpnaddress) pbpnaddress.innerText = bpnaddress.value;
+        if (pbpnbusiness_name) pbpnbusiness_name.innerText = bpnbusiness_name.value.toUpperCase();
+        if (pbpnpurok) pbpnpurok.innerText = bpnpurok.value.toUpperCase();
+        if (pbpnmanager) pbpnmanager.innerText = bpnmanager.value.toUpperCase();
+        if (pbpnaddress) pbpnaddress.innerText = bpnaddress.value.toUpperCase();
     } else if (certificate_type.value == 'business_permit_renew') {
         // From PHP
         var bprbusiness_name = document.getElementById('bprbusiness_name');
@@ -161,10 +161,10 @@ function updateText() {
         var pbprmanager = iframeDocument.getElementById('bprmanager');
         var pbpraddress = iframeDocument.getElementById('bpraddress');
 
-        if (pbprbusiness_name) pbprbusiness_name.innerText = bprbusiness_name.value;
-        if (pbprpurok) pbprpurok.innerText = bprpurok.value;
-        if (pbprmanager) pbprmanager.innerText = bprmanager.value;
-        if (pbpraddress) pbpraddress.innerText = bpraddress.value;
+        if (pbprbusiness_name) pbprbusiness_name.innerText = bprbusiness_name.value.toUpperCase();
+        if (pbprpurok) pbprpurok.innerText = bprpurok.value.toUpperCase();
+        if (pbprmanager) pbprmanager.innerText = bprmanager.value.toUpperCase();
+        if (pbpraddress) pbpraddress.innerText = bpraddress.value.toUpperCase();
     } else if (certificate_type.value == 'certificate_of_cohabitation') {
         var cocfirst_name = document.getElementById('cocfirst_name');
         var cocmiddle_name = document.getElementById('cocmiddle_name');
@@ -213,20 +213,20 @@ function updateText() {
         var pcocdate_of_marriage = iframeDocument.getElementById('cocdate_of_marriage');
         var pcocdom_y = iframeDocument.getElementById('cocdom_y');
 
-        pcocfirst_name.innerText = cocfirst_name.value;
-        pcocmiddle_name.innerText = cocmiddle_name.value;
-        pcoclast_name.innerText = coclast_name.value;
-        pcocsuffix.innerText = cocsuffix.value;
-        pcocbirthdate_month.innerText = cocmonth;
+        pcocfirst_name.innerText = cocfirst_name.value.toUpperCase();
+        pcocmiddle_name.innerText = cocmiddle_name.value.toUpperCase();
+        pcoclast_name.innerText = coclast_name.value.toUpperCase();
+        pcocsuffix.innerText = cocsuffix.value.toUpperCase();
+        pcocbirthdate_month.innerText = cocmonth.toUpperCase();
         pcocbirthdate_day.innerText = cocday + ", ";
         pcocbirthdate_year.innerText = cocyear;
-        pcocfirst_name_female.innerText = cocfirst_name_female.value;
-        pcocmiddle_name_female.innerText = cocmiddle_name_female.value;
-        pcoclast_name_female.innerText = coclast_name_female.value;
-        pcocbirthdate_female_month.innerText = cocmonth_female;
+        pcocfirst_name_female.innerText = cocfirst_name_female.value.toUpperCase();
+        pcocmiddle_name_female.innerText = cocmiddle_name_female.value.toUpperCase();
+        pcoclast_name_female.innerText = coclast_name_female.value.toUpperCase();
+        pcocbirthdate_female_month.innerText = cocmonth_female.toUpperCase();
         pcocbirthdate_female_day.innerText = cocday_female + ", ";
         pcocbirthdate_female_year.innerText = cocyear_female;
-        pcocpurok.innerText = cocpurok.value;
+        pcocpurok.innerText = cocpurok.value.toUpperCase();
 
         var coctoday = new Date();
         var coctyear = coctoday.getFullYear();
@@ -236,9 +236,9 @@ function updateText() {
         pcocdate_of_marriage.innerText = years_married;
 
         if (years_married == 1) {
-            pcocdom_y.innerText = 'Year';
+            pcocdom_y.innerText = 'YEAR';
         } else {
-            pcocdom_y.innerText = 'Years';
+            pcocdom_y.innerText = 'YEARS';
         }
 
     } else if (certificate_type.value == 'certificate_of_employability') {

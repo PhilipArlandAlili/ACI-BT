@@ -1,4 +1,4 @@
-<form action="#" method="post" class="form" id="certificate_of_cohabitationForm">
+<form action="#" method="post" class="form" id="certificate_of_cohabitation_form">
 
     <label for="" class="fw-bold">Male</label><br>
     <label for="">First Name:</label>
@@ -21,7 +21,7 @@
     </select><br>
 
     <label for="cohabitant1Birthdate">Birthdate:</label>
-    <input type="date" class="form-control" id="cocbirthdate"  onchange="validatebday(this);this.value = this.value.toUpperCase();updateText();" name="birthdate" required><br>
+    <input type="date" class="form-control" id="cocbirthdate"  oninput="this.value = this.value.toUpperCase();validateBirthdate(this);updateText();" name="birthdate" required><br>
 
     <hr>
 
@@ -37,13 +37,13 @@
 
 
     <label for="cohabitant1Birthdate">Birthdate:</label>
-    <input type="date" class="form-control" id="cocbirthdate_female" onchange="validatebday(this);this.value = this.value.toUpperCase();updateText();" name="birthdate_female" required><br><hr>
+    <input type="date" class="form-control" id="cocbirthdate_female" oninput="this.value = this.value.toUpperCase();validateBirthdate(this);updateText();" name="birthdate_female" required><br><hr>
 
     <label for="">Purok:</label><br>
-    <select name="purok" class="form-control" id="cocpurok" onchange="this.value = this.value.toUpperCase();updateText();" required>
+    <select name="purok" class="form-control" id="cocpurok" onchange="updateText();" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
-        <option value="Hurawan">Huwaran</option>
+        <option value="Huwaran">Huwaran</option>
         <option value="Kaakbayan">Kaakbayan</option>
         <option value="New Princesa"> New Princesa</option>
         <option value="San Franciso I">San Franciso I</option>
@@ -56,7 +56,7 @@
 
     <!--Month and Year daw-->
     <label for="dateOfMarriage">Date of marriage:</label>
-    <input type="date" id="cocdate_of_marriage" class="form-control" onchange="validateformarriagedate(this);this.value = this.value.toUpperCase();updateText();" name="date_of_marriage" required><br>
+    <input type="date" id="cocdate_of_marriage" class="form-control" oninput="this.value = this.value.toUpperCase();validateDate(this);updateText();" name="date_of_marriage" required><br>
     <hr>
 
     <div class="print" style="text-align: right;">
