@@ -48,7 +48,6 @@
     </div>
 </form>
 
-<!-- <script src="assets/js/certificate/business_permit_new.js"></script> -->
 <script>
     // Event listener for Business Permit print button
     document.getElementById("BPermitNewprintBtn").addEventListener("click", function () {
