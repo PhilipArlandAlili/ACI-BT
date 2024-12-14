@@ -15,7 +15,7 @@
         required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="cisuffix">
+    <select class="text-left form-control" onchange="updateText()" name="suffix" id="cisuffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -25,7 +25,7 @@
     </select><br>
 
     <label for="puroks">Purok:</label>
-    <select class="text-left form-control" name="purok" id="cipurok" required>
+    <select class="text-left form-control" onchange="updateText()"name="purok" id="cipurok" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>

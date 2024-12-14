@@ -147,10 +147,10 @@ function updateText() {
         var pbpnmanager = iframeDocument.getElementById('bpnmanager');
         var pbpnaddress = iframeDocument.getElementById('bpnaddress');
 
-        pbpnbusiness_name.innerText = bpnbusiness_name.value;
-        pbpnpurok.innerText = bpnpurok.value;
-        pbpnmanager.innerText = bpnmanager.value;
-        pbpnaddress.innerText = bpnaddress.value;
+        pbpnbusiness_name.innerText = bpnbusiness_name.value.toUpperCase();
+        pbpnpurok.innerText = bpnpurok.value.toUpperCase();
+        pbpnmanager.innerText = bpnmanager.value.toUpperCase();
+        pbpnaddress.innerText = bpnaddress.value.toUpperCase();
     } else if (certificate_type.value == 'business_permit_renew') {
         // From PHP
         var bprbusiness_name = document.getElementById('bprbusiness_name');
@@ -164,10 +164,10 @@ function updateText() {
         var pbprmanager = iframeDocument.getElementById('bprmanager');
         var pbpraddress = iframeDocument.getElementById('bpraddress');
 
-        pbprbusiness_name.innerText = bprbusiness_name.value;
-        pbprpurok.innerText = bprpurok.value;
-        pbprmanager.innerText = bprmanager.value;
-        pbpraddress.innerText = bpraddress.value;
+        pbprbusiness_name.innerText = bprbusiness_name.value.toUpperCase();
+        pbprpurok.innerText = bprpurok.value.toUpperCase();
+        pbprmanager.innerText = bprmanager.value.toUpperCase();
+        pbpraddress.innerText = bpraddress.value.toUpperCase();
     } else if (certificate_type.value == 'certificate_of_cohabitation') {
         var cocfirst_name = document.getElementById('cocfirst_name');
         var cocmiddle_name = document.getElementById('cocmiddle_name');
@@ -216,20 +216,20 @@ function updateText() {
         var pcocdate_of_marriage = iframeDocument.getElementById('cocdate_of_marriage');
         var pcocdom_y = iframeDocument.getElementById('cocdom_y');
 
-        pcocfirst_name.innerText = cocfirst_name.value;
-        pcocmiddle_name.innerText = cocmiddle_name.value;
-        pcoclast_name.innerText = coclast_name.value;
-        pcocsuffix.innerText = cocsuffix.value;
+        pcocfirst_name.innerText = cocfirst_name.value.toUpperCase();
+        pcocmiddle_name.innerText = cocmiddle_name.value.toUpperCase();
+        pcoclast_name.innerText = coclast_name.value.toUpperCase();
+        pcocsuffix.innerText = cocsuffix.value.toUpperCase();
         pcocbirthdate_month.innerText = cocmonth;
         pcocbirthdate_day.innerText = cocday + ", ";
         pcocbirthdate_year.innerText = cocyear;
-        pcocfirst_name_female.innerText = cocfirst_name_female.value;
-        pcocmiddle_name_female.innerText = cocmiddle_name_female.value;
-        pcoclast_name_female.innerText = coclast_name_female.value;
+        pcocfirst_name_female.innerText = cocfirst_name_female.value.toUpperCase();
+        pcocmiddle_name_female.innerText = cocmiddle_name_female.value.toUpperCase();
+        pcoclast_name_female.innerText = coclast_name_female.value.toUpperCase();
         pcocbirthdate_female_month.innerText = cocmonth_female;
         pcocbirthdate_female_day.innerText = cocday_female + ", ";
         pcocbirthdate_female_year.innerText = cocyear_female;
-        pcocpurok.innerText = cocpurok.value;
+        pcocpurok.innerText = cocpurok.value.toUpperCase();
 
         var coctoday = new Date();
         var coctyear = coctoday.getFullYear();
@@ -261,15 +261,42 @@ function updateText() {
         var pcepurok = iframeDocument.getElementById('cepurok');
         var pcepurpose = iframeDocument.getElementById('cepurpose');
 
-        pcefirst_name.innerText = cefirst_name.value;
-        pcemiddle_name.innerText = cemiddle_name.value;
-        pcelast_name.innerText = celast_name.value;
-        pcesuffix.innerText = cesuffix.value;
+        pcefirst_name.innerText = cefirst_name.value.toUpperCase();
+        pcemiddle_name.innerText = cemiddle_name.value.toUpperCase();
+        pcelast_name.innerText = celast_name.value.toUpperCase();
+        pcesuffix.innerText = cesuffix.value.toUpperCase();
         pcebirthdate.innerText = showAge(cebirthdate);
-        pcepurok.innerText = cepurok.value;
-        pcepurpose.innerText = cepurpose.value;
+        pcepurok.innerText = cepurok.value.toUpperCase();
+        pcepurpose.innerText = cepurpose.value.toUpperCase();
 
     } else if (certificate_type.value == 'certificate_of_income') {
+
+        var cifirst_name = document.getElementById('cifirst_name');
+        var cimiddle_name = document.getElementById('cimiddle_name');
+        var cilast_name = document.getElementById('cilast_name');
+        var cisuffix = document.getElementById('cisuffix');
+        var cipurok = document.getElementById('cipurok');
+        var ciincome_num = document.getElementById('ciincome_num');
+        var ciincome_words = document.getElementById('ciincome_words');
+
+
+        var pcifirst_name = iframeDocument.getElementById('cifirst_name');
+        var pcimiddle_name = iframeDocument.getElementById('cimiddle_name');
+        var pcilast_name = iframeDocument.getElementById('cilast_name');
+        var pcisuffix = iframeDocument.getElementById('cisuffix');
+        var pcipurok = iframeDocument.getElementById('cipurok');
+        var pcincome_num = iframeDocument.getElementById('ciincome_num');
+        // var pcincome_words = iframeDocument.getElementById('ciincome_words');
+
+        if(pcifirst_name){pcifirst_name.innerText = cifirst_name.value.toUpperCase();}
+        if(pcimiddle_name){pcimiddle_name.innerText = cimiddle_name.value.toUpperCase();}
+        if(pcilast_name){pcilast_name.innerText = cilast_name.value.toUpperCase();}
+        if(pcisuffix){pcisuffix.innerText = cisuffix.value.toUpperCase();}
+        if(pcipurok){pcipurok.innerText = cipurok.value.toUpperCase();}
+        if(pcincome_num){pcincome_num.innerText = numberToWords(ciincome_num.value);}
+        if(ciincome_words){ciincome_words.value = numberToWords(ciincome_num.value);}
+
+
 
     } else if (certificate_type.value == 'certificate_of_indigency_aics') {
         var cidfirst_name = document.getElementById('cidfirst_name');
@@ -290,14 +317,14 @@ function updateText() {
         var pcidpurok = iframeDocument.getElementById('cidpurok');
         var pcidpurpose = iframeDocument.getElementById('cidpurpose');
 
-        pcidfirst_name.innerText = cidfirst_name.value;
-        pcidmiddle_name.innerText = cidmiddle_name.value;
-        pcidlast_name.innerText = cidlast_name.value;
-        pcidsuffix.innerText = cidsuffix.value;
+        pcidfirst_name.innerText = cidfirst_name.value.toUpperCase();
+        pcidmiddle_name.innerText = cidmiddle_name.value.toUpperCase();
+        pcidlast_name.innerText = cidlast_name.value.toUpperCase();
+        pcidsuffix.innerText = cidsuffix.value.toUpperCase();
         pcidbirthdate.innerText = cidbirthdate.value;
-        pcidcivil_status.innerText = cidcivil_status.value;
-        pcidpurok.innerText = cidpurok.value;
-        pcidpurpose.innerText = cidpurpose.value;
+        pcidcivil_status.innerText = cidcivil_status.value.toUpperCase();
+        pcidpurok.innerText = cidpurok.value.toUpperCase();
+        pcidpurpose.innerText = cidpurpose.value.toUpperCase();
 
     } else if (certificate_type.value == 'complaint_certificate') {
 
@@ -342,21 +369,21 @@ var pcccase_no = iframeDocument.getElementById('cccase_no');
 var pccvawc_official_name = iframeDocument.getElementById('ccvawc_official_name');
 
 // Populate the iframe elements
-if (pccfirst_name) pccfirst_name.innerText = ccfirst_name.value;
-if (pccmiddle_name) pccmiddle_name.innerText = ccmiddle_name.value;
-if (pcclast_name) pcclast_name.innerText = cclast_name.value;
-if (pccsuffix) pccsuffix.innerText = ccsuffix.value;
+if (pccfirst_name) pccfirst_name.innerText = ccfirst_name.value.toUpperCase();
+if (pccmiddle_name) pccmiddle_name.innerText = ccmiddle_name.value.toUpperCase();
+if (pcclast_name) pcclast_name.innerText = cclast_name.value.toUpperCase();
+if (pccsuffix) pccsuffix.innerText = ccsuffix.value.toUpperCase();
 if (pccbirthdate) pccbirthdate.innerText = showAge(ccbirthdate);
-if (pccpurok) pccpurok.innerText = ccpurok.value;
+if (pccpurok) pccpurok.innerText = ccpurok.value.toUpperCase();
 if (pcomplain_day) pcomplain_day.innerText = complain_day;
 if (pcomplain_month) pcomplain_month.innerText = complain_month;
 if (pcomplain_year) pcomplain_year.innerText = complain_year;
-if (pccfirst_name_respondent) pccfirst_name_respondent.innerText = ccfirst_name_respondent.value;
-if (pccmiddle_name_respondent) pccmiddle_name_respondent.innerText = ccmiddle_name_respondent.value;
-if (pcclast_name_respondent) pcclast_name_respondent.innerText = cclast_name_respondent.value;
-if (pccsuffix_respondent) pccsuffix_respondent.innerText = ccsuffix_respondent.value;
+if (pccfirst_name_respondent) pccfirst_name_respondent.innerText = ccfirst_name_respondent.value.toUpperCase();
+if (pccmiddle_name_respondent) pccmiddle_name_respondent.innerText = ccmiddle_name_respondent.value.toUpperCase();
+if (pcclast_name_respondent) pcclast_name_respondent.innerText = cclast_name_respondent.value.toUpperCase();
+if (pccsuffix_respondent) pccsuffix_respondent.innerText = ccsuffix_respondent.value.toUpperCase();
 if (pcccase_no) pcccase_no.innerText = cccase_no.value;
-if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_name.value
+if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_name.value.toUpperCase();
 
     } else if (certificate_type.value == 'death_certificate') {
         var dcfirst_name = document.getElementById('dcfirst_name');
@@ -420,24 +447,24 @@ if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_nam
         var pdcreq_suffix = iframeDocument.getElementById('dcreq_suffix');
         var pdcrelationship = iframeDocument.getElementById('dcrelationship');
 
-        if (pdcfirst_name) pdcfirst_name.innerText = dcfirst_name.value;
-        if (pdcmiddle_name) pdcmiddle_name.innerText = dcmiddle_name.value;
-        if (pdclast_name) pdclast_name.innerText = dclast_name.value;
-        if (pdcsuffix) pdcsuffix.innerText = dcsuffix.value;
+        if (pdcfirst_name) pdcfirst_name.innerText = dcfirst_name.value.toUpperCase();
+        if (pdcmiddle_name) pdcmiddle_name.innerText = dcmiddle_name.value.toUpperCase();
+        if (pdclast_name) pdclast_name.innerText = dclast_name.value.toUpperCase();
+        if (pdcsuffix) pdcsuffix.innerText = dcsuffix.value.toUpperCase();
         if (pdcbirthdate_month) pdcbirthdate_month.innerText = dcmonth.toUpperCase();
         if (pdcbirthdate_day) pdcbirthdate_day.innerText = dcday;
         if (pdcbirthdate_year) pdcbirthdate_year.innerText = dcyear;
-        if (pdcpurok) pdcpurok.innerText = dcpurok.value;
+        if (pdcpurok) pdcpurok.innerText = dcpurok.value.toUpperCase();
         if (pdcdate_of_death_day) pdcdate_of_death_day.innerText = dcdeathday;
         if (pdcdate_of_death_month) pdcdate_of_death_month.innerText = dcdeathmonth;
         if (pdcdate_of_death_year) pdcdate_of_death_year.innerText = dcdeathyear;
         if (pdctime_of_death) pdctime_of_death.innerText = convertTo12Hour(dctime_of_death.value);
-        if (pdccause_of_death) pdccause_of_death.innerText = dccause_of_death.value;
-        if (pdcreq_first_name) pdcreq_first_name.innerText = dcreq_first_name.value;
-        if (pdcreq_middle_name) pdcreq_middle_name.innerText = dcreq_middle_name.value;
-        if (pdcreq_last_name) pdcreq_last_name.innerText = dcreq_last_name.value;
-        if (pdcreq_suffix) pdcreq_suffix.innerText = dcreq_suffix.value;
-        if (pdcrelationship) pdcrelationship.innerText = dcrelationship.value;
+        if (pdccause_of_death) pdccause_of_death.innerText = dccause_of_death.value.toUpperCase();
+        if (pdcreq_first_name) pdcreq_first_name.innerText = dcreq_first_name.value.toUpperCase();
+        if (pdcreq_middle_name) pdcreq_middle_name.innerText = dcreq_middle_name.value.toUpperCase();
+        if (pdcreq_last_name) pdcreq_last_name.innerText = dcreq_last_name.value.toUpperCase();
+        if (pdcreq_suffix) pdcreq_suffix.innerText = dcreq_suffix.value.toUpperCase();
+        if (pdcrelationship) pdcrelationship.innerText = dcrelationship.value.toUpperCase();
     } else if (certificate_type.value == 'first_time_job_seeker') {
         // From PHP
         // First time jobseeker
