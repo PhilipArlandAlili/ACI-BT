@@ -36,7 +36,7 @@ function printIframe() {
     var iframeWindow = iframe.contentWindow;
     iframeWindow.print();
     form.submit();
-    
+
 }
 
 function updateText() {
@@ -285,13 +285,13 @@ function updateText() {
         var pcincome_num = iframeDocument.getElementById('ciincome_num');
         // var pcincome_words = iframeDocument.getElementById('ciincome_words');
 
-        if(pcifirst_name){pcifirst_name.innerText = cifirst_name.value;}
-        if(pcimiddle_name){pcimiddle_name.innerText = cimiddle_name.value;}
-        if(pcilast_name){pcilast_name.innerText = cilast_name.value;}
-        if(pcisuffix){pcisuffix.innerText = cisuffix.value;}
-        if(pcipurok){pcipurok.innerText = cipurok.value;}
-        if(pcincome_num){pcincome_num.innerText = numberToWords(ciincome_num.value);}
-        if(ciincome_words){ciincome_words.value = numberToWords(ciincome_num.value);}
+        if (pcifirst_name) { pcifirst_name.innerText = cifirst_name.value; }
+        if (pcimiddle_name) { pcimiddle_name.innerText = cimiddle_name.value; }
+        if (pcilast_name) { pcilast_name.innerText = cilast_name.value; }
+        if (pcisuffix) { pcisuffix.innerText = cisuffix.value; }
+        if (pcipurok) { pcipurok.innerText = cipurok.value; }
+        if (pcincome_num) { pcincome_num.innerText = numberToWords(ciincome_num.value); }
+        if (ciincome_words) { ciincome_words.value = numberToWords(ciincome_num.value); }
 
 
 
@@ -338,49 +338,49 @@ function updateText() {
         var ccsuffix_respondent = document.getElementById('ccsuffix_respondent');
         var cccase_no = document.getElementById('cccase_no');
         var ccvawc_official_name = document.getElementById('ccvawc_official_name');
-        
-    
+
+
         const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-// Safely handle ccdate_of_complain
-var complain_date = ccdate_of_complain.value ? new Date(ccdate_of_complain.value) : null;
-var complain_month = complain_date && !isNaN(complain_date.getTime()) ? month_names[complain_date.getMonth()] : '';
-var complain_day = complain_date && !isNaN(complain_date.getTime()) ? complain_date.getDate() : '';
-var complain_year = complain_date && !isNaN(complain_date.getTime()) ? complain_date.getFullYear() : '';
+        // Safely handle ccdate_of_complain
+        var complain_date = ccdate_of_complain.value ? new Date(ccdate_of_complain.value) : null;
+        var complain_month = complain_date && !isNaN(complain_date.getTime()) ? month_names[complain_date.getMonth()] : '';
+        var complain_day = complain_date && !isNaN(complain_date.getTime()) ? complain_date.getDate() : '';
+        var complain_year = complain_date && !isNaN(complain_date.getTime()) ? complain_date.getFullYear() : '';
 
-// Safely retrieve elements from iframeDocument
-var pccfirst_name = iframeDocument.getElementById('ccfirst_name');
-var pccmiddle_name = iframeDocument.getElementById('ccmiddle_name');
-var pcclast_name = iframeDocument.getElementById('cclast_name');
-var pccsuffix = iframeDocument.getElementById('ccsuffix');
-var pccbirthdate = iframeDocument.getElementById('ccbirthdate');
-var pccpurok = iframeDocument.getElementById('ccpurok');
-var pcomplain_day = iframeDocument.getElementById('complain_day');
-var pcomplain_month = iframeDocument.getElementById('complain_month');
-var pcomplain_year = iframeDocument.getElementById('complain_year');
-var pccfirst_name_respondent = iframeDocument.getElementById('ccfirst_name_respondent');
-var pccmiddle_name_respondent = iframeDocument.getElementById('ccmiddle_name_respondent');
-var pcclast_name_respondent = iframeDocument.getElementById('cclast_name_respondent');
-var pccsuffix_respondent = iframeDocument.getElementById('ccsuffix_respondent');
-var pcccase_no = iframeDocument.getElementById('cccase_no');
-var pccvawc_official_name = iframeDocument.getElementById('ccvawc_official_name');
+        // Safely retrieve elements from iframeDocument
+        var pccfirst_name = iframeDocument.getElementById('ccfirst_name');
+        var pccmiddle_name = iframeDocument.getElementById('ccmiddle_name');
+        var pcclast_name = iframeDocument.getElementById('cclast_name');
+        var pccsuffix = iframeDocument.getElementById('ccsuffix');
+        var pccbirthdate = iframeDocument.getElementById('ccbirthdate');
+        var pccpurok = iframeDocument.getElementById('ccpurok');
+        var pcomplain_day = iframeDocument.getElementById('complain_day');
+        var pcomplain_month = iframeDocument.getElementById('complain_month');
+        var pcomplain_year = iframeDocument.getElementById('complain_year');
+        var pccfirst_name_respondent = iframeDocument.getElementById('ccfirst_name_respondent');
+        var pccmiddle_name_respondent = iframeDocument.getElementById('ccmiddle_name_respondent');
+        var pcclast_name_respondent = iframeDocument.getElementById('cclast_name_respondent');
+        var pccsuffix_respondent = iframeDocument.getElementById('ccsuffix_respondent');
+        var pcccase_no = iframeDocument.getElementById('cccase_no');
+        var pccvawc_official_name = iframeDocument.getElementById('ccvawc_official_name');
 
-// Populate the iframe elements
-if (pccfirst_name) pccfirst_name.innerText = ccfirst_name.value;
-if (pccmiddle_name) pccmiddle_name.innerText = ccmiddle_name.value;
-if (pcclast_name) pcclast_name.innerText = cclast_name.value;
-if (pccsuffix) pccsuffix.innerText = ccsuffix.value;
-if (pccbirthdate) pccbirthdate.innerText = showAge(ccbirthdate);
-if (pccpurok) pccpurok.innerText = ccpurok.value;
-if (pcomplain_day) pcomplain_day.innerText = complain_day;
-if (pcomplain_month) pcomplain_month.innerText = complain_month;
-if (pcomplain_year) pcomplain_year.innerText = complain_year;
-if (pccfirst_name_respondent) pccfirst_name_respondent.innerText = ccfirst_name_respondent.value;
-if (pccmiddle_name_respondent) pccmiddle_name_respondent.innerText = ccmiddle_name_respondent.value;
-if (pcclast_name_respondent) pcclast_name_respondent.innerText = cclast_name_respondent.value;
-if (pccsuffix_respondent) pccsuffix_respondent.innerText = ccsuffix_respondent.value;
-if (pcccase_no) pcccase_no.innerText = cccase_no.value;
-if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_name.value;
+        // Populate the iframe elements
+        if (pccfirst_name) pccfirst_name.innerText = ccfirst_name.value;
+        if (pccmiddle_name) pccmiddle_name.innerText = ccmiddle_name.value;
+        if (pcclast_name) pcclast_name.innerText = cclast_name.value;
+        if (pccsuffix) pccsuffix.innerText = ccsuffix.value;
+        if (pccbirthdate) pccbirthdate.innerText = showAge(ccbirthdate);
+        if (pccpurok) pccpurok.innerText = ccpurok.value;
+        if (pcomplain_day) pcomplain_day.innerText = complain_day;
+        if (pcomplain_month) pcomplain_month.innerText = complain_month;
+        if (pcomplain_year) pcomplain_year.innerText = complain_year;
+        if (pccfirst_name_respondent) pccfirst_name_respondent.innerText = ccfirst_name_respondent.value;
+        if (pccmiddle_name_respondent) pccmiddle_name_respondent.innerText = ccmiddle_name_respondent.value;
+        if (pcclast_name_respondent) pcclast_name_respondent.innerText = cclast_name_respondent.value;
+        if (pccsuffix_respondent) pccsuffix_respondent.innerText = ccsuffix_respondent.value;
+        if (pcccase_no) pcccase_no.innerText = cccase_no.value;
+        if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_name.value;
 
     } else if (certificate_type.value == 'death_certificate') {
         var dcfirst_name = document.getElementById('dcfirst_name');
@@ -397,7 +397,7 @@ if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_nam
         var dcreq_last_name = document.getElementById('dcreq_last_name');
         var dcreq_suffix = document.getElementById('dcreq_suffix');
         var dcrelationship = document.getElementById('dcrelationship');
-        
+
         const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
         var dcdate = new Date(dcbirthdate.value);
@@ -492,6 +492,32 @@ if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_nam
         pftbirthdate.innerText = showAge(ftbirthdate);
         pftpurok.innerText = ftpurok.value;
 
+        // Oathtaking Seeker Name
+        var pftofirst_name = iframeDocument.getElementById('ftofirst_name');
+        var pftomiddle_name = iframeDocument.getElementById('ftomiddle_name');
+        var pftolast_name = iframeDocument.getElementById('ftolast_name');
+        var pftosuffix = iframeDocument.getElementById('ftosuffix');
+        var pftoyear_month = iframeDocument.getElementById('ftoyear_month');
+        var pftoperiod_of_residency = iframeDocument.getElementById('ftoperiod_of_residency');
+
+        pftofirst_name.innerText = ftfirst_name.value;
+        pftomiddle_name.innerText = ftmiddle_name.value;
+        pftolast_name.innerText = ftlast_name.value;
+        pftosuffix.innerText = ftsuffix.value;
+
+        // Seeker Signature Name
+        var pftosfirst_name = iframeDocument.getElementById('ftosfirst_name');
+        var pftosmiddle_name = iframeDocument.getElementById('ftosmiddle_name');
+        var pftoslast_name = iframeDocument.getElementById('ftoslast_name');
+        var pftossuffix = iframeDocument.getElementById('ftossuffix');
+
+        pftosfirst_name.innerText = ftfirst_name.value;
+        pftosmiddle_name.innerText = ftmiddle_name.value;
+        pftoslast_name.innerText = ftlast_name.value;
+        pftossuffix.innerText = ftsuffix.value;
+
+
+
         if (ftpormonth.checked) {
             if (ftperiod_of_residency.value == 1) {
                 pftyear_month.innerText = " Month";
@@ -518,33 +544,10 @@ if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_nam
             pftyear_month.innerText = "";
             pftoyear_month.innerText = "";
         }
-        console.log(ftperiod_of_residency.value);
         pftperiod_of_residency.innerText = ftperiod_of_residency.value;
+        pftoperiod_of_residency.innerText = ftperiod_of_residency.value;
 
-        // Oathtaking Seeker Name
-        var pftofirst_name = iframeDocument.getElementById('ftofirst_name');
-        var pftomiddle_name = iframeDocument.getElementById('ftomiddle_name');
-        var pftolast_name = iframeDocument.getElementById('ftolast_name');
-        var pftosuffix = iframeDocument.getElementById('ftosuffix');
-        var pftoyear_month = iframeDocument.getElementById('ftoyear_month');
-        var pftoperiod_of_residency = iframeDocument.getElementById('ftoperiod_of_residency');
-
-        pftofirst_name.innerText = ftfirst_name.value;
-        pftomiddle_name.innerText = ftmiddle_name.value;
-        pftolast_name.innerText = ftlast_name.value;
-        pftosuffix.innerText = ftsuffix.value;
-
-        // Seeker Signature Name
-        var pftosfirst_name = iframeDocument.getElementById('ftosfirst_name');
-        var pftosmiddle_name = iframeDocument.getElementById('ftosmiddle_name');
-        var pftoslast_name = iframeDocument.getElementById('ftoslast_name');
-        var pftossuffix = iframeDocument.getElementById('ftossuffix');
-
-        pftosfirst_name.innerText = ftfirst_name.value;
-        pftosmiddle_name.innerText = ftmiddle_name.value;
-        pftoslast_name.innerText = ftlast_name.value;
-        pftossuffix.innerText = ftsuffix.value;
-
+        // Guardian of the galaxy
         // Guardian Alaga Name
         var pftogafirst_name = iframeDocument.getElementById('ftogafirst_name');
         var pftogamiddle_name = iframeDocument.getElementById('ftogamiddle_name');
@@ -556,10 +559,7 @@ if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_nam
         pftogalast_name.innerText = ftlast_name.value;
         pftogasuffix.innerText = ftsuffix.value;
 
-        
-
-
-        // Guardian of the galaxy
+        // Guardian Name
         var ftogfirst_name = document.getElementById('ftogfirst_name');
         var ftogmiddle_name = document.getElementById('ftogmiddle_name');
         var ftoglast_name = document.getElementById('ftoglast_name');
@@ -590,7 +590,6 @@ if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_nam
         pftogrole.innerText = ftogrole.value;
         pftogsrole.innerText = ftogrole.value;
         pftogpurok.innerText = ftogpurok.value;
-        pftoperiod_of_residency.innerText = ftperiod_of_residency.value;
 
         if (ftogpormonth.checked) {
             if (ftogperiod_of_residency.value == 1) {
@@ -718,7 +717,7 @@ if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_nam
         ptrprevious_address.innerText = trprevious_address.value;
         ptrpurpose.innerText = trpurpose.value;
     }
-}   
+}
 
 function validateBirthdate(birthdate_input) {
     var today = new Date();
@@ -776,7 +775,7 @@ function validatePeriodOfResidency(period_input) {
         }
     }
 
-    
+
 }
 function showAge(birthdate_input) {
     var today = new Date();
@@ -814,17 +813,17 @@ function numberToWords(num) {
         let words = "";
 
         if (num >= 100) {
-        words += ones[Math.floor(num / 100)] + " hundred ";
-        num %= 100;
+            words += ones[Math.floor(num / 100)] + " hundred ";
+            num %= 100;
         }
         if (num >= 11 && num <= 19) {
-        words += teens[num - 11] + " ";
+            words += teens[num - 11] + " ";
         } else if (num === 10 || num >= 20) {
-        words += tens[Math.floor(num / 10)] + " ";
-        num %= 10;
+            words += tens[Math.floor(num / 10)] + " ";
+            num %= 10;
         }
         if (num > 0 && num <= 9) {
-        words += ones[num] + " ";
+            words += ones[num] + " ";
         }
 
         return words.trim();
@@ -836,7 +835,7 @@ function numberToWords(num) {
     while (num > 0) {
         const chunk = num % 1000;
         if (chunk > 0) {
-        result = convertChunk(chunk) + " " + thousands[chunkCount] + " " + result;
+            result = convertChunk(chunk) + " " + thousands[chunkCount] + " " + result;
         }
         num = Math.floor(num / 1000);
         chunkCount++;
@@ -863,7 +862,7 @@ function carldeath() {
     var iframeDocument;
 
     if (iframe && iframe.contentDocument) {
-        iframeDocument = iframe.contentDocument; 
+        iframeDocument = iframe.contentDocument;
     } else {
         console.error('Iframe document is not accessible or does not exist.');
         return;
