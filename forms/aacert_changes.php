@@ -20,7 +20,6 @@
                         ano 'yung Businessman?
                         ano 'yung cswd requirements?
                         hindi mag-limit 'yung amount sa 999999999
-                        bold inputs cert html
                 </div>
         </div>
         
