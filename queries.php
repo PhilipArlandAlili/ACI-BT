@@ -66,10 +66,13 @@ if (isset($_POST["business_permit_new"])) {
     $manager = $conn->real_escape_string($_POST["manager"]);
     $address = $conn->real_escape_string($_POST["address"]);
 
-    $address = $address . ' ' . $purok;
+    $business_name = strtoupper($business_name);
+    $purok = strtoupper($purok);
+    $manager = strtoupper($manager);
+    $address = strtoupper($address);
 
-    $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, manager, address, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssss', $business_name, $manager, $address, $issued_date, $duty_officer_name);
+    $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, manager, address, purok, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('ssssss', $business_name, $manager, $address, $purok, $issued_date, $duty_officer_name);
 
     if ($stmt->execute()) {
         //echo "New record inserted successfully";

@@ -52,7 +52,7 @@
 <script>
     // Event listener for Business Permit print button
     document.getElementById("BPermitNewprintBtn").addEventListener("click", function () {
-        let form = document.getElementById("business_permit_newform");  // Correct form ID
+        let form = document.getElementById("business_permit_new_form");  // Correct form ID
 
         // Validate the form
         if (form.checkValidity()) {

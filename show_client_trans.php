@@ -118,6 +118,7 @@ if (!isset($_SESSION['username'])) {
                                             // echo "<th>ID</th>";
                                             echo "<th>Business Name</th>";
                                             echo "<th>Business Address</th>";
+                                            echo "<th>Purok</th>";
                                             echo "<th>Business Owner</th>";
                                             echo "<th>Issued Date</th>";
                                             echo "<th>Duty Officer Name</th>";
@@ -128,6 +129,7 @@ if (!isset($_SESSION['username'])) {
                                             // echo "<td>" . $row["id"] . "</td>";
                                             echo "<td>" . $row["business_name"] . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
+                                            echo "<td>" . $row["purok"] . "</td>";
                                             echo "<td>" . $row["manager"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
                                             echo "<td>" . $row["duty_officer_name"] . "</td>";
@@ -151,7 +153,7 @@ if (!isset($_SESSION['username'])) {
                                             echo "<tr>";
                                             // echo "<td>" . $row["id"] . "</td>";
                                             echo "<td>" . $row["business_name"] . "</td>";
-                                            echo "<td>" . $row["address"] . "</td>";
+                                            echo "<td>" . $row["address"] . ", " . $row["purok"] . "</td>";
                                             echo "<td>" . $row["manager"] . "</td>";
 
                                             echo "<td>" . $row["issued_date"] . "</td>";
