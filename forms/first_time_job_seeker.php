@@ -12,6 +12,7 @@
 
     <div class="form-section active" id="magakuha_section">
         <label for="" class="fw-bold">Maga kuha</label><br>
+
         <label for="">First Name:</label>
         <input type="text" class="form-control" id="ftfirst_name" name="first_name" maxlength="50"
             oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
@@ -77,7 +78,7 @@
         </select><br>
         <hr>
         <div class="btn-container d-flex justify-content-between">
-            <button type="button" class="btn btn-secondary" id="nextToGuardian">Next</button>
+            <button type="button" class="btn btn-secondary" id="nextToGuardian" onclick="showGuardian()">Next</button>
             <button name="first_time_job_seeker" class="btn btn-primary" onclick="printIframe()">Print</button>
         </div>
         <hr>
@@ -157,16 +158,63 @@
         </select><br>
         <hr>
         <div class="btn-container d-flex justify-content-between">
-            <button type="button" class="btn btn-secondary" id="backToMagaKuha">Back</button>
+            <button type="button" class="btn btn-secondary" id="backToMagaKuha" oninput="hideGuardian()">Back</button>
             <button name="first_time_job_seeker" class="btn btn-primary" onclick="printIframe()">Print</button>
         </div>
         <hr>
     </div>
-
-    <!-- <button name="first_time_job_seeker" onclick="printIframe()">Print</button> -->
 </form>
 
 <script>
+    function hideGuardian() {
+        var iframe = document.getElementById('myIframe');
+        var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+        var hideElement = iframeDocument.getElementById('displayhere');
+        hideElement.innerHTML = "";
+    }
+
+    function showGuardian() {
+        var iframe = document.getElementById('myIframe');
+        var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+        var displayElement = iframeDocument.getElementById('displayhere');
+        displayElement.innerHTML = `
+        <div class="guardians" id="guardian_section" style="font-size: 16px;">
+            <p style="margin-top: -2%;">For applicants at least fifteen years old to less than 18 years of age:</p>
+            <div class="guardian-details text-justify indent">
+                I, <!-- fto guardian -->
+                <b><span id="ftogfirst_name"></span>
+                    <span id="ftogmiddle_name"></span>
+                    <span id="ftoglast_name"></span>
+                    <span id="ftogsuffix"></span></b>,
+                <b><span id="ftogbirthdate"></span></b> years old, <b><span id="ftogrole"></span></b>
+                of <!-- ftoa alaga -->
+                <b><span id="ftogafirst_name"></span>
+                    <span id="ftogamiddle_name"></span>
+                    <span id="ftogalast_name"></span>
+                    <span id="ftogasuffix"></span></b>,
+                and a resident of <b><span id="ftogpurok"></span></b> for
+                <b><span id="ftogperiod_of_residency"></span></b>
+                <b><span id="ftogyear_month"></span></b>, do hereby give my consent for my child/dependent to avail
+                the benefits of <b>Republic Act 11261</b> and be bound by the above-mentioned conditions.
+            </div><br>
+            <div class="officer-container" style="margin-top: 1px;">
+                Signed by:
+                <b style="margin-top: 20px;">
+                    <span id="ftogsfirst_name"></span>
+                    <span id="ftogsmiddle_name"></span>
+                    <span id="ftogslast_name"></span>
+                    <span id="ftogssuffix"></span>
+                </b>
+                <p style="margin-top: -5px;">
+                    <span id="ftogsrole"></span>
+                </p>
+            </div>
+        </div>
+    `;
+    }
+
     const magaKuhaSection = document.getElementById('magakuha_section');
     const guardianSection = document.getElementById('guardian_section');
     const nextButton = document.getElementById('nextToGuardian');
@@ -175,10 +223,12 @@
     nextButton.addEventListener('click', () => {
         magaKuhaSection.classList.remove('active');
         guardianSection.classList.add('active');
+        showGuardian();
     });
 
     backButton.addEventListener('click', () => {
         guardianSection.classList.remove('active');
         magaKuhaSection.classList.add('active');
+        hideGuardian();
     });
 </script>
