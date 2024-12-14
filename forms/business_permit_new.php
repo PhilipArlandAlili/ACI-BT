@@ -4,7 +4,7 @@
     <input type="text" name="business_name" id="bpnbusiness_name" class="form-control" oninput="this.value = this.value.toUpperCase();updateText()"s placeholder="Ex: Carl Store" required><br>
 
     <label for="purok">Purok:</label><br>
-    <select name="purok" id="bpnpurok" class="form-control" oninput="this.value = this.value.toUpperCase();updateText()" required>
+    <select name="purok" id="bpnpurok" class="form-control" oninput="updateText()" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>

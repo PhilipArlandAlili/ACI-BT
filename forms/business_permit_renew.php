@@ -1,10 +1,10 @@
 <!-- Business Permit Renewal Form -->
-<form action="#" method="post" class="form" id="business_permit_renewForm">
+<form action="#" method="post" class="form" id="business_permit_renew_form">
     <label for="businessName">Business name/ Trade Activity:</label>
     <input type="text" class="form-control" id="bprbusiness_name" name="business_name" oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. Carl Store" required><br>
 
     <label for="purok">Purok:</label><br>
-    <select name="purok" id="bprpurok" class="form-control" oninput="this.value = this.value.toUpperCase();updateText()" required>
+    <select name="purok" id="bprpurok" class="form-control" oninput="updateText()" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -51,7 +51,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("BPermitRenewPrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("business_permit_renewForm");  // Use the unique form ID
+        let form = document.getElementById("business_permit_renew_form");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {

@@ -78,7 +78,6 @@ if (!isset($_SESSION['username'])) {
                                             echo "</thead>";
                                             echo "<tbody>";
                                             echo "<tr>";
-                                            // Combine first_name, middle_name, last_name, and suffix into Full Name
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
@@ -89,19 +88,19 @@ if (!isset($_SESSION['username'])) {
                                             echo "<td>" . $row["birthdate"] . "</td>";
                                             echo "<td>" . $row["civil_status"] . "</td>";
                                             $por = $row["period_of_residency"];
-                                            $years = floor($por / 12); // Calculate full years
-                                            $remaining_months = $por % 12; // Calculate remaining months
+                                            $years = floor($por / 12);
+                                            $remaining_months = $por % 12;
                                             
                                             if ($por == 1) {
-                                                echo "<td>" . $por . " month</td>";
+                                                echo "<td>" . $por . " MONTH</td>";
                                             } elseif ($por < 12) {
-                                                echo "<td>" . $por . " months</td>";
+                                                echo "<td>" . $por . " MONTHS</td>";
                                             } elseif ($por == 12) {
-                                                echo "<td>" . $years . " year</td>";
-                                            } elseif ($remaining_months == 0) { // Exact multiple of 12 months
-                                                echo "<td>" . $years . " years</td>";
+                                                echo "<td>" . $years . " YEAR</td>";
+                                            } elseif ($remaining_months == 0) {
+                                                echo "<td>" . $years . " YEARS</td>";
                                             } else { // Combined years and months
-                                                echo "<td>" . $years . " year" . ($years > 1 ? "s" : "") . " and " . $remaining_months . " month" . ($remaining_months > 1 ? "s" : "") . "</td>";
+                                                echo "<td>" . $years . " YEAR" . ($years > 1 ? "S" : "") . " & " . $remaining_months . " MONTH" . ($remaining_months > 1 ? "S" : "") . "</td>";
                                             }
                                             echo "<td>" . $row["purpose"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
@@ -109,10 +108,31 @@ if (!isset($_SESSION['username'])) {
                                             echo "</tr>";
                                             echo "</tbody>";
                                         }
-
-
                                         // For Business Permit New
                                         if ($table == "business_permit_new") {
+                                            echo "<thead>";
+                                            echo "<tr>";
+                                            echo "<th>Business Name</th>";
+                                            echo "<th>Business Address</th>";
+                                            echo "<th>Purok</th>";
+                                            echo "<th>Business Owner</th>";
+                                            echo "<th>Issued Date</th>";
+                                            echo "<th>Duty Officer Name</th>";
+                                            echo "</tr>";
+                                            echo "</thead>";
+                                            echo "<tbody>";
+                                            echo "<tr>";
+                                            echo "<td>" . $row["business_name"] . "</td>";
+                                            echo "<td>" . $row["address"] . "</td>";
+                                            echo "<td>" . $row["purok"] . "</td>";
+                                            echo "<td>" . $row["manager"] . "</td>";
+                                            echo "<td>" . $row["issued_date"] . "</td>";
+                                            echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                            echo "</tr>";
+                                            echo "</tbody>";
+                                        }
+                                        // For Business Permit Renew
+                                        if ($table == "business_permit_renew") {
                                             echo "<thead>";
                                             echo "<tr>";
                                             // echo "<th>ID</th>";
@@ -136,31 +156,7 @@ if (!isset($_SESSION['username'])) {
                                             echo "</tr>";
                                             echo "</tbody>";
                                         }
-
-                                        if ($table == "business_permit_renew") {
-                                            echo "<thead>";
-                                            echo "<tr>";
-                                            // echo "<th>ID</th>";
-                                            echo "<th>Business Name</th>";
-                                            echo "<th>Business Address</th>";
-                                            echo "<th>Business Owner</th>";
-
-                                            echo "<th>Issued Date</th>";
-                                            echo "<th>Duty Officer Name</th>";
-                                            echo "</tr>";
-                                            echo "</thead>";
-                                            echo "<tbody>";
-                                            echo "<tr>";
-                                            // echo "<td>" . $row["id"] . "</td>";
-                                            echo "<td>" . $row["business_name"] . "</td>";
-                                            echo "<td>" . $row["address"] . ", " . $row["purok"] . "</td>";
-                                            echo "<td>" . $row["manager"] . "</td>";
-
-                                            echo "<td>" . $row["issued_date"] . "</td>";
-                                            echo "<td>" . $row["duty_officer_name"] . "</td>";
-                                            echo "</tr>";
-                                            echo "</tbody>";
-                                        }
+                                        // For Certificate of Cohabitation
                                         if ($table == "certificate_of_cohabitation") {
                                             echo "<thead>";
                                             echo "<tr>";
