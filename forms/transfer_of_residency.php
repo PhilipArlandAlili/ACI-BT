@@ -2,21 +2,21 @@
 
     <label for="">First Name:</label>
     <input type="text" class="form-control" id="trfirst_name" name="first_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
     <input type="text" class="form-control" id="trmiddle_name" name="middle_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
     <input type="text" class="form-control" id="trlast_name" name="last_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" onchange="updateText()" name="suffix" id="trsuffix">
+    <select class="text-left form-control" onchange="this.value = this.value.toUpperCase();updateText()" name="suffix" id="trsuffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -26,11 +26,11 @@
     </select><br>
 
     <label for="">Nationality</label>
-    <input type="text" oninput="updateText()" class="form-control" name="nationality" id="trnationality"
+    <input type="text" oninput="this.value = this.value.toUpperCase();updateText()" class="form-control" name="nationality" id="trnationality"
         placeholder="Ex. Filipino" required><br>
 
     <label for="">Civil Status:</label>
-    <select class="form-control" onchange="updateText()" name="civil_status" id="trcivil_status" required>
+    <select class="form-control" onchange="this.value = this.value.toUpperCase();updateText()" name="civil_status" id="trcivil_status" required>
         <option value="">--Select Civil Status--</option>
         <option value="Single">Single</option>
         <option value="Married">Married</option>
@@ -38,7 +38,7 @@
     </select><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="trpurok" required onchange="updateText()">
+    <select class="text-left form-control" name="purok" id="trpurok" required onchange="this.value = this.value.toUpperCase();updateText()">
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Huwaran">Huwaran</option>
@@ -53,7 +53,7 @@
 
     <!-- <label for="purok">Current Address:</label>
     <select class="text-left form-control" name="current_address" id="trcurrent_address" required
-        onchange="updateText()">
+        onchange="this.value = this.value.toUpperCase();updateText()">
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Huwaran">Huwaran</option>
@@ -68,11 +68,11 @@
 
 
     <label for="">Previous Address:</label>
-    <input type="text" oninput="updateText()" class="form-control" name="previous_address" id="trprevious_address"
+    <input type="text" oninput="this.value = this.value.toUpperCase();updateText()" class="form-control" name="previous_address" id="trprevious_address"
         placeholder="Ex. Previous Address" required><br>
 
     <label for="">Purpose:</label>
-    <input type="text" name="purpose" oninput="updateText()" class="form-control" id="trpurpose" cols="30" rows="10"
+    <input type="text" name="purpose" oninput="this.value = this.value.toUpperCase();updateText()" class="form-control" id="trpurpose" cols="30" rows="10"
         placeholder="Ex. Moving to another country" required><br>
     <hr>
 

@@ -1,10 +1,10 @@
 <!-- Business Permit Form -->
 <form action="#" method="post" class="form" id="business_permit_new_form">
     <label for="businessName">Business name/ Trade Activity:</label>
-    <input type="text" name="business_name" id="bpnbusiness_name" class="form-control" oninput="updateText()"s placeholder="Ex: Carl Store" required><br>
+    <input type="text" name="business_name" id="bpnbusiness_name" class="form-control" oninput="this.value = this.value.toUpperCase();updateText()"s placeholder="Ex: Carl Store" required><br>
 
     <label for="purok">Purok:</label><br>
-    <select name="purok" id="bpnpurok" class="form-control" oninput="updateText()" required>
+    <select name="purok" id="bpnpurok" class="form-control" oninput="this.value = this.value.toUpperCase();updateText()" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -19,10 +19,10 @@
     <br>
 
     <label for="manager_operator">Manager / Operator:</label>
-    <input type="text" class="form-control" id="bpnmanager" name="manager"oninput="updateText()" placeholder="Ex. Juan Dela Cruz" required><br>
+    <input type="text" class="form-control" id="bpnmanager" name="manager"oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. Juan Dela Cruz" required><br>
 
     <label for="purok">Address:</label><br>
-    <input type="text" name="address" id="bpnaddress" class="form-control" oninput="updateText()" placeholder="Ex. Purok 1, Brgy. San Francisco, General Luna, Quezon" required><br>
+    <input type="text" name="address" id="bpnaddress" class="form-control" oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. Purok 1, Brgy. San Francisco, General Luna, Quezon" required><br>
     <br>
 
     <div class="BPermitNewprint" style="text-align: right;">

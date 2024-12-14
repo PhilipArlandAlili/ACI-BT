@@ -3,22 +3,22 @@
     <label for="" class="fw-bold">Complainant</label><br>
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" id="ccfirst_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
     <input type="text" class="form-control" name="middle_name" id="ccmiddle_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
     <input type="text" class="form-control" name="last_name" id="cclast_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         required placeholder="Ex. Dela Cruz"><br>
 
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="ccsuffix" onchange="updateText()">
+    <select class="text-left form-control" name="suffix" id="ccsuffix" onchange="this.value = this.value.toUpperCase();updateText()">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -28,11 +28,11 @@
     </select><br>
 
     <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" onchange="validatebday(this);updateText();" id="ccbirthdate"
+    <input type="date" class="form-control" onchange="validatebday(this);this.value = this.value.toUpperCase();updateText();" id="ccbirthdate"
         name="birthdate" required><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="ccpurok" onchange="updateText()" required>
+    <select class="text-left form-control" name="purok" id="ccpurok" onchange="this.value = this.value.toUpperCase();updateText()" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -47,28 +47,28 @@
 
     <label for="">Date Filed:</label>
     <input type="date" id="ccdate_of_complain" name="date_of_complain"
-        onchange="validateformarriagedate(this);updateText();" class="form-control" required><br>
+        onchange="validateformarriagedate(this);this.value = this.value.toUpperCase();updateText();" class="form-control" required><br>
     <hr>
 
     <!--Respondent Full Name-->
     <label for="" class="fw-bold">Respondent</label><br>
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control" id="ccfirst_name_respondent" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         name="first_name_respondent" placeholder="Ex. Pedro" required><br>
 
     <label for="middle_name">Middle Name:</label>
     <input type="text" class="form-control" id="ccmiddle_name_respondent" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         name="middle_name_respondent" placeholder="Ex. Torres" required><br>
 
     <label for="last_name">Last Name:</label>
     <input type="text" class="form-control" id="cclast_name_respondent" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         name="last_name_respondent" placeholder="Ex. Bautista" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix_respondent" id="ccsuffix_respondent" oninput="updateText()">
+    <select class="text-left form-control" name="suffix_respondent" id="ccsuffix_respondent" oninput="this.value = this.value.toUpperCase();updateText()">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -78,12 +78,12 @@
     </select><br>
 
     <label for="">Case Number:</label>
-    <input type="number" name="case_no" id="cccase_no" oninput="updateText()" class="form-control" placeholder="165"
+    <input type="number" name="case_no" id="cccase_no" oninput="this.value = this.value.toUpperCase();updateText()" class="form-control" placeholder="165"
         required><br>
 
     <label for="last_name">VAWC Official Name:</label>
     <input type="text" class="form-control" id="ccvawc_official_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         name="vawc_official_name" required><br>
 
     <div class="complaintPrint" style="text-align: right;">
