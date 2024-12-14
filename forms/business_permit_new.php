@@ -1,7 +1,8 @@
 <!-- Business Permit Form -->
 <form action="#" method="post" class="form" id="business_permit_new_form">
     <label for="businessName">Business name/ Trade Activity:</label>
-    <input type="text" name="business_name" id="bpnbusiness_name" class="form-control" oninput="this.value = this.value.toUpperCase();updateText()"s placeholder="Ex: Carl Store" required><br>
+    <input type="text" name="business_name" id="bpnbusiness_name" class="form-control"
+        oninput="this.value = this.value.toUpperCase();updateText()" s placeholder="Ex: Carl Store" required><br>
 
     <label for="purok">Purok:</label><br>
     <select name="purok" id="bpnpurok" class="form-control" oninput="updateText()" required>
@@ -19,10 +20,13 @@
     <br>
 
     <label for="manager_operator">Manager / Operator:</label>
-    <input type="text" class="form-control" id="bpnmanager" name="manager"oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. Juan Dela Cruz" required><br>
+    <input type="text" class="form-control" id="bpnmanager" name="manager"
+        oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. Juan Dela Cruz" required><br>
 
     <label for="purok">Address:</label><br>
-    <input type="text" name="address" id="bpnaddress" class="form-control" oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. Purok 1, Brgy. San Francisco, General Luna, Quezon" required><br>
+    <input type="text" name="address" id="bpnaddress" class="form-control"
+        oninput="this.value = this.value.toUpperCase();updateText()"
+        placeholder="Ex. Purok 1, Brgy. San Francisco, General Luna, Quezon" required><br>
     <br>
 
     <div class="BPermitNewprint" style="text-align: right;">
@@ -39,7 +43,8 @@
                         <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
-                        <button class="w-25 btn btn-primary" name="business_permit_new" onclick="printIframe()">Yes</button>
+                        <button class="w-25 btn btn-primary" name="business_permit_new"
+                            onclick="printIframe()">Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
