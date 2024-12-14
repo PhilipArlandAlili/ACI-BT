@@ -545,6 +545,8 @@ if (isset($_POST["lot_ownership"])) {
 
     $suffix = strtoupper($suffix);
     $purok = strtoupper($purok);
+    $lot_area_words = strtoupper($lot_area_words);
+    $lot_location_address = strtoupper($lot_location_address);
 
     $claimant = ($claimant == '/') ? "YES" : "NO";
     $beneficiary = ($beneficiary == '/') ? "YES" : "NO";
