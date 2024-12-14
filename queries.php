@@ -214,11 +214,14 @@ if (isset($_POST["certificate_of_employability"])) {
     $purok = $conn->real_escape_string($_POST["purok"]);
     $birthdate = $conn->real_escape_string($_POST["birthdate"]);
 
+    $suffix = strtoupper($suffix);
+    $purok = strtoupper($purok);
+
     $age = date('Y') - date('Y', strtotime($birthdate));
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 
-    $stmt = $conn->prepare("INSERT INTO certificate_of_employability (first_name, middle_name, last_name, suffix, address, age, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssiss', $first_name, $middle_name, $last_name, $suffix, $purok, $age, $issued_date, $duty_officer_name);
+    $stmt = $conn->prepare("INSERT INTO certificate_of_employability (first_name, middle_name, last_name, suffix, address, birthdate, age, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('ssssssiss', $first_name, $middle_name, $last_name, $suffix, $purok, $birthdate, $age, $issued_date, $duty_officer_name);
 
     if ($stmt->execute()) {
         //echo "New record inserted successfully";

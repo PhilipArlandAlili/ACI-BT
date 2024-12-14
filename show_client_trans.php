@@ -174,7 +174,6 @@ if (!isset($_SESSION['username'])) {
                                             echo "</thead>";
                                             echo "<tbody>";
                                             echo "<tr>";
-                                            // echo "<td>" . $row["id"] . "</td>";
                                             $fullNameMale = $row["first_name_male"]
                                                 . (!empty($row["middle_name_male"]) ? " " . $row["middle_name_male"] : "")
                                                 . " " . $row["last_name_male"]
@@ -198,8 +197,8 @@ if (!isset($_SESSION['username'])) {
                                         if ($table == "certificate_of_employability") {
                                             echo "<thead>";
                                             echo "<tr>";
-                                            // echo "<th>ID</th>";
                                             echo "<th>Full Name</th>";
+                                            echo "<th>Birthdate</th>";
                                             echo "<th>Age</th>";
                                             echo "<th>Address</th>";
                                             echo "<th>Issued Date</th>";
@@ -208,12 +207,12 @@ if (!isset($_SESSION['username'])) {
                                             echo "</thead>";
                                             echo "<tbody>";
                                             echo "<tr>";
-                                            // echo "<td>" . $row["id"] . "</td>";
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
                                                 . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
+                                            echo "<td>" . $row["birthdate"] . "</td>";
                                             echo "<td>" . $row["age"] . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";

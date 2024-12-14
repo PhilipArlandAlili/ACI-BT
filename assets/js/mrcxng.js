@@ -258,13 +258,13 @@ function updateText() {
         var pcepurok = iframeDocument.getElementById('cepurok');
         var pcepurpose = iframeDocument.getElementById('cepurpose');
 
-        pcefirst_name.innerText = cefirst_name.value;
-        pcemiddle_name.innerText = cemiddle_name.value;
-        pcelast_name.innerText = celast_name.value;
-        pcesuffix.innerText = cesuffix.value;
+        pcefirst_name.innerText = cefirst_name.value.toUpperCase();
+        pcemiddle_name.innerText = cemiddle_name.value.toUpperCase();
+        pcelast_name.innerText = celast_name.value.toUpperCase();
+        pcesuffix.innerText = cesuffix.value.toUpperCase();
         pcebirthdate.innerText = showAge(cebirthdate);
-        pcepurok.innerText = cepurok.value;
-        pcepurpose.innerText = cepurpose.value;
+        pcepurok.innerText = cepurok.value.toUpperCase();
+        pcepurpose.innerText = cepurpose.value.toUpperCase();
 
     } else if (certificate_type.value == 'certificate_of_income') {
 

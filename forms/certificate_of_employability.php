@@ -1,4 +1,4 @@
-<form action="#" method="POST" class="form" id="cecertificate_of_employability_form">
+<form action="#" method="POST" class="form" id="certificate_of_employability_form">
 
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" id="cefirst_name" maxlength="50"
@@ -27,14 +27,14 @@
 
     <!-- Birthdate = Age -->
     <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" onchange="validatebday(this);this.value = this.value.toUpperCase();updateText();" id="cebirthdate"
+    <input type="date" class="form-control" oninput="validateBirthdate(this);this.value = this.value.toUpperCase();updateText();" id="cebirthdate"
         name="birthdate" required><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="cepurok" onchange="this.value = this.value.toUpperCase();updateText()" required>
+    <select class="text-left form-control" name="purok" id="cepurok" onchange="updateText()" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
-        <option value="Hurawan">Huwaran</option>
+        <option value="Huwaran">Huwaran</option>
         <option value="Kaakbayan">Kaakbayan</option>
         <option value="New Princesa">New Princesa</option>
         <option value="San Franciso I">San Franciso I</option>

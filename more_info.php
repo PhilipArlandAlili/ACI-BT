@@ -45,6 +45,7 @@
                                 <thead>
                                     <tr>
                                         <?php
+                                        // Barangay Clearance
                                         if ($doc_id == 1) {
                                             echo "
                                             <th>Full Name</th>
@@ -57,7 +58,9 @@
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
-                                        } elseif ($doc_id == 2 || $doc_id == 3) {
+                                        } 
+                                        // Business Permit New and Renew
+                                        elseif ($doc_id == 2 || $doc_id == 3) {
                                             echo "
                                             <th>Business Name</th>
                                             <th>Business Address</th>
@@ -66,7 +69,9 @@
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
-                                        } elseif ($doc_id == 4) {
+                                        } 
+                                        // Certificate of Cohabitation
+                                        elseif ($doc_id == 4) {
                                             echo "
                                             <th>Full Name (Male)</th>
                                             <th>Birthdate</th>
@@ -78,12 +83,15 @@
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
-                                        } elseif ($doc_id == 5) {
+                                        } 
+                                        // Certificate of Employability
+                                        elseif ($doc_id == 5) {
                                             echo "
+                                            <th>Full Name</th>
+                                            <th>Birthdate</th>
                                             <th>Age</th>
                                             <th>Address</th>
                                             <th>Issued Date</th>
-                                            <th>Full Name</th>
                                             <th>Duty Officer Name</th>
                                         ";
                                         } elseif ($doc_id == 6) {
@@ -187,7 +195,6 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                // Combine first_name, middle_name, last_name, and suffix into Full Name
                                                 $fullName = $row["first_name"]
                                                     . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                     . " " . $row["last_name"]
@@ -259,7 +266,6 @@
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["purok"] . "</td>";
                                                 echo "<td>" . $row["manager"] . "</td>";
-    
                                                 echo "<td>" . $row["issued_date"] . "</td>";
                                                 echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                 echo "</tr>";
@@ -301,9 +307,11 @@
                                         } else {
                                             echo "<tr><td colspan='9'><center>No cohabitation records found</center></td></tr>";
                                         }
-                                    } elseif ($doc_id == 5) {
+                                    } 
+                                    // Certificate of Employability
+                                    elseif ($doc_id == 5) {
                                         // Fetch data from certificate_of_employability table when doc_id is 5
-                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, age, issued_date, duty_officer_name
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, birthdate, age, issued_date, duty_officer_name
                                         FROM certificate_of_employability";
 
                                         $result = $conn->query($sql);
@@ -311,12 +319,12 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                            // echo "<td>" . $row["id"] . "</td>";
                                                 $fullName = $row["first_name"]
                                                     . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                     . " " . $row["last_name"]
                                                     . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
                                                 echo "<td>" . $fullName . "</td>";
+                                                echo "<td>" . $row["birthdate"] . "</td>";
                                                 echo "<td>" . $row["age"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
