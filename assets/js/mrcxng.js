@@ -382,11 +382,23 @@ if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_nam
         var dcyear = dcdate.getFullYear();
         dcmonth = month_names[dcmonth];
 
+        if (!dcbirthdate.value) {
+            dcmonth = '';
+            dcday = '';
+            dcyear = '';
+        }
+
         var dcdeathdate = new Date(dcdate_of_death.value);
         var dcdeathmonth = dcdeathdate.getMonth();
         var dcdeathday = dcdeathdate.getDate();
         var dcdeathyear = dcdeathdate.getFullYear();
         dcdeathmonth = month_names[dcdeathmonth];
+
+        if (!dcdate_of_death.value) {
+            dcdeathmonth = '';
+            dcdeathday = '';
+            dcdeathyear = '';
+        }
 
         // From HTML
         var pdcfirst_name = iframeDocument.getElementById('dcfirst_name');
@@ -408,25 +420,24 @@ if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_nam
         var pdcreq_suffix = iframeDocument.getElementById('dcreq_suffix');
         var pdcrelationship = iframeDocument.getElementById('dcrelationship');
 
-        pdcfirst_name.innerText = dcfirst_name.value;
-        pdcmiddle_name.innerText = dcmiddle_name.value;
-        pdclast_name.innerText = dclast_name.value;
-        pdcsuffix.innerText = dcsuffix.value;
-        pdcbirthdate_month.innerText = dcmonth;
-        pdcbirthdate_day.innerText = dcday;
-        pdcbirthdate_year.innerText = dcyear;
-        pdcpurok.innerText = dcpurok.value;
-        pdcpurok.innerText = dcpurok.value;
-        pdcdate_of_death_day.innerText = dcdeathday;
-        pdcdate_of_death_month.innerText = dcdeathmonth;
-        pdcdate_of_death_year.innerText = dcdeathyear;
-        pdctime_of_death.innerText = dctime_of_death.value;
-        pdccause_of_death.innerText = dccause_of_death.value;
-        pdcreq_first_name.innerText = dcreq_first_name.value;
-        pdcreq_middle_name.innerText = dcreq_middle_name.value;
-        pdcreq_last_name.innerText = dcreq_last_name.value;
-        pdcreq_suffix.innerText = dcreq_suffix.value;
-        pdcrelationship.innerText = dcrelationship.value;
+        if (pdcfirst_name) pdcfirst_name.innerText = dcfirst_name.value;
+        if (pdcmiddle_name) pdcmiddle_name.innerText = dcmiddle_name.value;
+        if (pdclast_name) pdclast_name.innerText = dclast_name.value;
+        if (pdcsuffix) pdcsuffix.innerText = dcsuffix.value;
+        if (pdcbirthdate_month) pdcbirthdate_month.innerText = dcmonth.toUpperCase();
+        if (pdcbirthdate_day) pdcbirthdate_day.innerText = dcday;
+        if (pdcbirthdate_year) pdcbirthdate_year.innerText = dcyear;
+        if (pdcpurok) pdcpurok.innerText = dcpurok.value;
+        if (pdcdate_of_death_day) pdcdate_of_death_day.innerText = dcdeathday;
+        if (pdcdate_of_death_month) pdcdate_of_death_month.innerText = dcdeathmonth;
+        if (pdcdate_of_death_year) pdcdate_of_death_year.innerText = dcdeathyear;
+        if (pdctime_of_death) pdctime_of_death.innerText = convertTo12Hour(dctime_of_death.value);
+        if (pdccause_of_death) pdccause_of_death.innerText = dccause_of_death.value;
+        if (pdcreq_first_name) pdcreq_first_name.innerText = dcreq_first_name.value;
+        if (pdcreq_middle_name) pdcreq_middle_name.innerText = dcreq_middle_name.value;
+        if (pdcreq_last_name) pdcreq_last_name.innerText = dcreq_last_name.value;
+        if (pdcreq_suffix) pdcreq_suffix.innerText = dcreq_suffix.value;
+        if (pdcrelationship) pdcrelationship.innerText = dcrelationship.value;
     } else if (certificate_type.value == 'first_time_job_seeker') {
         // From PHP
         // First time jobseeker
@@ -703,6 +714,18 @@ function validateBirthdate(birthdate_input) {
         return false;
     }
 
+}
+
+function validateDate(date_input) {
+    const date = new Date(date_input.value);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    today.setDate(today.getDate() + 1); // Add one day to today
+
+    if (date > today) {
+        alert("Future dates are not allowed. Please enter a valid date.");
+        date_input.value = '';
+    }
 }
 
 function showAge(birthdate_input) {
