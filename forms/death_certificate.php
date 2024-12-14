@@ -16,7 +16,7 @@
         id="dclast_name" name="last_name" placeholder="Ex. Dela Cruz" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" onchange="this.value = this.value.toUpperCase();updateText()" name="suffix" id="dcsuffix">
+    <select class="text-left form-control" onchange="updateText()" name="suffix" id="dcsuffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>

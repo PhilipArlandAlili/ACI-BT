@@ -15,7 +15,7 @@
         required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="losuffix" oninput="this.value = this.value.toUpperCase();updateText();">
+    <select class="text-left form-control" name="suffix" id="losuffix" oninput="updateText();">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>

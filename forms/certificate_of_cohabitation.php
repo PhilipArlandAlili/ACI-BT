@@ -11,7 +11,7 @@
     <input type="text" class="form-control" name="last_name" id="coclast_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();" required  placeholder="Ex. Dela Cruz"><br>
 
     <label for="">Suffix:</label>
-    <select class="form-control text-left" name="suffix" id="cocsuffix" onchange="this.value = this.value.toUpperCase();updateText();">
+    <select class="form-control text-left" name="suffix" id="cocsuffix" onchange="updateText();">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
