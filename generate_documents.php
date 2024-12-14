@@ -78,7 +78,7 @@ include 'queries.php';
                                 <option value="certificate_of_employability">Certificate of Employability</option>
                                 <option value="certificate_of_income">Certificate of Income</option>
                                 <!-- <option value="certificate_of_indigency">Certificate of Indigency</option> -->
-                                <option value="certificate_of_indigency_aics">Certificate of Indigency</option>
+                                <option value="certificate_of_indigency">Certificate of Indigency</option>
                                 <option value="transfer_of_residency">Certificate of Transfer</option>
                                 <option value="complaint_certificate">Complaint Certificate</option>
                                 <option value="death_certificate">Death Certificate</option>
@@ -125,11 +125,11 @@ include 'queries.php';
                             </div>
 
                             <!-- <div class="cert" id="certificate_of_indigency">
-                                <?php include 'forms/certificate_of_indigency.php' ?>
+                                <?php include 'forms/certificate_of_indigency_keeps.php' ?>
                             </div> -->
 
-                            <div class="cert" id="certificate_of_indigency_aics">
-                                <?php include 'forms/certificate_of_indigency_aics.php' ?>
+                            <div class="cert" id="certificate_of_indigency">
+                                <?php include 'forms/certificate_of_indigency.php' ?>
                             </div>
 
                             <div class="cert" id="lot_ownership">
