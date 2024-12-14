@@ -1,4 +1,4 @@
-<form action="#" method="post" class="form" id="certificate_of_incomeForm">
+<form action="#" method="post" class="form" id="certificate_of_income_form">
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" id="cifirst_name" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
@@ -25,10 +25,10 @@
     </select><br>
 
     <label for="puroks">Purok:</label>
-    <select class="text-left form-control" onchange="this.value = this.value.toUpperCase();updateText()"name="purok" id="cipurok" required>
+    <select class="text-left form-control" onchange="updateText()"name="purok" id="cipurok" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
-        <option value="Hurawan">Huwaran</option>
+        <option value="Huwaran">Huwaran</option>
         <option value="Kaakbayan">Kaakbayan</option>
         <option value="New Princesa">New Princesa</option>
         <option value="San Franciso I">San Franciso I</option>
@@ -39,12 +39,12 @@
     </select><br>
 
     <label for="amount">Amount (In Numeric Form):</label>
-    <input type="number" max="999999999" min="1" id="ciincome_num" name="income_num" oninput="this.value = this.value.toUpperCase();updateText()"
-        class="form-control" maxlength="10" placeholder="Ex. 20000" required><br>
+    <input type="number" max="999999999" min="1" id="ciincome_num" name="income_num" oninput="updateText();"
+        class="form-control" maxlength="9" placeholder="Ex. 20000" required><br>
 
-    <label for="income_words">Amount (In Words):</label>
-    <input type="text" id="ciincome_words" name="income_words" class="form-control" placeholder="Twenty Thousand"
-        readonly><br>
+    <label hidden for="income_words">Amount (In Words):</label>
+    <input hidden type="text" id="ciincome_words" name="income_words" class="form-control" placeholder="Twenty Thousand"
+        readonly>
     <hr>
 
     <div class="incomePrint" style="text-align: right;">
@@ -72,7 +72,7 @@
 <script>
     // Event listener for Business Permit Renewal print button
     document.getElementById("incomePrintBtn").addEventListener("click", function () {
-        let form = document.getElementById("certificate_of_incomeForm");  // Use the unique form ID
+        let form = document.getElementById("certificate_of_income_form");  // Use the unique form ID
 
         // Validate the form
         if (form.checkValidity()) {

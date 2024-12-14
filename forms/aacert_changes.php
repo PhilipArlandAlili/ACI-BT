@@ -13,6 +13,17 @@
                         'yung pinapakitang years married dapat ba kasama date?
                 </div>
         </div>
+
+        <div class="certificate_of_income">
+                <h1>Certificate of Cohabitation</h1>
+                <div class="to-do">
+                        ano 'yung Businessman?
+                        ano 'yung cswd requirements?
+                        hindi mag-limit 'yung amount sa 999999999
+                        bold inputs cert html
+                </div>
+        </div>
+        
 </body>
 
 </html>

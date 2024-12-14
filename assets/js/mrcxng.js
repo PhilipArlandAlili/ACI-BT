@@ -267,7 +267,6 @@ function updateText() {
         pcepurpose.innerText = cepurpose.value.toUpperCase();
 
     } else if (certificate_type.value == 'certificate_of_income') {
-
         var cifirst_name = document.getElementById('cifirst_name');
         var cimiddle_name = document.getElementById('cimiddle_name');
         var cilast_name = document.getElementById('cilast_name');
@@ -276,25 +275,22 @@ function updateText() {
         var ciincome_num = document.getElementById('ciincome_num');
         var ciincome_words = document.getElementById('ciincome_words');
 
-
         var pcifirst_name = iframeDocument.getElementById('cifirst_name');
         var pcimiddle_name = iframeDocument.getElementById('cimiddle_name');
         var pcilast_name = iframeDocument.getElementById('cilast_name');
         var pcisuffix = iframeDocument.getElementById('cisuffix');
         var pcipurok = iframeDocument.getElementById('cipurok');
-        var pcincome_num = iframeDocument.getElementById('ciincome_num');
-        // var pcincome_words = iframeDocument.getElementById('ciincome_words');
+        var pciincome_num = iframeDocument.getElementById('ciincome_num');
+        var pciincome_words = iframeDocument.getElementById('ciincome_words');
 
-        if (pcifirst_name) { pcifirst_name.innerText = cifirst_name.value; }
-        if (pcimiddle_name) { pcimiddle_name.innerText = cimiddle_name.value; }
-        if (pcilast_name) { pcilast_name.innerText = cilast_name.value; }
-        if (pcisuffix) { pcisuffix.innerText = cisuffix.value; }
-        if (pcipurok) { pcipurok.innerText = cipurok.value; }
-        if (pcincome_num) { pcincome_num.innerText = numberToWords(ciincome_num.value); }
-        if (ciincome_words) { ciincome_words.value = numberToWords(ciincome_num.value); }
-
-
-
+        if(pcifirst_name) pcifirst_name.innerText = cifirst_name.value.toUpperCase();
+        if(pcimiddle_name) pcimiddle_name.innerText = cimiddle_name.value.toUpperCase();
+        if(pcilast_name) pcilast_name.innerText = cilast_name.value.toUpperCase();
+        if(pcisuffix) pcisuffix.innerText = cisuffix.value.toUpperCase();
+        if(pcipurok) pcipurok.innerText = cipurok.value.toUpperCase();
+        if(pciincome_num) pciincome_num.innerText = formatNumber(ciincome_num.value);
+        if (pciincome_words) pciincome_words.innerText = numberToWords(ciincome_num.value).toUpperCase();
+        if(pciincome_words) ciincome_words.value = numberToWords(ciincome_num.value).toUpperCase();
     } else if (certificate_type.value == 'certificate_of_indigency_aics') {
         var cidfirst_name = document.getElementById('cidfirst_name');
         var cidmiddle_name = document.getElementById('cidmiddle_name');
@@ -842,6 +838,18 @@ function numberToWords(num) {
     }
 
     return result.trim();
+}
+
+function formatNumber(value) {
+    if (!value) return "";
+    const cleanValue = value.toString().replace(/,/g, '');
+
+    const number = parseFloat(cleanValue);
+
+    if (!isNaN(number)) {
+        return number.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+    return "";
 }
 
 function convertTo12Hour(time24) {

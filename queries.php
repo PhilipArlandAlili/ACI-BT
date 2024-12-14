@@ -266,6 +266,9 @@ if (isset($_POST["certificate_of_income"])) {
     $income_num = $conn->real_escape_string($_POST["income_num"]);
     $income_words = $conn->real_escape_string($_POST["income_words"]);
 
+    $suffix = strtoupper($suffix);
+    $purok = strtoupper($purok);
+
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 
     $stmt = $conn->prepare("INSERT INTO certificate_of_income (first_name, middle_name, last_name, suffix, address, income_num, income_words, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
