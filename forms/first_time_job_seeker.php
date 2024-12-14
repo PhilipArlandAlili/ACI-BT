@@ -38,22 +38,22 @@
 
         <label for="birthdate">Birthday:</label>
         <input type="date" class="form-control" id="ftbirthdate"
-            onchange=" validateBirthdate(this);this.value = this.value.toUpperCase();updateText();" name="birthdate"
+            oninput=" validateBirthdate(this);updateText();" name="birthdate"
             required><br>
 
         <label for="period_of_residency">Period of Residency:</label>
         <div class="radios d-flex gap-3">
             <div class="form-check">
-                <input class="form-check-input" name="period_of_residency"
-                    onclick="this.value = this.value.toUpperCase();updateText()" type="radio" value="months"
+                <input class="form-check-input" name="period_of_residency_ym"
+                    onchange="validatePeriodOfResidency(ftperiod_of_residency);updateText()" type="radio" value="months"
                     id="ftmonth" required>
                 <label class="form-check-label" for="radioMonths">
                     Months
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" name="period_of_residency"
-                    onclick="this.value = this.value.toUpperCase();updateText()" type="radio" value="years" id="ftyear"
+                <input class="form-check-input" name="period_of_residency_ym"
+                    onchange="validatePeriodOfResidency(ftperiod_of_residency);updateText()" type="radio" value="years" id="ftyear"
                     required>
                 <label class="form-check-label" for="radioYears">
                     Years
@@ -80,7 +80,7 @@
         </select><br>
         <hr>
         <div class="btn-container d-flex justify-content-between">
-            <button type="button" class="btn btn-secondary" id="nextToGuardian" onclick="showGuardian()">Next</button>
+            <button type="button" class="btn btn-secondary" id="nextToGuardian" onclick="showGuardian();">Next</button>
             <button type="button" class="btn btn-primary w-25" id="jobSeekerprintBtn">Print</button>
 
             <div class="modal fade" id="jobSeekerModal" tabindex="-1" style="display: none;" aria-hidden="true">
@@ -122,7 +122,7 @@
             placeholder="Ex. Dela Cruz"><br>
 
         <label for="suffix">Suffix:</label>
-        <select class="text-left form-control" name="suffix" id="ftogsuffix" oninput="updateText();">
+        <select class="text-left form-control" name="suffix" id="ftogsuffix" onchange="updateText();">
             <option value="">N/A</option>
             <option value="Jr">Jr</option>
             <option value="Sr">Sr</option>
@@ -133,7 +133,7 @@
 
         <label for="birthdate">Birthday:</label>
         <input type="date" class="form-control" id="ftogbirthdate"
-            onchange=" validateBirthdate(this);this.value = this.value.toUpperCase();updateText();" name="birthdate"
+            oninput=" validateBirthdate(this);this.value = this.value.toUpperCase();updateText();" name="birthdate"
             required><br>
 
         <label for="suffix">Role:</label>
@@ -147,7 +147,7 @@
         <div class="radios d-flex gap-3">
             <div class="form-check">
                 <input class="form-check-input" name="ftogperiod_of_residency"
-                    onclick="this.value = this.value.toUpperCase();updateText()" type="radio" value="months"
+                    onchange="validatePeriodOfResidency(ftogperiod_of_residency);updateText();" type="radio" value="months"
                     id="ftogmonth">
                 <label class="form-check-label" for="radioMonths">
                     Months
@@ -155,7 +155,7 @@
             </div>
             <div class="form-check">
                 <input class="form-check-input" name="ftogperiod_of_residency"
-                    onclick="this.value = this.value.toUpperCase();updateText()" type="radio" value="years"
+                    onchange="validatePeriodOfResidency(ftogperiod_of_residency);updateText();" type="radio" value="years"
                     id="ftogyear">
                 <label class="form-check-label" for="radioYears">
                     Years
@@ -164,7 +164,7 @@
         </div>
 
         <input type="number" class="form-control" id="ftogperiod_of_residency" maxlength="2" max="99" min="1"
-            oninput="showAge();this.value = this.value.toUpperCase();updateText()" name="period_of_residency"
+            oninput="validatePeriodOfResidency(this);updateText()" name="period_of_residency"
             placeholder="Ex. 3 years/months"><br>
 
         <label for="purok">Purok:</label>
@@ -182,7 +182,7 @@
         </select><br>
         <hr>
         <div class="btn-container d-flex justify-content-between">
-            <button type="button" class="btn btn-secondary" id="backToMagaKuha" oninput="hideGuardian()">Back</button>
+            <button type="button" class="btn btn-secondary" id="backToMagaKuha" onclick="hideGuardian();">Back</button>
             <button type="button" class="btn btn-primary w-25" id="withGuardianprintBtn">Print</button>
 
             <div class="modal fade" id="withGuardianModal" tabindex="-1" style="display: none;" aria-hidden="true">

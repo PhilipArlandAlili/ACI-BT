@@ -528,7 +528,7 @@ if (isset($_POST["death_certificate"])) {
     }
     $stmt->close();
 }
-
+// may error pa sa checkbox
 if (isset($_POST["lot_ownership"])) {
     $first_name = $conn->real_escape_string($_POST["first_name"]);
     $middle_name = $conn->real_escape_string($_POST["middle_name"]);
@@ -546,23 +546,9 @@ if (isset($_POST["lot_ownership"])) {
     $suffix = strtoupper($suffix);
     $purok = strtoupper($purok);
 
-    if ($claimant == '/') {
-        $claimant = "YES";
-    } else {
-        $claimant = "NO";
-    }
-
-    if ($beneficiary == '/') {
-        $beneficiary = "YES";
-    } else {
-        $beneficiary = "NO";
-    }
-
-    if ($actual_occupant == '/') {
-        $actual_occupant = "YES";
-    } else {
-        $actual_occupant = "NO";
-    }
+    $claimant = ($claimant == '/') ? "YES" : "NO";
+    $beneficiary = ($beneficiary == '/') ? "YES" : "NO";
+    $actual_occupant = ($actual_occupant == '/') ? "YES" : "NO";
 
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 
@@ -662,10 +648,10 @@ if (isset($_POST["first_time_job_seeker"])) {
     $middle_name = $conn->real_escape_string($_POST["middle_name"]);
     $last_name = $conn->real_escape_string($_POST["last_name"]);
     $suffix = $conn->real_escape_string($_POST["suffix"]);
-    $address = $conn->real_escape_string($_POST["address"]);
+    $birthdate = $conn->real_escape_string($_POST["birthdate"]);
+    $period_of_residency_ym = $conn->real_escape_string($_POST["period_of_residency_ym"]);
     $period_of_residency = $conn->real_escape_string($_POST["period_of_residency"]);
-    $signed_date = $conn->real_escape_string($_POST["signed_date"]);
-    $validation_date = $conn->real_escape_string($_POST["validation_date"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
     $witness = $conn->real_escape_string($_POST["witness"]);
     $age = $conn->real_escape_string($_POST["age"]);
     $consent_first_name = $conn->real_escape_string($_POST["consent_first_name"]);

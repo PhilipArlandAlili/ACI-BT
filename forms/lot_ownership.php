@@ -39,19 +39,19 @@
     </select><br>
 
     <div class="form-check">
-        <input class="form-check-input" name="claimant" type="checkbox" value="/" id="loclaimant" onchange="updateText()">
+        <input class="form-check-input" name="claimant" type="checkbox" value=" " id="loclaimant" oninput="updateText()">
         <label class="form-check-label" for="flexCheckDefault">
             Claimant
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" name="beneficiary" type="checkbox" value="/" id="lobeneficiary" onchange="updateText()">
+        <input class="form-check-input" name="beneficiary" type="checkbox" value=" " id="lobeneficiary" oninput="updateText()">
         <label class="form-check-label" for="flexCheckDefault">
             Beneficiary
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" name="actual_occupant" type="checkbox" value="/" id="loactual_occupant" onchange="updateText()">
+        <input class="form-check-input" name="actual_occupant" type="checkbox" value=" " id="loactual_occupant" oninput="updateText()">
         <label class="form-check-label" for="flexCheckChecked">
             Actual Occupant
         </label>
