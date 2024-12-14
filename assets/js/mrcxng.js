@@ -669,16 +669,16 @@ function updateText() {
             plobeneficiary.innerText = "  ";
         }
 
-        plofirst_name.innerText = lofirst_name.value;
-        plomiddle_name.innerText = lomiddle_name.value;
-        plolast_name.innerText = lolast_name.value;
-        plosuffix.innerText = losuffix.value;
-        plopurok.innerText = lopurok.value;
+        plofirst_name.innerText = lofirst_name.value.toUpperCase();
+        plomiddle_name.innerText = lomiddle_name.value.toUpperCase();
+        plolast_name.innerText = lolast_name.value.toUpperCase();
+        plosuffix.innerText = losuffix.value.toUpperCase();
+        plopurok.innerText = lopurok.value.toUpperCase();
         plolot_number.innerText = lolot_number.value;
         plolot_area_numerical.innerText = lolot_area_numerical.value;
-        plolot_area_word.innerText = numberToWords(lolot_area_numerical.value);
-        lolot_area_word.value = numberToWords(lolot_area_numerical.value);
-        plolotloc.innerText = lololoc.value;
+        plolot_area_word.innerText = numberToWords(lolot_area_numerical.value).toUpperCase();
+        lolot_area_word.value = numberToWords(lolot_area_numerical.value).toUpperCase();
+        plolotloc.innerText = lololoc.value.toUpperCase();
 
     } else if (certificate_type.value == 'transfer_of_residency') {
         var trfirst_name = document.getElementById('trfirst_name');

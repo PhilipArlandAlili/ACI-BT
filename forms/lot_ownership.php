@@ -15,7 +15,7 @@
         required placeholder="Ex. Dela Cruz"><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="losuffix" oninput="updateText();">
+    <select class="text-left form-control" name="suffix" id="losuffix" onchange="updateText();">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -25,10 +25,10 @@
     </select><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="lopurok" oninput="this.value = this.value.toUpperCase();updateText();" required>
+    <select class="text-left form-control" name="purok" id="lopurok" onchange="updateText();" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
-        <option value="Hurawan">Huwaran</option>
+        <option value="Huwaran">Huwaran</option>
         <option value="Kaakbayan">Kaakbayan</option>
         <option value="New Princesa">New Princesa</option>
         <option value="San Franciso I">San Franciso I</option>
@@ -39,37 +39,37 @@
     </select><br>
 
     <div class="form-check">
-        <input class="form-check-input" name="claimant" type="checkbox" value="/" id="loclaimant" onchange="this.value = this.value.toUpperCase();updateText()">
+        <input class="form-check-input" name="claimant" type="checkbox" value="/" id="loclaimant" onchange="updateText()">
         <label class="form-check-label" for="flexCheckDefault">
             Claimant
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" name="beneficiary" type="checkbox" value="/" id="lobeneficiary" onchange="this.value = this.value.toUpperCase();updateText()">
+        <input class="form-check-input" name="beneficiary" type="checkbox" value="/" id="lobeneficiary" onchange="updateText()">
         <label class="form-check-label" for="flexCheckDefault">
             Beneficiary
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" name="actual_occupant" type="checkbox" value="/" id="loactual_occupant" onchange="this.value = this.value.toUpperCase();updateText()">
+        <input class="form-check-input" name="actual_occupant" type="checkbox" value="/" id="loactual_occupant" onchange="updateText()">
         <label class="form-check-label" for="flexCheckChecked">
             Actual Occupant
         </label>
     </div><br>
 
     <label for="lotNumber">Lot Number:</label>
-    <input type="number" class="form-control" oninput="this.value = this.value.toUpperCase();updateText()" name="lot_number" id="lolot_number"
+    <input type="number" class="form-control" oninput="updateText()" name="lot_number" id="lolot_number"
         placeholder="Ex. 5003" required><br>
 
     <label for="lotAreaNumerical">Area Measurement (Numerical Form):</label>
-    <input type="number" class="form-control" oninput="this.value = this.value.toUpperCase();updateText()" name="lot_area_numerical" id="lolot_area_numerical"
+    <input type="number" class="form-control" oninput="updateText()" name="lot_area_numerical" id="lolot_area_numerical"
         placeholder="Ex. 350 sqm" required><br>
     <label hidden for="lotAreaNumerical">Area Measurement (Word Form):</label>
     <input hidden type="text" class="form-control" name="lot_area_word" id="lolot_area_word" placeholder="Ex. One Two Three"
         readonly>
 
     <label for="purok">Lot Location:</label>
-    <select class="text-left form-control" name="lot_location_address" id="loloc" oninput="this.value = this.value.toUpperCase();updateText();" required>
+    <select class="text-left form-control" name="lot_location_address" id="loloc" onchange="updateText();" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>

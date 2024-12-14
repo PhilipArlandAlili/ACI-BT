@@ -543,22 +543,25 @@ if (isset($_POST["lot_ownership"])) {
     $lot_area_words = $conn->real_escape_string($_POST["lot_area_word"]);
     $lot_location_address = $conn->real_escape_string($_POST["lot_location_address"]);
 
+    $suffix = strtoupper($suffix);
+    $purok = strtoupper($purok);
+
     if ($claimant == '/') {
-        $claimant = "Yes";
+        $claimant = "YES";
     } else {
-        $claimant = "No";
+        $claimant = "NO";
     }
 
     if ($beneficiary == '/') {
-        $beneficiary = "Yes";
+        $beneficiary = "YES";
     } else {
-        $beneficiary = "No";
+        $beneficiary = "NO";
     }
 
     if ($actual_occupant == '/') {
-        $actual_occupant = "Yes";
+        $actual_occupant = "YES";
     } else {
-        $actual_occupant = "No";
+        $actual_occupant = "NO";
     }
 
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
