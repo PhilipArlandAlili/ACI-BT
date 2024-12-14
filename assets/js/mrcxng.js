@@ -726,17 +726,16 @@ function updateText() {
         var ptrprevious_address = iframeDocument.getElementById('trprevious_address');
         var ptrpurpose = iframeDocument.getElementById('trpurpose');
 
-
-        ptrfirst_name.innerText = trfirst_name.value;
-        ptrmiddle_name.innerText = trmiddle_name.value;
-        ptrlast_name.innerText = trlast_name.value;
-        ptrsuffix.innerText = trsuffix.value;
-        ptrnationality.innerText = trnationality.value;
-        ptrcivil_status.innerText = trcivil_status.value;
-        ptrpurok.innerText = trpurok.value;
-        ptrcurrent_address.innerText = trpurok.value;
-        ptrprevious_address.innerText = trprevious_address.value;
-        ptrpurpose.innerText = trpurpose.value;
+        ptrfirst_name.innerText = trfirst_name.value.toUpperCase();
+        ptrmiddle_name.innerText = trmiddle_name.value.toUpperCase();
+        ptrlast_name.innerText = trlast_name.value.toUpperCase();
+        ptrsuffix.innerText = trsuffix.value.toUpperCase();
+        ptrnationality.innerText = trnationality.value.toUpperCase();
+        ptrcivil_status.innerText = trcivil_status.value.toUpperCase();
+        ptrpurok.innerText = trpurok.value.toUpperCase();
+        ptrcurrent_address.innerText = trpurok.value.toUpperCase();
+        ptrprevious_address.innerText = trprevious_address.value.toUpperCase();
+        ptrpurpose.innerText = trpurpose.value.toUpperCase();
     }
 }
 

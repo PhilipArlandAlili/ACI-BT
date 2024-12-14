@@ -425,6 +425,10 @@ if (isset($_POST["complaint_certificate"])) {
     $case_no = $conn->real_escape_string($_POST["case_no"]);
     $vawc_official_name = $conn->real_escape_string($_POST["vawc_official_name"]);
 
+    $suffix = strtoupper($suffix);
+    $suffix_respondent = strtoupper($suffix_respondent);
+    $purok = strtoupper($purok);
+
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
     $age = date('Y') - date('Y', strtotime($birthdate));
 
@@ -603,6 +607,9 @@ if (isset($_POST["transfer_of_residency"])) {
     $nationality = $conn->real_escape_string($_POST["nationality"]);
     $civil_status = $conn->real_escape_string($_POST["civil_status"]);
     $purpose = $conn->real_escape_string($_POST["purpose"]);
+
+    $suffix = strtoupper($suffix);
+    $purok = strtoupper($purok);
 
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 

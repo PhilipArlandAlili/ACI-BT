@@ -30,7 +30,7 @@
         placeholder="Ex. Filipino" required><br>
 
     <label for="">Civil Status:</label>
-    <select class="form-control" onchange="this.value = this.value.toUpperCase();updateText()" name="civil_status" id="trcivil_status" required>
+    <select class="form-control" onchange="updateText()" name="civil_status" id="trcivil_status" required>
         <option value="">--Select Civil Status--</option>
         <option value="Single">Single</option>
         <option value="Married">Married</option>
@@ -38,7 +38,7 @@
     </select><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="trpurok" required onchange="this.value = this.value.toUpperCase();updateText()">
+    <select class="text-left form-control" name="purok" id="trpurok" required onchange="updateText()">
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Huwaran">Huwaran</option>

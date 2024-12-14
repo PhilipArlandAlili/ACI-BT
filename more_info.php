@@ -214,7 +214,8 @@
                                     if ($doc_id == 1) {
                                         // Fetch data from barangay_clearance table when doc_id is 1
                                         $sql = "SELECT first_name, middle_name, last_name, suffix, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name
-                                        FROM barangay_clearance";
+                                        FROM barangay_clearance
+                                        ORDER BY id DESC";
 
                                         $result = $conn->query($sql);
 
@@ -258,7 +259,8 @@
                                     elseif ($doc_id == 2) {
                                         // Fetch data from business_permit_new table when doc_id is 2
                                         $sql = "SELECT business_name, manager, address, purok, issued_date, duty_officer_name
-                                        FROM business_permit_new";
+                                        FROM business_permit_new
+                                        ORDER BY id DESC";
 
                                         $result = $conn->query($sql);
 
@@ -281,7 +283,8 @@
                                     elseif ($doc_id == 3) {
                                         // Fetch data from business_permit_renew table when doc_id is 3
                                         $sql = "SELECT business_name, manager, address, purok, issued_date, duty_officer_name
-                                        FROM business_permit_renew";
+                                        FROM business_permit_renew
+                                        ORDER BY id DESC";
 
                                         $result = $conn->query($sql);
 
@@ -304,7 +307,8 @@
                                     elseif ($doc_id == 4) {
                                         // Fetch data from cohabitation table when doc_id is 4
                                         $sql = "SELECT first_name_male, middle_name_male, last_name_male, suffix_male, birthdate_male, first_name_female, middle_name_female, last_name_female, birthdate_female, address, date_of_marriage, years_married, issued_date, duty_officer_name
-                                        FROM certificate_of_cohabitation";
+                                        FROM certificate_of_cohabitation
+                                        ORDER BY id DESC";
 
                                         $result = $conn->query($sql);
 
@@ -338,7 +342,8 @@
                                     elseif ($doc_id == 5) {
                                         // Fetch data from certificate_of_employability table when doc_id is 5
                                         $sql = "SELECT first_name, middle_name, last_name, suffix, address, birthdate, age, issued_date, duty_officer_name
-                                        FROM certificate_of_employability";
+                                        FROM certificate_of_employability
+                                        ORDER BY id DESC";
 
                                         $result = $conn->query($sql);
 
@@ -365,7 +370,8 @@
                                     elseif ($doc_id == 6) {
                                         // Fetch data from certificate_of_income table when doc_id is 8
                                         $sql = "SELECT first_name, middle_name, last_name, suffix, address, income_num, income_words, issued_date, duty_officer_name
-                                        FROM certificate_of_income";
+                                        FROM certificate_of_income
+                                        ORDER BY id DESC";
 
                                         $result = $conn->query($sql);
 
@@ -393,7 +399,8 @@
                                     elseif ($doc_id == 7) {
                                         // Fetch data from indigency_aics table when doc_id is 7
                                         $sql = "SELECT first_name, middle_name, last_name, suffix, birthdate, civil_status, address, purpose, issued_date, duty_officer_name
-                                        FROM certificate_of_indigency_aics";
+                                        FROM certificate_of_indigency
+                                        ORDER BY id DESC";
 
                                         $result = $conn->query($sql);
 
@@ -422,7 +429,8 @@
                                     elseif ($doc_id == 8) {
                                         // Fetch data from transfer_of_residency table when doc_id is 13
                                         $sql = "SELECT first_name, middle_name, last_name, suffix, address, nationality, civil_status, previous_address, current_address, purpose, issued_date, duty_officer_name
-                                        FROM transfer_of_residency";
+                                        FROM transfer_of_residency
+                                        ORDER BY id DESC";
 
                                         $result = $conn->query($sql);
 
@@ -454,7 +462,8 @@
                                     elseif ($doc_id == 9) {
                                         // Fetch data from complaint_certificate table when doc_id is 9
                                         $sql = "SELECT first_name_complainant, middle_name_complainant, last_name_complainant, suffix_complainant, age, address, date_of_complain, first_name_respondent, middle_name_respondent, last_name_respondent, suffix_respondent, case_no, vawc_official_name, issued_date, duty_officer_name
-                                        FROM complaint_certificate";
+                                        FROM complaint_certificate
+                                        ORDER BY id DESC";
 
                                         $result = $conn->query($sql);
 
@@ -465,7 +474,7 @@
                                             $fullNameComplaint = $row["first_name_complainant"]
                                                 . (!empty($row["middle_name_complainant"]) ? " " . $row["middle_name_complainant"] : "")
                                                 . " " . $row["last_name_complainant"]
-                                                . (!empty($row["suffix_complainant"]) ? ", " . $row["suffix_complainant"] : "");
+                                                . (!empty($row["suffix_complainant"]) ? " " . $row["suffix_complainant"] : "");
                                                 echo "<td>" . $fullNameComplaint . "</td>";
                                                 echo "<td>" . $row["age"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
@@ -474,7 +483,7 @@
                                                 $fullNameRespondent = $row["first_name_respondent"]
                                                     . (!empty($row["middle_name_respondent"]) ? " " . $row["middle_name_respondent"] : "")
                                                     . " " . $row["last_name_respondent"]
-                                                    . (!empty($row["suffix_respondent"]) ? ", " . $row["suffix_respondent"] : "");
+                                                    . (!empty($row["suffix_respondent"]) ? " " . $row["suffix_respondent"] : "");
                                                 echo "<td>" . $fullNameRespondent . "</td>";
                                                 echo "<td>" . $row["case_no"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
