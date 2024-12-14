@@ -163,6 +163,9 @@ if (isset($_POST["certificate_of_cohabitation"])) {
     $purok = $conn->real_escape_string($_POST["purok"]);
     $date_of_marriage = $conn->real_escape_string($_POST["date_of_marriage"]);
 
+    $suffix = strtoupper($suffix);
+    $purok = strtoupper($purok);
+
     $fullname = $first_name_female . ' ' . $middle_name_female . ' ' . $last_name_female;
     $years_married = date('Y') - date('Y', strtotime($date_of_marriage));
 
