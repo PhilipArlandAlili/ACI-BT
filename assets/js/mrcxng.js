@@ -346,7 +346,6 @@ function updateText() {
         pcidpurpose.innerText = cidpurpose.value.toUpperCase();
 
     } else if (certificate_type.value == 'complaint_certificate') {
-
         var ccfirst_name = document.getElementById('ccfirst_name');
         var ccmiddle_name = document.getElementById('ccmiddle_name');
         var cclast_name = document.getElementById('cclast_name');
@@ -364,11 +363,10 @@ function updateText() {
 
         const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-        // Safely handle ccdate_of_complain
-        var complain_date = ccdate_of_complain.value ? new Date(ccdate_of_complain.value) : null;
-        var complain_month = complain_date && !isNaN(complain_date.getTime()) ? month_names[complain_date.getMonth()] : '';
-        var complain_day = complain_date && !isNaN(complain_date.getTime()) ? complain_date.getDate() : '';
-        var complain_year = complain_date && !isNaN(complain_date.getTime()) ? complain_date.getFullYear() : '';
+        var ccdate = new Date(ccdate_of_complain.value);
+        var ccmonth = ccdate.getMonth();
+        var ccday = ccdate.getDate();
+        var ccyear = ccdate.getFullYear();
 
         // Safely retrieve elements from iframeDocument
         var pccfirst_name = iframeDocument.getElementById('ccfirst_name');
@@ -392,7 +390,7 @@ function updateText() {
         if (pccmiddle_name) pccmiddle_name.innerText = ccmiddle_name.value;
         if (pcclast_name) pcclast_name.innerText = cclast_name.value;
         if (pccsuffix) pccsuffix.innerText = ccsuffix.value;
-        if (pccbirthdate) pccbirthdate.innerText = showAge(ccbirthdate);
+        if (pccbirthdate) if (showAge(ccbirthdate)) pccbirthdate.innerText = showAge(ccbirthdate);
         if (pccpurok) pccpurok.innerText = ccpurok.value;
         if (pcomplain_day) pcomplain_day.innerText = complain_day;
         if (pcomplain_month) pcomplain_month.innerText = complain_month;

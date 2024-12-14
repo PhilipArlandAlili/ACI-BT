@@ -106,20 +106,8 @@
                                             <th>Duty Officer Name</th>
                                         ";
                                         } 
-                                        // Certificate of Indigency
-                                        elseif ($doc_id == 7) {
-                                            echo "
-                                            <th>Full Name</th>
-                                            <th>Age</th>
-                                            <th>Civil Status</th>
-                                            <th>Address</th>
-                                            <th>Purpose</th>
-                                            <th>Issued Date</th>
-                                            <th>Duty Officer Name</th>
-                                        ";
-                                        } 
                                         // Certificate of Indigency (AICS)
-                                        elseif ($doc_id == 8) {
+                                        elseif ($doc_id == 7) {
                                             echo "
                                             <th>Full Name</th>
                                             <th>Birthdate</th>
@@ -129,7 +117,21 @@
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
-                                        } 
+                                        }
+                                        // Certificate of Transfer
+                                        elseif ($doc_id == 8) {
+                                            echo "
+                                            <th>Full Name</th>
+                                            <th>Address</th>
+                                            <th>Nationality</th>
+                                            <th>Civil Status</th>
+                                            <th>Previus Address</th>
+                                            <th>Current Address</th>
+                                            <th>Purpose</th>
+                                            <th>Issued Date</th>
+                                            <th>Duty Officer Name</th>
+                                        ";
+                                        }
                                         // Complaint Certificate
                                         elseif ($doc_id == 9) {
                                             echo "
@@ -142,7 +144,9 @@
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
-                                        } elseif ($doc_id == 10) {
+                                        } 
+                                        // Death Certificate
+                                        elseif ($doc_id == 10) {
                                             echo "
                                             <th>Full Name</th>
                                             <th>Age</th>
@@ -154,7 +158,17 @@
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
-                                        } elseif ($doc_id == 11) {
+                                        } 
+                                        // First Time Job Seeker
+                                        elseif ($doc_id == 11) {
+                                            echo "
+                                            <th>Full Name</th>
+                                            <th>Address</th>
+                                            <th>Birthdate</th>
+                                            ";
+                                        }
+                                        // Lot Ownership
+                                        elseif ($doc_id == 12) {
                                             echo "
                                             <th>Full Name</th>
                                             <th>Address</th>
@@ -168,19 +182,20 @@
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
-                                        } elseif ($doc_id == 12) {
+                                        }
+                                        // Certificate of Indigency Keeps
+                                        elseif ($doc_id == 13) {
                                             echo "
                                             <th>Full Name</th>
-                                            <th>Address</th>
-                                            <th>Nationality</th>
+                                            <th>Age</th>
                                             <th>Civil Status</th>
-                                            <th>Previus Address</th>
-                                            <th>Current Address</th>
+                                            <th>Address</th>
                                             <th>Purpose</th>
                                             <th>Issued Date</th>
                                             <th>Duty Officer Name</th>
                                         ";
                                         } 
+                                        // Default
                                         else {
                                             echo "
                                             <th>ID</th>
@@ -374,37 +389,8 @@
                                             echo "<tr><td colspan='6'><center>No certificates of income found</center></td></tr>";
                                         }
                                     } 
-                                    // Certificate of Indigency
-                                    elseif ($doc_id == 7) {
-                                        // Fetch data from indigency table when doc_id is 6
-                                        $sql = "SELECT first_name, middle_name, last_name, suffix, age, civil_status, address, purpose, issued_date, duty_officer_name
-                                        FROM certificate_of_indigency";
-
-                                        $result = $conn->query($sql);
-
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                echo "<tr>";
-                                            // echo "<td>" . $row["id"] . "</td>";
-                                                $fullName = $row["first_name"]
-                                                    . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
-                                                    . " " . $row["last_name"]
-                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
-                                                echo "<td>" . $fullName . "</td>";
-                                                echo "<td>" . $row["age"] . "</td>";
-                                                echo "<td>" . $row["civil_status"] . "</td>";
-                                                echo "<td>" . $row["address"] . "</td>";
-                                                echo "<td>" . $row["purpose"] . "</td>";
-                                                echo "<td>" . $row["issued_date"] . "</td>";
-                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
-                                                echo "</tr>";
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='6'><center>No indigency certificates found</center></td></tr>";
-                                        }
-                                    }
                                     // Certificate of Indigency (AICS)
-                                    elseif ($doc_id == 8) {
+                                    elseif ($doc_id == 7) {
                                         // Fetch data from indigency_aics table when doc_id is 7
                                         $sql = "SELECT first_name, middle_name, last_name, suffix, birthdate, civil_status, address, purpose, issued_date, duty_officer_name
                                         FROM certificate_of_indigency_aics";
@@ -432,6 +418,38 @@
                                             echo "<tr><td colspan='4'><center>No indigency (AICS) certificates found</center></td></tr>";
                                         }
                                     } 
+                                    // Certificate of Transfer
+                                    elseif ($doc_id == 8) {
+                                        // Fetch data from transfer_of_residency table when doc_id is 13
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, nationality, civil_status, previous_address, current_address, purpose, issued_date, duty_officer_name
+                                        FROM transfer_of_residency";
+
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<tr>";
+                                                // echo "<td>" . $row["id"] . "</td>";
+                                                $fullName = $row["first_name"]
+                                                    . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
+                                                    . " " . $row["last_name"]
+                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                echo "<td>" . $fullName . "</td>";
+                                                echo "<td>" . $row["address"] . "</td>";
+                                                echo "<td>" . $row["nationality"] . "</td>";
+                                                echo "<td>" . $row["civil_status"] . "</td>";
+                                                echo "<td>" . $row["previous_address"] . "</td>";
+                                                echo "<td>" . $row["current_address"] . "</td>";
+                                                echo "<td>" . $row["purpose"] . "</td>";
+                                                echo "<td>" . $row["issued_date"] . "</td>";
+                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='7'><center>No transfer of residency certificates found</center></td></tr>";
+                                        }
+                                    
+                                    }
                                     // Complaint Certificate
                                     elseif ($doc_id == 9) {
                                         // Fetch data from complaint_certificate table when doc_id is 9
@@ -466,7 +484,9 @@
                                         } else {
                                             echo "<tr><td colspan='8'><center>No complaint certificates found</center></td></tr>";
                                         }
-                                    } elseif ($doc_id == 10) {
+                                    } 
+                                    // Death Certificate
+                                    elseif ($doc_id == 10) {
                                         // Fetch data from death_certificate table when doc_id is 10
                                         $sql = "SELECT first_name, middle_name, last_name, suffix, age, address, date_of_death, time_of_death, req_first_name, req_middle_name, req_last_name, req_suffix, relationship, issued_date, duty_officer_name
                                         FROM death_certificate";
@@ -501,7 +521,34 @@
                                         } else {
                                             echo "<tr><td colspan='8'><center>No death certificates found</center></td></tr>";
                                         }
-                                    } elseif ($doc_id == 11) {
+                                    } 
+                                    // First Time Job Seeker
+                                    elseif ($doc_id == 11) {
+                                        // Fetch data from first_time_job_seeker table when doc_id is 11
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, birthdate
+                                        FROM first_time_job_seeker";
+
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<tr>";
+                                                // echo "<td>" . $row["id"] . "</td>";
+                                                $fullName = $row["first_name"]
+                                                    . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
+                                                    . " " . $row["last_name"]
+                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                echo "<td>" . $fullName . "</td>";
+                                                echo "<td>" . $row["address"] . "</td>";
+                                                echo "<td>" . $row["birthdate"] . "</td>";
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='3'><center>No first time job seekers found</center></td></tr>";
+                                        }
+                                    }
+                                    // Lot Ownership
+                                    elseif ($doc_id == 12) {
                                         // Fetch data from lot_ownership table when doc_id is 12
                                         $sql = "SELECT first_name, middle_name, last_name, suffix, address, claimant, beneficiary, actual_occupant, lot_no, area_measurement_num, area_measurement_words, loc_address, issued_date, duty_officer_name
                                         FROM lot_ownership";
@@ -532,36 +579,38 @@
                                         } else {
                                             echo "<tr><td colspan='10'><center>No lot ownership certificates found</center></td></tr>";
                                         }
-                                    } elseif ($doc_id == 12) {
-                                        // Fetch data from transfer_of_residency table when doc_id is 13
-                                        $sql = "SELECT first_name, middle_name, last_name, suffix, address, nationality, civil_status, previous_address, current_address, purpose, issued_date, duty_officer_name
-                                        FROM transfer_of_residency";
+                                    } 
+                                    // Certificate of Indigency keeps
+                                    elseif ($doc_id == 13) {
+                                        // Fetch data from indigency table when doc_id is 6
+                                        $sql = "SELECT first_name, middle_name, last_name, suffix, age, civil_status, address, purpose, issued_date, duty_officer_name
+                                        FROM certificate_of_indigency";
 
                                         $result = $conn->query($sql);
 
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                // echo "<td>" . $row["id"] . "</td>";
+                                            // echo "<td>" . $row["id"] . "</td>";
                                                 $fullName = $row["first_name"]
                                                     . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                     . " " . $row["last_name"]
                                                     . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
                                                 echo "<td>" . $fullName . "</td>";
-                                                echo "<td>" . $row["address"] . "</td>";
-                                                echo "<td>" . $row["nationality"] . "</td>";
+                                                echo "<td>" . $row["age"] . "</td>";
                                                 echo "<td>" . $row["civil_status"] . "</td>";
-                                                echo "<td>" . $row["previous_address"] . "</td>";
-                                                echo "<td>" . $row["current_address"] . "</td>";
+                                                echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["purpose"] . "</td>";
                                                 echo "<td>" . $row["issued_date"] . "</td>";
                                                 echo "<td>" . $row["duty_officer_name"] . "</td>";
                                                 echo "</tr>";
                                             }
                                         } else {
-                                            echo "<tr><td colspan='7'><center>No transfer of residency certificates found</center></td></tr>";
+                                            echo "<tr><td colspan='6'><center>No indigency certificates found</center></td></tr>";
                                         }
-                                    } else {
+                                    }
+                                    // Default
+                                    else {
                                         // Default case to handle all other doc_id values
                                         echo "<tr><td colspan='5'><center>No transactions found</center></td></tr>";
                                     }

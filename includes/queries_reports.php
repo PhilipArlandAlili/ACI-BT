@@ -79,7 +79,7 @@ if ($result_certificate_of_income->num_rows > 0) {
 
 
 // SQL query to count the number of records in the 'certificate_of_indigency' table
-$sql_certificate_of_indigency = "SELECT COUNT(*) AS count FROM certificate_of_indigency";
+$sql_certificate_of_indigency = "SELECT COUNT(*) AS count FROM certificate_of_indigency_keeps";
 $result_certificate_of_indigency = $conn->query($sql_certificate_of_indigency);
 
 // Fetch the count of records from the result
@@ -91,7 +91,7 @@ if ($result_certificate_of_indigency->num_rows > 0) {
 }
 
 // SQL query to count the number of records in the 'certificate_of_indigency_aics' table
-$sql_certificate_of_indigency_aics = "SELECT COUNT(*) AS count FROM certificate_of_indigency_aics";
+$sql_certificate_of_indigency_aics = "SELECT COUNT(*) AS count FROM certificate_of_indigency";
 $result_certificate_of_indigency_aics = $conn->query($sql_certificate_of_indigency_aics);
 
 // Fetch the count of records from the result
@@ -164,4 +164,4 @@ if ($result_transfer_of_residency->num_rows > 0) {
     $count_transfer_of_residency = 0;
 }
 
-$sum = $count_barangay_clearance + $count_business_permit_new + $count_business_permit_renew + $count_certificate_of_cohabitation + $count_certificate_of_employability + $count_certificate_of_income + $count_certificate_of_indigency + $count_certificate_of_indigency_aics + $count_complaint_certificate + $count_death_certificate + $count_first_time_job_seeker + $count_lot_ownership + $count_transfer_of_residency;
+$sum = $count_barangay_clearance + $count_business_permit_new + $count_business_permit_renew + $count_certificate_of_cohabitation + $count_certificate_of_employability + $count_certificate_of_income + $count_certificate_of_indigency + $count_complaint_certificate + $count_death_certificate + $count_first_time_job_seeker + $count_lot_ownership + $count_transfer_of_residency;

@@ -249,7 +249,7 @@ if (!isset($_SESSION['username'])) {
                                             echo "</tbody>";
                                         }
                                         // For Certificate of Indigency
-                                        if ($table == "certificate_of_indigency") {
+                                        if ($table == "certificate_of_indigency_keeps") {
                                             echo "<thead>";
                                             echo "<tr>";
                                             echo "<th>Full Name</th>";
@@ -278,7 +278,7 @@ if (!isset($_SESSION['username'])) {
                                             echo "</tbody>";
                                         }
                                         // For Certificate of Indigency AICS
-                                        if ($table == "certificate_of_indigency_aics") {
+                                        if ($table == "certificate_of_indigency") {
                                             echo "<thead>";
                                             echo "<tr>";
                                             echo "<th>Full Name</th>";
@@ -454,6 +454,17 @@ if (!isset($_SESSION['username'])) {
                                             echo "<td>" . $row["duty_officer_name"] . "</td>";
                                             echo "</tr>";
                                             echo "</tbody>";
+                                        }
+                                        if ($table == "first_time_job_seeker") {
+                                            echo "<thead>";
+                                            echo "<tr>";
+                                            // echo "<th>ID</th>";
+                                            echo "<th>Full Name</th>";
+                                            echo "<th>Address</th>";
+                                            echo "<th>Birthdate</th>";
+                                            echo "<th>Age</th>";
+                                            echo "<th>Civil Status</th>";
+
                                         }
                                     }
                                 } else {

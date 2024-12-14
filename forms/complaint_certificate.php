@@ -16,7 +16,6 @@
         oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         required placeholder="Ex. Dela Cruz"><br>
 
-
     <label for="suffix">Suffix:</label>
     <select class="text-left form-control" name="suffix" id="ccsuffix" onchange="updateText()">
         <option value="">N/A</option>
@@ -28,11 +27,11 @@
     </select><br>
 
     <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" onchange="validatebday(this);this.value = this.value.toUpperCase();updateText();" id="ccbirthdate"
+    <input type="date" class="form-control" oninput="validateBirthdate(this);updateText();" id="ccbirthdate"
         name="birthdate" required><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="ccpurok" onchange="this.value = this.value.toUpperCase();updateText()" required>
+    <select class="text-left form-control" name="purok" id="ccpurok" onchange="updateText()" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -47,7 +46,7 @@
 
     <label for="">Date Filed:</label>
     <input type="date" id="ccdate_of_complain" name="date_of_complain"
-        onchange="validateformarriagedate(this);this.value = this.value.toUpperCase();updateText();" class="form-control" required><br>
+        oninput="validateDate(this);updateText();" class="form-control" required><br>
     <hr>
 
     <!--Respondent Full Name-->
@@ -68,7 +67,7 @@
         name="last_name_respondent" placeholder="Ex. Bautista" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix_respondent" id="ccsuffix_respondent" oninput="this.value = this.value.toUpperCase();updateText()">
+    <select class="text-left form-control" name="suffix_respondent" id="ccsuffix_respondent" onchange="updateText()">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -78,7 +77,7 @@
     </select><br>
 
     <label for="">Case Number:</label>
-    <input type="number" name="case_no" id="cccase_no" oninput="this.value = this.value.toUpperCase();updateText()" class="form-control" placeholder="165"
+    <input type="number" name="case_no" id="cccase_no" oninput="updateText()" class="form-control" placeholder="165"
         required><br>
 
     <label for="last_name">VAWC Official Name:</label>
