@@ -22,6 +22,12 @@
                         hindi mag-limit 'yung amount sa 999999999
                 </div>
         </div>
+
+        <div class="death_certificate">
+                <h1>Death Certificate</h1>
+                <div class="to-do">
+                        validation ng time
+                </div>
         
 </body>
 

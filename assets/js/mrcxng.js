@@ -465,24 +465,24 @@ function updateText() {
         var pdcreq_suffix = iframeDocument.getElementById('dcreq_suffix');
         var pdcrelationship = iframeDocument.getElementById('dcrelationship');
 
-        if (pdcfirst_name) pdcfirst_name.innerText = dcfirst_name.value;
-        if (pdcmiddle_name) pdcmiddle_name.innerText = dcmiddle_name.value;
-        if (pdclast_name) pdclast_name.innerText = dclast_name.value;
-        if (pdcsuffix) pdcsuffix.innerText = dcsuffix.value;
-        if (pdcbirthdate_month) pdcbirthdate_month.innerText = dcmonth;
+        if (pdcfirst_name) pdcfirst_name.innerText = dcfirst_name.value.toUpperCase();
+        if (pdcmiddle_name) pdcmiddle_name.innerText = dcmiddle_name.value.toUpperCase();
+        if (pdclast_name) pdclast_name.innerText = dclast_name.value.toUpperCase();
+        if (pdcsuffix) pdcsuffix.innerText = dcsuffix.value.toUpperCase();
+        if (pdcbirthdate_month) pdcbirthdate_month.innerText = dcmonth.toUpperCase();
         if (pdcbirthdate_day) pdcbirthdate_day.innerText = dcday;
         if (pdcbirthdate_year) pdcbirthdate_year.innerText = dcyear;
-        if (pdcpurok) pdcpurok.innerText = dcpurok.value;
-        if (pdcdate_of_death_day) pdcdate_of_death_day.innerText = dcdeathday;
-        if (pdcdate_of_death_month) pdcdate_of_death_month.innerText = dcdeathmonth;
+        if (pdcpurok) pdcpurok.innerText = dcpurok.value.toUpperCase();
+        if (pdcdate_of_death_day) pdcdate_of_death_day.innerText = dcdeathday.toUpperCase();
+        if (pdcdate_of_death_month) pdcdate_of_death_month.innerText = dcdeathmonth.toUpperCase();
         if (pdcdate_of_death_year) pdcdate_of_death_year.innerText = dcdeathyear;
         if (pdctime_of_death) pdctime_of_death.innerText = convertTo12Hour(dctime_of_death.value);
-        if (pdccause_of_death) pdccause_of_death.innerText = dccause_of_death.value;
-        if (pdcreq_first_name) pdcreq_first_name.innerText = dcreq_first_name.value;
-        if (pdcreq_middle_name) pdcreq_middle_name.innerText = dcreq_middle_name.value;
-        if (pdcreq_last_name) pdcreq_last_name.innerText = dcreq_last_name.value;
-        if (pdcreq_suffix) pdcreq_suffix.innerText = dcreq_suffix.value;
-        if (pdcrelationship) pdcrelationship.innerText = dcrelationship.value;
+        if (pdccause_of_death) pdccause_of_death.innerText = dccause_of_death.value.toUpperCase();
+        if (pdcreq_first_name) pdcreq_first_name.innerText = dcreq_first_name.value.toUpperCase();
+        if (pdcreq_middle_name) pdcreq_middle_name.innerText = dcreq_middle_name.value.toUpperCase();
+        if (pdcreq_last_name) pdcreq_last_name.innerText = dcreq_last_name.value.toUpperCase();
+        if (pdcreq_suffix) pdcreq_suffix.innerText = dcreq_suffix.value.toUpperCase();
+        if (pdcrelationship) pdcrelationship.innerText = dcrelationship.value.toUpperCase();
     } else if (certificate_type.value == 'first_time_job_seeker') {
         // From PHP
         // First time jobseeker

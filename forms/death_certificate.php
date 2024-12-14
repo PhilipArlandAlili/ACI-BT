@@ -26,14 +26,14 @@
     </select><br>
 
     <label for="birthday">Birthday:</label>
-    <input type="date" class="form-control" onchange="validateDate(this);this.value = this.value.toUpperCase();updateText();" id="dcbirthdate"
+    <input type="date" class="form-control" oninput="validateDate(this);updateText();" id="dcbirthdate"
         name="birthdate" required><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="dcpurok" required onchange="this.value = this.value.toUpperCase();updateText()">
+    <select class="text-left form-control" name="purok" id="dcpurok" required onchange="updateText()">
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
-        <option value="Hurawan">Huwaran</option>
+        <option value="Huwaran">Huwaran</option>
         <option value="Kaakbayan">Kaakbayan</option>
         <option value="New Princesa">New Princesa</option>
         <option value="San Franciso I">San Franciso I</option>
@@ -44,11 +44,11 @@
     </select><br>
 
     <label for="dateOfDeath">Date of death:</label>
-    <input type="date" class="form-control" onchange="validateDate(this);this.value = this.value.toUpperCase();updateText();" name="date_of_death"
+    <input type="date" class="form-control" oninput="validateDate(this);updateText();" name="date_of_death"
         id="dcdate_of_death" required><br>
 
     <label for="timeOfDeath">Time of death:</label>
-    <input type="time" class="form-control" onchange="this.value = this.value.toUpperCase();updateText();" name="time_of_death" id="dctime_of_death"
+    <input type="time" class="form-control" oninput="updateText();" name="time_of_death" id="dctime_of_death"
         required><br>
 
     <label for="causeOfDeath">Cause of death:</label>
@@ -74,7 +74,7 @@
         id="dcreq_last_name" name="req_last_name" placeholder="Ex. Bautista" required><br>
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" onchange="this.value = this.value.toUpperCase();updateText()" name="req_suffix" id="dcreq_suffix">
+    <select class="text-left form-control" onchange="updateText()" name="req_suffix" id="dcreq_suffix">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -84,7 +84,7 @@
     </select><br>
 
     <label for="relationshipToDeadPerson">Relationship to the dead person:</label>
-    <input type="text" class="form-control" onchange="this.value = this.value.toUpperCase();updateText();" name="relationship" id="dcrelationship"
+    <input type="text" class="form-control" oninput="this.value = this.value.toUpperCase();updateText();" name="relationship" id="dcrelationship"
         placeholder="Ex. Son" required><br>
     <hr>
 
