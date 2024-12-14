@@ -18,12 +18,6 @@ function changeCertificate() {
         doc = " "
     }
 
-    // if (certificate_type == 'barangay_clearance') {
-    //     var iframe1 = document.getElementById('myIframe1');
-    //     var doc1 = "certificates/" + "business_permit_new" + ".html";
-    //     iframe1.src = doc1;
-    // }
-
     iframe.src = doc;
 
     document.getElementById("fillup").scrollIntoView({ behavior: 'smooth' });
@@ -87,12 +81,12 @@ function updateText() {
         const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         month = month_names[month];
 
-        pfirst_name.innerText = first_name.value;
-        pmiddle_name.innerText = middle_name.value;
-        plast_name.innerText = last_name.value;
-        psuffix.innerText = suffix.value;
-        ppurok.innerText = purok.value;
-        pbirthplace.innerText = birthplace.value;
+        if (pfirst_name) pfirst_name.innerText = first_name.value.toUpperCase();
+        if (pmiddle_name) pmiddle_name.innerText = middle_name.value.toUpperCase();
+        if (plast_name) plast_name.innerText = last_name.value.toUpperCase();
+        if (psuffix) psuffix.innerText = suffix.value.toUpperCase();
+        if (ppurok) ppurok.innerText = purok.value.toUpperCase();
+        if (pbirthplace) pbirthplace.innerText = birthplace.value.toUpperCase();
 
         if (birthdate.value) {
             if (validateBirthdate(birthdate.value)) {
@@ -100,7 +94,7 @@ function updateText() {
                 pbirthdate_day.innerText = "";
                 pbirthdate_year.innerText = "";
             } else {
-                pbirthdate_month.innerText = month;
+                pbirthdate_month.innerText = month.toUpperCase();
                 pbirthdate_day.innerText = day + ", ";
                 pbirthdate_year.innerText = year;
             }
@@ -110,30 +104,33 @@ function updateText() {
             pbirthdate_year.innerText = "";
         }
 
-        pcivil_status.innerText = civil_status.value;
+        if (pcivil_status) pcivil_status.innerText = civil_status.value.toUpperCase();
 
-        if (pormonth.checked) {
-            if (period_of_residency.value == 1) {
-                pyear_month.innerText = " Month";
-            } else if (period_of_residency.value > 1) {
-                pyear_month.innerText = " Months";
+        if (period_of_residency) {
+            if (pormonth.checked) {
+                if (period_of_residency.value == 1) {
+                    pyear_month.innerText = " MONTH";
+                } else if (period_of_residency.value > 1) {
+                    pyear_month.innerText = " MONTHS";
+                } else {
+                    pyear_month.innerText = "";
+                }
+            } else if (poryear.checked) {
+                if (period_of_residency.value == 1) {
+                    pyear_month.innerText = " YEAR";
+                } else if (period_of_residency.value > 1) {
+                    pyear_month.innerText = " YEARS";
+                } else {
+                    pyear_month.innerText = "";
+                }
             } else {
                 pyear_month.innerText = "";
             }
-        } else if (poryear.checked) {
-            if (period_of_residency.value == 1) {
-                pyear_month.innerText = " Year";
-            } else if (period_of_residency.value > 1) {
-                pyear_month.innerText = " Years";
-            } else {
-                pyear_month.innerText = "";
-            }
-        } else {
-            pyear_month.innerText = "";
         }
 
-        pperiod_of_residency.innerText = period_of_residency.value;
-        ppurpose.innerText = purpose.value.toUpperCase();
+        if (pperiod_of_residency) pperiod_of_residency.innerText = period_of_residency.value;
+        if (ppurpose) ppurpose.innerText = purpose.value.toUpperCase();
+
     } else if (certificate_type.value == 'business_permit_new') {
         // From PHP
         var bpnbusiness_name = document.getElementById('bpnbusiness_name');
@@ -147,10 +144,10 @@ function updateText() {
         var pbpnmanager = iframeDocument.getElementById('bpnmanager');
         var pbpnaddress = iframeDocument.getElementById('bpnaddress');
 
-        pbpnbusiness_name.innerText = bpnbusiness_name.value.toUpperCase();
-        pbpnpurok.innerText = bpnpurok.value.toUpperCase();
-        pbpnmanager.innerText = bpnmanager.value.toUpperCase();
-        pbpnaddress.innerText = bpnaddress.value.toUpperCase();
+        if (pbpnbusiness_name) pbpnbusiness_name.innerText = bpnbusiness_name.value.toUpperCase();
+        if (pbpnpurok) pbpnpurok.innerText = bpnpurok.value.toUpperCase();
+        if (pbpnmanager) pbpnmanager.innerText = bpnmanager.value.toUpperCase();
+        if (pbpnaddress) pbpnaddress.innerText = bpnaddress.value.toUpperCase();
     } else if (certificate_type.value == 'business_permit_renew') {
         // From PHP
         var bprbusiness_name = document.getElementById('bprbusiness_name');
@@ -164,10 +161,10 @@ function updateText() {
         var pbprmanager = iframeDocument.getElementById('bprmanager');
         var pbpraddress = iframeDocument.getElementById('bpraddress');
 
-        pbprbusiness_name.innerText = bprbusiness_name.value.toUpperCase();
-        pbprpurok.innerText = bprpurok.value.toUpperCase();
-        pbprmanager.innerText = bprmanager.value.toUpperCase();
-        pbpraddress.innerText = bpraddress.value.toUpperCase();
+        if (pbprbusiness_name) pbprbusiness_name.innerText = bprbusiness_name.value.toUpperCase();
+        if (pbprpurok) pbprpurok.innerText = bprpurok.value.toUpperCase();
+        if (pbprmanager) pbprmanager.innerText = bprmanager.value.toUpperCase();
+        if (pbpraddress) pbpraddress.innerText = bpraddress.value.toUpperCase();
     } else if (certificate_type.value == 'certificate_of_cohabitation') {
         var cocfirst_name = document.getElementById('cocfirst_name');
         var cocmiddle_name = document.getElementById('cocmiddle_name');
@@ -495,6 +492,35 @@ if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_nam
         pftbirthdate.innerText = showAge(ftbirthdate);
         pftpurok.innerText = ftpurok.value;
 
+        if (ftpormonth.checked) {
+            if (ftperiod_of_residency.value == 1) {
+                pftyear_month.innerText = " Month";
+                pftoyear_month.innerText = " Month";
+            } else if (ftperiod_of_residency.value > 1) {
+                pftyear_month.innerText = " Months";
+                pftoyear_month.innerText = " Months";
+            } else {
+                pftyear_month.innerText = "";
+                pftoyear_month.innerText = "";
+            }
+        } else if (ftporyear.checked) {
+            if (ftperiod_of_residency.value == 1) {
+                pftyear_month.innerText = " Year";
+                pftoyear_month.innerText = " Year";
+            } else if (ftperiod_of_residency.value > 1) {
+                pftyear_month.innerText = " Years";
+                pftoyear_month.innerText = " Years";
+            } else {
+                pftyear_month.innerText = "";
+                pftoyear_month.innerText = "";
+            }
+        } else {
+            pftyear_month.innerText = "";
+            pftoyear_month.innerText = "";
+        }
+        console.log(ftperiod_of_residency.value);
+        pftperiod_of_residency.innerText = ftperiod_of_residency.value;
+
         // Oathtaking Seeker Name
         var pftofirst_name = iframeDocument.getElementById('ftofirst_name');
         var pftomiddle_name = iframeDocument.getElementById('ftomiddle_name');
@@ -530,33 +556,7 @@ if (pccvawc_official_name) pccvawc_official_name.innerText = ccvawc_official_nam
         pftogalast_name.innerText = ftlast_name.value;
         pftogasuffix.innerText = ftsuffix.value;
 
-        if (ftpormonth.checked) {
-            if (ftperiod_of_residency.value == 1) {
-                pftyear_month.innerText = " Month";
-                pftoyear_month.innerText = " Month";
-            } else if (ftperiod_of_residency.value > 1) {
-                pftyear_month.innerText = " Months";
-                pftoyear_month.innerText = " Months";
-            } else {
-                pftyear_month.innerText = "";
-                pftoyear_month.innerText = "";
-            }
-        } else if (ftporyear.checked) {
-            if (ftperiod_of_residency.value == 1) {
-                pftyear_month.innerText = " Year";
-                pftoyear_month.innerText = " Year";
-            } else if (ftperiod_of_residency.value > 1) {
-                pftyear_month.innerText = " Years";
-                pftoyear_month.innerText = " Years";
-            } else {
-                pftyear_month.innerText = "";
-                pftoyear_month.innerText = "";
-            }
-        } else {
-            pftyear_month.innerText = "";
-            pftoyear_month.innerText = "";
-        }
-        pftperiod_of_residency.innerText = ftperiod_of_residency.value;
+        
 
 
         // Guardian of the galaxy
@@ -755,6 +755,29 @@ function validateDate(date_input) {
     }
 }
 
+function validatePeriodOfResidency(period_input) {
+    let age = showAge(document.getElementById('birthdate'));
+    let m = document.getElementById('month');
+    let y = document.getElementById('year');
+
+    if (m.checked) {
+        var converted = period_input.value / 12;
+        console.log(converted);
+        if (converted > age) {
+            alert("Period of residency cannot be greater than the age of the applicant.");
+            period_input.value = '';
+        }
+    }
+
+    if (y.checked) {
+        if (period_input.value > age) {
+            alert("Period of residency cannot be greater than the age of the applicant.");
+            period_input.value = '';
+        }
+    }
+
+    
+}
 function showAge(birthdate_input) {
     var today = new Date();
     var birthdate = new Date(birthdate_input.value);

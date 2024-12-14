@@ -82,7 +82,7 @@ if (!isset($_SESSION['username'])) {
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
-                                                . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
                                             echo "<td>" . $row["birthplace"] . "</td>";
@@ -180,7 +180,7 @@ if (!isset($_SESSION['username'])) {
                                             $fullNameMale = $row["first_name_male"]
                                                 . (!empty($row["middle_name_male"]) ? " " . $row["middle_name_male"] : "")
                                                 . " " . $row["last_name_male"]
-                                                . (!empty($row["suffix_male"]) ? ", " . $row["suffix_male"] : "");
+                                                . (!empty($row["suffix_male"]) ? " " . $row["suffix_male"] : "");
                                             echo "<td>" . $fullNameMale . "</td>";
                                             echo "<td>" . $row["birthdate_male"] . "</td>";
 
@@ -214,7 +214,7 @@ if (!isset($_SESSION['username'])) {
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
-                                                . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
                                             echo "<td>" . $row["age"] . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
@@ -241,7 +241,7 @@ if (!isset($_SESSION['username'])) {
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
-                                                . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
                                             echo "<td>" . $row["income_num"] . "</td>";
@@ -325,7 +325,7 @@ if (!isset($_SESSION['username'])) {
                                             $fullNameComplaint = $row["first_name_complainant"]
                                                 . (!empty($row["middle_name_complainant"]) ? " " . $row["middle_name_complainant"] : "")
                                                 . " " . $row["last_name_complainant"]
-                                                . (!empty($row["suffix_complainant"]) ? ", " . $row["suffix_complainant"] : "");
+                                                . (!empty($row["suffix_complainant"]) ? " " . $row["suffix_complainant"] : "");
                                             echo "<td>" . $fullNameComplaint . "</td>";
                                             echo "<td>" . $row["age"] . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
@@ -334,7 +334,7 @@ if (!isset($_SESSION['username'])) {
                                             $fullNameRespondent = $row["first_name_respondent"]
                                                 . (!empty($row["middle_name_respondent"]) ? " " . $row["middle_name_respondent"] : "")
                                                 . " " . $row["last_name_respondent"]
-                                                . (!empty($row["suffix_respondent"]) ? ", " . $row["suffix_respondent"] : "");
+                                                . (!empty($row["suffix_respondent"]) ? " " . $row["suffix_respondent"] : "");
                                             echo "<td>" . $fullNameRespondent . "</td>";
                                             echo "<td>" . $row["case_no"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
@@ -363,7 +363,7 @@ if (!isset($_SESSION['username'])) {
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
-                                                . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
 
                                             echo "<td>" . $row["age"] . "</td>";
@@ -374,7 +374,7 @@ if (!isset($_SESSION['username'])) {
                                             $fullNameReq = $row["req_first_name"]
                                                 . (!empty($row["req_middle_name"]) ? " " . $row["req_middle_name"] : "")
                                                 . " " . $row["req_last_name"]
-                                                . (!empty($row["req_suffix"]) ? ", " . $row["req_suffix"] : "");
+                                                . (!empty($row["req_suffix"]) ? " " . $row["req_suffix"] : "");
                                             echo "<td>" . $fullNameReq . "</td>";
                                             echo "<td>" . $row["relationship"] . "</td>";
                                             echo "<td>" . $row["issued_date"] . "</td>";
@@ -405,7 +405,7 @@ if (!isset($_SESSION['username'])) {
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
-                                                . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
                                             echo "<td>" . $row["claimant"] . "</td>";
@@ -441,7 +441,7 @@ if (!isset($_SESSION['username'])) {
                                             $fullName = $row["first_name"]
                                                 . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                 . " " . $row["last_name"]
-                                                . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                             echo "<td>" . $fullName . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
                                             echo "<td>" . $row["nationality"] . "</td>";

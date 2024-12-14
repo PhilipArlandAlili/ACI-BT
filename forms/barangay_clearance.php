@@ -3,18 +3,18 @@
     <form action="#" method="post" class="form" id="barangay_clearance_form">
 
     <label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required placeholder="Ex. Juan"><br>
+    <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"  oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();" required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
-    <input type="text" class="form-control" name="middle_name" id="middle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();"   placeholder="Ex. Reyes"><br>
+    <input type="text" class="form-control" name="middle_name" id="middle_name" maxlength="50"  oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();"   placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_name" id="last_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');updateText();" required  placeholder="Ex. Dela Cruz"><br>
+    <input type="text" class="form-control" name="last_name" id="last_name" maxlength="50"  oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();" required  placeholder="Ex. Dela Cruz"><br>
 
 
 
     <label for="suffix">Suffix:</label>
-    <select class="text-left form-control" name="suffix" id="suffix" oninput="updateText();">
+    <select class="text-left form-control" name="suffix" id="suffix" onchange="updateText();">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
@@ -24,7 +24,7 @@
     </select><br>
 
     <label for="purok">Purok:</label>
-    <select class="text-left form-control" name="purok" id="purok" oninput="updateText();" required>
+    <select class="text-left form-control" name="purok" id="purok" onchange="updateText();" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Huwaran">Huwaran</option>
@@ -38,14 +38,14 @@
     </select><br>
 
     <label for="birthplace">Birthplace:</label>
-    <input type="text" class="form-control" id="birthplace" oninput="updateText()" name="birthplace" placeholder="Ex. Puerto Princesa City"
+    <input type="text" class="form-control" id="birthplace" oninput="this.value = this.value.toUpperCase(); updateText();" name="birthplace" placeholder="Ex. Puerto Princesa City"
         required><br>
 
     <label for="birthdate">Birthday:</label>
-    <input type="date" class="form-control" id="birthdate" onchange=" validateBirthdate(this);updateText();" name="birthdate" required><br>
+    <input type="date" class="form-control" id="birthdate" oninput="validateBirthdate(this);updateText();" name="birthdate" required><br>
 
     <label for="civil_status">Civil Status:</label>    
-    <select class="form-control" name="civil_status" id="civil_status" oninput="updateText();" required>
+    <select class="form-control" name="civil_status" id="civil_status" onchange="updateText();" required>
         <option value="">--Select Civil Status--</option>
         <option value="Single">Single</option>
         <option value="Married">Married</option>
@@ -55,24 +55,24 @@
     <label for="period_of_residency">Period of Residency:</label>
     <div class="radios d-flex gap-3">
         <div class="form-check">
-            <input class="form-check-input" name="period_of_residency_ym"  onclick="updateText()" type="radio" value="months" id="month" required>
+            <input class="form-check-input" name="period_of_residency_ym" onchange="validatePeriodOfResidency(period_of_residency);updateText();" type="radio" value="months" id="month" required>
             <label class="form-check-label" for="radioMonths">
                 Months
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" name="period_of_residency_ym"  onclick="updateText()" type="radio" value="years" id="year" required>
+            <input class="form-check-input" name="period_of_residency_ym"  onchange="validatePeriodOfResidency(period_of_residency);updateText();" type="radio" value="years" id="year" required>
             <label class="form-check-label" for="radioYears">
                 Years
             </label>
         </div>
     </div>
 
-    <input type="number" class="form-control" id="period_of_residency" maxlength="2" max="99" min="1" oninput="showAge();updateText()" name="period_of_residency"
+    <input type="number" class="form-control" id="period_of_residency" maxlength="2" max="99" min="1" oninput="validatePeriodOfResidency(this);updateText()" name="period_of_residency"
         placeholder="Ex. 3 years/months" required><br>
 
     <label for="purpose">Purpose:</label>
-    <input type="text" name="purpose" class="form-control" id="purpose" oninput="updateText()" placeholder="Ex. Residency Verification"
+    <input type="text" name="purpose" class="form-control" id="purpose" oninput="this.value = this.value.toUpperCase(); updateText()" placeholder="Ex. Residency Verification"
         required><br>
 
     <input type="date" name="issueddate" style="display:none; position:absolute;">

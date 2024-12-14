@@ -8,7 +8,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 date_default_timezone_set('Asia/Manila');
-$duty_officer_name = $_SESSION['username'];
+$duty_officer_name = strtoupper($_SESSION['username']);
 $issued_date = date('Y-m-d');
 $timestamp = date('Y-m-d H:i:s');
 

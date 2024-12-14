@@ -13,9 +13,13 @@ if (isset($_POST["barangay_clearance"])) {
     $period_of_residency = $conn->real_escape_string($_POST["period_of_residency"]);
     $purpose = $conn->real_escape_string($_POST["purpose"]);
 
+    $suffix = strtoupper($suffix);
+    $purok = strtoupper($purok);
+    $civil_status = strtoupper($civil_status);
+    $period_of_residency_ym = strtoupper($period_of_residency_ym);
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 
-    if ($period_of_residency_ym == 'years') {
+    if ($period_of_residency_ym == 'YEARS') {
         $period_of_residency = $period_of_residency * 12;
     }
 
