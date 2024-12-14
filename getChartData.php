@@ -15,13 +15,13 @@ $certificates = [
     "Certificate of Cohabitation",
     "Certificate of Employability",
     "Certificate of Income",
+    // "Certificate of Indigency Keeps",
     "Certificate of Indigency",
-    "Certificate of Indigency AICS",
+    "Transfer of Residency",
     "Complaint Certificate",
     "Death Certificate",
     "First Time Job Seeker",
     "Lot Ownership",
-    "Transfer of Residency",
 ];
 
 $data = [];

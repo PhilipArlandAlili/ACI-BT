@@ -906,39 +906,38 @@ if (!isset($_SESSION['username'])) {
                             <script>
                                 // Data for the bar chart
                                 const chartData = {
-                                    labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Cohabitation', 'Certificate of Employability', 'Certificate of Income', 'Certificate of Indigency', 'Certificate of Indidency (AICS)', 'Complaint Certificate', 'Death Certificate', 'First Time Job Seeker', 'Lot Ownership', 'Transfer of Residency'],
+                                    labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Cohabitation', 'Certificate of Employability', 'Certificate of Income', 'Certificate of Indidency', 'Transfer of Residency', 'Complaint Certificate', 'Death Certificate', 'First Time Job Seeker', 'Lot Ownership'],
                                     datasets: [{
                                         label: 'Number of Issued Certificates',
                                         backgroundColor: [
-                                            'rgba(255, 25, 25, 0.2)',
-                                            'rgba(54, 162, 235, 0.2)',
-                                            'rgba(255, 206, 86, 0.2)',
-                                            'rgba(75, 192, 192, 0.2)',
-                                            'rgba(153, 102, 255, 0.2)',
-                                            'rgba(255, 165, 0, 0.2)',
-                                            'rgba(0, 51, 102, 0.2)',
-                                            'rgba(0, 128, 0, 0.2)',
-                                            'rgba(153, 0, 0, 0.2)',
-                                            'rgba(77, 0, 77, 0.2)',
-                                            'rgba(128, 0, 0, 0.2)',
-                                            'rgba(153, 153, 0, 0.2)',
-                                            'rgba(353, 153, 0, 0.2)'
+                                            'rgba(255, 99, 132, 0.2)',  // Light Pink
+                                            'rgba(75, 0, 130, 0.2)',    // Indigo
+                                            'rgba(0, 255, 127, 0.2)',   // Spring Green
+                                            'rgba(244, 164, 96, 0.2)',  // Sandy Brown
+                                            'rgba(30, 144, 255, 0.2)',  // Dodger Blue
+                                            'rgba(255, 140, 0, 0.2)',   // Dark Orange
+                                            'rgba(34, 139, 34, 0.2)',   // Forest Green
+                                            'rgba(139, 69, 19, 0.2)',   // Saddle Brown
+                                            'rgba(123, 104, 238, 0.2)', // Medium Slate Blue
+                                            'rgba(255, 20, 147, 0.2)',  // Deep Pink
+                                            'rgba(72, 209, 204, 0.2)',  // Medium Turquoise
+                                            'rgba(47, 79, 79, 0.2)'     // Dark Slate Gray
                                         ],
                                         borderColor: [
-                                            'rgba(255, 0, 0, 1)',
-                                            'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 165, 0, 1)',
-                                            'rgba(0, 51, 102, 1)',
-                                            'rgba(0, 128, 0, 1)',
-                                            'rgba(153, 0, 0, 1)',
-                                            'rgba(77, 0, 77, 1)',
-                                            'rgba(128, 0, 0, 1)',
-                                            'rgba(153, 153, 0, 1)',
-                                            'rgba(353, 100, 10, 0.2)'
+                                            'rgba(255, 99, 132, 1)',    // Light Pink
+                                            'rgba(75, 0, 130, 1)',      // Indigo
+                                            'rgba(0, 255, 127, 1)',     // Spring Green
+                                            'rgba(244, 164, 96, 1)',    // Sandy Brown
+                                            'rgba(30, 144, 255, 1)',    // Dodger Blue
+                                            'rgba(255, 140, 0, 1)',     // Dark Orange
+                                            'rgba(34, 139, 34, 1)',     // Forest Green
+                                            'rgba(139, 69, 19, 1)',     // Saddle Brown
+                                            'rgba(123, 104, 238, 1)',   // Medium Slate Blue
+                                            'rgba(255, 20, 147, 1)',    // Deep Pink
+                                            'rgba(72, 209, 204, 1)',    // Medium Turquoise
+                                            'rgba(47, 79, 79, 1)'       // Dark Slate Gray
                                         ],
+
                                         borderWidth: 1,
                                         data: [
                                             barangay_clearance,
@@ -947,13 +946,13 @@ if (!isset($_SESSION['username'])) {
                                             certificate_of_cohabitation,
                                             certificate_of_employability,
                                             certificate_of_income,
+                                            // certificate_of_indigency_keeps,
                                             certificate_of_indigency,
-                                            certificate_of_indigency_aics,
+                                            transfer_of_residency,
                                             complaint_certificate,
                                             death_certificate,
                                             first_time_job_seeker,
-                                            lot_ownership,
-                                            transfer_of_residency
+                                            lot_ownership
                                         ]
                                     }]
                                 };
@@ -1161,13 +1160,13 @@ if (!isset($_SESSION['username'])) {
                                                     data["Certificate of Cohabitation"],
                                                     data["Certificate of Employability"],
                                                     data["Certificate of Income"],
+                                                    // data["Certificate of Indigency Keeps"],
                                                     data["Certificate of Indigency"],
-                                                    data["Certificate of Indigency AICS"],
+                                                    data["Transfer of Residency"],
                                                     data["Complaint Certificate"],
                                                     data["Death Certificate"],
                                                     data["First Time Job Seeker"],
-                                                    data["Lot Ownership"],
-                                                    data["Transfer of Residency"]
+                                                    data["Lot Ownership"]
                                                 ];
                                             } else {
                                                 // Update chart data with the fetched values from the specific month/year
