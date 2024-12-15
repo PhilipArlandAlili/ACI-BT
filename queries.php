@@ -535,9 +535,9 @@ if (isset($_POST["lot_ownership"])) {
     $last_name = $conn->real_escape_string($_POST["last_name"]);
     $suffix = $conn->real_escape_string($_POST["suffix"]);
     $purok = $conn->real_escape_string($_POST["purok"]);
-    $claimant = $conn->real_escape_string($_POST["claimant"]);
-    $beneficiary = $conn->real_escape_string($_POST["beneficiary"]);
-    $actual_occupant = $conn->real_escape_string($_POST["actual_occupant"]);
+    $claimant = isset($_POST["claimant"]) ? $conn->real_escape_string($_POST["claimant"]) : null;
+    $beneficiary = isset($_POST["beneficiary"]) ? $conn->real_escape_string($_POST["beneficiary"]) : null;
+    $actual_occupant = isset($_POST["actual_occupant"]) ? $conn->real_escape_string($_POST["actual_occupant"]) : null;
     $lot_number = $conn->real_escape_string($_POST["lot_number"]);
     $lot_area_numerical = $conn->real_escape_string($_POST["lot_area_numerical"]);
     $lot_area_words = $conn->real_escape_string($_POST["lot_area_word"]);

@@ -713,26 +713,26 @@ function updateText() {
 
         if (loclaimant.checked) {
             ploclaimant.innerText = "/";
-            loclaimant.value = "/";
+            // loclaimant.value = "/";
         } else {
             ploclaimant.innerText = "  ";
-            loclaimant.value = "";
+            // loclaimant.value = "";
         }
 
         if (loactual_occupant.checked) {
             ploactual_occupant.innerText = "/";
-            loactual_occupant.value = "/";
+            // loactual_occupant.value = "/";
         } else {
             ploactual_occupant.innerText = "  ";
-            loactual_occupant.value = "";
+            // loactual_occupant.value = "";
         }
 
         if (lobeneficiary.checked) {
             plobeneficiary.innerText = "/";
-            lobeneficiary.value = "/";
+            // lobeneficiary.value = "/";
         } else {
             plobeneficiary.innerText = "  ";
-            lobeneficiary.value = "";
+            // lobeneficiary.value = "";
         }
 
         plofirst_name.innerText = lofirst_name.value.toUpperCase();

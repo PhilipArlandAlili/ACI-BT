@@ -594,7 +594,7 @@
                                                 $fullName = $row["first_name"]
                                                     . (!empty($row["middle_name"]) ? " " . $row["middle_name"] : "")
                                                     . " " . $row["last_name"]
-                                                    . (!empty($row["suffix"]) ? ", " . $row["suffix"] : "");
+                                                    . (!empty($row["suffix"]) ? " " . $row["suffix"] : "");
                                                     echo "<td>" . $fullName . "</td>";
                                                     echo "<td>" . $row["address"] . "</td>";
                                                     echo "<td>" . $row["claimant"] . "</td>";
