@@ -1,7 +1,16 @@
 <!-- Business Permit Renewal Form -->
 <form action="#" method="post" class="form" id="business_permit_renew_form">
     <label for="businessName">Business name/ Trade Activity:</label>
-    <input type="text" class="form-control" id="bprbusiness_name" name="business_name" oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. Carl Store" required><br>
+    <input type="text" class="form-control" id="bprbusiness_name" name="business_name"
+        oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. Carl Store" required><br>
+
+    <label for="businessAddress">Business Location:</label><br>
+    <input type="text" name="address" id="bpraddress" class="form-control"
+        oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. Anywhere you want" required><br>
+
+    <label for="manager_operator_renew">Manager / Operator:</label>
+    <input type="text" class="form-control" id="bprmanager" name="manager"
+        oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. Juan Dela Cruz" required><br>
 
     <label for="purok">Purok:</label><br>
     <select name="purok" id="bprpurok" class="form-control" oninput="updateText()" required>
@@ -15,15 +24,7 @@
         <option value="Sandiwa">Sandiwa</option>
         <option value="Trece">Trece</option>
         <option value="Uha">UHA</option>
-    </select>
-    <br>
-
-    <label for="manager_operator_renew">Manager / Operator:</label>
-    <input type="text" class="form-control" id="bprmanager" name="manager" oninput="this.value = this.value.toUpperCase();updateText()"placeholder="Ex. Juan Dela Cruz" required><br>
-
-    <label for="manager_operator_address_renew">Address (Manager / Operator):</label>
-    <input type="text" class="form-control" id="bpraddress" name="address" oninput="this.value = this.value.toUpperCase();updateText()"placeholder="Ex. PSU Rd" required><br>
-
+    </select><br>
     <hr>
 
     <div class="BPermitRenewPrint" style="text-align: right;">

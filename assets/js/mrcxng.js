@@ -200,21 +200,24 @@ function updateText() {
     } else if (certificate_type.value == 'business_permit_renew') {
         // From PHP
         var bprbusiness_name = document.getElementById('bprbusiness_name');
-        var bprpurok = document.getElementById('bprpurok');
-        var bprmanager = document.getElementById('bprmanager');
         var bpraddress = document.getElementById('bpraddress');
+        var bprmanager = document.getElementById('bprmanager');
+        var bprpurok = document.getElementById('bprpurok');
 
         // From HTML
         var pbprbusiness_name = iframeDocument.getElementById('bprbusiness_name');
-        var pbprpurok = iframeDocument.getElementById('bprpurok');
-        var pbprmanager = iframeDocument.getElementById('bprmanager');
         var pbpraddress = iframeDocument.getElementById('bpraddress');
+        var pbprmanager = iframeDocument.getElementById('bprmanager');
+        var pbprpurok = iframeDocument.getElementById('bprpurok');
 
         if (pbprbusiness_name) pbprbusiness_name.innerText = bprbusiness_name.value.toUpperCase();
-        if (pbprpurok) pbprpurok.innerText = bprpurok.value.toUpperCase();
-        if (pbprmanager) pbprmanager.innerText = bprmanager.value.toUpperCase();
         if (pbpraddress) pbpraddress.innerText = bpraddress.value.toUpperCase();
-    } else if (certificate_type.value == 'certificate_of_cohabitation') {
+        if (pbprmanager) pbprmanager.innerText = bprmanager.value.toUpperCase();
+        if (bprpurok.value !== "") {
+            pbprpurok.innerText = "PUROK " + bprpurok.value.toUpperCase() + ", BARANGAY TINIGUIBAN, PUERTO PRINCESA CITY";
+        } else {
+            pbprpurok.innerText = "";
+        }    } else if (certificate_type.value == 'certificate_of_cohabitation') {
         var cocfirst_name = document.getElementById('cocfirst_name');
         var cocmiddle_name = document.getElementById('cocmiddle_name');
         var coclast_name = document.getElementById('coclast_name');
