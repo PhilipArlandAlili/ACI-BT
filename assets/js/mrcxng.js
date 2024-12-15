@@ -130,7 +130,6 @@ function updateText() {
         } else {
             ppurok.innerText = "";
         }
-
         if (pbirthplace) pbirthplace.innerText = birthplace.value.toUpperCase();
 
         if (birthdate.value) {
@@ -180,20 +179,24 @@ function updateText() {
     } else if (certificate_type.value == 'business_permit_new') {
         // From PHP
         var bpnbusiness_name = document.getElementById('bpnbusiness_name');
-        var bpnpurok = document.getElementById('bpnpurok');
-        var bpnmanager = document.getElementById('bpnmanager');
         var bpnaddress = document.getElementById('bpnaddress');
+        var bpnmanager = document.getElementById('bpnmanager');
+        var bpnpurok = document.getElementById('bpnpurok');
 
         // From HTML
         var pbpnbusiness_name = iframeDocument.getElementById('bpnbusiness_name');
-        var pbpnpurok = iframeDocument.getElementById('bpnpurok');
-        var pbpnmanager = iframeDocument.getElementById('bpnmanager');
         var pbpnaddress = iframeDocument.getElementById('bpnaddress');
+        var pbpnmanager = iframeDocument.getElementById('bpnmanager');
+        var pbpnpurok = iframeDocument.getElementById('bpnpurok');
 
         if (pbpnbusiness_name) pbpnbusiness_name.innerText = bpnbusiness_name.value.toUpperCase();
-        if (pbpnpurok) pbpnpurok.innerText = bpnpurok.value.toUpperCase();
-        if (pbpnmanager) pbpnmanager.innerText = bpnmanager.value.toUpperCase();
         if (pbpnaddress) pbpnaddress.innerText = bpnaddress.value.toUpperCase();
+        if (pbpnmanager) pbpnmanager.innerText = bpnmanager.value.toUpperCase();
+        if (bpnpurok.value !== "") {
+            pbpnpurok.innerText = "PUROK " + bpnpurok.value.toUpperCase() + ", BARANGAY TINIGUIBAN, PUERTO PRINCESA CITY";
+        } else {
+            pbpnpurok.innerText = "";
+        }
     } else if (certificate_type.value == 'business_permit_renew') {
         // From PHP
         var bprbusiness_name = document.getElementById('bprbusiness_name');

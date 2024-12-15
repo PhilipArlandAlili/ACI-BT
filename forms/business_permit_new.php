@@ -4,6 +4,15 @@
     <input type="text" name="business_name" id="bpnbusiness_name" class="form-control"
         oninput="this.value = this.value.toUpperCase();updateText()" s placeholder="Ex: Carl Store" required><br>
 
+    <label for="businessAddress">Business Location:</label><br>
+    <input type="text" name="address" id="bpnaddress" class="form-control"
+        oninput="this.value = this.value.toUpperCase();updateText()"
+        placeholder="Ex. Anywhere you want" required><br>
+
+    <label for="manager_operator">Manager / Operator:</label>
+    <input type="text" class="form-control" id="bpnmanager" name="manager"
+        oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. Juan Dela Cruz" required><br>
+
     <label for="purok">Purok:</label><br>
     <select name="purok" id="bpnpurok" class="form-control" oninput="updateText()" required>
         <option value="">--Select Purok--</option>
@@ -16,18 +25,8 @@
         <option value="Sandiwa">Sandiwa</option>
         <option value="Trece">Trece</option>
         <option value="Uha">UHA</option>
-    </select>
-    <br>
-
-    <label for="manager_operator">Manager / Operator:</label>
-    <input type="text" class="form-control" id="bpnmanager" name="manager"
-        oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. Juan Dela Cruz" required><br>
-
-    <label for="purok">Address:</label><br>
-    <input type="text" name="address" id="bpnaddress" class="form-control"
-        oninput="this.value = this.value.toUpperCase();updateText()"
-        placeholder="Ex. Purok 1, Brgy. San Francisco, General Luna, Quezon" required><br>
-    <br>
+    </select><br>
+    <hr>
 
     <div class="BPermitNewprint" style="text-align: right;">
         <button type="button" class="btn btn-primary w-25" id="BPermitNewprintBtn">Print</button>
