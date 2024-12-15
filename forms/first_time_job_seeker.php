@@ -37,33 +37,8 @@
         </select><br>
 
         <label for="birthdate">Birthday:</label>
-        <input type="date" class="form-control" id="ftbirthdate"
-            oninput=" validateBirthdate(this);updateText();" name="birthdate"
-            required><br>
-
-        <label for="period_of_residency">Period of Residency:</label>
-        <div class="radios d-flex gap-3">
-            <div class="form-check">
-                <input class="form-check-input" name="period_of_residency_ym"
-                    onchange="validatePeriodOfResidency(ftperiod_of_residency);updateText()" type="radio" value="months"
-                    id="ftmonth" required>
-                <label class="form-check-label" for="radioMonths">
-                    Months
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" name="period_of_residency_ym"
-                    onchange="validatePeriodOfResidency(ftperiod_of_residency);updateText()" type="radio" value="years" id="ftyear"
-                    required>
-                <label class="form-check-label" for="radioYears">
-                    Years
-                </label>
-            </div>
-        </div>
-
-        <input type="number" class="form-control" id="ftperiod_of_residency" maxlength="2" max="99" min="1"
-            oninput="validatePeriodOfResidency(this);updateText()" name="period_of_residency"
-            placeholder="Ex. 3 years/months" required><br>
+        <input type="date" class="form-control" id="ftbirthdate" oninput=" validateBirthdate(this);updateText();"
+            name="birthdate" required><br>
 
         <label for="purok">Purok:</label>
         <select class="text-left form-control" name="purok" id="ftpurok" onchange="updateText();" required>
@@ -78,6 +53,30 @@
             <option value="Trece">Trece</option>
             <option value="Uha">UHA</option>
         </select><br>
+
+        <label for="period_of_residency">Period of Residency:</label>
+        <div class="radios d-flex gap-3">
+            <div class="form-check">
+                <input class="form-check-input" name="period_of_residency_ym"
+                    onchange="validatePeriodOfResidency(ftperiod_of_residency);updateText()" type="radio" value="months"
+                    id="ftmonth" required>
+                <label class="form-check-label" for="radioMonths">
+                    Months
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" name="period_of_residency_ym"
+                    onchange="validatePeriodOfResidency(ftperiod_of_residency);updateText()" type="radio" value="years"
+                    id="ftyear" required>
+                <label class="form-check-label" for="radioYears">
+                    Years
+                </label>
+            </div>
+        </div>
+
+        <input type="number" class="form-control" id="ftperiod_of_residency" maxlength="2" max="99" min="1"
+            oninput="validatePeriodOfResidency(this);updateText()" name="period_of_residency"
+            placeholder="Ex. 3 years/months" required><br>
         <hr>
         <div class="btn-container d-flex justify-content-between">
             <button type="button" class="btn btn-secondary" id="nextToGuardian" onclick="showGuardian();">Next</button>
@@ -134,7 +133,7 @@
         <label for="birthdate">Birthday:</label>
         <input type="date" class="form-control" id="ftogbirthdate"
             oninput=" validateBirthdate(this);this.value = this.value.toUpperCase();updateText();" name="ftogbirthdate"
-            required><br>
+            ><br>
 
         <label for="suffix">Role:</label>
         <select class="text-left form-control" name="relationship" id="ftogrole" onchange="updateText();">
@@ -143,32 +142,8 @@
             <option value="Guardian">Guardian</option>
         </select><br>
 
-        <label for="period_of_residency">Period of Residency:</label>
-        <div class="radios d-flex gap-3">
-            <div class="form-check">
-                <input class="form-check-input" name="ftogperiod_of_residency"
-                    onchange="validatePeriodOfResidency(ftogperiod_of_residency);updateText();" type="radio" value="months"
-                    id="ftogmonth">
-                <label class="form-check-label" for="radioMonths">
-                    Months
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" name="ftogperiod_of_residency"
-                    onchange="validatePeriodOfResidency(ftogperiod_of_residency);updateText();" type="radio" value="years"
-                    id="ftogyear">
-                <label class="form-check-label" for="radioYears">
-                    Years
-                </label>
-            </div>
-        </div>
-
-        <input type="number" class="form-control" id="ftogperiod_of_residency" maxlength="2" max="99" min="1"
-            oninput="validatePeriodOfResidency(this);updateText()" name="ftogperiod_of_residency"
-            placeholder="Ex. 3 years/months"><br>
-
         <label for="purok">Purok:</label>
-        <select class="text-left form-control" name="ftogpurok" id="ftogpurok" onchange="updateText();" required>
+        <select class="text-left form-control" name="ftogpurok" id="ftogpurok" onchange="updateText();" >
             <option value="">--Select Purok--</option>
             <option value="Centro">Centro</option>
             <option value="Huwaran">Huwaran</option>
@@ -180,6 +155,31 @@
             <option value="Trece">Trece</option>
             <option value="Uha">UHA</option>
         </select><br>
+
+        <label for="period_of_residency">Period of Residency:</label>
+        <div class="radios d-flex gap-3">
+            <div class="form-check">
+                <input class="form-check-input" name="ftogperiod_of_residency"
+                    onchange="validatePeriodOfResidency(ftogperiod_of_residency);updateText();" type="radio"
+                    value="months" id="ftogmonth">
+                <label class="form-check-label" for="radioMonths">
+                    Months
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" name="ftogperiod_of_residency"
+                    onchange="validatePeriodOfResidency(ftogperiod_of_residency);updateText();" type="radio"
+                    value="years" id="ftogyear">
+                <label class="form-check-label" for="radioYears">
+                    Years
+                </label>
+            </div>
+        </div>
+
+        <input type="number" class="form-control" id="ftogperiod_of_residency" maxlength="2" max="99" min="1"
+            oninput="validatePeriodOfResidency(this);updateText()" name="ftogperiod_of_residency"
+            placeholder="Ex. 3 years/months"><br>
+
         <hr>
         <div class="btn-container d-flex justify-content-between">
             <button type="button" class="btn btn-secondary" id="backToMagaKuha" onclick="hideGuardian();">Back</button>
