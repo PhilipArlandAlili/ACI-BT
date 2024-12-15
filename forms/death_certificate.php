@@ -56,7 +56,6 @@
         id="dccause_of_death" placeholder="Ex. Sick" required><br>
     <hr>
 
-
     <label for="" class="fw-bold">Requester</label><br>
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control" maxlength="50"
