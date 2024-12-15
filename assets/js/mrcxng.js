@@ -95,6 +95,7 @@ function updateText() {
         var poryear = document.getElementById('year');
         var period_of_residency = document.getElementById('period_of_residency');
         var purpose = document.getElementById('purpose');
+        var duty_officer = document.getElementById('duty_officer');
 
         // From HTML
         var pfirst_name = iframeDocument.getElementById('first_name');
@@ -110,6 +111,7 @@ function updateText() {
         var pyear_month = iframeDocument.getElementById('year_month');
         var pperiod_of_residency = iframeDocument.getElementById('period_of_residency');
         var ppurpose = iframeDocument.getElementById('purpose');
+        var pduty_officer = iframeDocument.getElementById('duty_officer');
 
         var date = new Date(birthdate.value);
         var month = date.getMonth();
@@ -123,7 +125,12 @@ function updateText() {
         if (pmiddle_name) pmiddle_name.innerText = middle_name.value.toUpperCase();
         if (plast_name) plast_name.innerText = last_name.value.toUpperCase();
         if (psuffix) psuffix.innerText = suffix.value.toUpperCase();
-        if (ppurok) ppurok.innerText = purok.value.toUpperCase();
+        if (purok.value !== "") {
+            ppurok.innerText = "PUROK " + purok.value.toUpperCase() + ", BARANGAY TINIGUIBAN";
+        } else {
+            ppurok.innerText = "";
+        }
+
         if (pbirthplace) pbirthplace.innerText = birthplace.value.toUpperCase();
 
         if (birthdate.value) {
@@ -168,6 +175,7 @@ function updateText() {
 
         if (pperiod_of_residency) pperiod_of_residency.innerText = period_of_residency.value;
         if (ppurpose) ppurpose.innerText = purpose.value.toUpperCase();
+        if (pduty_officer) pduty_officer.innerText = duty_officer.value.toUpperCase();
 
     } else if (certificate_type.value == 'business_permit_new') {
         // From PHP

@@ -1,15 +1,21 @@
 <!-- Barangay Clearance Form -->
 
-    <form action="#" method="post" class="form" id="barangay_clearance_form">
+<form action="#" method="post" class="form" id="barangay_clearance_form">
 
     <label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"  oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();" required placeholder="Ex. Juan"><br>
+    <input type="text" class="form-control" name="first_name" id="first_name" maxlength="50"
+        oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();"
+        required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
-    <input type="text" class="form-control" name="middle_name" id="middle_name" maxlength="50"  oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();"   placeholder="Ex. Reyes"><br>
+    <input type="text" class="form-control" name="middle_name" id="middle_name" maxlength="50"
+        oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();"
+        placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_name" id="last_name" maxlength="50"  oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();" required  placeholder="Ex. Dela Cruz"><br>
+    <input type="text" class="form-control" name="last_name" id="last_name" maxlength="50"
+        oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();"
+        required placeholder="Ex. Dela Cruz"><br>
 
 
 
@@ -38,13 +44,15 @@
     </select><br>
 
     <label for="birthplace">Birthplace:</label>
-    <input type="text" class="form-control" id="birthplace" oninput="this.value = this.value.toUpperCase(); updateText();" name="birthplace" placeholder="Ex. Puerto Princesa City"
-        required><br>
+    <input type="text" class="form-control" id="birthplace"
+        oninput="this.value = this.value.toUpperCase(); updateText();" name="birthplace"
+        placeholder="Ex. Puerto Princesa City" required><br>
 
     <label for="birthdate">Birthday:</label>
-    <input type="date" class="form-control" id="birthdate" oninput="validateBirthdate(this);updateText();" name="birthdate" required><br>
+    <input type="date" class="form-control" id="birthdate" oninput="validateBirthdate(this);updateText();"
+        name="birthdate" required><br>
 
-    <label for="civil_status">Civil Status:</label>    
+    <label for="civil_status">Civil Status:</label>
     <select class="form-control" name="civil_status" id="civil_status" onchange="updateText();" required>
         <option value="">--Select Civil Status--</option>
         <option value="Single">Single</option>
@@ -55,28 +63,35 @@
     <label for="period_of_residency">Period of Residency:</label>
     <div class="radios d-flex gap-3">
         <div class="form-check">
-            <input class="form-check-input" name="period_of_residency_ym" onchange="validatePeriodOfResidency(period_of_residency);updateText();" type="radio" value="months" id="month" required>
+            <input class="form-check-input" name="period_of_residency_ym"
+                onchange="validatePeriodOfResidency(period_of_residency);updateText();" type="radio" value="months"
+                id="month" required>
             <label class="form-check-label" for="radioMonths">
                 Months
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" name="period_of_residency_ym"  onchange="validatePeriodOfResidency(period_of_residency);updateText();" type="radio" value="years" id="year" required>
+            <input class="form-check-input" name="period_of_residency_ym"
+                onchange="validatePeriodOfResidency(period_of_residency);updateText();" type="radio" value="years"
+                id="year" required>
             <label class="form-check-label" for="radioYears">
                 Years
             </label>
         </div>
     </div>
 
-    <input type="number" class="form-control" id="period_of_residency" maxlength="2" max="99" min="1" oninput="validatePeriodOfResidency(this);updateText()" name="period_of_residency"
+    <input type="number" class="form-control" id="period_of_residency" maxlength="2" max="99" min="1"
+        oninput="validatePeriodOfResidency(this);updateText()" name="period_of_residency"
         placeholder="Ex. 3 years/months" required><br>
 
     <label for="purpose">Purpose:</label>
-    <input type="text" name="purpose" class="form-control" id="purpose" oninput="this.value = this.value.toUpperCase(); updateText()" placeholder="Ex. Residency Verification"
-        required><br>
+    <input type="text" name="purpose" class="form-control" id="purpose"
+        oninput="this.value = this.value.toUpperCase(); updateText()" placeholder="Ex. Employment" required><br>
 
-    <input type="date" name="issueddate" style="display:none; position:absolute;">
-    <hr>
+    <!-- <label for="">Duty Officer Name:</label>
+    <input type="text" name="duty_officer" class="form-control" id="duty_officer" oninput="this.value = this.value.toUpperCase(); updateText()"
+        value="" readonly><br>
+    <hr> -->
 
     <div class="brgyClearancePrint" style="text-align: right;">
         <button type="button" id="brgyClearancePrintBtn" class="btn btn-primary w-25">Print</button>
@@ -92,8 +107,8 @@
                         <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
-                        <button class="w-25 btn btn-primary" name="barangay_clearance" onclick="printIframe()"
-                            >Yes</button>
+                        <button class="w-25 btn btn-primary" name="barangay_clearance"
+                            onclick="printIframe()">Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
