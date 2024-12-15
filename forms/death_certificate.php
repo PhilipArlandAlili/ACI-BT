@@ -53,24 +53,24 @@
 
     <label for="causeOfDeath">Cause of death:</label>
     <input type="text" class="form-control" maxlength="100" oninput="this.value = this.value.toUpperCase();updateText();" name="cause_of_death"
-        id="dccause_of_death" placeholder="Ex. Sick" required><br>
+        id="dccause_of_death" placeholder="Ex. Unexpected Illness" required><br>
     <hr>
 
     <label for="" class="fw-bold">Requester</label><br>
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
-        id="dcreq_first_name" name="req_first_name" placeholder="Ex. Pedro" required><br>
+        id="dcreq_first_name" name="req_first_name" placeholder="Ex. Maria" required><br>
 
     <label for="middle_name">Middle Name:</label>
     <input type="text" class="form-control" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
-        id="dcreq_middle_name" name="req_middle_name" placeholder="Ex. Torres" required><br>
+        id="dcreq_middle_name" name="req_middle_name" placeholder="Ex. Garcia" required><br>
 
     <label for="last_name">Last Name:</label>
     <input type="text" class="form-control" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
-        id="dcreq_last_name" name="req_last_name" placeholder="Ex. Bautista" required><br>
+        id="dcreq_last_name" name="req_last_name" placeholder="Ex. Santos" required><br>
 
     <label for="suffix">Suffix:</label>
     <select class="text-left form-control" onchange="updateText()" name="req_suffix" id="dcreq_suffix">
@@ -84,7 +84,7 @@
 
     <label for="relationshipToDeadPerson">Relationship to the dead person:</label>
     <input type="text" class="form-control" oninput="this.value = this.value.toUpperCase();updateText();" name="relationship" id="dcrelationship"
-        placeholder="Ex. Son" required><br>
+        placeholder="Ex. Wife" required><br>
     <hr>
 
     <div class="deathPrint" style="text-align: right;">
