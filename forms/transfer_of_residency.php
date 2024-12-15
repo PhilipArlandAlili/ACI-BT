@@ -51,29 +51,13 @@
         <option value="Uha">UHA</option>
     </select><br>
 
-    <!-- <label for="purok">Current Address:</label>
-    <select class="text-left form-control" name="current_address" id="trcurrent_address" required
-        onchange="this.value = this.value.toUpperCase();updateText()">
-        <option value="">--Select Purok--</option>
-        <option value="Centro">Centro</option>
-        <option value="Huwaran">Huwaran</option>
-        <option value="Kaakbayan">Kaakbayan</option>
-        <option value="New Princesa">New Princesa</option>
-        <option value="San Franciso I">San Franciso I</option>
-        <option value="San Franciso II">San Franciso II</option>
-        <option value="Sandiwa">Sandiwa</option>
-        <option value="Trece">Trece</option>
-        <option value="Uha">UHA</option>
-    </select><br> -->
-
-
     <label for="">Previous Address:</label>
     <input type="text" oninput="this.value = this.value.toUpperCase();updateText()" class="form-control" name="previous_address" id="trprevious_address"
-        placeholder="Ex. Previous Address" required><br>
+        placeholder="Ex. Cagayancillo, Palawan" required><br>
 
     <label for="">Purpose:</label>
     <input type="text" name="purpose" oninput="this.value = this.value.toUpperCase();updateText()" class="form-control" id="trpurpose" cols="30" rows="10"
-        placeholder="Ex. Moving to another country" required><br>
+        placeholder="Ex. 4P'S Membership" required><br>
     <hr>
 
     <div class="transferPrint" style="text-align: right;">
