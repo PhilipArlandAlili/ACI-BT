@@ -674,7 +674,7 @@ if (isset($_POST["first_time_job_seeker"])) {
     if ($birthdate) {
         $age = date('Y') - date('Y', strtotime($birthdate));
 
-        if ($age > 18) {
+        if ($age > 14 && $age < 18) {
             $consent_first_name = $conn->real_escape_string($_POST["ftogfirst_name"]);
             $consent_middle_name = $conn->real_escape_string($_POST["ftogmiddle_name"]);
             $consent_last_name = $conn->real_escape_string($_POST["ftoglast_name"]);
@@ -683,6 +683,15 @@ if (isset($_POST["first_time_job_seeker"])) {
             $consent_age = $conn->real_escape_string($_POST["ftogbirthdate"]);
             $consent_address = $conn->real_escape_string($_POST["ftogpurok"]);
             $consent_period_of_recidency = $conn->real_escape_string($_POST["ftogperiod_of_residency"]);
+        } else {
+            $consent_first_name = null;
+            $consent_middle_name = null;
+            $consent_last_name = null;
+            $consent_suffix = null;
+            $relationship = null;
+            $consent_age = null;
+            $consent_address = null;
+            $consent_period_of_recidency = null;
         }
     }    
 
