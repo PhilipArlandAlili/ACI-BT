@@ -70,11 +70,11 @@ $conn->close();
 
 <body>
     <header id="header" class="header fixed-top d-flex align-items-center">
-        <?php include '../includes/header.php' ?>
+        <?php include 'header2.php' ?>
     </header>
 
     <aside id="sidebar" class="sidebar">
-        <?php include '../includes/sidebar.php' ?>
+        <?php include 'sidebar2.php' ?>
     </aside>
 
     <main id="main" class="main">
