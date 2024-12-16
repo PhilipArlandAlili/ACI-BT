@@ -405,7 +405,7 @@ if (isset($_POST["certificate_of_indigency"])) {
             $row = mysqli_fetch_assoc($admin_result);
             $admin_id = $row['id'];
 
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, $certificate_of_indigency_id, ?, (SELECT COUNT(*) FROM certificate_of_indigency_aics), ?)");
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, $certificate_of_indigency_id, ?, (SELECT COUNT(*) FROM certificate_of_indigency), ?)");
             $trans_stmt->bind_param('iss', $admin_id, $fullname, $timestamp);
 
             if ($trans_stmt->execute()) {
@@ -661,6 +661,7 @@ if (isset($_POST["transfer_of_residency"])) {
 }
 
 if (isset($_POST["first_time_job_seeker"])) {
+    date_default_timezone_set('Asia/Manila');
     $first_name = $conn->real_escape_string($_POST["first_name"]);
     $middle_name = $conn->real_escape_string($_POST["middle_name"]);
     $last_name = $conn->real_escape_string($_POST["last_name"]);
@@ -693,20 +694,18 @@ if (isset($_POST["first_time_job_seeker"])) {
             $consent_address = null;
             $consent_period_of_recidency = null;
         }
-    }    
+    }
 
-    date_default_timezone_set('Asia/Manila');
     $signed_date = date('Y-m-d H:i:s');
     $validation_date = date('Y-m-d H:i:s');
     $witness = strtoupper($_SESSION['username']);
-
 
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 
     $stmt = $conn->prepare("INSERT INTO first_time_job_seeker 
         (first_name, middle_name, last_name, suffix, address, period_of_residency, signed_date, validation_date, witness, age, 
-         consent_first_name, consent_middle_name, consent_last_name, consent_suffix, relationship, consent_age, 
-         consent_address, consent_period_of_residency, duty_officer_name) 
+        consent_first_name, consent_middle_name, consent_last_name, consent_suffix, relationship, consent_age, 
+        consent_address, consent_period_of_residency, duty_officer_name) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     $stmt->bind_param(
