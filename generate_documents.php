@@ -75,6 +75,7 @@ include 'queries.php';
                                 <option value="barangay_clearance">Barangay Clearance</option>
                                 <option value="business_permit_new">Barangay Business Permit New</option>
                                 <option value="business_permit_renew">Barangay Business Permit Renew</option>
+                                <option value="certificate_of_building_permit">Certificate of Building Permit</option>
                                 <option value="certificate_of_cohabitation">Certificate of Cohabitation</option>
                                 <option value="certificate_of_employability">Certificate of Employability</option>
                                 <option value="certificate_of_fisherfolks">Certificate of Fisherfolks</option>
@@ -100,6 +101,10 @@ include 'queries.php';
 
                             <div class="cert" id="business_permit_renew">
                                 <?php include 'forms/business_permit_renew.php' ?>
+                            </div>
+
+                            <div class="cert" id="certificate_of_building_permit">
+                                <?php include 'forms/certificate_of_building_permit.php' ?>
                             </div>
 
                             <div class="cert" id="certificate_of_employability">
