@@ -37,7 +37,7 @@
         </select><br>
 
         <label for="birthdate">Birthday:</label>
-        <input type="date" class="form-control" id="ftbirthdate" oninput=" validateBirthdate(this);updateText();"
+        <input type="date" class="form-control" id="ftbirthdate" oninput="validateAgeJobSeeker(this);updateText();"
             name="birthdate" required><br>
 
         <label for="purok">Purok:</label>
@@ -79,8 +79,9 @@
             placeholder="Ex. 3 years/months" required><br>
         <hr>
         <div class="btn-container d-flex justify-content-between">
-            <button type="button" class="btn btn-secondary" id="nextToGuardian" onclick="showGuardian();">Next</button>
-            <button type="button" class="btn btn-primary w-25" id="jobSeekerprintBtn">Print</button>
+
+            <button type="button" style="display:none" class="btn btn-secondary" id="nextToGuardian" onclick="showGuardian();">Next</button>
+            <button type="button" style="display:none" class="btn btn-primary w-25" id="jobSeekerprintBtn">Print</button>
 
             <div class="modal fade" id="jobSeekerModal" tabindex="-1" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">

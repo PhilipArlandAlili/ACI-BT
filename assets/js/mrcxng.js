@@ -835,6 +835,26 @@ function updateText() {
     }
 }
 
+function validateAgeJobSeeker(birthdate_input) {
+    var age = showAge(birthdate_input);
+    var nextButton = document.getElementById('nextToGuardian');
+    var printButton = document.getElementById('jobSeekerprintBtn');
+
+    if (age >= 18) {
+        nextButton.style.display = "none";
+        printButton.style.display = "block";
+    } else if (age > 14 && age < 18) {
+        nextButton.style.display = "block";
+        printButton.style.display = "none";
+    } else {
+        alert("You must be at least 15 years old.");
+        birthdate_input.value = '';
+        nextButton.style.display = "none";
+        printButton.style.display = "none";
+    }
+
+}
+
 function validateBirthdate(birthdate_input) {
     var today = new Date();
     var birthdate = new Date(birthdate_input.value);
@@ -887,8 +907,14 @@ function validatePeriodOfResidency(period_input) {
 
     if (m.checked) {
         var converted = period_input.value / 12;
-        if (converted > age) {
-            alert("Period of residency cannot be greater than the age of the applicant.");
+        
+        if (period_input.value >= 6) {
+            if (converted > age) {
+                alert("Period of residency cannot be greater than the age of the applicant.");
+                period_input.value = '';
+            }
+        } else {
+            alert("Period of residency must be at least 6 months.");
             period_input.value = '';
         }
     }
@@ -906,8 +932,14 @@ function validatePeriodOfResidency(period_input) {
 
     if (mm.checked) {
         var converted = period_input.value / 12;
-        if (converted > agee) {
-            alert("Period of residency cannot be greater than the age of the applicant.");
+
+        if (period_input.value >= 6) {
+            if (converted > agee) {
+                alert("Period of residency cannot be greater than the age of the applicant.");
+                period_input.value = '';
+            }
+        } else {
+            alert("Period of residency must be at least 6 months.");
             period_input.value = '';
         }
     }
@@ -940,6 +972,7 @@ function validatePeriodOfResidency(period_input) {
 
 
 }
+
 function showAge(birthdate_input) {
     var today = new Date();
     var birthdate = new Date(birthdate_input.value);
@@ -1059,3 +1092,4 @@ function validateTime(time_input, date_input) {
         time_input.value = '';
     }
 }
+
