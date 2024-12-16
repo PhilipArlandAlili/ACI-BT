@@ -77,6 +77,7 @@ include 'queries.php';
                                 <option value="business_permit_renew">Barangay Business Permit Renew</option>
                                 <option value="certificate_of_cohabitation">Certificate of Cohabitation</option>
                                 <option value="certificate_of_employability">Certificate of Employability</option>
+                                <option value="certificate_of_fisherfolks">Certificate of Fisherfolks</option>
                                 <option value="certificate_of_income">Certificate of Income</option>
                                 <!-- <option value="certificate_of_indigency">Certificate of Indigency</option> -->
                                 <option value="certificate_of_indigency">Certificate of Indigency</option>
@@ -111,6 +112,10 @@ include 'queries.php';
 
                             <div class="cert" id="certificate_of_cohabitation">
                                 <?php include 'forms/certificate_of_cohabitation.php' ?>
+                            </div>
+
+                            <div class="cert" id="certificate_of_fisherfolks">
+                                <?php include 'forms/certificate_of_fisherfolks.php' ?>
                             </div>
 
                             <div class="cert" id="complaint_certificate">

@@ -217,7 +217,8 @@ function updateText() {
             pbprpurok.innerText = "PUROK " + bprpurok.value.toUpperCase() + ", BARANGAY TINIGUIBAN, PUERTO PRINCESA CITY";
         } else {
             pbprpurok.innerText = "";
-        }    } else if (certificate_type.value == 'certificate_of_cohabitation') {
+        }
+    } else if (certificate_type.value == 'certificate_of_cohabitation') {
         var cocfirst_name = document.getElementById('cocfirst_name');
         var cocmiddle_name = document.getElementById('cocmiddle_name');
         var coclast_name = document.getElementById('coclast_name');
@@ -324,6 +325,31 @@ function updateText() {
         pcebirthdate.innerText = showAge(cebirthdate);
         pcepurok.innerText = cepurok.value.toUpperCase();
         pcepurpose.innerText = cepurpose.value.toUpperCase();
+    } else if (certificate_type.value == 'certificate_of_fisherfolks') {
+        var cffirst_name = document.getElementById('cffirst_name');
+        var cfmiddle_name = document.getElementById('cfmiddle_name');
+        var cflast_name = document.getElementById('cflast_name');
+        var cfsuffix = document.getElementById('cfsuffix');
+        var cfpurok = document.getElementById('cfpurok');
+        var cffishing_type = document.getElementById('cffishing_type');
+        var cflpurok = document.getElementById('cflpurok');
+
+
+        var pcffirst_name = iframeDocument.getElementById('cffirst_name');
+        var pcfmiddle_name = iframeDocument.getElementById('cfmiddle_name');
+        var pcflast_name = iframeDocument.getElementById('cflast_name');
+        var pcfsuffix = iframeDocument.getElementById('cfsuffix');
+        var pcfpurok = iframeDocument.getElementById('cfpurok');
+        var pcfishing_type = iframeDocument.getElementById('cffishing_type');
+        var pcflpurok = iframeDocument.getElementById('cflpurok');
+
+        pcffirst_name.innerText = cffirst_name.value.toUpperCase();
+        pcfmiddle_name.innerText = cfmiddle_name.value.toUpperCase();
+        pcflast_name.innerText = cflast_name.value.toUpperCase();
+        pcfsuffix.innerText = cfsuffix.value.toUpperCase();
+        pcfpurok.innerText = cfpurok.value.toUpperCase();
+        pcfishing_type.innerText = cffishing_type.value.toUpperCase();
+        pcflpurok.innerText = cflpurok.value.toUpperCase();
 
     } else if (certificate_type.value == 'certificate_of_income') {
         var cifirst_name = document.getElementById('cifirst_name');
