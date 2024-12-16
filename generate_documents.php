@@ -135,10 +135,6 @@ include 'queries.php';
                                 <?php include 'forms/first_time_job_seeker.php' ?>
                             </div>
 
-                            <!-- <div class="cert" id="certificate_of_indigency">
-                                <?php include 'forms/certificate_of_indigency_keeps.php' ?>
-                            </div> -->
-
                             <div class="cert" id="certificate_of_indigency">
                                 <?php include 'forms/certificate_of_indigency.php' ?>
                             </div>
