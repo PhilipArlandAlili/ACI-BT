@@ -218,6 +218,52 @@ function updateText() {
         } else {
             pbprpurok.innerText = "";
         }
+    } else if (certificate_type.value == 'certificate_of_building_permit') {
+        var cbpfirst_name = document.getElementById('cbpfirst_name');
+        var cbpmiddle_name = document.getElementById('cbpmiddle_name');
+        var cbplast_name = document.getElementById('cbplast_name');
+        var cbpsuffix = document.getElementById('cbpsuffix');
+        var cbpbuilding_type = document.getElementById('cbpbuilding_type');
+        var cbpblock = document.getElementById('cbpblock');
+        var cbplot = document.getElementById('cbplot');
+        var cbparea = document.getElementById('cbparea');
+        var cbptd = document.getElementById('cbptd');
+        var cbptct = document.getElementById('cbptct');
+        var cbppurok = document.getElementById('cbppurok');
+
+        // From HTML
+        var pcbpfirst_name = iframeDocument.getElementById('cbpfirst_name');
+        var pcbpmiddle_name = iframeDocument.getElementById('cbpmiddle_name');
+        var pcbplast_name = iframeDocument.getElementById('cbplast_name');
+        var pcbpsuffix = iframeDocument.getElementById('cbpsuffix');
+        var pcbpbuilding_type = iframeDocument.getElementById('cbpbuilding_type');
+        var pcbpblock = iframeDocument.getElementById('cbpblock');
+        var pcbplot = iframeDocument.getElementById('cbplot');
+        var pcbparea = iframeDocument.getElementById('cbparea');
+        var pcbptd = iframeDocument.getElementById('cbptd');
+        var pcbptct = iframeDocument.getElementById('cbptct');
+        var pcbppurok = iframeDocument.getElementById('cbppurok');
+        var pcb2first_name = iframeDocument.getElementById('cbp2first_name');
+        var pcb2middle_name = iframeDocument.getElementById('cbp2middle_name');
+        var pcb2last_name = iframeDocument.getElementById('cbp2last_name');
+        var pcb2suffix = iframeDocument.getElementById('cbp2suffix');
+
+        if (pcbpfirst_name) pcbpfirst_name.innerText = cbpfirst_name.value.toUpperCase();
+        if (pcbpmiddle_name) pcbpmiddle_name.innerText = cbpmiddle_name.value.toUpperCase();
+        if (pcbplast_name) pcbplast_name.innerText = cbplast_name.value.toUpperCase();
+        if (pcbpsuffix) pcbpsuffix.innerText = cbpsuffix.value.toUpperCase();
+        if (pcbpbuilding_type) pcbpbuilding_type.innerText = cbpbuilding_type.value.toUpperCase();
+        if (pcbpblock) pcbpblock.innerText = cbpblock.value.toUpperCase();
+        if (pcbplot) pcbplot.innerText = cbplot.value.toUpperCase();
+        if (pcbparea) pcbparea.innerText = cbparea.value.toUpperCase();
+        if (pcbptd) pcbptd.innerText = cbptd.value.toUpperCase();
+        if (pcbptct) pcbptct.innerText = cbptct.value.toUpperCase();
+        if (pcbppurok) pcbppurok.innerText = cbppurok.value.toUpperCase();
+        if (pcb2first_name) pcb2first_name.innerText = cbpfirst_name.value.toUpperCase();
+        if (pcb2middle_name) pcb2middle_name.innerText = cbpmiddle_name.value.toUpperCase();
+        if (pcb2last_name) pcb2last_name.innerText = cbplast_name.value.toUpperCase();
+        if (pcb2suffix) pcb2suffix.innerText = cbpsuffix.value.toUpperCase();
+
     } else if (certificate_type.value == 'certificate_of_cohabitation') {
         var cocfirst_name = document.getElementById('cocfirst_name');
         var cocmiddle_name = document.getElementById('cocmiddle_name');
