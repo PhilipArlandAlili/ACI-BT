@@ -870,6 +870,16 @@ function validateDate(date_input) {
     }
 }
 
+function validateDateOfDeath(date_input, birthdate_input) {
+    const date = new Date(date_input.value);
+    const birthdate = new Date(birthdate_input.value);
+
+    if (date < birthdate) {
+        alert("Date of death cannot be before the birthdate.");
+        date_input.value = '';
+    }
+}
+
 function validatePeriodOfResidency(period_input) {
     let age = showAge(document.getElementById('birthdate'));
     let m = document.getElementById('month');

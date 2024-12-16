@@ -44,7 +44,7 @@
     </select><br>
 
     <label for="dateOfDeath">Date of death:</label>
-    <input type="date" class="form-control" oninput="validateDate(this);updateText();" name="date_of_death"
+    <input type="date" class="form-control" oninput="validateDate(this);validateDateOfDeath(this, dcbirthdate);updateText();" name="date_of_death"
         id="dcdate_of_death" required><br>
 
     <label for="timeOfDeath">Time of death:</label>

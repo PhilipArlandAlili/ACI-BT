@@ -684,6 +684,9 @@ if (isset($_POST["first_time_job_seeker"])) {
             $consent_age = $conn->real_escape_string($_POST["ftogbirthdate"]);
             $consent_address = $conn->real_escape_string($_POST["ftogpurok"]);
             $consent_period_of_recidency = $conn->real_escape_string($_POST["ftogperiod_of_residency"]);
+
+            $consent_suffix = strtoupper($consent_suffix);
+            $consent_address = strtoupper($consent_address);
         } else {
             $consent_first_name = null;
             $consent_middle_name = null;
@@ -699,6 +702,9 @@ if (isset($_POST["first_time_job_seeker"])) {
     $signed_date = date('Y-m-d H:i:s');
     $validation_date = date('Y-m-d H:i:s');
     $witness = strtoupper($_SESSION['username']);
+
+    $suffix = strtoupper($suffix);  
+    $purok = strtoupper($purok);
 
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 
