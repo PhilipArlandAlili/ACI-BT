@@ -719,26 +719,47 @@ function updateText() {
 
         if (loclaimant.checked) {
             ploclaimant.innerText = "/";
+<<<<<<< Updated upstream
             // loclaimant.value = "/";
         } else {
             ploclaimant.innerText = "  ";
             // loclaimant.value = "";
+=======
+            loclaimant.value = "/";
+        } else {
+            ploclaimant.innerText = "  ";
+            loclaimant.value = "";
+>>>>>>> Stashed changes
         }
 
         if (loactual_occupant.checked) {
             ploactual_occupant.innerText = "/";
+<<<<<<< Updated upstream
             // loactual_occupant.value = "/";
         } else {
             ploactual_occupant.innerText = "  ";
             // loactual_occupant.value = "";
+=======
+            loactual_occupant.value = "/";
+        } else {
+            ploactual_occupant.innerText = "  ";
+            loactual_occupant.value = "";
+>>>>>>> Stashed changes
         }
 
         if (lobeneficiary.checked) {
             plobeneficiary.innerText = "/";
+<<<<<<< Updated upstream
             // lobeneficiary.value = "/";
         } else {
             plobeneficiary.innerText = "  ";
             // lobeneficiary.value = "";
+=======
+            lobeneficiary.value = "/";
+        } else {
+            plobeneficiary.innerText = "  ";
+            lobeneficiary.value = "";
+>>>>>>> Stashed changes
         }
 
         plofirst_name.innerText = lofirst_name.value.toUpperCase();
