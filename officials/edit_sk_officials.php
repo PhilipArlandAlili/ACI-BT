@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../includes/db.php';
 
 if (isset($_GET['id'])) {
@@ -51,21 +52,19 @@ if (isset($_POST['submit'])) {
     $address = $_POST['address'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
-    
+
     $stmt1 = $conn->prepare("UPDATE officials_sk SET name = ?, position = ?, age = ?, birthdate = ?, address = ?, phone = ?, email = ? WHERE id = ?");
-    $stmt1->bind_param("ssissssi", $name, $position, $age, $birthdate, $address, $phone, $email, $id);
-    $stmt1->execute();
+    if ($stmt) {
+        $stmt1->bind_param("ssissssi", $name, $position, $age, $birthdate, $address, $phone, $email, $id);
+        $stmt1->execute();
+        $stmt1->close();
 
-    if ($stmt1->affected_rows > 0) {
-        header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $_GET['id']);
         $_SESSION['success'] = "Profile updated successfully!";
-
-        exit;
     } else {
-        echo "Failed to update details.";
+        echo "Failed to prepare statement.";
     }
-
-    $stmt1->close();
+    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $_GET['id']);
+    exit;
 }
 ?>
 
@@ -111,44 +110,47 @@ if (isset($_POST['submit'])) {
                 <div class="row d-flex justify-content-around">
                     <div class="col-xl-5">
                         <div class="profile-card">
-                                    <div class="d-flex align-items-center justify-content-center p-5 gap-5">
-                                        
-                                        <div class="profile-image ">
-                                            <div class="border border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden" style="width: 125px; height: 125px;">
-                                                <img src="data:<?php echo $imageType; ?>;base64,<?php echo base64_encode($img); ?>" alt="Image" /></div>    
-                                            </div>
-                                        <div class="profile-name">
-                                            <h2 class="fs-3 fw-bold pt-3"><?php echo $name; ?></h2>
-                                            <h5 class="mt-n5 text-center"><?php echo $position ?></h5>
+                            <div class="d-flex align-items-center justify-content-center p-5 gap-5">
+
+                                <div class="profile-image ">
+                                    <div class="border border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
+                                        style="width: 125px; height: 125px;">
+                                        <img src="data:<?php echo $imageType; ?>;base64,<?php echo base64_encode($img); ?>"
+                                            alt="Image" />
+                                    </div>
+                                </div>
+                                <div class="profile-name">
+                                    <h2 class="fs-3 fw-bold pt-3"><?php echo $name; ?></h2>
+                                    <h5 class="mt-n5 text-center"><?php echo $position ?></h5>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="profile-details px-4">
+                                    <div class="profile-overview text-dark" id="profile-overview">
+                                        <h5 class="card-title w-100">Profile Details</h5>
+                                        <div class="row">
+                                            <div class="col-lg-6 label">Full Name</div>
+                                            <div class="col-lg-6"><?php echo $name; ?></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 label">Age</div>
+                                            <div class="col-lg-6"><?php echo $age; ?></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 label">Birthday</div>
+                                            <div class="col-lg-6"><?php echo $birthdate; ?></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 label">Address</div>
+                                            <div class="col-lg-6"><?php echo $address; ?></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 label">Phone</div>
+                                            <div class="col-lg-6"><?php echo $phone; ?></div>
                                         </div>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="profile-details px-4">
-                                            <div class="profile-overview text-dark" id="profile-overview">
-                                                <h5 class="card-title w-100">Profile Details</h5>
-                                                <div class="row">
-                                                    <div class="col-lg-6 label">Full Name</div>
-                                                    <div class="col-lg-6"><?php echo $name; ?></div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6 label">Age</div>
-                                                    <div class="col-lg-6"><?php echo $age; ?></div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6 label">Birthday</div>
-                                                    <div class="col-lg-6"><?php echo $birthdate; ?></div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6 label">Address</div>
-                                                    <div class="col-lg-6"><?php echo $address; ?></div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6 label">Phone</div>
-                                                    <div class="col-lg-6"><?php echo $phone; ?></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -157,71 +159,82 @@ if (isset($_POST['submit'])) {
                             <div class="card-body px-5 pt-2 ">
                                 <h5 class="card-title">Edit Profile</h5>
                             </div>
-                                    <form class="text-dark p-2 pt-0 px-5 profile-overview" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <form class="text-dark p-2 pt-0 px-5 profile-overview" method="post"
+                                enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="<?php echo $id; ?>">
 
-    <div class="row mb-3">
-        <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-        <div class="col-md-8 col-lg-9">
-            <div class="pt-2">
-                <input class="form-control" type="file" accept=".png,.jpg,.jpeg" id="formFile" name="img">
-            </div>
-        </div>
-    </div>
+                                <div class="row mb-3">
+                                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile
+                                        Image</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <div class="pt-2">
+                                            <input class="form-control" type="file" accept=".png,.jpg,.jpeg"
+                                                id="formFile" name="img">
+                                        </div>
+                                    </div>
+                                </div>
 
-    <div class="row mb-3">
-        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
-        <div class="col-md-8 col-lg-9">
-            <input name="name" type="text" class="form-control" id="fullName" value="<?php echo $name; ?>" required>
-        </div>
-    </div>
+                                <div class="row mb-3">
+                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="name" type="text" class="form-control" id="fullName"
+                                            value="<?php echo $name; ?>" required>
+                                    </div>
+                                </div>
 
-    <div class="row mb-3">
-        <label for="position" class="col-md-4 col-lg-3 col-form-label">Position</label>
-        <div class="col-md-8 col-lg-9">
-            <input name="position" type="text" class="form-control" id="position" value="<?php echo $position; ?>" required>
-        </div>
-    </div>
+                                <div class="row mb-3">
+                                    <label for="position" class="col-md-4 col-lg-3 col-form-label">Position</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="position" type="text" class="form-control" id="position"
+                                            value="<?php echo $position; ?>" required>
+                                    </div>
+                                </div>
 
-    <div class="row mb-3">
-        <label for="age" class="col-md-4 col-lg-3 col-form-label">Age</label>
-        <div class="col-md-8 col-lg-9">
-            <input name="age" type="number" class="form-control" id="age" value="<?php echo $age; ?>" required>
-        </div>
-    </div>
+                                <div class="row mb-3">
+                                    <label for="age" class="col-md-4 col-lg-3 col-form-label">Age</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="age" type="number" class="form-control" id="age"
+                                            value="<?php echo $age; ?>" required>
+                                    </div>
+                                </div>
 
-    <div class="row mb-3">
-        <label for="birthdate" class="col-md-4 col-lg-3 col-form-label">Birthdate</label>
-        <div class="col-md-8 col-lg-9">
-            <input name="birthdate" type="date" class="form-control" id="birthdate" value="<?php echo $birthdate; ?>" required>
-        </div>
-    </div>
+                                <div class="row mb-3">
+                                    <label for="birthdate" class="col-md-4 col-lg-3 col-form-label">Birthdate</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="birthdate" type="date" class="form-control" id="birthdate"
+                                            value="<?php echo $birthdate; ?>" required>
+                                    </div>
+                                </div>
 
-    <div class="row mb-3">
-        <label for="address" class="col-md-4 col-lg-3 col-form-label">Address</label>
-        <div class="col-md-8 col-lg-9">
-            <input name="address" type="text" class="form-control" id="address" value="<?php echo $address; ?>" required>
-        </div>
-    </div>
+                                <div class="row mb-3">
+                                    <label for="address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="address" type="text" class="form-control" id="address"
+                                            value="<?php echo $address; ?>" required>
+                                    </div>
+                                </div>
 
-    <div class="row mb-3">
-        <label for="phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-        <div class="col-md-8 col-lg-9">
-            <input name="phone" type="text" class="form-control" id="phone" value="<?php echo $phone; ?>" required>
-        </div>
-    </div>
+                                <div class="row mb-3">
+                                    <label for="phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="phone" type="text" class="form-control" id="phone"
+                                            value="<?php echo $phone; ?>" required>
+                                    </div>
+                                </div>
 
-    <div class="row mb-3">
-        <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-        <div class="col-md-8 col-lg-9">
-            <input name="email" type="email" class="form-control" id="email" value="<?php echo $email; ?>" required>
-        </div>
-    </div>
+                                <div class="row mb-3">
+                                    <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="email" type="email" class="form-control" id="email"
+                                            value="<?php echo $email; ?>" required>
+                                    </div>
+                                </div>
 
-    <div class="text-end py-3">
-        <button type="submit" name="submit" class="btn btn-primary py-2">Confirm Changes</button>
-    </div>
-</form>
+                                <div class="text-end py-3">
+                                    <button type="submit" name="submit" class="btn btn-primary py-2">Confirm
+                                        Changes</button>
+                                </div>
+                            </form>
 
                         </div>
                     </div>

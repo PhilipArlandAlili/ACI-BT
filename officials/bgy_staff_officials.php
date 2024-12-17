@@ -46,10 +46,9 @@ $conn->close();
             <div class="container d-flex flex-column align-items-center justify-content-center">
                 <div class="card overflow-hidden">
                     <div class="card-body p-0">
-                        <img src="../assets/img/brgy_councils.png" alt="Barangay Councils" class="img-fluid">
+                        <img src="../assets/img/brgy_staffs.png" alt="Barangay staffs" class="img-fluid">
                         <div class="row align-items-center">
                             <div class="col-lg-4 order-lg-1 order-2"></div>
-                           
                         </div>
                         <ul
                             class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
