@@ -9,7 +9,7 @@
 
     <label for="">Middle Name:</label>
     <input type="text" class="form-control" name="middle_name" id="middle_name" maxlength="50"
-        oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();"
+        oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();"
         placeholder="Ex. Reyes"><br>
 
     <label for="">Last Name:</label>

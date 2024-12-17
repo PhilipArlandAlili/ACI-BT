@@ -4,14 +4,21 @@ include '../includes/db.php';
 
 // Fetch officials from database
 $officials = [];
-$result = $conn->query("SELECT id, name, position, age, birthdate, address, phone, email, img FROM officials_barangay");
+$stmt = $conn->prepare("SELECT id, name, position, age, birthdate, address, phone, email, img, img_type FROM officials_barangay");
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $officials[] = $row;
+if ($stmt) {
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $officials[] = $row;
+        }
+    } else {
+        echo "No officials found.";
     }
 } else {
-    echo "No officials found.";
+    die("Query preparation failed: " . $conn->error);
 }
 
 $conn->close();
@@ -49,16 +56,15 @@ $conn->close();
                                             <div class="mt-n4">
                                                 <div class="d-flex justify-content-end">
                                                     <a href="edit_bgy_officials.php?id=<?= $official['id'] ?>">
-                                                        <button type="button" class="btn" title="Edit Profile">
-                                                            <i class="bi bi-list text-secondary"></i>
+                                                        <!-- <button type="button" class="btn" title="Edit Profile"> -->
+                                                            <i class="bi bi-pencil-square"></i>
                                                         </button>
                                                     </a>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center mb-2">
                                                     <div class="border border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
                                                         style="width: 125px; height: 125px;">
-                                                        <img src="../assets/img/BARANGAY-COUNCIL/<?= $official['img'] ?>"
-                                                            alt="<?= $official['name'] ?>" class="img-fluid rounded-circle">
+                                                        <img src="data:<?php echo $official['img_type']; ?>;base64,<?php echo base64_encode($official['img']); ?>" style="max-width: 125px;"class="rounded-circle mb-3" alt="Image" /></div>    
                                                     </div>
                                                 </div>
                                                 <div class="text-center pb-2">
@@ -87,14 +93,17 @@ $conn->close();
                                         <div class="d-flex justify-content-end">
                                             <a href="edit_bgy_officials.php?id=<?= $official['id'] ?>">
                                                 <button type="button" class="btn" title="Edit Profile">
-                                                    <i class="bi bi-list text-secondary"></i>
+                                                    <i class="bi bi-pencil-square"></i>
+
                                                 </button>
                                             </a>
                                         </div>
                                         <div class="card-body text-center border-bottom">
-                                            <img src="../assets/img/BARANGAY-COUNCIL/<?= $official['img'] ?>"
-                                                alt="<?= $official['name'] ?>" class="rounded-circle mb-3" width="80"
-                                                height="80">
+                                        <div class="d-flex align-items-center justify-content-center mb-2">
+                                                    <div class="border border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
+                                                        style="width: 125px; height: 125px;">
+                                                        <img src="data:<?php echo $official['img_type']; ?>;base64,<?php echo base64_encode($official['img']); ?>" style="max-width: 125px; class="rounded-circle mb-3" alt="Image" /></div>    
+                                                    </div>
                                             <h6 class="text-primary fs-5"><?= $official['name'] ?></h6>
                                             <span class="text-dark fs-5"><?= $official['position'] ?></span>
                                         </div>

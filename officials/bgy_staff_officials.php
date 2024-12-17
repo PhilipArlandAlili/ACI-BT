@@ -4,14 +4,21 @@ include '../includes/db.php';
 
 // Fetch officials from database
 $officials = [];
-$result = $conn->query("SELECT id, name, position, age, birthdate, address, phone, email, img FROM officials_staff");
+$stmt = $conn->prepare("SELECT id, name, position, age, birthdate, address, phone, email, img, img_type FROM officials_staff");
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $officials[] = $row;
+if ($stmt) {
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $officials[] = $row;
+        }
+    } else {
+        echo "No officials found.";
     }
 } else {
-    echo "No officials found.";
+    die("Query preparation failed: " . $conn->error);
 }
 
 $conn->close();
@@ -22,7 +29,7 @@ $conn->close();
 
 <head>
     <?php include 'head2.php' ?>
-    <title>ACI-BT | Staff Officials</title>
+    <title>ACI-BT | Barangay Officials</title>
 </head>
 
 <body>
@@ -39,7 +46,14 @@ $conn->close();
             <div class="container d-flex flex-column align-items-center justify-content-center">
                 <div class="card overflow-hidden">
                     <div class="card-body p-0">
-                        <img src="../assets/img/brgy_staffs.png" alt="Barangay Staff Officials" class="img-fluid">
+                        <img src="../assets/img/brgy_councils.png" alt="Barangay Councils" class="img-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-lg-4 order-lg-1 order-2"></div>
+                           
+                        </div>
+                        <ul
+                            class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                        </ul>
                     </div>
                 </div>
 
@@ -47,20 +61,22 @@ $conn->close();
                     aria-labelledby="pills-friends-tab" tabindex="0">
                     <div class="row d-flex align-items-center justify-content-center">
                         <?php foreach ($officials as $official): ?>
-                            <?php if ($official['id'] >= 1): ?>
                                 <div class="official-card col-sm-6 col-lg-4">
                                     <div class="card card-bottom">
                                         <div class="d-flex justify-content-end">
                                             <a href="edit_staff_officials.php?id=<?= $official['id'] ?>">
                                                 <button type="button" class="btn" title="Edit Profile">
-                                                    <i class="bi bi-list text-secondary"></i>
+                                                    <i class="bi bi-pencil-square"></i>
+
                                                 </button>
                                             </a>
                                         </div>
                                         <div class="card-body text-center border-bottom">
-                                            <img src="../assets/img/STAFF-COUNCIL/<?= $official['img'] ?>"
-                                                alt="<?= $official['name'] ?>" class="rounded-circle mb-3" width="80"
-                                                height="80">
+                                        <div class="d-flex align-items-center justify-content-center mb-2">
+                                                    <div class="border border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
+                                                        style="width: 125px; height: 125px;">
+                                                        <img src="data:<?php echo $official['img_type']; ?>;base64,<?php echo base64_encode($official['img']); ?>" style="max-width: 125px; class="rounded-circle mb-3" alt="Image" /></div>    
+                                                    </div>
                                             <h6 class="text-primary fs-5"><?= $official['name'] ?></h6>
                                             <span class="text-dark fs-5"><?= $official['position'] ?></span>
                                         </div>
@@ -69,7 +85,6 @@ $conn->close();
                                         </ul>
                                     </div>
                                 </div>
-                            <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                 </div>
