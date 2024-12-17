@@ -1,6 +1,4 @@
 <?php
-session_start();  // Start the session to store messages
-
 include '../includes/db.php';
 
 
@@ -249,7 +247,8 @@ if (isset($_POST['submit'])) {
             class="bi bi-arrow-up-short"></i></a>
 
     <script src="../assets/js/main.js"></script>
-
+    <script>
+</script>
 </body>
 
 </html>
