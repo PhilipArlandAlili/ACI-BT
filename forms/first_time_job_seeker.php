@@ -122,7 +122,7 @@
         <label for="" class="fw-bold">Guardian</label><br>
         <label for="">First Name:</label>
         <input type="text" class="form-control" id="ftogfirst_name" name="ftogfirst_name" maxlength="50"
-            oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
+            oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
             placeholder="Ex. Juan"><br>
 
         <label for="">Middle Name:</label>
