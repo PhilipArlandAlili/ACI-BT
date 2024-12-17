@@ -4,7 +4,7 @@
 
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" id="cbpfirst_name" maxlength="50"
-        oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();"
+        oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();"
         required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>

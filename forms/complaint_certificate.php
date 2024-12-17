@@ -3,7 +3,7 @@
     <label for="" class="fw-bold">Complainant</label><br>
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" id="ccfirst_name" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
@@ -53,7 +53,7 @@
     <label for="" class="fw-bold">Respondent</label><br>
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control" id="ccfirst_name_respondent" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         name="first_name_respondent" placeholder="Ex. Pedro" required><br>
 
     <label for="middle_name">Middle Name:</label>
@@ -84,6 +84,7 @@
     <input type="text" class="form-control" id="ccvawc_official_name" maxlength="50"
         oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         name="vawc_official_name" required><br>
+    <hr>
 
     <div class="complaintPrint" style="text-align: right;">
         <button type="button" class="btn btn-primary w-25" id="complaintPrintBtn">Print</button>

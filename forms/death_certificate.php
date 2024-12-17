@@ -2,7 +2,7 @@
 
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         id="dcfirst_name" name="first_name" placeholder="Ex. Juan" required><br>
 
     <label for="middle_name">Middle Name:</label>
@@ -59,7 +59,7 @@
     <label for="" class="fw-bold">Requester</label><br>
     <label for="first_name">First Name:</label>
     <input type="text" class="form-control" maxlength="50"
-        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
+        oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"
         id="dcreq_first_name" name="req_first_name" placeholder="Ex. Maria" required><br>
 
     <label for="middle_name">Middle Name:</label>
