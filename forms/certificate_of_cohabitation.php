@@ -2,7 +2,7 @@
 
     <label for="" class="fw-bold">Male</label><br>
     <label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_name" id="cocfirst_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();" required placeholder="Ex. Juan"><br>
+    <input type="text" class="form-control" name="first_name" id="cocfirst_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();" required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
     <input type="text" class="form-control" name="middle_name" id="cocmiddle_name" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-zs ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();"   placeholder="Ex. Reyes"><br>
@@ -27,7 +27,7 @@
 
     <label for="" class="fw-bold">Female</label><br>
     <label for="">First Name:</label>
-    <input type="text" class="form-control" name="first_name_female" id="cocfirst_name_female" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();" placeholder="Ex. Maria" required><br>
+    <input type="text" class="form-control" name="first_name_female" id="cocfirst_name_female" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();" placeholder="Ex. Maria" required><br>
 
     <label for="">Middle Name:</label>
     <input type="text" class="form-control" name="middle_name_female" id="cocmiddle_name_female" maxlength="50"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2');this.value = this.value.toUpperCase();updateText();" placeholder="Ex. Garcia" ><br>

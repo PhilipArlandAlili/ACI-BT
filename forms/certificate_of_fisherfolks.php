@@ -4,7 +4,7 @@
 
     <label for="">First Name:</label>
     <input type="text" class="form-control" name="first_name" id="cffirst_name" maxlength="50"
-        oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();"
+        oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-z. ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();"
         required placeholder="Ex. Juan"><br>
 
     <label for="">Middle Name:</label>
@@ -44,7 +44,7 @@
     <label for="">Type of Fishing</label>
     <input type="text" class="form-control" name="fishing_type" id="cffishing_type" maxlength="50"
         oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Za-z' ]/g, '').replace(/^([^.]*)\.(.*)\./, '$1.$2'); updateText();"
-        required placeholder="Ex. Dynamite Fishing"><br>
+        required placeholder="Ex. Sport Fishing"><br>
 
     <label for="purok">Purok Located At:</label>
     <select class="text-left form-control" name="purok" id="cflpurok" onchange="updateText();" required>

@@ -6,7 +6,7 @@
 
     <label for="businessAddress">Business Location:</label><br>
     <input type="text" name="address" id="bpraddress" class="form-control"
-        oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. Anywhere you want" required><br>
+        oninput="this.value = this.value.toUpperCase();updateText()" placeholder="Ex. PSU Road" required><br>
 
     <label for="manager_operator_renew">Manager / Operator:</label>
     <input type="text" class="form-control" id="bprmanager" name="manager"
