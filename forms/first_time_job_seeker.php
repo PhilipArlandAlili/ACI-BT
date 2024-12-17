@@ -78,18 +78,18 @@
             oninput="validatePeriodOfResidency(this);updateText()" name="period_of_residency"
             placeholder="Ex. 3 years/months" required><br>
 
-        <label for="duty_officer_name">Duty Officer Name:</label>
-        <select class="text-left form-control" name="duty_officer_name" id="ftduty_officer_name"
-            onchange="updateText();" required>
-            <option value="">--Select Officer Name--</option>
-            <option value="HON. ELMER BONBON">HON. ELMER BONBON</option>
-            <option value="HON. ROSEMARIE OCAMPO">HON. ROSEMARIE OCAMPO</option>
-            <option value="HON. CONSTANCIA PINEDA">HON. CONSTANCIA PINEDA</option>
-            <option value="HON. CARA MARGARET LIGAN">HON. CARA MARGARET LIGAN</option>
-            <option value="HON. BEAULAH VALONES">HON. BEAULAH VALONES</option>
-            <option value="HON. SHERLYN CAYAO">HON. SHERLYN CAYAO</option>
-            <option value="HON. INONCENCIA SILVA">HON. INONCENCIA SILVA</option>
-        </select><br>
+        <label for="">Duty Officer Name:</label>
+        <select class="form-control" name="duty_officer" id="ftjsduty_officer" onchange="updateText();" required>
+            <option value="">--Select Duty Officer--</option>
+            <?php
+            include 'includes/db.php';
+
+            $duty_officers = $conn->query("SELECT * FROM officials_barangay WHERE id > 1 AND id < 8");
+            while ($duty_officer = $duty_officers->fetch_assoc()) {
+                echo "<option value='" . $duty_officer['name'] . "'>" . $duty_officer['name'] . "</option>";
+            }
+            ?>
+        </select>
         <hr>
         <div class="btn-container d-flex justify-content-end">
 
