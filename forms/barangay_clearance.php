@@ -88,10 +88,18 @@
     <input type="text" name="purpose" class="form-control" id="purpose"
         oninput="this.value = this.value.toUpperCase(); updateText()" placeholder="Ex. Employment" required><br>
 
-    <!-- <label for="">Duty Officer Name:</label>
-    <input type="text" name="duty_officer" class="form-control" id="duty_officer" oninput="this.value = this.value.toUpperCase(); updateText()"
-        value="" readonly><br>
-    <hr> -->
+    <label for="">Duty Officer Name:</label>
+    <select class="form-control" name="duty_officer" id="duty_officer" onchange="updateText();" required>
+        <option value="">--Select Duty Officer--</option>
+        <?php
+        include 'includes/db.php';
+
+        $duty_officers = $conn->query("SELECT * FROM officials_barangay WHERE id > 1 AND id < 8");
+        while ($duty_officer = $duty_officers->fetch_assoc()) {
+            echo "<option value='" . $duty_officer['name'] . "'>" . $duty_officer['name'] . "</option>";
+        }
+        ?>
+    </select>
     <hr>
 
     <div class="brgyClearancePrint" style="text-align: right;">

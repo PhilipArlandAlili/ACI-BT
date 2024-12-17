@@ -97,6 +97,7 @@ function updateText() {
         var purpose = document.getElementById('purpose');
         var duty_officer = document.getElementById('duty_officer');
 
+
         // From HTML
         var pfirst_name = iframeDocument.getElementById('first_name');
         var pmiddle_name = iframeDocument.getElementById('middle_name');
@@ -112,6 +113,13 @@ function updateText() {
         var pperiod_of_residency = iframeDocument.getElementById('period_of_residency');
         var ppurpose = iframeDocument.getElementById('purpose');
         var pduty_officer = iframeDocument.getElementById('duty_officer');
+        var pduty_officer_signature = iframeDocument.getElementById('duty_officer_signature');
+
+        if (duty_officer.value) {
+            pduty_officer_signature.style.display = "block";
+        } else {
+            pduty_officer_signature.style.display = "none";
+        }
 
         var date = new Date(birthdate.value);
         var month = date.getMonth();
@@ -796,7 +804,7 @@ function updateText() {
         plosuffix.innerText = losuffix.value.toUpperCase();
         plopurok.innerText = lopurok.value.toUpperCase();
         plolot_number.innerText = lolot_number.value;
-        plolot_area_numerical.innerText = lolot_area_numerical.value;
+        plolot_area_numerical.innerText = formatNumber(lolot_area_numerical.value);
         plolot_area_word.innerText = numberToWords(lolot_area_numerical.value).toUpperCase();
         lolot_area_word.value = numberToWords(lolot_area_numerical.value).toUpperCase();
         plolotloc.innerText = lololoc.value.toUpperCase();
@@ -957,21 +965,29 @@ function validatePeriodOfResidency(period_input) {
     let ageee = showAge(document.getElementById('ftogbirthdate'));
     let mmm = document.getElementById('ftogmonth');
     let yyy = document.getElementById('ftogyear');
-
+    
     if (mmm.checked) {
         var converted = period_input.value / 12;
-        if (converted > ageee) {
-            alert("Period of residency cannot be greater than the age of the applicant.");
+
+        if (period_input.value >= 6) {
+            if (converted > ageee) {
+                alert("Period of residency cannot be greater than the age of the applicant.");
+                period_input.value = '';
+            }
+        } else {
+            alert("Period of residency must be at least 6 months.");
             period_input.value = '';
         }
     }
 
     if (yyy.checked) {
-        if (period_input.value > ageee) {
+        if (period_input.value > agee) {
             alert("Period of residency cannot be greater than the age of the applicant.");
             period_input.value = '';
         }
     }
+
+
 
 
 }
