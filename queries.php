@@ -687,6 +687,8 @@ if (isset($_POST["first_time_job_seeker"])) {
             $consent_address = $conn->real_escape_string($_POST["ftogpurok"]);
             $consent_period_of_recidency = $conn->real_escape_string($_POST["ftogperiod_of_residency"]);
 
+            $consent_age = date('Y') - date('Y', strtotime($consent_age));
+
             $consent_suffix = strtoupper($consent_suffix);
             $consent_address = strtoupper($consent_address);
         } else {
