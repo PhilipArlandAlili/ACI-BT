@@ -77,11 +77,26 @@
         <input type="number" class="form-control" id="ftperiod_of_residency" maxlength="2" max="99" min="1"
             oninput="validatePeriodOfResidency(this);updateText()" name="period_of_residency"
             placeholder="Ex. 3 years/months" required><br>
-        <hr>
-        <div class="btn-container d-flex justify-content-between">
 
-            <button type="button" style="display:none" class="btn btn-secondary" id="nextToGuardian" onclick="showGuardian();">Next</button>
-            <button type="button" style="display:none" class="btn btn-primary w-25" id="jobSeekerprintBtn">Print</button>
+        <label for="duty_officer_name">Duty Officer Name:</label>
+        <select class="text-left form-control" name="duty_officer_name" id="ftduty_officer_name"
+            onchange="updateText();" required>
+            <option value="">--Select Officer Name--</option>
+            <option value="HON. ELMER BONBON">HON. ELMER BONBON</option>
+            <option value="HON. ROSEMARIE OCAMPO">HON. ROSEMARIE OCAMPO</option>
+            <option value="HON. CONSTANCIA PINEDA">HON. CONSTANCIA PINEDA</option>
+            <option value="HON. CARA MARGARET LIGAN">HON. CARA MARGARET LIGAN</option>
+            <option value="HON. BEAULAH VALONES">HON. BEAULAH VALONES</option>
+            <option value="HON. SHERLYN CAYAO">HON. SHERLYN CAYAO</option>
+            <option value="HON. INONCENCIA SILVA">HON. INONCENCIA SILVA</option>
+        </select><br>
+        <hr>
+        <div class="btn-container d-flex justify-content-end">
+
+            <button type="button" style="display:none" class="btn btn-secondary w-25" id="nextToGuardian"
+                onclick="showGuardian();">Next</button>
+            <button type="button" style="display:none" class="btn btn-primary w-25"
+                id="jobSeekerprintBtn">Print</button>
 
             <div class="modal fade" id="jobSeekerModal" tabindex="-1" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -101,7 +116,6 @@
                 </div>
             </div>
         </div>
-        <hr>
     </div>
 
     <div class="form-section" id="guardian_section">
@@ -133,8 +147,8 @@
 
         <label for="birthdate">Birthday:</label>
         <input type="date" class="form-control" id="ftogbirthdate"
-            oninput=" validateBirthdate(this);this.value = this.value.toUpperCase();updateText();" name="ftogbirthdate"
-            ><br>
+            oninput=" validateBirthdate(this);this.value = this.value.toUpperCase();updateText();"
+            name="ftogbirthdate"><br>
 
         <label for="suffix">Role:</label>
         <select class="text-left form-control" name="relationship" id="ftogrole" onchange="updateText();">
@@ -144,7 +158,7 @@
         </select><br>
 
         <label for="purok">Purok:</label>
-        <select class="text-left form-control" name="ftogpurok" id="ftogpurok" onchange="updateText();" >
+        <select class="text-left form-control" name="ftogpurok" id="ftogpurok" onchange="updateText();">
             <option value="">--Select Purok--</option>
             <option value="Centro">Centro</option>
             <option value="Huwaran">Huwaran</option>
@@ -237,7 +251,7 @@
                     <span id="ftogamiddle_name"></span>
                     <span id="ftogalast_name"></span>
                     <span id="ftogasuffix"></span></b>,
-                and a resident of <b><span id="ftogpurok"></span></b> for
+                and a resident of Purok <b><span id="ftogpurok"></span></b>, Barangay Tiniguiban, Puerto Princesa City, for
                 <b><span id="ftogperiod_of_residency"></span></b>
                 <b><span id="ftogyear_month"></span></b>, do hereby give my consent for my child/dependent to avail
                 the benefits of <b>Republic Act 11261</b> and be bound by the above-mentioned conditions.
