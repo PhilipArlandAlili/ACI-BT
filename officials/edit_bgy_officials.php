@@ -1,6 +1,7 @@
 <?php
 include '../includes/db.php';
 
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $stmt = $conn->prepare("SELECT id, name, position, age, birthdate, address, phone, email, img, img_type FROM officials_barangay WHERE id = ?");
@@ -58,6 +59,8 @@ if (isset($_POST['submit'])) {
 
     if ($stmt1->affected_rows > 0) {
         header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $_GET['id']);
+        $_SESSION['success'] = "Profile updated successfully!";
+
         exit;
     } else {
         echo "Failed to update details.";
