@@ -65,13 +65,13 @@ include 'queries.php';
             <div class="col-lg-4" id="fillup">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Fillup Certificate</h5>
+                        <h5 class="card-title">Fill-up Certificate</h5>
                         <!-- General Form Elements -->
                         <label for="certificate_type"> Select Certificate</label><br>
                         <div class="col-md-12">
                             <select class="p-2 text-left form-control" id="certificate_type"
                                 onchange="changeCertificate()">
-                                <option value="">--select certificates--</option>
+                                <option value="">--Select Certificates--</option>
                                 <option value="barangay_clearance">Barangay Clearance</option>
                                 <option value="business_permit_new">Barangay Business Permit New</option>
                                 <option value="business_permit_renew">Barangay Business Permit Renew</option>
