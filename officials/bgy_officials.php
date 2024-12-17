@@ -56,31 +56,31 @@ $conn->close();
                                             <div class="mt-n4">
                                                 <div class="d-flex justify-content-end">
                                                     <a href="edit_bgy_officials.php?id=<?= $official['id'] ?>">
-                                                        <!-- <button type="button" class="btn" title="Edit Profile"> -->
-                                                            <i class="bi bi-pencil-square"></i>
+                                                        <button type="button" class="btn" title="Edit Profile">
+                                                        <i class="bi bi-pencil-square"></i>
                                                         </button>
                                                     </a>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center mb-2">
                                                     <div class="border border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
                                                         style="width: 125px; height: 125px;">
-                                                        <img src="data:<?php echo $official['img_type']; ?>;base64,<?php echo base64_encode($official['img']); ?>" style="max-width: 125px;"class="rounded-circle mb-3" alt="Image" /></div>    
+                                                        <img src="data:<?php echo $official['img_type']; ?>;base64,<?php echo base64_encode($official['img']); ?>"
+                                                            style="max-width: 125px;" class="rounded-circle mb-3" alt="Image" />
                                                     </div>
                                                 </div>
-                                                <div class="text-center pb-2">
-                                                    <h6 class="text-primary fs-5"><?= $official['name'] ?></h6>
-                                                    <span class="text-dark fs-5"><?= $official['position'] ?></span>
-                                                </div>
+                                            </div>
+                                            <div class="text-center pb-2">
+                                                <h6 class="text-primary fs-5"><?= $official['name'] ?></h6>
+                                                <span class="text-dark fs-5"><?= $official['position'] ?></span>
                                             </div>
                                         </div>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            </div>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
                         </div>
-                        <ul
-                            class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
-                        </ul>
                     </div>
+                    <ul class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                    </ul>
                 </div>
 
                 <div class="tab-pane fade show active" id="pills-friends" role="tabpanel"
@@ -99,11 +99,13 @@ $conn->close();
                                             </a>
                                         </div>
                                         <div class="card-body text-center border-bottom">
-                                        <div class="d-flex align-items-center justify-content-center mb-2">
-                                                    <div class="border border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
-                                                        style="width: 125px; height: 125px;">
-                                                        <img src="data:<?php echo $official['img_type']; ?>;base64,<?php echo base64_encode($official['img']); ?>" style="max-width: 125px; class="rounded-circle mb-3" alt="Image" /></div>    
-                                                    </div>
+                                            <div class="d-flex align-items-center justify-content-center mb-2">
+                                                <div class="border border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
+                                                    style="width: 125px; height: 125px;">
+                                                    <img src="data:<?php echo $official['img_type']; ?>;base64,<?php echo base64_encode($official['img']); ?>"
+                                                        style="max-width: 125px; class=" rounded-circle mb-3" alt="Image" />
+                                                </div>
+                                            </div>
                                             <h6 class="text-primary fs-5"><?= $official['name'] ?></h6>
                                             <span class="text-dark fs-5"><?= $official['position'] ?></span>
                                         </div>
