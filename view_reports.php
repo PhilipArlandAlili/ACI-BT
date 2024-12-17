@@ -1135,64 +1135,88 @@ if (!isset($_SESSION['username'])) {
                                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                                         <link rel="stylesheet" href="certificates/logo.css">
                                         <style>
-                                            .content {
-                                                font-family: Calibri;
-                                                font-size: 1.1rem;
-                                                position: absolute;
-                                                top: 50%;
-                                                left: 50%;
-                                                transform: translate(-50%, -50%);
-                                            }
+ @page {
+            size: A4;
+            margin: 0;
+        }
 
-                                            .chart-container {
-                                                margin-top: 20px;
-                                                border-radius: 4px;
-                                                background-color: white;
-                                                width: 100%;
-                                                max-width: 600px;
-                                                height: auto;
-                                            }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Calibri, sans-serif;
+            position: relative;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
 
-                                            .chart-container img {
-                                                width: 100%;
-                                                height: auto;
-                                            }
+        .content {
+            font-size: 1.1rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-                                            .num_issued {
-                                                text-align: center;
-                                            }
+        .chart-container {
+            margin-top: 20px;
+            border-radius: 4px;
+            background-color: white;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
 
-                                            .table {
-                                                width: 100%;
-                                                border-collapse: collapse;
-                                            }
+        .chart-container img {
+            width: 100%;
+            height: auto;
+        }
 
-                                            .table th {
-                                                background-color: #00528d;
-                                                color: white;
-                                            }
+        .num_issued {
+            text-align: center;
+        }
 
-                                            .table th,
-                                            .table td {
-                                                border: 1px solid #ddd;
-                                            }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-                                            .datetime {
-                                                margin-bottom: 20px;
-                                                font-size: 16px;
-                                                text-align: right;
-                                            }
+        .table th {
+            background-color: #00528d;
+            color: white;
+        }
 
-                                            .username {
-                                                position: absolute;
-                                                left: 70%;
-                                                top: 78%;
-                                            }
+        .table th,
+        .table td {
+            border: 1px solid #ddd;
+        }
+
+        .datetime {
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-align: right;
+        }
+
+        .username {
+            position: absolute;
+            left: 70%;
+            top: 78%;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .footer img {
+            width: 100%;
+        }
                                         </style>
                                     </head>
 
                                     <body>
-                                        <div class="container w-100">
+                                        <div class="container w-100 ">
                                             <div class="header">
                                                 <img src="certificates/logo/logo brgy.jpg" class="brlogo" alt="">
                                                 <img src="certificates/logo/citylogo.jpg" class="ctlogo" alt="">
@@ -1241,8 +1265,8 @@ if (!isset($_SESSION['username'])) {
                                                 Duty Officer
                                             </div>
                                         </div>
-                                        <img src="certificates/logo/border.png" class="border" alt="">
-                                        <img src="certificates/logo/under.png" class="footer-b" alt="">
+                                        <img  src="certificates/logo/border.png" class="border" alt="">
+                                        <img  src="certificates/logo/under.png" class="footer-b" alt="">
                                         </div>
                                     </body>
 

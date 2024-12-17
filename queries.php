@@ -27,11 +27,13 @@ if (isset($_POST["barangay_clearance"])) {
     $period_of_residency_ym = $conn->real_escape_string($_POST["period_of_residency_ym"]);
     $period_of_residency = $conn->real_escape_string($_POST["period_of_residency"]);
     $purpose = $conn->real_escape_string($_POST["purpose"]);
+    $duty_officer = $conn->real_escape_string($_POST["duty_officer"]);
 
     $suffix = strtoupper($suffix);
     $purok = strtoupper($purok);
     $civil_status = strtoupper($civil_status);
     $period_of_residency_ym = strtoupper($period_of_residency_ym);
+    $duty_officer = strtoupper($duty_officer);
     $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
 
     if ($period_of_residency_ym == 'YEARS') {
@@ -39,7 +41,7 @@ if (isset($_POST["barangay_clearance"])) {
     }
 
     $stmt = $conn->prepare("INSERT INTO barangay_clearance (first_name, middle_name, last_name, suffix, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('ssssssssisss', $first_name, $middle_name, $last_name, $suffix, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
+    $stmt->bind_param('ssssssssisss', $first_name, $middle_name, $last_name, $suffix, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer);
 
     if ($stmt->execute()) {
         //echo "New record inserted successfully";
