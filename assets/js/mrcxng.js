@@ -578,6 +578,7 @@ function updateText() {
         var ftpormonth = document.getElementById('ftmonth');
         var ftporyear = document.getElementById('ftyear');
         var ftperiod_of_residency = document.getElementById('ftperiod_of_residency');
+        var ftduty_officer_name = document.getElementById('ftduty_officer_name');
 
         // From HTML
         var pftfirst_name = iframeDocument.getElementById('ftfirst_name');
@@ -588,6 +589,7 @@ function updateText() {
         var pftpurok = iframeDocument.getElementById('ftpurok');
         var pftyear_month = iframeDocument.getElementById('ftyear_month');
         var pftperiod_of_residency = iframeDocument.getElementById('ftperiod_of_residency');
+        var pftduty_officer_name = iframeDocument.getElementById('ftduty_officer_name');
 
         pftfirst_name.innerText = ftfirst_name.value.toUpperCase();
         pftmiddle_name.innerText = ftmiddle_name.value.toUpperCase();
@@ -651,6 +653,7 @@ function updateText() {
 
         pftperiod_of_residency.innerText = ftperiod_of_residency.value;
         pftoperiod_of_residency.innerText = ftperiod_of_residency.value;
+        pftduty_officer_name.innerText = ftduty_officer_name.value.toUpperCase();
 
         // Guardian of the galaxy
         // Guardian Alaga Name
