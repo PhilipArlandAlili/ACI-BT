@@ -1050,6 +1050,10 @@ if (!isset($_SESSION['username'])) {
                                                     while ($duty_officer = $duty_officers->fetch_assoc()) {
                                                         echo "<option value='" . $duty_officer['name'] . "'>" . $duty_officer['name'] . "</option>";
                                                     }
+                                                    $staff = $conn->query("SELECT * FROM officials_staff WHERE id =2");
+                                                    while ($staff_officer = $staff->fetch_assoc()) {
+                                                        echo "<option value='" . $staff_officer['name'] . "'>" . $staff_officer['name'] . "</option>";
+                                                    }
                                                     ?>
                                                 </select>
                                             </div>
