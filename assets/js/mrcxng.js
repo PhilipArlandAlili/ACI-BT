@@ -1112,3 +1112,18 @@ function validateTime(time_input, date_input) {
     }
 }
 
+function checkValue (value) {
+    console.log(value);
+    console.log(value.value);
+    console.log('checkValue');
+    var printButton = document.getElementById('printButton');
+
+    if (value.value) {
+        console.log('checkValueblock');
+        printButton.style.display = "block";
+    } else {
+        console.log('checkValueNone');
+        printButton.style.display = "none";
+    }
+
+}

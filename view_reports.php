@@ -1041,7 +1041,7 @@ if (!isset($_SESSION['username'])) {
                                             </div>
                                             <div class="modal-body">
                                                 <select class="form-control" name="duty_officer" id="duty_officer"
-                                                    onchange="updateText();" required>
+                                                    onchange="checkValue(this);updateText();" required>
                                                     <option value="">--Select Duty Officer--</option>
                                                     <?php
                                                     include 'includes/db.php';
@@ -1056,7 +1056,7 @@ if (!isset($_SESSION['username'])) {
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" onclick="printChartData()">Save changes</button>
+                                                <button type="button" style="display:none" class="btn btn-primary" id="printButton" onclick="printChartData(duty_officer.value)">Save changes</button>
                                             </div>
                                         </div>
                                     </div>
@@ -1145,7 +1145,7 @@ if (!isset($_SESSION['username'])) {
                                 const myChart = new Chart(document.getElementById('myChart'), chartConfig);
 
                                 // Print function to open a new window with both table and chart
-                                function printChartData() {
+                                function printChartData(duty_officer) {
                                     const chartCanvas = document.getElementById('myChart');
                                     const chartImageURL = chartCanvas.toDataURL("image/png");
 
@@ -1170,7 +1170,7 @@ if (!isset($_SESSION['username'])) {
                                     const currentDateTime = `${nhour}:${nmin}:${nsec} ${ap}, ${tmonth[now.getMonth()]} ${ndate}, ${nyear} ${nday}`;
 
                                     // Echo the username
-                                    const username = "<?php echo $_SESSION['username']; ?>";
+                                    const username = duty_officer;
 
                                     let content = `
                                     <!DOCTYPE html>
@@ -1402,6 +1402,7 @@ if (!isset($_SESSION['username'])) {
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/mrcxng.js"></script>
 
 </body>
 
