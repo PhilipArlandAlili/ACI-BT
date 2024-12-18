@@ -160,7 +160,7 @@ if (!isset($_SESSION['username'])) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                     <!-- End Barangay Clearance Card -->
@@ -592,7 +592,7 @@ if (!isset($_SESSION['username'])) {
                                                             class="text-muted small pt-2 ps-1">increase</span>
                                                     </div>
 
-                                              
+
                                                 </div>
                                             </div>
                                         </div>
@@ -646,7 +646,7 @@ if (!isset($_SESSION['username'])) {
                                                             class="text-muted small pt-2 ps-1">increase</span>
                                                     </div>
 
-                                                
+
                                                 </div>
                                             </div>
                                         </div>
@@ -706,8 +706,8 @@ if (!isset($_SESSION['username'])) {
                                                             id="death_certificate_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
                                                     </div>
-                                                
-                        
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -761,7 +761,7 @@ if (!isset($_SESSION['username'])) {
                                                             class="text-muted small pt-2 ps-1">increase</span>
                                                     </div>
 
-                                                
+
                                                 </div>
                                             </div>
                                         </div>
@@ -811,135 +811,135 @@ if (!isset($_SESSION['username'])) {
                                                             <?php echo $count_lot_ownership; ?>
                                                         </h6>
                                                         <span class="text-success small pt-1 fw-bold"
-                                                            id="lot_ownership_percent" >%</span> <span
+                                                            id="lot_ownership_percent">%</span> <span
                                                             class="text-muted small pt-2 ps-1">increase</span>
                                                     </div>
 
                                                     <script>
 
-                                                // <--------- Barangay Clearance --------->        
-                                                document.addEventListener('DOMContentLoaded', function () {
-                                                    const barangay_clearance = <?php echo $count_barangay_clearance; ?>;
-                                                    const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
-                                                    const barangay_clearance_percent = (barangay_clearance / sum) * 100;
+                                                        // <--------- Barangay Clearance --------->        
+                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                            const barangay_clearance = <?php echo $count_barangay_clearance; ?>;
+                                                            const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
+                                                            const barangay_clearance_percent = (barangay_clearance / sum) * 100;
 
-                                                    result = Number.isNaN(barangay_clearance_percent) ? 0 : barangay_clearance_percent;
-                                                    document.getElementById('barangay_clearance_percent').innerHTML = result.toFixed(2) + '%';
-                                                });
+                                                            result = Number.isNaN(barangay_clearance_percent) ? 0 : barangay_clearance_percent;
+                                                            document.getElementById('barangay_clearance_percent').innerHTML = result.toFixed(2) + '%';
+                                                        });
 
-                                                 // <--------- Business Permit New --------->        
-                                                document.addEventListener('DOMContentLoaded', function () {
-                                                    const business_permit_new = <?php echo $count_business_permit_new; ?>;
-                                                    const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
-                                                    const business_permit_new_percent = (business_permit_new / sum) * 100;
+                                                        // <--------- Business Permit New --------->        
+                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                            const business_permit_new = <?php echo $count_business_permit_new; ?>;
+                                                            const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
+                                                            const business_permit_new_percent = (business_permit_new / sum) * 100;
 
-                                                    result = Number.isNaN(business_permit_new_percent) ? 0 : business_permit_new_percent;
-                                                    document.getElementById('business_permit_new_percent').innerHTML = result.toFixed(2) + '%';
-                                                });
+                                                            result = Number.isNaN(business_permit_new_percent) ? 0 : business_permit_new_percent;
+                                                            document.getElementById('business_permit_new_percent').innerHTML = result.toFixed(2) + '%';
+                                                        });
 
-                                                 // <--------- Business Permit Renew --------->        
-                                                document.addEventListener('DOMContentLoaded', function () {
-                                                    const business_permit_renew = <?php echo $count_business_permit_renew; ?>;
-                                                    const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
-                                                    const business_permit_renew_percent = (business_permit_renew / sum) * 100;
+                                                        // <--------- Business Permit Renew --------->        
+                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                            const business_permit_renew = <?php echo $count_business_permit_renew; ?>;
+                                                            const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
+                                                            const business_permit_renew_percent = (business_permit_renew / sum) * 100;
 
-                                                    result = Number.isNaN(business_permit_renew_percent) ? 0 : business_permit_renew_percent;
-                                                    document.getElementById('business_permit_renew_percent').innerHTML = result.toFixed(2) + '%';
-                                                });
+                                                            result = Number.isNaN(business_permit_renew_percent) ? 0 : business_permit_renew_percent;
+                                                            document.getElementById('business_permit_renew_percent').innerHTML = result.toFixed(2) + '%';
+                                                        });
 
-                                                // <--------- Certificate of Cohabitation --------->        
-                                                document.addEventListener('DOMContentLoaded', function () {
-                                                    const certificate_of_cohabitation = <?php echo $count_certificate_of_cohabitation; ?>;
-                                                    const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
-                                                    const certificate_of_cohabitation_percent = (certificate_of_cohabitation / sum) * 100;
+                                                        // <--------- Certificate of Cohabitation --------->        
+                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                            const certificate_of_cohabitation = <?php echo $count_certificate_of_cohabitation; ?>;
+                                                            const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
+                                                            const certificate_of_cohabitation_percent = (certificate_of_cohabitation / sum) * 100;
 
-                                                    result = Number.isNaN(certificate_of_cohabitation_percent) ? 0 : certificate_of_cohabitation_percent;
-                                                    document.getElementById('certificate_of_cohabitation_percent').innerHTML = result.toFixed(2) + '%';
-                                                });
+                                                            result = Number.isNaN(certificate_of_cohabitation_percent) ? 0 : certificate_of_cohabitation_percent;
+                                                            document.getElementById('certificate_of_cohabitation_percent').innerHTML = result.toFixed(2) + '%';
+                                                        });
 
-                                                 // <--------- Certificate of Employability --------->        
-                                                document.addEventListener('DOMContentLoaded', function () {
-                                                    const certificate_of_employability = <?php echo $count_certificate_of_employability; ?>;
-                                                    const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
-                                                    const certificate_of_employability_percent = (certificate_of_employability / sum) * 100;
+                                                        // <--------- Certificate of Employability --------->        
+                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                            const certificate_of_employability = <?php echo $count_certificate_of_employability; ?>;
+                                                            const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
+                                                            const certificate_of_employability_percent = (certificate_of_employability / sum) * 100;
 
-                                                    result = Number.isNaN(certificate_of_employability_percent) ? 0 : certificate_of_employability_percent;
-                                                    document.getElementById('certificate_of_employability_percent').innerHTML = result.toFixed(2) + '%';
-                                                });
+                                                            result = Number.isNaN(certificate_of_employability_percent) ? 0 : certificate_of_employability_percent;
+                                                            document.getElementById('certificate_of_employability_percent').innerHTML = result.toFixed(2) + '%';
+                                                        });
 
-                                                 // <--------- Certificate of Income --------->        
-                                                document.addEventListener('DOMContentLoaded', function () {
-                                                    const certificate_of_income = <?php echo $count_certificate_of_income; ?>;
-                                                    const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
-                                                    const certificate_of_income_percent = (certificate_of_income / sum) * 100;
+                                                        // <--------- Certificate of Income --------->        
+                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                            const certificate_of_income = <?php echo $count_certificate_of_income; ?>;
+                                                            const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
+                                                            const certificate_of_income_percent = (certificate_of_income / sum) * 100;
 
-                                                    result = Number.isNaN(certificate_of_income_percent) ? 0 : certificate_of_income_percent;
-                                                    document.getElementById('certificate_of_income_percent').innerHTML = result.toFixed(2) + '%';
-                                                });
+                                                            result = Number.isNaN(certificate_of_income_percent) ? 0 : certificate_of_income_percent;
+                                                            document.getElementById('certificate_of_income_percent').innerHTML = result.toFixed(2) + '%';
+                                                        });
 
-                                                // <--------- Certificate of Indigency --------->  
-                                                document.addEventListener('DOMContentLoaded', function () {
-                                                    const certificate_of_indigency_aics = <?php echo $count_certificate_of_indigency_aics; ?>;
-                                                    const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
-                                                    const barangay_clearance_percent = (certificate_of_indigency_aics/ sum) * 100;
+                                                        // <--------- Certificate of Indigency --------->  
+                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                            const certificate_of_indigency_aics = <?php echo $count_certificate_of_indigency_aics; ?>;
+                                                            const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
+                                                            const barangay_clearance_percent = (certificate_of_indigency_aics / sum) * 100;
 
-                                                    result = Number.isNaN(barangay_clearance_percent) ? 0 : barangay_clearance_percent;
-                                                    document.getElementById('certificate_of_indigency_aics_percent').innerHTML = result.toFixed(2) + '%';
-                                                });
+                                                            result = Number.isNaN(barangay_clearance_percent) ? 0 : barangay_clearance_percent;
+                                                            document.getElementById('certificate_of_indigency_aics_percent').innerHTML = result.toFixed(2) + '%';
+                                                        });
 
-                                                // <--------- Transfer of Residency --------->  
-                                                document.addEventListener('DOMContentLoaded', function () {
-                                                    const transfer_of_residency = <?php echo $count_transfer_of_residency; ?>;
-                                                    const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
-                                                    const transfer_of_residency_percent = (transfer_of_residency/ sum) * 100;
+                                                        // <--------- Transfer of Residency --------->  
+                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                            const transfer_of_residency = <?php echo $count_transfer_of_residency; ?>;
+                                                            const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
+                                                            const transfer_of_residency_percent = (transfer_of_residency / sum) * 100;
 
-                                                    result = Number.isNaN(transfer_of_residency_percent) ? 0 : transfer_of_residency_percent;
-                                                    document.getElementById('transfer_of_residency_percent').innerHTML = result.toFixed(2) + '%';
-                                                });
+                                                            result = Number.isNaN(transfer_of_residency_percent) ? 0 : transfer_of_residency_percent;
+                                                            document.getElementById('transfer_of_residency_percent').innerHTML = result.toFixed(2) + '%';
+                                                        });
 
-                                                // <--------- Complaint Certificate --------->  
-                                                document.addEventListener('DOMContentLoaded', function () {
-                                                    const complaint_certificate = <?php echo $count_complaint_certificate; ?>;
-                                                    const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
-                                                    const complaint_certificate_percent = (complaint_certificate/ sum) * 100;
+                                                        // <--------- Complaint Certificate --------->  
+                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                            const complaint_certificate = <?php echo $count_complaint_certificate; ?>;
+                                                            const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
+                                                            const complaint_certificate_percent = (complaint_certificate / sum) * 100;
 
-                                                    result = Number.isNaN(complaint_certificate_percent) ? 0 : complaint_certificate_percent;
-                                                    document.getElementById('complaint_certificate_percent').innerHTML = result.toFixed(2) + '%';
-                                                });
+                                                            result = Number.isNaN(complaint_certificate_percent) ? 0 : complaint_certificate_percent;
+                                                            document.getElementById('complaint_certificate_percent').innerHTML = result.toFixed(2) + '%';
+                                                        });
 
-                                                // <--------- Death Certificate --------->  
-                                                document.addEventListener('DOMContentLoaded', function () {
-                                                    const death_certificate = <?php echo $count_death_certificate; ?>;
-                                                    const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
-                                                    const death_certificate_percent = (death_certificate/ sum) * 100;
+                                                        // <--------- Death Certificate --------->  
+                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                            const death_certificate = <?php echo $count_death_certificate; ?>;
+                                                            const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
+                                                            const death_certificate_percent = (death_certificate / sum) * 100;
 
-                                                    result = Number.isNaN(death_certificate_percent) ? 0 : death_certificate_percent;
-                                                    document.getElementById('death_certificate_percent').innerHTML = result.toFixed(2) + '%';
-                                                });
+                                                            result = Number.isNaN(death_certificate_percent) ? 0 : death_certificate_percent;
+                                                            document.getElementById('death_certificate_percent').innerHTML = result.toFixed(2) + '%';
+                                                        });
 
-                                                // <--------- First Timeb Job Seeker --------->
-                                                document.addEventListener('DOMContentLoaded', function () {
-                                                    const first_time_job_seeker = <?php echo $count_first_time_job_seeker; ?>;
-                                                    const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
-                                                    const first_time_job_seeker_percent = (first_time_job_seeker/ sum) * 100;
+                                                        // <--------- First Timeb Job Seeker --------->
+                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                            const first_time_job_seeker = <?php echo $count_first_time_job_seeker; ?>;
+                                                            const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
+                                                            const first_time_job_seeker_percent = (first_time_job_seeker / sum) * 100;
 
-                                                    result = Number.isNaN(first_time_job_seeker_percent) ? 0 : first_time_job_seeker_percent;
-                                                    document.getElementById('first_time_job_seeker_percent').innerHTML = result.toFixed(2) + '%';
-                                                });
+                                                            result = Number.isNaN(first_time_job_seeker_percent) ? 0 : first_time_job_seeker_percent;
+                                                            document.getElementById('first_time_job_seeker_percent').innerHTML = result.toFixed(2) + '%';
+                                                        });
 
-                                                // <--------- Lot Ownership --------->
-                                                document.addEventListener('DOMContentLoaded', function () {
-                                                    const lot_ownership = <?php echo $count_lot_ownership; ?>;
-                                                    const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
-                                                    const lot_ownership_percent = (lot_ownership/ sum) * 100;
+                                                        // <--------- Lot Ownership --------->
+                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                            const lot_ownership = <?php echo $count_lot_ownership; ?>;
+                                                            const sum = <?php echo isset($sum) ? (int) $sum : 0; ?>;
+                                                            const lot_ownership_percent = (lot_ownership / sum) * 100;
 
-                                                    result = Number.isNaN(lot_ownership_percent) ? 0 : lot_ownership_percent;
-                                                    document.getElementById('lot_ownership_percent').innerHTML = result.toFixed(2) + '%';
-                                                });
+                                                            result = Number.isNaN(lot_ownership_percent) ? 0 : lot_ownership_percent;
+                                                            document.getElementById('lot_ownership_percent').innerHTML = result.toFixed(2) + '%';
+                                                        });
 
 
-                                                
-                                            </script>
+
+                                                    </script>
                                                 </div>
                                             </div>
                                         </div>
@@ -1025,9 +1025,55 @@ if (!isset($_SESSION['username'])) {
                         </div>
                         <div class="col-lg">
                             <canvas id="myChart" style="width: 800px; height: 240px;"></canvas>
+
+
                             <div class="print-btn py-4 d-flex align-items-center justify-content-center">
-                                <button onclick="printChartData()" class="btn btn-primary p-2">Print Reports</button>
+                                <button id="printBtn" class="btn btn-primary p-2">Print Reports</button>
+
+                                <div class="modal fade" id="verticalycentered" tabindex="-1" style="display: none;"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4>Select Duty Officer</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <select class="form-control" name="duty_officer" id="duty_officer"
+                                                    onchange="updateText();" required>
+                                                    <option value="">--Select Duty Officer--</option>
+                                                    <?php
+                                                    include 'includes/db.php';
+
+                                                    $duty_officers = $conn->query("SELECT * FROM officials_barangay WHERE id > 1 AND id < 8");
+                                                    while ($duty_officer = $duty_officers->fetch_assoc()) {
+                                                        echo "<option value='" . $duty_officer['name'] . "'>" . $duty_officer['name'] . "</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" onclick="printChartData()">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+                            <script>
+                                document.getElementById("printBtn").addEventListener("click", function () {
+                                    // Get the modal element
+                                    const modal = new bootstrap.Modal(document.getElementById("verticalycentered"), {
+                                        keyboard: true // Allow closing modal with the Escape key
+                                    });
+
+                                    // Show the modal
+                                    modal.show();
+                                });
+                            </script>
 
                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                             <script>
@@ -1135,83 +1181,83 @@ if (!isset($_SESSION['username'])) {
                                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                                         <link rel="stylesheet" href="certificates/logo.css">
                                         <style>
- @page {
-            size: A4;
-            margin: 0;
-        }
+                                            @page {
+                                                        size: A4;
+                                                        margin: 0;
+                                                    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Calibri, sans-serif;
-            position: relative;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
+                                                    body {
+                                                        margin: 0;
+                                                        padding: 0;
+                                                        font-family: Calibri, sans-serif;
+                                                        position: relative;
+                                                        min-height: 100vh;
+                                                        box-sizing: border-box;
+                                                    }
 
-        .content {
-            font-size: 1.1rem;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+                                                    .content {
+                                                        font-size: 1.1rem;
+                                                        position: absolute;
+                                                        top: 50%;
+                                                        left: 50%;
+                                                        transform: translate(-50%, -50%);
+                                                    }
 
-        .chart-container {
-            margin-top: 20px;
-            border-radius: 4px;
-            background-color: white;
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-        }
+                                                    .chart-container {
+                                                        margin-top: 20px;
+                                                        border-radius: 4px;
+                                                        background-color: white;
+                                                        width: 100%;
+                                                        max-width: 600px;
+                                                        height: auto;
+                                                    }
 
-        .chart-container img {
-            width: 100%;
-            height: auto;
-        }
+                                                    .chart-container img {
+                                                        width: 100%;
+                                                        height: auto;
+                                                    }
 
-        .num_issued {
-            text-align: center;
-        }
+                                                    .num_issued {
+                                                        text-align: center;
+                                                    }
 
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+                                                    .table {
+                                                        width: 100%;
+                                                        border-collapse: collapse;
+                                                    }
 
-        .table th {
-            background-color: #00528d;
-            color: white;
-        }
+                                                    .table th {
+                                                        background-color: #00528d;
+                                                        color: white;
+                                                    }
 
-        .table th,
-        .table td {
-            border: 1px solid #ddd;
-        }
+                                                    .table th,
+                                                    .table td {
+                                                        border: 1px solid #ddd;
+                                                    }
 
-        .datetime {
-            margin-bottom: 20px;
-            font-size: 16px;
-            text-align: right;
-        }
+                                                    .datetime {
+                                                        margin-bottom: 20px;
+                                                        font-size: 16px;
+                                                        text-align: right;
+                                                    }
 
-        .username {
-            position: absolute;
-            left: 70%;
-            top: 78%;
-        }
+                                                    .username {
+                                                        position: absolute;
+                                                        left: 70%;
+                                                        top: 78%;
+                                                    }
 
-        .footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-        }
+                                                    .footer {
+                                                        position: absolute;
+                                                        bottom: 0;
+                                                        width: 100%;
+                                                        text-align: center;
+                                                    }
 
-        .footer img {
-            width: 100%;
-        }
+                                                    .footer img {
+                                                        width: 100%;
+                                                    }
                                         </style>
                                     </head>
 
@@ -1261,8 +1307,7 @@ if (!isset($_SESSION['username'])) {
                                                 <b>
                                                     <h4>${username}</h4>
                                                 </b>
-                                                <div style="margin-top: -20px; border-top: 2px solid;">Punong Barangay</div>
-                                                Duty Officer
+                                                <div style="margin-top: -20px;">Duty Officer</div>
                                             </div>
                                         </div>
                                         <img  src="certificates/logo/border.png" class="border" alt="">
